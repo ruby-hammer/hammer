@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hammer::Component::Answer</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (A)</a> &raquo; 
+    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Component.html" title="Hammer::Component (module)">Component</a></span>
+     &raquo; 
+    <span class="title">Answer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hammer::Component::Answer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/hammer/component/answer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#answer%21-instance_method" title="#answer! (instance method)">- (Object) <strong>answer!</strong>(answer = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+answers with <tt>answer</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#answering%21-instance_method" title="#answering! (instance method)">- (Object) <strong>answering!</strong>(to_whom) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+sets component to answer <tt>to_whom</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#answering%3F-instance_method" title="#answering? (instance method)">- (Boolean) <strong>answering?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Am I answering to a component?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ask-instance_method" title="#ask (instance method)">- (Base) <strong>ask</strong>(component, *args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+asks a <tt>component</tt> for something and executes <tt>block</tt> when
+answer is obtained.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="answer!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>answer!</strong>(answer = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+answers with <tt>answer</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>answer</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+passed to stored block
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="#ask-instance_method" title="Hammer::Component::Answer#ask (method)">#ask</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id answer!'>answer!</span><span class='lparen'>(</span><span class='id answer'>answer</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@asker</span><span class='period'>.</span><span class='id instance_exec'>instance_exec</span> <span class='id answer'>answer</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@askers_callback</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="answering!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>answering!</strong>(to_whom) { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+sets component to answer <tt>to_whom</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+        <span class='name'>to_whom</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+block to execute after answer
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="#ask-instance_method" title="Hammer::Component::Answer#ask (method)">#ask</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id answering!'>answering!</span><span class='lparen'>(</span><span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@asker</span><span class='comma'>,</span> <span class='ivar'>@askers_callback</span> <span class='op'>=</span> <span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="answering?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>answering?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Am I answering to a component?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+am I answering to a component?
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 31</span>
+
+<span class='kw'>def</span> <span class='id answering?'>answering?</span>
+  <span class='ivar'>@asker</span><span class='period'>.</span><span class='id present?'>present?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="ask-instance_method">
+  
+    - (<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>) <strong>ask</strong>(component, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+asks a <tt>component</tt> for something and executes <tt>block</tt> when
+answer is obtained
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+with a <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> class
+</p>
+</div></h4>
+      <pre class="example code"><span class='id ask'>ask</span> <span class='const'>Counter</span><span class='comma'>,</span> <span class='int'>0</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id answer'>answer</span><span class='op'>|</span>
+  <span class='id values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id answer'>answer</span>
+<span class='kw'>end</span></pre>
+    
+      <h4><div class='inline'><p>
+with a <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> instance
+</p>
+</div></h4>
+      <pre class="example code"><span class='id ask'>ask</span> <span class='kw'>self</span><span class='period'>.</span><span class='id counter'>counter</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id answer'>answer</span><span class='op'>|</span>
+  <span class='id values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id answer'>answer</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>, <tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+        <span class='name'>component</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which is asked
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>[]</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+args for <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> constructor when a Class is passed to <tt>component</tt>
+yield [Object] answer block which is executed after answer is obtained
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+created or passed component
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id ask'>ask</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id component'>component</span> <span class='op'>=</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id component'>component</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span> <span class='const'>Class</span>
+  <span class='id component'>component</span><span class='period'>.</span><span class='id answering!'>answering!</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id component'>component</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Jul 23 12:41:36 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -53,12 +53,16 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="../../Component.html" title="Hammer::Component (module)">Hammer::Component</a></span>
+      <span class="inheritName"><a href="../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><a href="../../Component.html" title="Hammer::Component (module)">Hammer::Component</a></li>
+            <li class="next"><a href="../SuperAbstract.html" title="Hammer::Component::SuperAbstract (class)">Hammer::Component::SuperAbstract</a></li>
+          
+            <li class="next"><a href="../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></li>
+          
+            <li class="next"><a href="../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></li>
           
             <li class="next">Hammer::Component::FormPart::Widget</li>
           
@@ -83,6 +87,32 @@
 
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -126,6 +156,69 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Rendering.html" title="Hammer::Component::Rendering (module)">Hammer::Component::Rendering</a></h3>
+  <p class="inherited"><a href="../Rendering.html#create_widget-instance_method" title="Hammer::Component::Rendering#create_widget (method)">#create_widget</a>, <a href="../Rendering.html#included-class_method" title="Hammer::Component::Rendering.included (method)">included</a>, <a href="../Rendering.html#to_html-instance_method" title="Hammer::Component::Rendering#to_html (method)">#to_html</a>, <a href="../Rendering.html#widget-instance_method" title="Hammer::Component::Rendering#widget (method)">#widget</a>, <a href="../Rendering.html#widget_assigns-instance_method" title="Hammer::Component::Rendering#widget_assigns (method)">#widget_assigns</a>, <a href="../Rendering.html#widget_class-instance_method" title="Hammer::Component::Rendering#widget_class (method)">#widget_class</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Answer.html" title="Hammer::Component::Answer (module)">Hammer::Component::Answer</a></h3>
+  <p class="inherited"><a href="../Answer.html#answer%21-instance_method" title="Hammer::Component::Answer#answer! (method)">#answer!</a>, <a href="../Answer.html#answering%21-instance_method" title="Hammer::Component::Answer#answering! (method)">#answering!</a>, <a href="../Answer.html#answering%3F-instance_method" title="Hammer::Component::Answer#answering? (method)">#answering?</a>, <a href="../Answer.html#ask-instance_method" title="Hammer::Component::Answer#ask (method)">#ask</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Passing.html" title="Hammer::Component::Passing (module)">Hammer::Component::Passing</a></h3>
+  <p class="inherited"><a href="../Passing.html#pass_on-instance_method" title="Hammer::Component::Passing#pass_on (method)">#pass_on</a>, <a href="../Passing.html#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">#passed?</a>, <a href="../Passing.html#retake_control%21-instance_method" title="Hammer::Component::Passing#retake_control! (method)">#retake_control!</a>, <a href="../Passing.html#to_html-instance_method" title="Hammer::Component::Passing#to_html (method)">#to_html</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Inspection.html" title="Hammer::Component::Inspection (module)">Hammer::Component::Inspection</a></h3>
+  <p class="inherited"><a href="../Inspection.html#inspector-instance_method" title="Hammer::Component::Inspection#inspector (method)">#inspector</a>, <a href="../Inspection.html#inspector_class-instance_method" title="Hammer::Component::Inspection#inspector_class (method)">#inspector_class</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <a href="../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></h3>
+  <p class="inherited"><a href="../Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">#initialize</a>, <a href="../Abstract.html#new-instance_method" title="Hammer::Component::Abstract#new (method)">#new</a></p>
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <a href="../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">Hammer::Component::Abstract</a></p>
+  
+</div>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -144,15 +237,15 @@
       <pre class="lines">
 
 
-40
-41
-42</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id wrapper_options'>wrapper_options</span>
-  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-form-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id c'>c</span><span class='period'>.</span><span class='id form'>form</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='symbol'>:data-component-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id c'>c</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-form-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id component'>component</span><span class='period'>.</span><span class='id form'>form</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='symbol'>:data-component-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id component'>component</span><span class='period'>.</span><span class='id object_id'>object_id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -164,7 +257,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:35 2010 by 
+  Generated on Fri Jul 23 12:41:37 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

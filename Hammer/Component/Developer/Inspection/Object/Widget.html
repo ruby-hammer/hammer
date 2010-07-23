@@ -53,12 +53,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="../../../../Component.html" title="Hammer::Component (module)">Hammer::Component</a></span>
+      <span class="inheritName"><a href="../../../../Widget.html" title="Hammer::Widget (module)">Hammer::Widget</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><a href="../../../../Component.html" title="Hammer::Component (module)">Hammer::Component</a></li>
+            <li class="next"><a href="../../../../Widget.html" title="Hammer::Widget (module)">Hammer::Widget</a></li>
           
             <li class="next">Hammer::Component::Developer::Inspection::Object::Widget</li>
           
@@ -83,14 +83,20 @@
 
 <div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><a href="../Module/Widget.html" title="Hammer::Component::Developer::Inspection::Module::Widget (class)">Hammer::Component::Developer::Inspection::Module::Widget</a>, <a href="../String/Widget.html" title="Hammer::Component::Developer::Inspection::String::Widget (class)">Hammer::Component::Developer::Inspection::String::Widget</a></p>
+  <p class="children"><a href="../Module/Widget.html" title="Hammer::Component::Developer::Inspection::Module::Widget (class)">Hammer::Component::Developer::Inspection::Module::Widget</a></p>
 </div>
 
+  <h2>Constant Summary</h2>
+  
+
 
   
   
   
   
+  <h3 class="inherited">Constants included from <a href="../../../../Widget.html" title="Hammer::Widget (module)">Hammer::Widget</a></h3>
+  <p class="inherited"><a href="../../../../Widget.html#OCollection-constant" title="Hammer::Widget::OCollection (constant)">OCollection</a></p>
+
 
   
     <h2>
@@ -220,17 +226,17 @@ renders unpacked form.
       <pre class="lines">
 
 
-54
-55
-56
-57</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id content'>content</span>
   <span class='id packed'>packed</span>
-  <span class='id ul'>ul</span> <span class='lbrace'>{</span> <span class='id unpacked'>unpacked</span> <span class='rbrace'>}</span> <span class='kw'>unless</span> <span class='id c'>c</span><span class='period'>.</span><span class='id packed?'>packed?</span>
+  <span class='id ul'>ul</span> <span class='lbrace'>{</span> <span class='id unpacked'>unpacked</span> <span class='rbrace'>}</span> <span class='kw'>unless</span> <span class='id packed?'>packed?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -261,15 +267,15 @@ renders name of the inspector
       <pre class="lines">
 
 
-65
-66
-67</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id name'>name</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='embexpr_beg'>#{</span><span class='id c'>c</span><span class='period'>.</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='embexpr_beg'>#{</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -300,15 +306,15 @@ renders packed form
       <pre class="lines">
 
 
-60
-61
-62</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id packed'>packed</span>
-  <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id c'>c</span><span class='period'>.</span><span class='id label'>label</span> <span class='op'>?</span> <span class='id c'>c</span><span class='period'>.</span><span class='id label'>label</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='id switch_packed'>switch_packed</span> <span class='rbrace'>}</span>
+  <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id component_label'>component_label</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='id toggle!'>toggle!</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -339,19 +345,19 @@ renders unpacked form
       <pre class="lines">
 
 
-70
-71
-72
-73
-74
-75</pre>
+56
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id unpacked'>unpacked</span>
-  <span class='id li'>li</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>size </span><span class='embexpr_beg'>#{</span><span class='id c'>c</span><span class='period'>.</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id size'>size</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id c'>c</span><span class='period'>.</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:size</span><span class='rparen'>)</span>
-  <span class='id c'>c</span><span class='period'>.</span><span class='id components'>components</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span>
+  <span class='id li'>li</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>size </span><span class='embexpr_beg'>#{</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id size'>size</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:size</span><span class='rparen'>)</span>
+  <span class='id components'>components</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span>
     <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id render'>render</span> <span class='id c'>c</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -365,7 +371,7 @@ renders unpacked form
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:36 2010 by 
+  Generated on Fri Jul 23 12:41:40 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

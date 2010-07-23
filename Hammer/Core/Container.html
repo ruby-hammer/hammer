@@ -307,12 +307,12 @@ A new instance of Container
       <pre class="lines">
 
 
+10
 11
-12
-13</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@contexts</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -354,12 +354,12 @@ Returns the value of attribute id
       <pre class="lines">
 
 
+9
 10
-11
-12</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id id'>id</span>
   <span class='ivar'>@id</span>
@@ -442,19 +442,19 @@ of a <tt><a href="Base.html" title="Hammer::Core::Base (class)">Hammer::Core::Ba
       <pre class="lines">
 
 
+16
 17
 18
 19
 20
-21
-22</pre>
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id context'>context</span><span class='lparen'>(</span><span class='id id'>id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>begin</span>
-    <span class='id id'>id</span> <span class='op'>=</span> <span class='const'>Core</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
+    <span class='id id'>id</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
     <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -487,12 +487,12 @@ drops container when is not needed
       <pre class="lines">
 
 
+42
 43
-44
-45</pre>
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='const'>Base</span><span class='period'>.</span><span class='id drop_container'>drop_container</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -544,13 +544,13 @@ to drop when is not needed
       <pre class="lines">
 
 
+36
 37
 38
-39
-40</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id context'>context</span><span class='period'>.</span><span class='id id'>id</span><span class='rparen'>)</span>
@@ -659,15 +659,15 @@ warning which will be shown to user
       <pre class="lines">
 
 
+28
 29
 30
 31
 32
-33
-34</pre>
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='comma'>,</span> <span class='id warn'>warn</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id context'>context</span> <span class='op'>=</span> <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
@@ -704,12 +704,12 @@ context&#8217;s count
       <pre class="lines">
 
 
+47
 48
-49
-50</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id size'>size</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id size'>size</span>
@@ -724,7 +724,7 @@ context&#8217;s count
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:34 2010 by 
+  Generated on Fri Jul 23 12:41:35 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

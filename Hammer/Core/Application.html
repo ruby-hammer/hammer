@@ -72,29 +72,25 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hammer/core/application.rb<span class="defines">,<br />
-  lib/hammer/core/application/common_logger.rb</span>
-</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hammer/core/application.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
-    
-   
-    
-      <strong class="classes">Classes:</strong> <a href="Application/CommonLogger.html" title="Hammer::Core::Application::CommonLogger (class)">CommonLogger</a>
-    
+
+
   
-</p>
-
-
+  
+  
+  
   
 
   
@@ -167,6 +163,16 @@ Session_id.
 
 
   
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></h3>
+  <p class="inherited"><a href="../Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a>, <a href="../Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></p>
+
+  
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
@@ -196,7 +202,6 @@ monkey patch sintra .run!
       <pre class="lines">
 
 
-32
 33
 34
 35
@@ -214,10 +219,11 @@ monkey patch sintra .run!
 47
 48
 49
-50</pre>
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/application.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/application.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run!'>run!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id set'>set</span> <span class='id options'>options</span>
@@ -292,12 +298,12 @@ session_id
       <pre class="lines">
 
 
-23
 24
-25</pre>
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/application.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/application.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id session_id'>session_id</span>
   <span class='id request'>request</span><span class='period'>.</span><span class='id session_options'>session_options</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
@@ -312,7 +318,7 @@ session_id
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:34 2010 by 
+  Generated on Fri Jul 23 12:41:36 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

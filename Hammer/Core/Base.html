@@ -70,17 +70,25 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hammer/core/base.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hammer/core/base.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
 
 
+  
+  
+  
+  
 
   
     <h2>
@@ -259,6 +267,16 @@ tries to execute block safely, errors are logged.
   
 
 
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></h3>
+  <p class="inherited"><a href="../Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a>, <a href="../Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></p>
+
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
@@ -307,12 +325,12 @@ container by user_id (session id is used)
       <pre class="lines">
 
 
-19
-20
-21</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id user_id'>user_id</span><span class='rparen'>)</span>
   <span class='ivar'>@containers</span><span class='lbracket'>[</span><span class='id user_id'>user_id</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Container</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id user_id'>user_id</span><span class='rparen'>)</span>
@@ -346,12 +364,12 @@ delete container where isn&#8217;t needed any more
       <pre class="lines">
 
 
-24
-25
-26</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id drop_container'>drop_container</span><span class='lparen'>(</span><span class='id container'>container</span><span class='rparen'>)</span>
   <span class='ivar'>@containers</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id container'>container</span><span class='period'>.</span><span class='id id'>id</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id raise'>raise</span>
@@ -395,12 +413,12 @@ delete container where isn&#8217;t needed any more
       <pre class="lines">
 
 
-36
-37
-38</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id fibers_pool'>fibers_pool</span>
   <span class='ivar'>@fibers_pool</span>
@@ -455,6 +473,13 @@ which was received
       <pre class="lines">
 
 
+50
+51
+52
+53
+54
+55
+56
 57
 58
 59
@@ -467,17 +492,10 @@ which was received
 66
 67
 68
-69
-70
-71
-72
-73
-74
-75
-76</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id receive_message'>receive_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='id session_id'>session_id</span> <span class='op'>=</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>session_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
@@ -488,13 +506,13 @@ which was received
   <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span>
     <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>missing session_id</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>elsif</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id context_id'>context_id</span><span class='rparen'>)</span>
-    <span class='id context'>context</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id context'>context</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hash</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id context'>context</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id context'>context</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hash</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id send_id'>send_id</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span><span class='period'>.</span><span class='id actualize'>actualize</span><span class='period'>.</span><span class='id send!'>send!</span> <span class='rbrace'>}</span>
   <span class='kw'>elsif</span> <span class='id action_id'>action_id</span> <span class='op'>||</span> <span class='id form'>form</span>
-    <span class='id context'>context</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id context'>context</span><span class='lparen'>(</span><span class='id context_id'>context_id</span><span class='rparen'>)</span>
+    <span class='id context'>context</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id context'>context</span><span class='lparen'>(</span><span class='id context_id'>context_id</span><span class='rparen'>)</span>
     <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id update_form'>update_form</span><span class='lparen'>(</span><span class='id form'>form</span><span class='rparen'>)</span><span class='period'>.</span><span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id action_id'>action_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id actualize'>actualize</span><span class='period'>.</span><span class='id send!'>send!</span> <span class='rbrace'>}</span>
   <span class='kw'>elsif</span> <span class='id context_id'>context_id</span>
-    <span class='id context'>context</span> <span class='op'>=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id context_id'>context_id</span><span class='comma'>,</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hash</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='rparen'>)</span>
+    <span class='id context'>context</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id container'>container</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id context_id'>context_id</span><span class='comma'>,</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hash</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Non valid message: </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
@@ -528,12 +546,12 @@ runs websocket server - schedule start after eventmachine startup in thin
       <pre class="lines">
 
 
-29
-30
-31</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run!'>run!</span>
   <span class='id run_websocket_server'>run_websocket_server</span>
@@ -567,6 +585,13 @@ setups websocket server
       <pre class="lines">
 
 
+72
+73
+74
+75
+76
+77
+78
 79
 80
 81
@@ -592,20 +617,19 @@ setups websocket server
 101
 102
 103
-104
-105
-106
-107
-108</pre>
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run_websocket_server'>run_websocket_server</span>
   <span class='const'>EM</span><span class='period'>.</span><span class='id epoll'>epoll</span>
   <span class='const'>EM</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='kw'>do</span>
-    <span class='const'>EventMachine</span><span class='op'>::</span><span class='id start_server'>start_server</span> <span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>WebSocket</span><span class='op'>::</span><span class='const'>Connection</span><span class='comma'>,</span>
-        <span class='symbol'>:debug</span> <span class='op'>=&gt;</span> <span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:debug</span><span class='rbracket'>]</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id connection'>connection</span><span class='op'>|</span>
+    <span class='const'>EventMachine</span><span class='op'>::</span><span class='id start_server'>start_server</span> \
+        <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='comma'>,</span>
+        <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span>
+        <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>WebSocket</span><span class='op'>::</span><span class='const'>Connection</span><span class='comma'>,</span>
+        <span class='symbol'>:debug</span> <span class='op'>=&gt;</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:debug</span><span class='rbracket'>]</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id connection'>connection</span><span class='op'>|</span>
 
       <span class='id connection'>connection</span><span class='period'>.</span><span class='id onopen'>onopen</span>    <span class='lbrace'>{</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WebSocket connection opened</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
       <span class='id connection'>connection</span><span class='period'>.</span><span class='id onmessage'>onmessage</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id message'>message</span><span class='op'>|</span> <span class='id receive_message'>receive_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -616,7 +640,7 @@ setups websocket server
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-    
+      
     <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id info'>info</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>== Hammer WebSocket running.</span><span class='tstring_end'>'</span></span>
 
     <span class='const'>EventMachine</span><span class='op'>::</span><span class='id add_periodic_timer'>add_periodic_timer</span><span class='lparen'>(</span><span class='int'>60</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'># TODO probably useless
@@ -698,18 +722,18 @@ if block was successfully processed
       <pre class="lines">
 
 
+36
+37
+38
+39
+40
+41
+42
 43
-44
-45
-46
-47
-48
-49
-50
-51</pre>
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/base.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id safely'>safely</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -730,7 +754,7 @@ if block was successfully processed
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:33 2010 by 
+  Generated on Fri Jul 23 12:41:35 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

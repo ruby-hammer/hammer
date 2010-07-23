@@ -53,16 +53,16 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></span>
+      <span class="inheritName"><a href="Simple.html" title="Hammer::Component::Developer::Inspection::Simple (class)">Simple</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><a href="../../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></li>
+            <li class="next"><a href="../../SuperAbstract.html" title="Hammer::Component::SuperAbstract (class)">Hammer::Component::SuperAbstract</a></li>
           
-            <li class="next"><a href="Object.html" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></li>
+            <li class="next"><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></li>
           
-            <li class="next"><a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></li>
+            <li class="next"><a href="Simple.html" title="Hammer::Component::Developer::Inspection::Simple (class)">Simple</a></li>
           
             <li class="next">Hammer::Component::Developer::Inspection::Numeric</li>
           
@@ -80,7 +80,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hammer/component/developer/inspection/numeric.rb</dd>
+    <dd class="r2 last">lib/hammer/component/developer/inspection/simple.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -99,8 +99,15 @@
   
   
   
+  
+  
 
 
+  
+  
+  
+  
+  
   
   
   
@@ -108,8 +115,8 @@
   
   <h2>Method Summary</h2>
   
-  <h3 class="inherited">Methods inherited from <a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></h3>
-  <p class="inherited"><a href="String.html#unpack-instance_method" title="Hammer::Component::Developer::Inspection::String#unpack (method)">#unpack</a></p>
+  <h3 class="inherited">Methods inherited from <a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></h3>
+  <p class="inherited"><a href="../../Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="../../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">#initialize</a>, <a href="../../Abstract.html#new-instance_method" title="Hammer::Component::Abstract#new (method)">#new</a></p>
 
   
   
@@ -117,23 +124,10 @@
   
   
   
-  
-  <h3 class="inherited">Methods inherited from <a href="Object.html" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></h3>
-  <p class="inherited"><a href="Object.html#initial_state-instance_method" title="Hammer::Component::Developer::Inspection::Object#initial_state (method)">#initial_state</a>, <a href="Object.html#initialize-instance_method" title="Hammer::Component::Developer::Inspection::Object#initialize (method)">#initialize</a>, <a href="Object.html#pack-instance_method" title="Hammer::Component::Developer::Inspection::Object#pack (method)">#pack</a>, <a href="Object.html#packed%3F-instance_method" title="Hammer::Component::Developer::Inspection::Object#packed? (method)">#packed?</a>, <a href="Object.html#switch_packed-instance_method" title="Hammer::Component::Developer::Inspection::Object#switch_packed (method)">#switch_packed</a>, <a href="Object.html#unpack-instance_method" title="Hammer::Component::Developer::Inspection::Object#unpack (method)">#unpack</a></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods inherited from <a href="../../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></h3>
-  <p class="inherited"><a href="../../Base.html#answer%21-instance_method" title="Hammer::Component::Base#answer! (method)">#answer!</a>, <a href="../../Base.html#answering%21-instance_method" title="Hammer::Component::Base#answering! (method)">#answering!</a>, <a href="../../Base.html#ask-instance_method" title="Hammer::Component::Base#ask (method)">#ask</a>, <a href="../../Base.html#create_widget-instance_method" title="Hammer::Component::Base#create_widget (method)">#create_widget</a>, <a href="../../Base.html#initial_state-instance_method" title="Hammer::Component::Base#initial_state (method)">#initial_state</a>, <a href="../../Base.html#initialize-instance_method" title="Hammer::Component::Base#initialize (method)">#initialize</a>, <a href="../../Base.html#inspector-instance_method" title="Hammer::Component::Base#inspector (method)">#inspector</a>, <a href="../../Base.html#inspector_class-instance_method" title="Hammer::Component::Base#inspector_class (method)">#inspector_class</a>, <a href="../../Base.html#new-instance_method" title="Hammer::Component::Base#new (method)">#new</a>, <a href="../../Base.html#pass_on-instance_method" title="Hammer::Component::Base#pass_on (method)">#pass_on</a>, <a href="../../Base.html#retake_control%21-instance_method" title="Hammer::Component::Base#retake_control! (method)">#retake_control!</a>, <a href="../../Base.html#to_html-instance_method" title="Hammer::Component::Base#to_html (method)">#to_html</a>, <a href="../../Base.html#use_widget_class-class_method" title="Hammer::Component::Base.use_widget_class (method)">use_widget_class</a>, <a href="../../Base.html#widget-instance_method" title="Hammer::Component::Base#widget (method)">#widget</a>, <a href="../../Base.html#widget_assigns-instance_method" title="Hammer::Component::Base#widget_assigns (method)">#widget_assigns</a>, <a href="../../Base.html#widget_class-class_method" title="Hammer::Component::Base.widget_class (method)">widget_class</a></p>
-<div id="constructor_details" class="method_details_list">
+  <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <p class="notice">This class inherits a constructor from <a href="Object.html#initialize-instance_method" title="Hammer::Component::Developer::Inspection::Object#initialize (method)">Hammer::Component::Developer::Inspection::Object</a></p>
+    <p class="notice">This class inherits a constructor from <a href="../../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">Hammer::Component::Abstract</a></p>
   
 </div>
 
@@ -141,7 +135,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:37 2010 by 
+  Generated on Fri Jul 23 12:41:39 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

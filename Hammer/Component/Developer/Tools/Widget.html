@@ -53,16 +53,16 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="../../../Widget/Component.html" title="Hammer::Widget::Component (class)">Hammer::Widget::Component</a></span>
+      <span class="inheritName"><a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
             <li class="next">Erector::Widget</li>
           
-            <li class="next"><a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></li>
+            <li class="next"><a href="../../../Widget/Abstract.html" title="Hammer::Widget::Abstract (class)">Hammer::Widget::Abstract</a></li>
           
-            <li class="next"><a href="../../../Widget/Component.html" title="Hammer::Widget::Component (class)">Hammer::Widget::Component</a></li>
+            <li class="next"><a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></li>
           
             <li class="next">Hammer::Component::Developer::Tools::Widget</li>
           
@@ -87,6 +87,18 @@
 
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -137,8 +149,13 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <a href="../../../Widget/Component.html" title="Hammer::Widget::Component (class)">Hammer::Widget::Component</a></h3>
-  <p class="inherited"><a href="../../../Widget/Component.html#a-instance_method" title="Hammer::Widget::Component#a (method)">#a</a>, <a href="../../../Widget/Component.html#callback-instance_method" title="Hammer::Widget::Component#callback (method)">#callback</a>, <a href="../../../Widget/Component.html#method_missing-instance_method" title="Hammer::Widget::Component#method_missing (method)">#method_missing</a>, <a href="../../../Widget/Component.html#register_action-instance_method" title="Hammer::Widget::Component#register_action (method)">#register_action</a>, <a href="../../../Widget/Component.html#respond_to%3F-instance_method" title="Hammer::Widget::Component#respond_to? (method)">#respond_to?</a>, <a href="../../../Widget/Component.html#widget-instance_method" title="Hammer::Widget::Component#widget (method)">#widget</a></p>
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../../../Widget/Wrapping.html" title="Hammer::Widget::Wrapping (module)">Hammer::Widget::Wrapping</a></h3>
+  <p class="inherited"><a href="../../../Widget/Wrapping.html#_render_via-instance_method" title="Hammer::Widget::Wrapping#_render_via (method)">#_render_via</a>, <a href="../../../Widget/Wrapping.html#content_with_wrapper-instance_method" title="Hammer::Widget::Wrapping#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="../../../Widget/Wrapping.html#included-class_method" title="Hammer::Widget::Wrapping.included (method)">included</a>, <a href="../../../Widget/Wrapping.html#to_html-instance_method" title="Hammer::Widget::Wrapping#to_html (method)">#to_html</a>, <a href="../../../Widget/Wrapping.html#wrapper_options-instance_method" title="Hammer::Widget::Wrapping#wrapper_options (method)">#wrapper_options</a></p>
 
   
   
@@ -147,20 +164,25 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></h3>
-  <p class="inherited"><a href="../../../Widget/Base.html#_render_via-instance_method" title="Hammer::Widget::Base#_render_via (method)">#_render_via</a>, <a href="../../../Widget/Base.html#content_with_wrapper-instance_method" title="Hammer::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="../../../Widget/Base.html#css_class-class_method" title="Hammer::Widget::Base.css_class (method)">css_class</a>, <a href="../../../Widget/Base.html#render-instance_method" title="Hammer::Widget::Base#render (method)">#render</a>, <a href="../../../Widget/Base.html#to_html-instance_method" title="Hammer::Widget::Base#to_html (method)">#to_html</a>, <a href="../../../Widget/Base.html#wrap_in-class_method" title="Hammer::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="../../../Widget/Base.html#wrapped_in-class_method" title="Hammer::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="../../../Widget/Base.html#wrapper_options-instance_method" title="Hammer::Widget::Base#wrapper_options (method)">#wrapper_options</a></p>
-
-  <div id="method_missing_details" class="method_details_list">
-  <h2>Dynamic Method Handling</h2>
-  <p class="notice super">
-    This class handles dynamic methods through the <tt>method_missing</tt> method
-    
-      in the class <a href="../../../Widget/Component.html#method_missing-instance_method" title="Hammer::Widget::Component#method_missing (method)">Hammer::Widget::Component</a>
-    
-  </p>
   
-</div>
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../../../Widget/Callback.html" title="Hammer::Widget::Callback (module)">Hammer::Widget::Callback</a></h3>
+  <p class="inherited"><a href="../../../Widget/Callback.html#callback-instance_method" title="Hammer::Widget::Callback#callback (method)">#callback</a></p>
 
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <a href="../../../Widget/Abstract.html" title="Hammer::Widget::Abstract (class)">Hammer::Widget::Abstract</a></h3>
+  <p class="inherited"><a href="../../../Widget/Abstract.html#css_class-class_method" title="Hammer::Widget::Abstract.css_class (method)">css_class</a>, <a href="../../../Widget/Abstract.html#render-instance_method" title="Hammer::Widget::Abstract#render (method)">#render</a></p>
+
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -179,6 +201,19 @@
       <pre class="lines">
 
 
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 22
 23
 24
@@ -187,23 +222,10 @@
 27
 28
 29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43</pre>
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/tools.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/tools.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id content'>content</span>
   <span class='id strong'>strong</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Tools:</span><span class='tstring_end'>'</span></span>
@@ -216,16 +238,16 @@
       <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Inspector Chat::Model::Room.rooms</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span>
           <span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='ivar'>@tool</span> <span class='op'>=</span> <span class='id inspector'>inspector</span> <span class='const'>Chat</span><span class='op'>::</span><span class='const'>Model</span><span class='op'>::</span><span class='const'>Room</span><span class='period'>.</span><span class='id rooms'>rooms</span> <span class='rbrace'>}</span>
     <span class='kw'>end</span> <span class='kw'>if</span> <span class='kw'>defined?</span> <span class='const'>Chat</span><span class='op'>::</span><span class='const'>Model</span><span class='op'>::</span><span class='const'>Room</span>
-    <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC and stats</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='ivar'>@tool</span> <span class='op'>=</span> <span class='id new'>new</span> <span class='const'>Developer</span><span class='op'>::</span><span class='const'>Gc</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+    <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC and stats</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='ivar'>@tool</span> <span class='op'>=</span> <span class='id new'>new</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Gc</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
     <span class='kw'>if</span> <span class='kw'>defined?</span> <span class='const'>Memprof</span>
       <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Memprof dump all</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='const'>Memprof</span><span class='period'>.</span><span class='id dump_all'>dump_all</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>heap_dump.json</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
     <span class='kw'>end</span>
     <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>none</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='ivar'>@tool</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
-      
+
   <span class='id hr'>hr</span>
 
-  <span class='id render'>render</span> <span class='id component'>component</span><span class='period'>.</span><span class='id tool'>tool</span> <span class='kw'>if</span> <span class='id component'>component</span><span class='period'>.</span><span class='id tool'>tool</span>
+  <span class='id render'>render</span> <span class='id tool'>tool</span> <span class='kw'>if</span> <span class='id tool'>tool</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -237,7 +259,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:35 2010 by 
+  Generated on Fri Jul 23 12:41:38 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

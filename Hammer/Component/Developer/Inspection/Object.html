@@ -53,12 +53,14 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="../../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>
+      <span class="inheritName"><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><a href="../../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></li>
+            <li class="next"><a href="../../SuperAbstract.html" title="Hammer::Component::SuperAbstract (class)">Hammer::Component::SuperAbstract</a></li>
+          
+            <li class="next"><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></li>
           
             <li class="next">Hammer::Component::Developer::Inspection::Object</li>
           
@@ -83,7 +85,7 @@
 
 <div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><a href="Array.html" title="Hammer::Component::Developer::Inspection::Array (class)">Array</a>, <a href="Hash.html" title="Hammer::Component::Developer::Inspection::Hash (class)">Hash</a>, <a href="Module.html" title="Hammer::Component::Developer::Inspection::Module (class)">Module</a>, <a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></p>
+  <p class="children"><a href="Array.html" title="Hammer::Component::Developer::Inspection::Array (class)">Array</a>, <a href="Hash.html" title="Hammer::Component::Developer::Inspection::Hash (class)">Hash</a>, <a href="Module.html" title="Hammer::Component::Developer::Inspection::Module (class)">Module</a></p>
 </div>
 <h2>Defined Under Namespace</h2>
 <p class="children">
@@ -97,6 +99,12 @@
 </p>
 
 
+  
+  
+  
+  
+  
+  
   
   
   
@@ -131,87 +139,6 @@ Returns the value of attribute components.
 </li>
 
     
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#label-instance_method" title="#label (instance method)">- (Object) <strong>label</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title readonly">readonly</span>
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute label.
-</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#obj-instance_method" title="#obj (instance method)">- (Object) <strong>obj</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title readonly">readonly</span>
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute obj.
-</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#packed%3D-instance_method" title="#packed= (instance method)">- (Object) <strong>packed</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    
-    <span class="note title writeonly">writeonly</span>
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Sets the attribute packed.
-</p>
-</div></span>
-  
-</li>
-
-    
   </ul>
 
 
@@ -226,28 +153,7 @@ Sets the attribute packed.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initial_state-instance_method" title="#initial_state (instance method)">- (Object) <strong>initial_state</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Object) <strong>initialize</strong>(context, obj, label = nil, packed = true) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Object) <strong>initialize</strong>(assigns = {}) </a>
     
 
     
@@ -321,7 +227,7 @@ Is inspector packed?.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#switch_packed-instance_method" title="#switch_packed (instance method)">- (Object) <strong>switch_packed</strong> </a>
+      <a href="#toggle%21-instance_method" title="#toggle! (instance method)">- (Object) <strong>toggle!</strong> </a>
     
 
     
@@ -378,15 +284,22 @@ etc.
   
   
   
-  <h3 class="inherited">Methods inherited from <a href="../../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></h3>
-  <p class="inherited"><a href="../../Base.html#answer%21-instance_method" title="Hammer::Component::Base#answer! (method)">#answer!</a>, <a href="../../Base.html#answering%21-instance_method" title="Hammer::Component::Base#answering! (method)">#answering!</a>, <a href="../../Base.html#ask-instance_method" title="Hammer::Component::Base#ask (method)">#ask</a>, <a href="../../Base.html#create_widget-instance_method" title="Hammer::Component::Base#create_widget (method)">#create_widget</a>, <a href="../../Base.html#inspector-instance_method" title="Hammer::Component::Base#inspector (method)">#inspector</a>, <a href="../../Base.html#inspector_class-instance_method" title="Hammer::Component::Base#inspector_class (method)">#inspector_class</a>, <a href="../../Base.html#new-instance_method" title="Hammer::Component::Base#new (method)">#new</a>, <a href="../../Base.html#pass_on-instance_method" title="Hammer::Component::Base#pass_on (method)">#pass_on</a>, <a href="../../Base.html#retake_control%21-instance_method" title="Hammer::Component::Base#retake_control! (method)">#retake_control!</a>, <a href="../../Base.html#to_html-instance_method" title="Hammer::Component::Base#to_html (method)">#to_html</a>, <a href="../../Base.html#use_widget_class-class_method" title="Hammer::Component::Base.use_widget_class (method)">use_widget_class</a>, <a href="../../Base.html#widget-instance_method" title="Hammer::Component::Base#widget (method)">#widget</a>, <a href="../../Base.html#widget_assigns-instance_method" title="Hammer::Component::Base#widget_assigns (method)">#widget_assigns</a>, <a href="../../Base.html#widget_class-class_method" title="Hammer::Component::Base.widget_class (method)">widget_class</a></p>
-<div id="constructor_details" class="method_details_list">
+  <h3 class="inherited">Methods inherited from <a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></h3>
+  <p class="inherited"><a href="../../Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="../../Abstract.html#new-instance_method" title="Hammer::Component::Abstract#new (method)">#new</a></p>
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>initialize</strong>(context, obj, label = nil, packed = true) 
+    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>initialize</strong>(assigns = {}) 
   
 
   
@@ -405,54 +318,18 @@ A new instance of Object
   
     <li>
       
-        <span class='type'>(<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>)</span>
+        <span class='type'>(<tt><a href="Hash.html" title="Hammer::Component::Developer::Inspection::Hash (class)">Hash</a></tt>)</span>
       
       
-        <span class='name'>obj</span>
+        <span class='name'>assigns</span>
       
       
-      
-        &mdash;
-        <div class='inline'><p>
-to inspect
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt><a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></tt>)</span>
-      
-      
-        <span class='name'>label</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
       
       
         &mdash;
         <div class='inline'><p>
-optional description
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <span class='name'>packed</span>
-      
-      
-        <em class="default">(defaults to: <tt>true</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-inspector is initially packed?
+a customizable set of options
 </p>
 </div>
       
@@ -460,23 +337,58 @@ inspector is initially packed?
   
 </ul>
 
+  
+    
+    
+    <h3>Options Hash (<tt>assigns</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt><a href="String.html" title="Hammer::Component::Developer::Inspection::String (class)">String</a></tt>)</span>
+          <span class="name">:label</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>
+optional description
+</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="name">:packed</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>
+inspector is initially packed?
+</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
-19
-20</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 9</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id context'>context</span><span class='comma'>,</span> <span class='id obj'>obj</span><span class='comma'>,</span> <span class='id label'>label</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id packed'>packed</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='ivar'>@obj</span><span class='comma'>,</span> <span class='ivar'>@packed</span><span class='comma'>,</span> <span class='ivar'>@label</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='comma'>,</span> <span class='id packed'>packed</span><span class='comma'>,</span> <span class='id label'>label</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>            
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -515,162 +427,15 @@ Returns the value of attribute components
       <pre class="lines">
 
 
-11
-12
-13</pre>
+5
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id components'>components</span>
   <span class='ivar'>@components</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <span id="label-instance_method"></span>
-      <div class="method_details ">
-  <p class="signature " id="label-instance_method">
-  
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>label</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Returns the value of attribute label
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-11
-12
-13</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 11</span>
-
-<span class='kw'>def</span> <span class='id label'>label</span>
-  <span class='ivar'>@label</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <span id="obj-instance_method"></span>
-      <div class="method_details ">
-  <p class="signature " id="obj-instance_method">
-  
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>obj</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Returns the value of attribute obj
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-11
-12
-13</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 11</span>
-
-<span class='kw'>def</span> <span class='id obj'>obj</span>
-  <span class='ivar'>@obj</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="packed=-instance_method"></span>
-      <span id=""></span>
-      <div class="method_details ">
-  <p class="signature " id="packed=-instance_method">
-  
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>packed=</strong>(value)  <span class="extras">(writeonly)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Sets the attribute packed
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-        <span class='name'>value</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the value to set the attribute packed to.
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-12
-13
-14</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 12</span>
-
-<span class='kw'>def</span> <span class='id packed='>packed=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
-  <span class='ivar'>@packed</span> <span class='op'>=</span> <span class='id value'>value</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -685,35 +450,7 @@ the value to set the attribute packed to.
     
     
       <div class="method_details first">
-  <p class="signature first" id="initial_state-instance_method">
-  
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>initial_state</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-22
-23
-24</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 22</span>
-
-<span class='kw'>def</span> <span class='id initial_state'>initial_state</span>
-  <span class='ivar'>@packed</span> <span class='op'>?</span> <span class='id pack'>pack</span> <span class='op'>:</span> <span class='id unpack'>unpack</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="pack-instance_method">
+  <p class="signature first" id="pack-instance_method">
   
     - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>pack</strong>  <span class="extras">(protected)</span>
   
@@ -736,12 +473,12 @@ packs inspector, drops subinspectors
       <pre class="lines">
 
 
-49
-50
-51</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id pack'>pack</span>
   <span class='ivar'>@components</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -794,12 +531,12 @@ is inspector packed?
       <pre class="lines">
 
 
-27
-28
-29</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id packed?'>packed?</span>
   <span class='ivar'>@packed</span>
@@ -810,9 +547,9 @@ is inspector packed?
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="switch_packed-instance_method">
+  <p class="signature " id="toggle!-instance_method">
   
-    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>switch_packed</strong> 
+    - (<tt><a href="" title="Hammer::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>toggle!</strong> 
   
 
   
@@ -833,17 +570,17 @@ switches packed state and calls <tt><a href="#pack-instance_method" title="Hamme
       <pre class="lines">
 
 
-32
-33
-34
-35</pre>
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 21</span>
 
-<span class='kw'>def</span> <span class='id switch_packed'>switch_packed</span>
+<span class='kw'>def</span> <span class='id toggle!'>toggle!</span>
   <span class='ivar'>@packed</span> <span class='op'>=</span> <span class='op'>!</span><span class='ivar'>@packed</span>
-  <span class='ivar'>@packed</span> <span class='op'>?</span> <span class='id pack'>pack</span> <span class='op'>:</span> <span class='id unpack'>unpack</span>
+  <span class='id packed?'>packed?</span> <span class='op'>?</span> <span class='id pack'>pack</span> <span class='op'>:</span> <span class='id unpack'>unpack</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -875,23 +612,17 @@ etc.
       <pre class="lines">
 
 
-40
-41
-42
-43
-44
-45
-46</pre>
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/inspection/object.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id unpack'>unpack</span>
-  <span class='ivar'>@components</span> <span class='op'>=</span> <span class='lbracket'>[</span>
-    <span class='id inspector'>inspector</span><span class='lparen'>(</span>
-      <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variables'>instance_variables</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id hash'>hash</span><span class='comma'>,</span> <span class='id name'>name</span><span class='op'>|</span> <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id hash'>hash</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-      <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Instance variables</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='rbracket'>]</span>
+  <span class='id variables'>variables</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variables'>instance_variables</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id hash'>hash</span><span class='comma'>,</span> <span class='id name'>name</span><span class='op'>|</span> <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id hash'>hash</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@components</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id inspector'>inspector</span><span class='lparen'>(</span><span class='id variables'>variables</span><span class='comma'>,</span> <span class='symbol'>:label</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Instance variables</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -903,7 +634,7 @@ etc.
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:36 2010 by 
+  Generated on Fri Jul 23 12:41:40 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

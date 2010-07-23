@@ -58,6 +58,10 @@
         <ul class="fullTree">
           <li>Object</li>
           
+            <li class="next"><a href="SuperAbstract.html" title="Hammer::Component::SuperAbstract (class)">SuperAbstract</a></li>
+          
+            <li class="next"><a href="Abstract.html" title="Hammer::Component::Abstract (class)">Abstract</a></li>
+          
             <li class="next"><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></li>
           
             <li class="next">Hammer::Component::FormPart</li>
@@ -97,6 +101,32 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -110,7 +140,7 @@
   </span>
   
   
-    
+    <span class="note title readonly">readonly</span>
     
   
   
@@ -168,32 +198,6 @@ Returns the value of attribute record.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (FormPart) <strong>initialize</strong>(context, form = self) </a>
-    
-
-    
-  </span>
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of FormPart.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#set_value-instance_method" title="#set_value (instance method)">- (Object) <strong>set_value</strong>(*args) </a>
     
 
@@ -247,75 +251,64 @@ values from form&#8217;s tags are stored here.
   
   
   
-  <h3 class="inherited">Methods inherited from <a href="Base.html" title="Hammer::Component::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#answer%21-instance_method" title="Hammer::Component::Base#answer! (method)">#answer!</a>, <a href="Base.html#answering%21-instance_method" title="Hammer::Component::Base#answering! (method)">#answering!</a>, <a href="Base.html#ask-instance_method" title="Hammer::Component::Base#ask (method)">#ask</a>, <a href="Base.html#create_widget-instance_method" title="Hammer::Component::Base#create_widget (method)">#create_widget</a>, <a href="Base.html#initial_state-instance_method" title="Hammer::Component::Base#initial_state (method)">#initial_state</a>, <a href="Base.html#inspector-instance_method" title="Hammer::Component::Base#inspector (method)">#inspector</a>, <a href="Base.html#inspector_class-instance_method" title="Hammer::Component::Base#inspector_class (method)">#inspector_class</a>, <a href="Base.html#new-instance_method" title="Hammer::Component::Base#new (method)">#new</a>, <a href="Base.html#pass_on-instance_method" title="Hammer::Component::Base#pass_on (method)">#pass_on</a>, <a href="Base.html#retake_control%21-instance_method" title="Hammer::Component::Base#retake_control! (method)">#retake_control!</a>, <a href="Base.html#to_html-instance_method" title="Hammer::Component::Base#to_html (method)">#to_html</a>, <a href="Base.html#use_widget_class-class_method" title="Hammer::Component::Base.use_widget_class (method)">use_widget_class</a>, <a href="Base.html#widget-instance_method" title="Hammer::Component::Base#widget (method)">#widget</a>, <a href="Base.html#widget_assigns-instance_method" title="Hammer::Component::Base#widget_assigns (method)">#widget_assigns</a>, <a href="Base.html#widget_class-class_method" title="Hammer::Component::Base.widget_class (method)">widget_class</a></p>
-<div id="constructor_details" class="method_details_list">
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="Rendering.html" title="Hammer::Component::Rendering (module)">Rendering</a></h3>
+  <p class="inherited"><a href="Rendering.html#create_widget-instance_method" title="Hammer::Component::Rendering#create_widget (method)">#create_widget</a>, <a href="Rendering.html#included-class_method" title="Hammer::Component::Rendering.included (method)">included</a>, <a href="Rendering.html#to_html-instance_method" title="Hammer::Component::Rendering#to_html (method)">#to_html</a>, <a href="Rendering.html#widget-instance_method" title="Hammer::Component::Rendering#widget (method)">#widget</a>, <a href="Rendering.html#widget_assigns-instance_method" title="Hammer::Component::Rendering#widget_assigns (method)">#widget_assigns</a>, <a href="Rendering.html#widget_class-instance_method" title="Hammer::Component::Rendering#widget_class (method)">#widget_class</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="Answer.html" title="Hammer::Component::Answer (module)">Answer</a></h3>
+  <p class="inherited"><a href="Answer.html#answer%21-instance_method" title="Hammer::Component::Answer#answer! (method)">#answer!</a>, <a href="Answer.html#answering%21-instance_method" title="Hammer::Component::Answer#answering! (method)">#answering!</a>, <a href="Answer.html#answering%3F-instance_method" title="Hammer::Component::Answer#answering? (method)">#answering?</a>, <a href="Answer.html#ask-instance_method" title="Hammer::Component::Answer#ask (method)">#ask</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="Passing.html" title="Hammer::Component::Passing (module)">Passing</a></h3>
+  <p class="inherited"><a href="Passing.html#pass_on-instance_method" title="Hammer::Component::Passing#pass_on (method)">#pass_on</a>, <a href="Passing.html#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">#passed?</a>, <a href="Passing.html#retake_control%21-instance_method" title="Hammer::Component::Passing#retake_control! (method)">#retake_control!</a>, <a href="Passing.html#to_html-instance_method" title="Hammer::Component::Passing#to_html (method)">#to_html</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="Inspection.html" title="Hammer::Component::Inspection (module)">Inspection</a></h3>
+  <p class="inherited"><a href="Inspection.html#inspector-instance_method" title="Hammer::Component::Inspection#inspector (method)">#inspector</a>, <a href="Inspection.html#inspector_class-instance_method" title="Hammer::Component::Inspection#inspector_class (method)">#inspector_class</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <a href="Abstract.html" title="Hammer::Component::Abstract (class)">Abstract</a></h3>
+  <p class="inherited"><a href="Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">#initialize</a>, <a href="Abstract.html#new-instance_method" title="Hammer::Component::Abstract#new (method)">#new</a></p>
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
-  
-    - (<tt><a href="" title="Hammer::Component::FormPart (class)">FormPart</a></tt>) <strong>initialize</strong>(context, form = self) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-A new instance of FormPart
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-        <span class='name'>form</span>
-      
-      
-        <em class="default">(defaults to: <tt>self</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-Identifies which form parts belongs together. <tt>form</tt>.object_id is
-used to identify
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-32
-33
-34
-35</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 32</span>
-
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id context'>context</span><span class='comma'>,</span> <span class='id form'>form</span> <span class='op'>=</span> <span class='kw'>self</span><span class='rparen'>)</span>
-  <span class='ivar'>@form</span> <span class='op'>=</span> <span class='id form'>form</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
+    <p class="notice">This class inherits a constructor from <a href="Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">Hammer::Component::Abstract</a></p>
   
 </div>
 
@@ -323,12 +316,12 @@ used to identify
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="form=-instance_method"></span>
+      <span id=""></span>
       <span id="form-instance_method"></span>
       <div class="method_details first">
   <p class="signature first" id="form-instance_method">
   
-    - (<tt>Object</tt>) <strong>form</strong> 
+    - (<tt>Object</tt>) <strong>form</strong>  <span class="extras">(readonly)</span>
   
 
   
@@ -349,12 +342,12 @@ Returns the value of attribute form
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id form'>form</span>
   <span class='ivar'>@form</span>
@@ -391,12 +384,12 @@ Returns the value of attribute record
       <pre class="lines">
 
 
+6
 7
-8
-9</pre>
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id record'>record</span>
   <span class='ivar'>@record</span>
@@ -524,16 +517,16 @@ describe value param
       <pre class="lines">
 
 
-23
 24
 25
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id set_value'>set_value</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='int'>2</span>
@@ -614,12 +607,12 @@ value for <tt>key</tt>
       <pre class="lines">
 
 
-12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form_part.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id value'>value</span><span class='lparen'>(</span><span class='id key'>key</span> <span class='op'>=</span> <span class='symbol'>:value</span><span class='rparen'>)</span>
   <span class='ivar'>@record</span><span class='period'>.</span><span class='id send'>send</span> <span class='id key'>key</span>
@@ -634,7 +627,7 @@ value for <tt>key</tt>
 </div>
     
     <div id="footer">
-  Generated on Thu Jul 22 14:00:35 2010 by 
+  Generated on Fri Jul 23 12:41:37 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

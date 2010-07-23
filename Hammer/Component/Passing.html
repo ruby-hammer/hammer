@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hammer::Component::Passing</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Component.html" title="Hammer::Component (module)">Component</a></span>
+     &raquo; 
+    <span class="title">Passing</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hammer::Component::Passing
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/hammer/component/passing.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pass_on-instance_method" title="#pass_on (instance method)">- (Base) <strong>pass_on</strong>(component) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+rendering is passed on to <tt>component</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#passed%3F-instance_method" title="#passed? (instance method)">- (Boolean) <strong>passed?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Is component passing?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#retake_control%21-instance_method" title="#retake_control! (instance method)">- (Object) <strong>retake_control!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+see <tt><a href="#pass_on-instance_method" title="Hammer::Component::Passing#pass_on (method)">Passing#pass_on</a></tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_html-instance_method" title="#to_html (instance method)">- (Object) <strong>to_html</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">Passing#passed?</a></tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="pass_on-instance_method">
+  
+    - (<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>) <strong>pass_on</strong>(component) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+rendering is passed on to <tt>component</tt>. Usually used with ask.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='id pass_on'>pass_on</span> <span class='id ask'>ask</span><span class='lparen'>(</span><span class='const'>Login</span><span class='comma'>,</span> <span class='const'>Model</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id new'>new</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id user'>user</span><span class='op'>|</span>
+  <span class='id do_something_with_returned_user'>do_something_with_returned_user</span>
+  <span class='id retake_control!'>retake_control!</span>
+<span class='rbrace'>}</span></pre>
+    
+  </div>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id pass_on'>pass_on</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
+  <span class='ivar'>@passed_on</span> <span class='op'>=</span> <span class='id component'>component</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="passed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>passed?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Is component passing?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+is component passing?
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id passed?'>passed?</span>
+  <span class='ivar'>@passed_on</span><span class='period'>.</span><span class='id present?'>present?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="retake_control!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>retake_control!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+see <tt><a href="#pass_on-instance_method" title="Hammer::Component::Passing#pass_on (method)">#pass_on</a></tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id retake_control!'>retake_control!</span>
+  <span class='ivar'>@passed_on</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_html-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_html</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">#passed?</a></tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 4</span>
+
+<span class='kw'>def</span> <span class='id to_html'>to_html</span>
+  <span class='ivar'>@passed_on</span> <span class='op'>?</span> <span class='ivar'>@passed_on</span><span class='period'>.</span><span class='id to_html'>to_html</span> <span class='op'>:</span> <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Jul 23 12:41:36 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
