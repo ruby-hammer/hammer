@@ -63,8 +63,8 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hammer.rb<span class="defines">,<br />
-  lib/hammer/logger.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/runner.rb,<br /> lib/hammer/component/form_part.rb,<br /> lib/hammer/component/developer/log.rb,<br /> lib/hammer/widget/form_part/select.rb,<br /> lib/hammer/widget/form_part/textarea.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
+    <dd class="r2 last">lib/hammer/config.rb<span class="defines">,<br />
+  lib/hammer.rb,<br /> lib/hammer/logger.rb,<br /> lib/hammer/runner.rb,<br /> lib/hammer/component/developer/log.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
 </dd>
   
 </dl>
@@ -85,11 +85,11 @@ encoding: UTF-8
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a>, <a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a>, <a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a>, <a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a>, <a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a>
+      <strong class="modules">Modules:</strong> <a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a>, <a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a>, <a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a>, <a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a>, <a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a>, <a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a>
     
    
     
-      <strong class="classes">Classes:</strong> <a href="Hammer/Logger.html" title="Hammer::Logger (class)">Logger</a>
+      <strong class="classes">Classes:</strong> <a href="Hammer/Loader.html" title="Hammer::Loader (class)">Loader</a>, <a href="Hammer/Logger.html" title="Hammer::Logger (class)">Logger</a>
     
   
 </p>
@@ -203,14 +203,14 @@ encoding: UTF-8
       <pre class="lines">
 
 
-30
-31
-32
 33
-34</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='id req'>req</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id time'>time</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id realtime'>realtime</span> <span class='lbrace'>{</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span> <span class='rbrace'>}</span>
@@ -235,12 +235,12 @@ encoding: UTF-8
       <pre class="lines">
 
 
-22
-23
-24</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id logger'>logger</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -284,12 +284,12 @@ encoding: UTF-8
       <pre class="lines">
 
 
-26
-27
-28</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id v19?'>v19?</span>
   <span class='const'>RUBY_VERSION</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>1.9</span><span class='regexp_end'>/</span></span>
@@ -304,7 +304,7 @@ encoding: UTF-8
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:44 2010 by 
+  Generated on Tue Aug  3 10:40:41 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

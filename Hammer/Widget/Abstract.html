@@ -53,12 +53,14 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Erector::Widget</span>
+      <span class="inheritName"><a href="SuperAbstract.html" title="Hammer::Widget::SuperAbstract (class)">SuperAbstract</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">Erector::Widget</li>
+            <li class="next">Erector::AbstractWidget</li>
+          
+            <li class="next"><a href="SuperAbstract.html" title="Hammer::Widget::SuperAbstract (class)">SuperAbstract</a></li>
           
             <li class="next">Hammer::Widget::Abstract</li>
           
@@ -81,58 +83,23 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    <p>
-Abstract class of all widgets
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><div id="subclasses">
+<div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><a href="Base.html" title="Hammer::Widget::Base (class)">Base</a>, <a href="FormPart/Input.html" title="Hammer::Widget::FormPart::Input (class)">FormPart::Input</a>, <a href="FormPart/Select.html" title="Hammer::Widget::FormPart::Select (class)">FormPart::Select</a>, <a href="FormPart/Textarea.html" title="Hammer::Widget::FormPart::Textarea (class)">FormPart::Textarea</a></p>
+  <p class="children"><a href="Base.html" title="Hammer::Widget::Base (class)">Base</a>, <a href="Form/Field.html" title="Hammer::Widget::Form::Field (class)">Form::Field</a>, <a href="Form/Select.html" title="Hammer::Widget::Form::Select (class)">Form::Select</a></p>
 </div>
 
 
   
-
-  
-    <h2>
-      Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#css_class-class_method" title="css_class (class method)">+ (String) <strong>css_class</strong> </a>
-    
-
-    
-  </span>
   
   
-  <span class="note title private">private</span>
+  
+  
+  
+  
   
   
   
 
-  
-    <span class="summary_desc"><div class='inline'><p>
-Class name transformed into CSS class, used by #content_with_wrapper.
-</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
   
     <h2>
       Instance Method Summary
@@ -170,70 +137,16 @@ try to obtain widget and render it with Erector::Widget#widget.
 
 
   
-
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="css_class-class_method">
   
-    + (<tt>String</tt>) <strong>css_class</strong>  <span class="extras">(private)</span>
   
-
   
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Class name transformed into CSS class, used by #content_with_wrapper
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Returns:</h3>
-<ul class="return">
   
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-class name transformed into CSS class, used by #content_with_wrapper
-</p>
-</div>
-      
-    </li>
   
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-24
-25
-26</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/abstract.rb', line 24</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id css_class'>css_class</span>
-  <span class='ivar'>@css_class</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='period'>.</span><span class='id gsub'>gsub</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
+  
+  
+  
+  
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -284,24 +197,24 @@ to render
       <pre class="lines">
 
 
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre>
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/abstract.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/abstract.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
   <span class='id widget'>widget</span> <span class='kw'>begin</span>
-    <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Erector</span><span class='op'>::</span><span class='const'>Widget</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Abstract</span><span class='rparen'>)</span>
       <span class='id obj'>obj</span>
     <span class='kw'>elsif</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:widget</span><span class='rparen'>)</span>
       <span class='id obj'>obj</span><span class='period'>.</span><span class='id widget'>widget</span>
@@ -320,7 +233,7 @@ to render
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:46 2010 by 
+  Generated on Tue Aug  3 10:40:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

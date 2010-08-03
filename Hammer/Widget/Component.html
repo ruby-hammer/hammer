@@ -161,30 +161,6 @@ calls missing methods on component.
 </li>
 
       
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#register_action-instance_method" title="#register_action (instance method)">- (String) <strong>register_action</strong> { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-registers action to #component for later evaluation.
-</p>
-</div></span>
-  
-</li>
-
-      
         <li class="public ">
   <span class="summary_signature">
     
@@ -371,83 +347,6 @@ calls missing methods on component
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="register_action-instance_method">
-  
-    - (<tt>String</tt>) <strong>register_action</strong> { ... } <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-registers action to #component for later evaluation
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-action block to register
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-uuid of the action
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-40
-41
-42</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 40</span>
-
-<span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <p class="signature " id="respond_to?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>respond_to?</strong>(symbol, include_private = false) 
@@ -542,7 +441,7 @@ automatically passes :component assign to child widgets
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:46 2010 by 
+  Generated on Tue Aug  3 10:40:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

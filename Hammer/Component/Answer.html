@@ -154,7 +154,7 @@ Am I answering to a component?.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ask-instance_method" title="#ask (instance method)">- (Base) <strong>ask</strong>(component, *args, &amp;block) </a>
+      <a href="#ask-instance_method" title="#ask (instance method)">- (Base) <strong>ask</strong>(component) {|Object| ... }</a>
     
 
     
@@ -239,14 +239,16 @@ passed to stored block
       <pre class="lines">
 
 
-38
-39
-40</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id answer!'>answer!</span><span class='lparen'>(</span><span class='id answer'>answer</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>not answering</span><span class='tstring_end'>'</span></span> <span class='kw'>unless</span> <span class='id answering?'>answering?</span>
   <span class='ivar'>@asker</span><span class='period'>.</span><span class='id instance_exec'>instance_exec</span> <span class='id answer'>answer</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@askers_callback</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -305,6 +307,25 @@ block to execute after answer
     </li>
   
 </ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+self
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
   <h3>See Also:</h3>
   <ul class="see">
@@ -319,15 +340,17 @@ block to execute after answer
       <pre class="lines">
 
 
-26
-27
-28</pre>
+20
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id answering!'>answering!</span><span class='lparen'>(</span><span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@asker</span><span class='comma'>,</span> <span class='ivar'>@askers_callback</span> <span class='op'>=</span> <span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='id block'>block</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -377,12 +400,12 @@ am I answering to a component?
       <pre class="lines">
 
 
-31
-32
-33</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id answering?'>answering?</span>
   <span class='ivar'>@asker</span><span class='period'>.</span><span class='id present?'>present?</span>
@@ -395,7 +418,7 @@ am I answering to a component?
       <div class="method_details ">
   <p class="signature " id="ask-instance_method">
   
-    - (<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>) <strong>ask</strong>(component, *args, &amp;block) 
+    - (<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>) <strong>ask</strong>(component) {|Object| ... }
   
 
   
@@ -413,14 +436,6 @@ answer is obtained
   
   <div class="examples">
     <h3>Examples:</h3>
-    
-      <h4><div class='inline'><p>
-with a <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> class
-</p>
-</div></h4>
-      <pre class="example code"><span class='id ask'>ask</span> <span class='const'>Counter</span><span class='comma'>,</span> <span class='int'>0</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id answer'>answer</span><span class='op'>|</span>
-  <span class='id values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id answer'>answer</span>
-<span class='kw'>end</span></pre>
     
       <h4><div class='inline'><p>
 with a <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> instance
@@ -451,19 +466,20 @@ which is asked
       
     </li>
   
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
     <li>
       
-        <span class='type'></span>
+        <span class='type'>(<tt>Object</tt>)</span>
       
-      
-        <span class='name'>[]</span>
       
       
       
         &mdash;
         <div class='inline'><p>
-args for <tt><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></tt> constructor when a Class is passed to <tt>component</tt>
-yield [Object] answer block which is executed after answer is obtained
+block answer block which is executed after answer is obtained
 </p>
 </div>
       
@@ -496,19 +512,15 @@ created or passed component
       <pre class="lines">
 
 
-16
-17
-18
-19
-20</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/answer.rb', line 11</span>
 
-<span class='kw'>def</span> <span class='id ask'>ask</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id component'>component</span> <span class='op'>=</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id component'>component</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span> <span class='const'>Class</span>
+<span class='kw'>def</span> <span class='id ask'>ask</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id component'>component</span><span class='period'>.</span><span class='id answering!'>answering!</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id component'>component</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -520,7 +532,7 @@ created or passed component
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:46 2010 by 
+  Generated on Tue Aug  3 10:40:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

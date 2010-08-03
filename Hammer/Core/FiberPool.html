@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Hammer::Core::FiberPool</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Core.html" title="Hammer::Core (module)">Core</a></span>
+     &raquo; 
+    <span class="title">FiberPool</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Hammer::Core::FiberPool
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Hammer::Core::FiberPool</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/hammer/core/fiber_pool.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fibers-instance_method" title="#fibers (instance method)">- (Object) <strong>fibers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+gives access to the currently free fibers.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (FiberPool) <strong>initialize</strong>(count = 50) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Prepare a list of fibers that are able to run different blocks of code
+every time.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spawn-instance_method" title="#spawn (instance method)">- (Object) <strong>spawn</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+If there is an available fiber use it, otherwise, leave it to linger in a
+queue.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a href="" title="Hammer::Core::FiberPool (class)">FiberPool</a></tt>) <strong>initialize</strong>(count = 50) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Prepare a list of fibers that are able to run different blocks of code
+every time. Once a fiber is done with its block, it attempts to fetch
+another one from the queue
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/fiber_pool.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id count'>count</span> <span class='op'>=</span> <span class='int'>50</span><span class='rparen'>)</span>
+  <span class='ivar'>@busy_fibers</span><span class='comma'>,</span> <span class='ivar'>@queue</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='ivar'>@fibers</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id count'>count</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='const'>Fiber</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id block'>block</span><span class='op'>|</span>
+      <span class='id loop'>loop</span> <span class='kw'>do</span>
+        <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span>
+        <span class='kw'>unless</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+          <span class='id block'>block</span> <span class='op'>=</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id shift'>shift</span>
+        <span class='kw'>else</span>
+          <span class='ivar'>@busy_fibers</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='rparen'>)</span>
+          <span class='ivar'>@fibers</span> <span class='op'>&lt;&lt;</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span>
+          <span class='id block'>block</span> <span class='op'>=</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id yield'>yield</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="fibers-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="fibers-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fibers</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+gives access to the currently free fibers
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/fiber_pool.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id fibers'>fibers</span>
+  <span class='ivar'>@fibers</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="spawn-instance_method">
+  
+    - (<tt>Object</tt>) <strong>spawn</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+If there is an available fiber use it, otherwise, leave it to linger in a
+queue
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/fiber_pool.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id spawn'>spawn</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id fiber'>fiber</span> <span class='op'>=</span> <span class='ivar'>@fibers</span><span class='period'>.</span><span class='id shift'>shift</span>
+    <span class='ivar'>@busy_fibers</span><span class='lbracket'>[</span><span class='id fiber'>fiber</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id fiber'>fiber</span>
+    <span class='id fiber'>fiber</span><span class='period'>.</span><span class='id resume'>resume</span><span class='lparen'>(</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@queue</span> <span class='op'>&lt;&lt;</span> <span class='id block'>block</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span> <span class='comment'># we are keen on hiding our queue
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Aug  3 10:40:42 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

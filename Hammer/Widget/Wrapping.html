@@ -292,12 +292,12 @@ calls #content_with_wrapper in place of #content
       <pre class="lines">
 
 
-44
-45
-46</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id _render_via'>_render_via</span><span class='lparen'>(</span><span class='id parent'>parent</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='id parent'>parent</span><span class='comma'>,</span> <span class='id options'>options</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:content_method_name</span> <span class='op'>=&gt;</span> <span class='symbol'>:content_with_wrapper</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id _'>_</span><span class='comma'>,</span><span class='id old'>old</span><span class='comma'>,</span><span class='id _'>_</span><span class='op'>|</span> <span class='id old'>old</span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
@@ -332,18 +332,18 @@ use #content.
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
 26
 27
 28
-29</pre>
+29
+30
+31
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id content_with_wrapper'>content_with_wrapper</span>
   <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id wrapped_in'>wrapped_in</span>
@@ -383,12 +383,12 @@ calls #content_with_wrapper in place of #content
       <pre class="lines">
 
 
-32
-33
-34</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='id options'>options</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:content_method_name</span> <span class='op'>=&gt;</span> <span class='symbol'>:content_with_wrapper</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id _'>_</span><span class='comma'>,</span><span class='id old'>old</span><span class='comma'>,</span><span class='id _'>_</span><span class='op'>|</span> <span class='id old'>old</span> <span class='rbrace'>}</span>
@@ -441,15 +441,15 @@ options passed to wrapping element, intended for overwriting
       <pre class="lines">
 
 
-39
-40
-41</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id wrapper_options'>wrapper_options</span>
-  <span class='lbrace'>{</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id css_class'>css_class</span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id object_id'>object_id</span> <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id css_class'>css_class</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -461,7 +461,7 @@ options passed to wrapping element, intended for overwriting
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:46 2010 by 
+  Generated on Tue Aug  3 10:40:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

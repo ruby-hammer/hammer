@@ -85,16 +85,6 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
-    
-   
-    
-      <strong class="classes">Classes:</strong> <a href="Log/Widget.html" title="Hammer::Component::Developer::Log::Widget (class)">Widget</a>
-    
-  
-</p>
 
 
   
@@ -267,7 +257,7 @@ Returns the value of attribute messages.
   
   
   <h3 class="inherited">Methods inherited from <a href="../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></h3>
-  <p class="inherited"><a href="../Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">#initialize</a>, <a href="../Abstract.html#new-instance_method" title="Hammer::Component::Abstract#new (method)">#new</a></p>
+  <p class="inherited"><a href="../Abstract.html#check_assigns-instance_method" title="Hammer::Component::Abstract#check_assigns (method)">#check_assigns</a>, <a href="../Abstract.html#get_context-class_method" title="Hammer::Component::Abstract.get_context (method)">get_context</a>, <a href="../Abstract.html#initialize-instance_method" title="Hammer::Component::Abstract#initialize (method)">#initialize</a>, <a href="../Abstract.html#new-class_method" title="Hammer::Component::Abstract.new (method)">new</a>, <a href="../Abstract.html#register_action-instance_method" title="Hammer::Component::Abstract#register_action (method)">#register_action</a></p>
 
   
   
@@ -347,13 +337,13 @@ Returns the value of attribute messages
       <pre class="lines">
 
 
-34
-35
-36
-37</pre>
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/log.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/log.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id add_message'>add_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='ivar'>@messages</span><span class='period'>.</span><span class='id unshift'>unshift</span> <span class='id message'>message</span>
@@ -382,23 +372,15 @@ Returns the value of attribute messages
 23
 24
 25
-26
-27
-28
-29
-30</pre>
+26</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/log.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id new_message'>new_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
-  <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id silence'>silence</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'># we don't want to end up in infinite loop
-</span>    <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='kw'>do</span>
-      <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id silence'>silence</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span> <span class='kw'>do</span>
-        <span class='id add_message'>add_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
-        <span class='id context'>context</span><span class='period'>.</span><span class='id actualize'>actualize</span><span class='period'>.</span><span class='id send!'>send!</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
+  <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id silence'>silence</span><span class='lparen'>(</span><span class='int'>5</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id add_message'>add_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+    <span class='id context'>context</span><span class='period'>.</span><span class='id update'>update</span><span class='period'>.</span><span class='id send!'>send!</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -411,7 +393,7 @@ Returns the value of attribute messages
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:48 2010 by 
+  Generated on Tue Aug  3 10:40:46 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>
