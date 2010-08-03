@@ -8,16 +8,38 @@ module Hammer::Component::Rendering
   end
 
   module ClassMethods
+    # @return [Hash{Symbol => Class}] defined widget classes
     def widget_classes
       @widget_classes ||= {}
     end
 
+    # @param [Symbol] name of a widget class
+    # @return [Class] widget class by +name+
     def widget_class(name = :Widget)
       check_class widget_classes[name] || parent_widget_class(name)
     end
 
+    # defines widget and executes {#extend_widget} for hooks
+    # @param [Symbol] name of a new widget class. If :quicly is passed defines widget quickly which means that
+    # block is used to define #content not class
+    # @param [Symbol, Class] parent class of new widget class. Symbol is used to find widget class with same name
+    # in parent components. Class is used directly. see {#parent_widget_class}
+    # @yield block which is evaluated inside new widget class or #contet if :quicly is used
+    # @example widget with name Header
+    #   define_widget :Header do
+    #     wrap_in :h1
+    #     def content
+    #       text "A header"
+    #     end
+    #   end
+    # @example quickly defined widget with default name Widget
+    #   define_widget :quickly do
+    #     def content
+    #       h1 "A header"
+    #     end
+    #   end
     def define_widget(name = :Widget, parent = nil, &block)
-      if name == :quick
+      if name == :quickly
         define_widget { define_method :content, &block }
       else
         parent = parent_widget_class(parent || name)
@@ -29,9 +51,14 @@ module Hammer::Component::Rendering
 
     protected
 
+    # hook for modules included into component, for example Draggable, Droppable
+    # @param [Class] widget_class
     def extend_widget(widget_class)
     end
 
+    # @return [Class] widget class for given +name+
+    # @param [Symbol] name
+    # @see #define_widget
     def parent_widget_class(name)
       return name if name.kind_of? Class
       check_class widget_classes[name] || superclass.try(:parent_widget_class, name)

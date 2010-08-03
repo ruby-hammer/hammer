@@ -6,10 +6,8 @@ describe Hammer::Component::Base do
   include HammerMocks
 
   class FooComponent < Hammer::Component::Base
-    class Widget < Hammer::Widget::Base
-      def content
-        text 'foo content'
-      end
+    define_widget :quickly do
+      text 'foo content'
     end
   end
 

@@ -15,3 +15,11 @@ a {
 .loading {
   width: 100%;
 }
+
+.examples-dragg-draggable-widget, .examples-dragg-droppable-widget {
+  border: 1px solid silver;
+  width: 100px;
+  padding: 0.2em;
+  text-align: center;
+}
+

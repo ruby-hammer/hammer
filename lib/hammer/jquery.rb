@@ -3,11 +3,12 @@ module Hammer::JQuery
   # @return [String] generated js. It doesn't support operators and loops,
   # its goal is to generate function calls.
   # @yield block ruby generating js
-  # @examples
-  #   jquery { jquery.jq! } # => "jQuery.jQuery()"
-  #   jquery { a(1 => "a", :b => [1,2]) # => "a({\"1\":\"a\",\"b\":[1,2]})"
-  #   jquery { b(a!, a); a.c(b(c)); } # => "b(a(),a);a.c(b(c));"
-  #   jquery { b(function(b!, :a) {b!.c!} } # => "b(function(b(), "a") {b().c();});"
+  # @example
+  #   generate { jquery.jq! } # => "jQuery.jQuery()"
+  #   generate { a(1 => "a", :b => [1,2]) # => "a({\"1\":\"a\",\"b\":[1,2]})"
+  #   generate { b(a!, a); a.c(b(c)); } # => "b(a(),a);a.c(b(c));"
+  #   generate { b(function(b!, :a) {b!.c!} } # => "b(function(b(), "a") {b().c();});"
+  #   generate { a :a => function(a) {b.c!} } # => 'a({"a":function(a) {b.c();}});"
   def self.generate(assigns = {}, &block)
     Generator.new(assigns, &block)
   end
@@ -61,7 +62,7 @@ module Hammer::JQuery
     alias_method(:fn, :function)
 
     def to_s
-      @stacks.map(&:to_js).compact.join(';') << (argument? ? '' : ';')
+      @stacks.map(&:to_js).compact.join(';') << ';'
     end
   end
 

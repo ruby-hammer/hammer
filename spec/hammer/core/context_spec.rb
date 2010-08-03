@@ -54,10 +54,8 @@ describe Hammer::Core::Context do
 
   describe '#update' do
     class AComponent < Hammer::Component::Base
-      class Widget < Hammer::Widget::Base
-        def content
-          text 'a component'
-        end
+      define_widget :quickly do
+        text 'a component'
       end
     end
 
