@@ -3,24 +3,44 @@ module Hammer::Component::Rendering
   def self.included(base)
     base.class_eval do
       extend ClassMethods
-      class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
       needs :widget_class => nil
     end
   end
 
   module ClassMethods
-    # @return [Class] which is used to insatiate widget
-    # @param [Class] klass when passed sets default widget_class to +klass+
-    def widget_class(klass = nil)
-      if klass
-        raise ArgumentError, klass.inspect unless klass.kind_of?(Class) && klass < Hammer::Widget::Base
-        self._widget_class = klass
+    def widget_classes
+      @widget_classes ||= {}
+    end
+
+    def widget_class(name = :Widget)
+      check_class widget_classes[name] || parent_widget_class(name)
+    end
+
+    def define_widget(name = :Widget, parent = nil, &block)
+      if name == :quick
+        define_widget { define_method :content, &block }
       else
-        _widget_class ||
-            (const_defined?(:Widget) && const_get(:Widget) ) ||
-            superclass.widget_class ||
-            raise(Hammer::Component::MissingWidgetClass, "for #{self}")
+        parent = parent_widget_class(parent || name)
+        widget_classes[name] = widget_class = const_set(name, Class.new(parent))
+        extend_widget(widget_class)
+        widget_class.class_eval(&block)
       end
+    end
+
+    protected
+
+    def extend_widget(widget_class)
+    end
+
+    def parent_widget_class(name)
+      return name if name.kind_of? Class
+      check_class widget_classes[name] || superclass.try(:parent_widget_class, name)
+    end
+
+    private
+
+    def check_class(klass)
+      return klass || raise(Hammer::Component::MissingWidgetClass, self)
     end
   end
 
@@ -36,7 +56,12 @@ module Hammer::Component::Rendering
 
   # @return [Class] which is used to insatiate widget
   def widget_class
-    @widget_class || self.class.widget_class
+    case @widget_class
+    when Symbol then self.class.widget_class @widget_class
+    when Class then @widget_class
+    when nil then self.class.widget_class
+    else raise ArgumentError
+    end
   end
 
   protected

@@ -5,7 +5,7 @@ module Hammer::Component::Developer
 
     attr_reader :tool
 
-    class Widget < Hammer::Widget::Base
+    define_widget do
       def content
         strong 'Tools:'
         ul do

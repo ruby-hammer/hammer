@@ -5,7 +5,7 @@ module Examples
     attr_reader :counter
     needs :counter => 0
 
-    class Widget < superclass::Widget
+    define_widget do
       wrap_in(:div)
 
       def content

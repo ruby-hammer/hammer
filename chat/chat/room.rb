@@ -32,7 +32,7 @@ module Chat
       end
     end
 
-    class Widget < Hammer::Widget::Base
+    define_widget do
       require 'gravatarify'
       include Gravatarify::Helper
       wrap_in :div

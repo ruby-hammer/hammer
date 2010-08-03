@@ -31,6 +31,13 @@ module Hammer::Component
       super assigns
     end
 
+    # registers action to #component for later evaluation
+    # @yield action block to register
+    # @return [String] uuid of the action
+    def register_action(&block)
+      context.register_action(self, &block)
+    end
+
     private
 
     def check_assigns(assigns)

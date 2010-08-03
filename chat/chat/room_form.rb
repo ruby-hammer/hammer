@@ -4,7 +4,7 @@ module Chat
     include Hammer::Component::Form
     alias_method(:room, :record)
 
-    class Widget < superclass::Widget
+    define_widget do
       wrap_in(:span)
       def content
         widget Hammer::Widget::Form::Field, :value => :name, :options =>

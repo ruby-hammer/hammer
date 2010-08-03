@@ -4,7 +4,7 @@ module Chat
     include Hammer::Component::Form
     alias_method(:message, :record)
 
-    class Widget < superclass::Widget
+    define_widget do
       wrap_in :div
 
       def content

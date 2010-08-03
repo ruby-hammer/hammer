@@ -11,7 +11,7 @@ module Chat
       }
     end
 
-    class Widget < Hammer::Widget::Base
+    define_widget do
       wrap_in :div
 
       def content

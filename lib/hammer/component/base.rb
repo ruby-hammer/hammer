@@ -9,7 +9,7 @@ module Hammer::Component
     include Passing
     include Inspection
 
-    class Widget < Hammer::Widget::Base
+    define_widget :Widget, Hammer::Widget::Base do
       wrap_in :div
 
       def wrapper_options

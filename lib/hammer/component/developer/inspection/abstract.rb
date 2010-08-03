@@ -4,7 +4,7 @@ module Hammer::Component::Developer::Inspection
     needs :obj, :label => nil
     attr_reader :obj, :label
 
-    class Widget < Hammer::Component::Base::Widget
+    define_widget do
       def component_label
         component.label ? "#{component.label}: " : ''
       end

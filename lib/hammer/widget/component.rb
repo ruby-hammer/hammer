@@ -32,10 +32,4 @@ module Hammer::Widget::Component
     component.respond_to?(symbol) || super
   end
 
-  # registers action to #component for later evaluation
-  # @yield action block to register
-  # @return [String] uuid of the action
-  def register_action(&block)
-    component.context.register_action(component, &block)
-  end
 end

@@ -1,6 +1,6 @@
 module Hammer::Component::Developer::Inspection
   class Simple < Abstract
-    class Widget < Abstract::Widget
+    define_widget do
       def content
         text component_label + obj.inspect
       end

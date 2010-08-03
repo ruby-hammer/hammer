@@ -10,11 +10,13 @@ module Hammer::Widget
 
     #      depends_on :js, 'js/swfobject.js', 'js/FABridge.js', 'js/web_socket.js'
     depends_on :js, 'js/jquery-1.4.2.js'
+    depends_on :js, 'js/jquery-ui-1.8.2.custom.min.js'
     depends_on :js, 'js/jquery.ba-hashchange.js'
     depends_on :js, 'js/jquery.namespace.js'
     depends_on :js, 'js/hammer.js'
 
     depends_on :css,'css/developer.css'
+    external :css, "css/ui-lightness/jquery-ui-1.8.2.custom.css"
 
     def body_content
       set_variables(@session_id)

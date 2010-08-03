@@ -19,7 +19,7 @@ module Examples
         counters.delete(counter)
       end
 
-      class Widget < Hammer::Widget::Collection
+      define_widget :Widget, Hammer::Widget::Collection do
         def after
           link_to('Add counter').action { add }
         end

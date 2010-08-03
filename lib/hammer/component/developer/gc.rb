@@ -3,7 +3,7 @@
 module Hammer::Component::Developer
   class Gc < Hammer::Component::Base
 
-    class Widget < Hammer::Widget::Base
+    define_widget do
       def content
         stats
         gc
