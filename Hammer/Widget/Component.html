@@ -164,6 +164,51 @@ calls missing methods on component.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#render-instance_method" title="#render (instance method)">- (Object) <strong>render</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#render_component-instance_method" title="#render_component (instance method)">- (Object) <strong>render_component</strong>(component) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+renders replacer in place of component when rendering update.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#respond_to%3F-instance_method" title="#respond_to? (instance method)">- (Boolean) <strong>respond_to?</strong>(symbol, include_private = false) </a>
     
 
@@ -347,6 +392,87 @@ calls missing methods on component
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="render-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render</strong>(obj) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Base</span><span class='rparen'>)</span>
+    <span class='id render_component'>render_component</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>else</span> <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_component-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_component</strong>(component)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+renders replacer in place of component when rendering update
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id render_component'>render_component</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id render_options'>render_options</span><span class='lbracket'>[</span><span class='symbol'>:update</span><span class='rbracket'>]</span>
+    <span class='id widget'>widget</span> <span class='id component'>component</span><span class='period'>.</span><span class='id widget'>widget</span>
+  <span class='kw'>else</span>
+    <span class='id div'>div</span> <span class='symbol'>:data-component-replace</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id component'>component</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="respond_to?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>respond_to?</strong>(symbol, include_private = false) 
@@ -441,7 +567,7 @@ automatically passes :component assign to child widgets
 </div>
     
     <div id="footer">
-  Generated on Tue Aug  3 10:40:43 2010 by 
+  Generated on Sat Aug  7 16:49:56 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

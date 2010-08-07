@@ -185,7 +185,8 @@ values from form&#8217;s tags are stored here.
 5
 6
 7
-8</pre>
+8
+9</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 3</span>
@@ -194,7 +195,8 @@ values from form&#8217;s tags are stored here.
   <span class='id base'>base</span><span class='period'>.</span><span class='id class_eval'>class_eval</span> <span class='kw'>do</span>
     <span class='id needs'>needs</span> <span class='symbol'>:record</span>
     <span class='id attr_reader'>attr_reader</span> <span class='symbol'>:record</span>
-  <span class='kw'>end</span>
+    <span class='id changing'>changing</span> <span class='symbol'>:set_value</span>
+  <span class='kw'>end</span>    
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -318,16 +320,16 @@ describe value param
       <pre class="lines">
 
 
-24
 25
 26
 27
 28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id set_value'>set_value</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='int'>2</span>
@@ -408,12 +410,12 @@ value for <tt>key</tt>
       <pre class="lines">
 
 
-13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id value'>value</span><span class='lparen'>(</span><span class='id key'>key</span> <span class='op'>=</span> <span class='symbol'>:value</span><span class='rparen'>)</span>
   <span class='ivar'>@record</span><span class='period'>.</span><span class='id send'>send</span> <span class='id key'>key</span>
@@ -428,7 +430,7 @@ value for <tt>key</tt>
 </div>
     
     <div id="footer">
-  Generated on Tue Aug  3 10:40:42 2010 by 
+  Generated on Sat Aug  7 16:49:54 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

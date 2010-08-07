@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><a href="Context.html" title="Hammer::Core::Context (class)">Context</a>, <a href="../Logger.html" title="Hammer::Logger (class)">Hammer::Logger</a></dd>
+    <dd class="r1"><a href="AbstractContext.html" title="Hammer::Core::AbstractContext (class)">AbstractContext</a>, <a href="../Logger.html" title="Hammer::Logger (class)">Hammer::Logger</a></dd>
     
   
   
@@ -262,13 +262,15 @@ deletes observer from listening to event.
 
 2
 3
-4</pre>
+4
+5</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 2</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id extend'>extend</span> <span class='const'>ClassMethods</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id class_inheritable_array'>class_inheritable_array</span> <span class='symbol'>:_observable_events</span><span class='comma'>,</span> <span class='symbol'>:instance_reader</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='symbol'>:instance_writer</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -639,7 +641,7 @@ to observe
 </div>
     
     <div id="footer">
-  Generated on Tue Aug  3 10:40:42 2010 by 
+  Generated on Sat Aug  7 16:49:55 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

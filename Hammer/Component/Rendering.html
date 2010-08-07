@@ -146,7 +146,7 @@ default behavior, can by overwritten.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_html-instance_method" title="#to_html (instance method)">- (String) <strong>to_html</strong> </a>
+      <a href="#to_html-instance_method" title="#to_html (instance method)">- (String) <strong>to_html</strong>(options = {}) </a>
     
 
     
@@ -160,7 +160,7 @@ default behavior, can by overwritten.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Html.
+Rendered html.
 </p>
 </div></span>
   
@@ -333,12 +333,12 @@ default behavior, can by overwritten
       <pre class="lines">
 
 
-98
-99
-100</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id create_widget'>create_widget</span>
   <span class='id widget_class'>widget_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id widget_assigns'>widget_assigns</span><span class='rparen'>)</span>
@@ -351,21 +351,38 @@ default behavior, can by overwritten
       <div class="method_details ">
   <p class="signature " id="to_html-instance_method">
   
-    - (<tt>String</tt>) <strong>to_html</strong> 
+    - (<tt>String</tt>) <strong>to_html</strong>(options = {}) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Html
+Rendered html
 </p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -377,7 +394,7 @@ Html
       
         &mdash;
         <div class='inline'><p>
-html
+rendered html
 </p>
 </div>
       
@@ -391,15 +408,31 @@ html
       <pre class="lines">
 
 
-80
 81
-82</pre>
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 81</span>
 
-<span class='kw'>def</span> <span class='id to_html'>to_html</span>
-  <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span>
+<span class='kw'>def</span> <span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>    
+  <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:update</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id changed?'>changed?</span>
+      <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>end</span> <span class='op'>+</span> <span class='id children'>children</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id child'>child</span><span class='op'>|</span> <span class='id child'>child</span><span class='period'>.</span><span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span>
+  <span class='kw'>else</span> 
+    <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -488,12 +521,12 @@ always pass component to widget, can be extended by overwritten
       <pre class="lines">
 
 
-103
-104
-105</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id widget_assigns'>widget_assigns</span>
   <span class='lbrace'>{</span><span class='symbol'>:component</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='rbrace'>}</span>
@@ -546,17 +579,17 @@ which is used to insatiate widget
       <pre class="lines">
 
 
-85
-86
-87
-88
-89
-90
-91
-92</pre>
+94
+95
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id widget_class'>widget_class</span>
   <span class='kw'>case</span> <span class='ivar'>@widget_class</span>
@@ -576,7 +609,7 @@ which is used to insatiate widget
 </div>
     
     <div id="footer">
-  Generated on Tue Aug  3 10:40:45 2010 by 
+  Generated on Sat Aug  7 16:49:57 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>
