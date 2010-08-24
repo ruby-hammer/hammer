@@ -1,4 +1,4 @@
-module Hammer::Component::Answer
+module Hammer::Component::Answering
 
   # asks a +component+ for something and executes +block+ when answer is obtained
   # @param [Class, Base] component which is asked

@@ -4,6 +4,7 @@ module Hammer::Component::Form
     base.class_eval do
       needs :record
       attr_reader :record
+      changing :set_value
     end
   end
 

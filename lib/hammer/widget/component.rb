@@ -4,8 +4,9 @@ module Hammer::Widget::Component
 
   def self.included(base)
     base.class_eval do
-      needs :component
+      needs :component, :root_widget => false
       attr_reader :component
+      wrap_in :div
     end
   end
 
@@ -32,4 +33,17 @@ module Hammer::Widget::Component
     component.respond_to?(symbol) || super
   end
 
+  def root_widget?
+    @root_widget
+  end
+
+  def wrapper_options
+    return super unless root_widget?
+    super.merge :id => component.object_id
+  end
+
+  def wrapper_classes
+    return super unless root_widget?
+    super << 'component'
+  end
 end

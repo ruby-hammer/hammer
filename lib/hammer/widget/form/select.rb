@@ -2,14 +2,13 @@ module Hammer::Widget::Form
   class Select < Abstract
     needs :select_options
 
-    def content
-      render_label
+    protected
+
+    def field
       select({ :value => value(@value), :name => @value, :id => @label_id }.merge(@options)) do
         options_for_select
       end
     end
-
-    protected
 
     def options_for_select
       @select_options.each do |opt|

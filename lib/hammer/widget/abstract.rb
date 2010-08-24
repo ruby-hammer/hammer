@@ -6,7 +6,6 @@ module Hammer::Widget
     include Erector::HTML
     include Erector::Needs
     #    include Erector::Caching # TODO add if usable
-    include Erector::Externals
     include Erector::Convenience
     include Erector::AfterInitialize
   end

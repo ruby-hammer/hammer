@@ -8,14 +8,17 @@ module Chat
 
     define_widget do
       wrap_in :div
+      def wrapper_classes
+        super << 'container' << 'form'
+      end
 
       def content
-        p do
-          h1 "Log in", :class => %w[ui-widget]
-          widget Hammer::Widget::Form::Field, :value => :nick, :label => 'Nick:',
-              :options => { :class => %w[ui-widget-content ui-corner-all] }
-          widget Hammer::Widget::Form::Field, :value => :email, :label => 'Gravatar email:',
-              :options => { :class => %w[ui-widget-content ui-corner-all] }
+        h1 "Log in"
+
+        render Chat::Widget::Field.new :component => component, :value => :nick, :label => 'Nick:'
+        render Chat::Widget::Field.new :component => component, :value => :email, :label => 'Gravatar email:'
+
+        div :class => %w{span-21 prepend-3 last}, :style => 'height: 36px;' do
           submit("Log in").update { answer!(user) if user.valid? }
         end
       end

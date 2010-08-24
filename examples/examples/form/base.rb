@@ -9,19 +9,25 @@ module Examples
       after_initialize { @counter = 0 }
 
       define_widget do
-        wrap_in :div
+        def wrapper_classes
+          super << 'form'
+        end
 
         def content
-          widget Hammer::Widget::Form::Field, :value => :name, :label => 'Name:'
-          widget Hammer::Widget::Form::Hidden, :value => :hidden, :options => {:value => 'hid'}
-          widget Hammer::Widget::Form::Password, :value => :password, :label => 'Password:'
-          widget Hammer::Widget::Form::Select, :value => :sex, :label => 'Sex:',
+          render Examples::Widget::Field.new :component => component, :value => :name, :label => 'Name:'
+          render Examples::Widget::Hidden.new :component => component, :value => :hidden
+          render Examples::Widget::Password.new :component => component, :value => :password, :label => 'Password:'
+          render Examples::Widget::Select.new :component => component, :value => :sex, :label => 'Sex:',
               :select_options => [nil, 'male', 'female']
-          widget Hammer::Widget::Form::Textarea, :value => :description, :label => 'Description:'
+          render Examples::Widget::Textarea.new :component => component, :value => :description,
+              :label => 'Description:'
 
-          submit("Send for the #{counter}th time").update { @counter += 1 }
+          div :class => %w{span-21 prepend-3 last}, :style => 'height: 36px;' do
+            submit("Send for the #{counter}th time", :class => %w{clear}).update { @counter += 1 }
+          end
 
-          h4 'Values:'
+          hr
+          strong 'Values:'
           ul do
             record.members.each do |key|
               li "#{key}: #{value(key).inspect}"

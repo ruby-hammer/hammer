@@ -10,7 +10,7 @@ module Hammer::JQuery
   #   generate { b(function(b!, :a) {b!.c!} } # => "b(function(b(), "a") {b().c();});"
   #   generate { a :a => function(a) {b.c!} } # => 'a({"a":function(a) {b.c();}});"
   def self.generate(assigns = {}, &block)
-    Generator.new(assigns, &block)
+    Builder.new(assigns, &block)
   end
 
   class Abstract
@@ -42,7 +42,7 @@ module Hammer::JQuery
     end
   end
 
-  class Generator < Abstract
+  class Builder < Abstract
     def initialize(assigns, &block)
       assigns.each {|k,v| instance_variable_set("@#{k}", v) }
       @assigns, @stacks = assigns, []
@@ -66,7 +66,7 @@ module Hammer::JQuery
     end
   end
 
-  class Function < Generator
+  class Function < Builder
     def initialize(assigns, *args, &block)
       @args = _format_args(*args)
       super(assigns, &block)

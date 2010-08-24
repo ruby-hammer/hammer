@@ -62,7 +62,7 @@ describe Hammer::Core::Context do
     before do
       allocated_context.should_receive(:root_class).and_return(AComponent)
       context.connection = mock(:connection)
-      context.update
+      context.update(:partial => false)
     end
     subject { context.instance_variable_get(:@message)[:html] }
 

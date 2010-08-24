@@ -10,7 +10,7 @@ module Hammer::Component::Developer
       end
 
       def stats
-        h1 'Stats'
+        h2 'Stats'
         ul do
           classes = [
             Hammer::Core::Container,
@@ -26,7 +26,7 @@ module Hammer::Component::Developer
       end
 
       def gc
-        h1 'GC'
+        h2 'GC'
         ul do
           li do
             link_to("GC::Profiler.enable? => #{GC::Profiler.enabled?}").action do
@@ -36,13 +36,14 @@ module Hammer::Component::Developer
               else
                 GC::Profiler.enable
               end
+              change!
             end
           end if Hammer.v19?
-          li { link_to("GC.start").action { ObjectSpace.garbage_collect }}
+          li { link_to("GC.start").action { ObjectSpace.garbage_collect; change! } }
         end
 
         pre { code GC::Profiler.result } if Hammer.v19?
-        pre { code ObjectSpace.count_objects.to_s } if Hammer.v19?
+        p { code ObjectSpace.count_objects.to_s } if Hammer.v19?
       end
     end
 

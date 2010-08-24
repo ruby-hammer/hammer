@@ -5,10 +5,15 @@ module Chat
     alias_method(:room, :record)
 
     define_widget do
-      wrap_in(:span)
+      wrap_in(:div)
+
+      def wrapper_classes
+        super << 'form'
+      end
+
       def content
-        widget Hammer::Widget::Form::Field, :value => :name, :options =>
-            { :class => %w[ui-widget-content ui-corner-all] }
+        render Hammer::Widget::Form::Field.new :component => component, :value => :name
+
         submit("Add").update { answer!(room) if room.valid? }
         link_to("Cancel").action { answer!(nil) }
       end

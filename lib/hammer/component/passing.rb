@@ -1,8 +1,8 @@
 module Hammer::Component::Passing
 
-  # pass on if {#passed?}
-  def to_html
-    @passed_on ? @passed_on.to_html : super
+  def self.included(base)
+    base.children :passed_on
+    base.send :attr_reader, :passed_on
   end
 
   # rendering is passed on to +component+. Usually used with ask.
@@ -13,17 +13,25 @@ module Hammer::Component::Passing
   #     retake_control!
   #   }
   def pass_on(component)
+    change!
     @passed_on = component
   end
 
   # see {#pass_on}
   def retake_control!
+    change!
     @passed_on = nil
   end
 
   # @return [Boolean] is component passing?
   def passed?
     @passed_on.present?
+  end
+
+  protected
+
+  def children_update(options)
+    passed? ? passed_on.to_html(options) : super
   end
 
 end

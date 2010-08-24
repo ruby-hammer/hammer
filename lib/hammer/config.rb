@@ -14,7 +14,7 @@ module Hammer
     module ClassMethods
       def config
         @@config ||= begin Configliere.new.instance_eval do
-            use :define, :config_file, :commandline
+            use :define, :config_file, :commandline, :config_block
 
             [
 
@@ -36,7 +36,8 @@ module Hammer
 
               [ :root,                  String,   nil,          "name of a root component's class" ],
               [ :layout,                String,   "Hammer::Widget::Layout", "name of a layout's class" ],
-              [ :environment,           Symbol,   :development, "environment", 'RACK_ENV' ]
+              [ :environment,           Symbol,   :development, "environment", 'RACK_ENV' ],
+              [ :irb,                   :boolean, false,        "run console" ]
 
 
             ].each do |key, type, default, description, env_var|
@@ -46,6 +47,10 @@ module Hammer
               options[:env_var] = env_var if env_var
 
               define key, options
+            end
+
+            finally do |c|
+              c[:irb] = c[:environment] == :development
             end
 
             read './config.yml'

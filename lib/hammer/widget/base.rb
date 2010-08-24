@@ -3,13 +3,16 @@
 module Hammer::Widget
 
   class Base < Abstract
-    include Hammer::Widget::Wrapping
-    include Hammer::Widget::Component
+    include Wrapping
+    include Component
+    include State
+    include Passing
     # include Hammer::Widget::ElementBuilder
-    include Hammer::Widget::JQuery
+    include JQuery
+    include CSS
 
-    include Hammer::Widget::Helper::LinkTo
-    include Hammer::Widget::Helper::Submit
+    include Helper::LinkTo
+    include Helper::Submit
   end
 
 end

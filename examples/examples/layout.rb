@@ -2,7 +2,7 @@
 
 class Examples::Layout < Hammer::Widget::Layout
 
-  external :css, "css/basic.css"
+  use_blueprint
 
   def page_title
     "Hammer - examples"

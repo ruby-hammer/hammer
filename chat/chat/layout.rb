@@ -2,8 +2,9 @@
 
 class Chat::Layout < Hammer::Widget::Layout
 
-  external :css, "css/basic.css"
-  external :css, "css/chat.css"
+  #  depends_on :css, "css/ui-lightness/jquery-ui-1.8.2.custom.css"
+
+  use_blueprint
 
   def page_title
     "Hammer - Chat"

@@ -36,6 +36,13 @@ unless defined? Hammer
       Hammer.logger.info "#{label} in %0.6f sec ~ %d req" % [time, (1/time).to_i] if req
     end
 
+    # @return [Hammer::Core::Context, nil] context where is current code running or nil when core is running outside
+    # a context
+    def self.get_context
+      return nil unless Fiber.current.respond_to? :hammer_context
+      Fiber.current.hammer_context || raise('unset context in fiber')
+    end
+
   end
 
   require 'hammer/load.rb'

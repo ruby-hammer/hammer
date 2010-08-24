@@ -38,7 +38,7 @@ describe Hammer::Core::Base do
 
     describe 'without action or form' do
       before do
-        connection.should_receive(:send).with(hash_including(:context_id, :html))
+        connection.should_receive(:send).with(hash_including(:context_id, :update))
         Hammer::Core::Base.send :receive_message, {'session_id' => 'session_id', 'hash' => 'devel'}, connection
         @container = Hammer::Core::Base.container('session_id')
         @context = @container.instance_variable_get(:@contexts).values.first

@@ -2,21 +2,56 @@
 
 module Hammer::Core
 
+  module Actions
+    def initialize(id, container, hash = '')
+      super
+      @actions = {}
+    end
+
+    # creates and stores action for later evaluation
+    # @param [Component::Base] component where action will be evaluated
+    # @yield the action
+    # @return [String] uuid of the action
+    def register_action(component, &block)
+      uuid = Hammer::Core.generate_id
+      @actions[uuid] = Action.new(uuid, component, block)
+      return uuid
+    end
+
+    # evaluates action with +id+
+    # @param [String] id of a {Action}
+    # @return self
+    def run_action(id)
+      (action = @actions[id]) && action.call
+      self
+    end
+
+    private
+
+    # clears actions for components which are no longer in component tree
+    def clear_old_actions
+      # TODO remove slow iteration
+      components = root_component.all_children
+      @actions.delete_if do |key, action|
+        not components.include? action.component
+      end
+    end
+  end
+
   # represents context of user, each tab of browser has one of its own
-  class Context
+  class AbstractContext
     include Observable
     include Hammer::Config
 
     observable_events :drop
 
-    attr_reader :id, :connection, :container, :hash
+    attr_reader :id, :connection, :container, :hash, :root_component
 
     # @param [String] id unique identification
     def initialize(id, container, hash = '')
       @id, @container, @hash = id, container, hash
       @queue, @message = [], {}
       self.class.no_connection_contexts << self
-      clear_actions
 
       schedule { @root_component = root_class.new }
     end
@@ -51,11 +86,12 @@ module Hammer::Core
     end
 
     # renders update for the user and stores it in {#message}
-    def update
+    # @option options [Boolean] :partial
+    def update(options = {})
+      options.merge!(:partial => true) {|_,old,_| old }
+      clear_old_actions
       Hammer.benchmark('Actualization') do
-        #          RubyProf.resume do
-        message :html => self.to_html
-        #          end
+        message (options[:partial] ? :update : :html) => self.to_html(:update => options[:partial])
       end
       self
     end
@@ -82,27 +118,9 @@ module Hammer::Core
     end
 
     # renders html, similar to Erector::Widget#to_html
-    def to_html
-      @root_component.to_html
-    end
-
-    # creates and stores action for later evaluation
-    # @param [Component::Base] component where action will be evaluated
-    # @yield the action
-    # @return [String] uuid of the action
-    def register_action(component, &block)
-      uuid = Hammer::Core.generate_id
-      @actions[uuid] = Action.new(uuid, component, block)
-      return uuid
-    end
-
-    # evaluates action with +id+
-    # @param [String] id of a {Action}
-    # @return self
-    def run_action(id)
-      (action = @actions[id]) && action.call
-      clear_actions
-      self
+    # @param [Hash] options
+    def to_html(options = {})
+      @root_component.to_html(options)
     end
 
     # @param [WebSocket::Connection] connection to find out by
@@ -166,11 +184,6 @@ module Hammer::Core
       @message.merge! hash
     end
 
-    # deletes all stored {Action}-s
-    def clear_actions
-      @actions = {}
-    end
-
     # schedules next block from @queue to be processed in {Base.fibers_pool}
     # @param [Boolean] restart try to restart when error?
     def schedule_next(restart = true)
@@ -184,15 +197,16 @@ module Hammer::Core
       end
     end
 
-    @contexts_by_connection = {}
     def self.contexts_by_connection
-      @contexts_by_connection
+      @contexts_by_connection ||= {}
     end
 
-    @no_connection_contexts = []
     def self.no_connection_contexts
-      @no_connection_contexts
+      @no_connection_contexts ||= []
     end
+  end
 
+  class Context < AbstractContext
+    include Actions
   end
 end

@@ -9,49 +9,17 @@ describe Hammer::Widget::Base do
     class FooWidget < Hammer::Component::Base::Widget
       wrap_in :span
     end
-    class BooWidget < Hammer::Widget::Base
-    end
     class DooWidget < Hammer::Widget::Base
       wrap_in :span
     end
   end
 
-  describe Foo::BooWidget, "#to_html", 'when wrap_in(nil)' do
-    subject { (@widget = Foo::BooWidget.new(:component => component_mock)).to_html }
-    it { should == "" }
-  end
-
   describe Foo::FooWidget do
-    describe ".css_class" do
-      subject { Foo::FooWidget.css_class }
-      it { should == 'foo-foo_widget' }
-    end
-
-    describe "wrap_in", "#to_html" do
-      subject { (@widget = Foo::FooWidget.new(:component => component_mock)).to_html }
-      it { should ==
-            "<span class=\"#{Foo::FooWidget.css_class} component\" id=\"#{@widget.component.object_id}\"></span>" }
-
-      describe 'when subwidget' do
-        subject do
-          (@widget = Foo::FooWidget.new(:component => component_mock) do |w|
-            w.widget Foo::DooWidget
-          end).to_html
-        end
-        it { should == "<span class=\"#{Foo::FooWidget.css_class} component\" id=\"#{@widget.component.object_id}\">" +
-              "<span class=\"#{Foo::DooWidget.css_class}\"></span></span>"}
-      end
-    end
-
-    describe '.wrapped_in' do
-      subject { Foo::FooWidget.wrapped_in }
-      it { should == :span}
-    end
-
+    
     describe '#render' do
       describe "(a_widget)" do
         subject do
-          (@widget = Foo::FooWidget.new(:component => component_mock) do |w|
+          (@widget = Foo::FooWidget.new(:component => component_mock, :root_widget => true) do |w|
             w.render @subwidget = Foo::DooWidget.new(:component => component_mock)
           end).to_html
         end
@@ -69,7 +37,7 @@ describe Hammer::Widget::Base do
         end
 
         subject do
-          (@widget = Foo::FooWidget.new(:component => component_mock) do |w|
+          (@widget = Foo::FooWidget.new(:component => component_mock, :root_widget => true) do |w|
             w.render @obj = ObjectWithWidget.new
           end).to_html
         end

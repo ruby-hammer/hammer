@@ -12,11 +12,13 @@ describe Hammer::Core::Application do
     Hammer::Core::Application
   end
 
-  it "returns layout" do
-    get '/'
-    last_response.should be_ok
-    last_response.body.should match(/js\/hammer.js/)
-  end
+  before { get '/' }
 
+  it { last_response.should be_ok }
+  it { last_response.body.should match(/js\/swfobject\.js/) }
+  it { last_response.body.should match(/js\/FABridge\.js/) }
+  it { last_response.body.should match(/js\/web_socket\.js/) }
+  it { last_response.body.should match(/js\/jquery-/) }
+  it { last_response.body.should match(/js\/jquery\.ba-hashchange\.js/) }
+  it { last_response.body.should match(/js\/hammer\.js/) }
 end
-

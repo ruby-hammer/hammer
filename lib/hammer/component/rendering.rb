@@ -76,9 +76,10 @@ module Hammer::Component::Rendering
     @widget ||= create_widget
   end
 
-  # @return [String] html
-  def to_html
-    widget.to_html
+  # @return [String] rendered html
+  # @param [Hash] options
+  def to_html(options = {})
+    widget.to_html(options)
   end
 
   # @return [Class] which is used to insatiate widget
@@ -101,7 +102,7 @@ module Hammer::Component::Rendering
 
   # always pass component to widget, can be extended by overwritten
   def widget_assigns
-    {:component => self}
+    { :component => self, :root_widget => true }
   end
 
 end

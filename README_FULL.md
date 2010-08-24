@@ -37,7 +37,7 @@ use Ruby 1.9.(1|2) and run hammer
 
     hammer
 
-use Chrome browser, it wont yet work in others. (It should work in Safari, but I didn't test it.)
+use Chrome, Firefox, Opera or Safari browser, others are untested.
 
 There are some examples on [http://localhost:3000](http://localhost:3000) and real-time log on
 [http://localhost:3000/#devel](http://localhost:3000/#devel)
