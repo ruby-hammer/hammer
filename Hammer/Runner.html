@@ -68,7 +68,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+encoding: UTF-8
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
   
   
@@ -83,17 +94,17 @@
 
     <ul class="summary">
       
-        <li class="private ">
+        <li class="public ">
   <span class="summary_signature">
     
-      <a href="#encoding-class_method" title="encoding (class method)">+ (Object) <strong>encoding</strong> </a>
+      <a href="#generate_css-class_method" title="generate_css (class method)">+ (Object) <strong>generate_css</strong> </a>
     
 
     
   </span>
   
   
-  <span class="note title private">private</span>
+  
   
   
   
@@ -104,7 +115,7 @@
 </li>
 
       
-        <li class="private ">
+        <li class="public ">
   <span class="summary_signature">
     
       <a href="#load_app_files-class_method" title="load_app_files (class method)">+ (Object) <strong>load_app_files</strong> </a>
@@ -114,7 +125,7 @@
   </span>
   
   
-  <span class="note title private">private</span>
+  
   
   
   
@@ -187,9 +198,9 @@
     
     
       <div class="method_details first">
-  <p class="signature first" id="encoding-class_method">
+  <p class="signature first" id="generate_css-class_method">
   
-    + (<tt>Object</tt>) <strong>encoding</strong>  <span class="extras">(private)</span>
+    + (<tt>Object</tt>) <strong>generate_css</strong> 
   
 
   
@@ -199,17 +210,23 @@
       <pre class="lines">
 
 
-38
-39
-40
-41</pre>
+28
+29
+30
+31
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 28</span>
 
-<span class='kw'>def</span> <span class='id encoding'>encoding</span>
-  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>External encoding: </span><span class='embexpr_beg'>#{</span><span class='const'>Encoding</span><span class='period'>.</span><span class='id default_external'>default_external</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Internal encoding: </span><span class='embexpr_beg'>#{</span><span class='const'>Encoding</span><span class='period'>.</span><span class='id default_internal'>default_internal</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id generate_css'>generate_css</span>
+  <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>css generated</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./public/css/app.css</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span>
+      <span class='id file'>file</span><span class='period'>.</span><span class='id write'>write</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Widget</span><span class='op'>::</span><span class='const'>CSS</span><span class='period'>.</span><span class='id css'>css</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -219,7 +236,7 @@
       <div class="method_details ">
   <p class="signature " id="load_app_files-class_method">
   
-    + (<tt>Object</tt>) <strong>load_app_files</strong>  <span class="extras">(private)</span>
+    + (<tt>Object</tt>) <strong>load_app_files</strong> 
   
 
   
@@ -229,12 +246,12 @@
       <pre class="lines">
 
 
-26
-27
-28</pre>
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id load_app_files'>load_app_files</span>
   <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Loader</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>Dir</span><span class='period'>.</span><span class='id glob'>glob</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./**/*.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id load!'>load!</span>
@@ -257,6 +274,7 @@
       <pre class="lines">
 
 
+9
 10
 11
 12
@@ -272,12 +290,13 @@
 22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id run!'>run!</span>
   <span class='comment'>#          encoding
 </span>  <span class='id load_app_files'>load_app_files</span>
-  <span class='const'>Core</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id run!'>run!</span>
+  <span class='id generate_css'>generate_css</span>
+  <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id run!'>run!</span>
   <span class='id setup_application'>setup_application</span>
   <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>== Settings\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id config'>config</span><span class='period'>.</span><span class='id pretty_inspect'>pretty_inspect</span>
   <span class='const'>Hammer</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id level'>level</span> <span class='op'>=</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span>
@@ -285,7 +304,7 @@
 </span>  <span class='comment'>#          require 'irb'
 </span>  <span class='comment'>#          Thread.new { IRB.start }
 </span>  <span class='comment'>#        end
-</span>  <span class='const'>Core</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id run!'>run!</span>
+</span>  <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id run!'>run!</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -305,19 +324,19 @@
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
-36</pre>
+38
+39
+40
+41
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id setup_application'>setup_application</span>
-  <span class='const'>Core</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id set'>set</span> \
+  <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id set'>set</span> \
       <span class='symbol'>:root</span> <span class='op'>=&gt;</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id pwd'>pwd</span><span class='comma'>,</span>
       <span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:web</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='comma'>,</span>
       <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:web</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span>
@@ -333,7 +352,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:53 2010 by 
+  Generated on Tue Aug 24 18:44:16 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

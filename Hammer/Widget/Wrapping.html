@@ -146,7 +146,7 @@ Wraps widget with element set by .wrap_in.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#wrapper-instance_method" title="#wrapper (instance method)">- (Object) <strong>wrapper</strong>(content = true, &amp;block) </a>
+      <a href="#wrapper-instance_method" title="#wrapper (instance method)">- (Object) <strong>wrapper</strong> { ... }</a>
     
 
     
@@ -160,7 +160,7 @@ Wraps widget with element set by .wrap_in.
 
   
     <span class="summary_desc"><div class='inline'><p>
-renders wrapper with content if <tt>content</tt> is true.
+renders wrapper with content in <tt>block</tt>.
 </p>
 </div></span>
   
@@ -311,37 +311,33 @@ use #content.
       <div class="method_details ">
   <p class="signature " id="wrapper-instance_method">
   
-    - (<tt>Object</tt>) <strong>wrapper</strong>(content = true, &amp;block) 
+    - (<tt>Object</tt>) <strong>wrapper</strong> { ... }
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-renders wrapper with content if <tt>content</tt> is true
+renders wrapper with content in <tt>block</tt>
 </p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
+  <h3>Yields:</h3>
+<ul class="yield">
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
+        <span class='type'></span>
       
       
-        <span class='name'>content</span>
       
       
-        <em class="default">(defaults to: <tt>true</tt>)</em>
-      
-      
-        &mdash;
+        
         <div class='inline'><p>
-render content into wrapper ?
+block content
 </p>
 </div>
       
@@ -366,7 +362,7 @@ render content into wrapper ?
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/widget/wrapping.rb', line 27</span>
 
-<span class='kw'>def</span> <span class='id wrapper'>wrapper</span><span class='lparen'>(</span><span class='id content'>content</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id wrapper'>wrapper</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id wrapped_in'>wrapped_in</span>
     <span class='id send'>send</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id wrapped_in'>wrapped_in</span><span class='comma'>,</span> <span class='id wrapper_options'>wrapper_options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
   <span class='kw'>else</span>
@@ -499,7 +495,7 @@ options passed to wrapping element, intended for overwriting
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:55 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

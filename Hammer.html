@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/hammer/logger.rb<span class="defines">,<br />
-  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/runner.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
+  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
 </dd>
   
 </dl>
@@ -73,7 +73,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-encoding: UTF-8
+FIXME OLD
 </p>
 
 
@@ -85,7 +85,7 @@ encoding: UTF-8
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a>, <a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a>, <a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a>, <a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a>, <a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a>, <a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a>
+      <strong class="modules">Modules:</strong> <a href="Hammer/CSS.html" title="Hammer::CSS (module)">CSS</a>, <a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a>, <a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a>, <a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a>, <a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a>, <a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a>, <a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a>
     
    
     
@@ -112,6 +112,27 @@ encoding: UTF-8
   <span class="summary_signature">
     
       <a href="#benchmark-class_method" title="benchmark (class method)">+ (Object) <strong>benchmark</strong>(label, req = true, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_context-class_method" title="get_context (class method)">+ (Object) <strong>get_context</strong> </a>
     
 
     
@@ -223,6 +244,36 @@ encoding: UTF-8
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="get_context-class_method">
+  
+    + (<tt>Object</tt>) <strong>get_context</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id get_context'>get_context</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:hammer_context</span>
+  <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id hammer_context'>hammer_context</span> <span class='op'>||</span> <span class='id raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>unset context in fiber</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="logger-class_method">
   
     + (<tt>Object</tt>) <strong>logger</strong> 
@@ -304,7 +355,7 @@ encoding: UTF-8
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:52 2010 by 
+  Generated on Tue Aug 24 18:44:15 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

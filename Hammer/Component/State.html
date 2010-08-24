@@ -72,7 +72,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="State/ClassMethods.html" title="Hammer::Component::State::ClassMethods (module)">ClassMethods</a>, <a href="State/Widget.html" title="Hammer::Component::State::Widget (module)">Widget</a>
+      <strong class="modules">Modules:</strong> <a href="State/ClassMethods.html" title="Hammer::Component::State::ClassMethods (module)">ClassMethods</a>, <a href="State/InstanceMethods.html" title="Hammer::Component::State::InstanceMethods (module)">InstanceMethods</a>
     
    
     
@@ -106,87 +106,6 @@
 
   
     <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#change%21-instance_method" title="#change! (instance method)">- (Object) <strong>change!</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-tells component that it&#8217;s changed.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#changed%3F-instance_method" title="#changed? (instance method)">- (Boolean) <strong>changed?</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-If component id changed.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#reset%21-instance_method" title="#reset! (instance method)">- (Object) <strong>reset!</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-resets component change state.
-</p>
-</div></span>
   
 </li>
 
@@ -232,12 +151,16 @@ resets component change state.
 11
 12
 13
-14</pre>
+14
+15
+16</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:alias_method</span><span class='comma'>,</span> <span class='symbol'>:super_to_html</span><span class='comma'>,</span> <span class='symbol'>:to_html</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id extend'>extend</span> <span class='const'>ClassMethods</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id instance_eval'>instance_eval</span> <span class='kw'>do</span>
     <span class='kw'>def</span> <span class='id method_added'>method_added</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
@@ -256,152 +179,10 @@ resets component change state.
     
   </div>
 
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="change!-instance_method">
-  
-    - (<tt>Object</tt>) <strong>change!</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-tells component that it&#8217;s changed
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-77
-78
-79</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 77</span>
-
-<span class='kw'>def</span> <span class='id change!'>change!</span>
-  <span class='ivar'>@_changed</span> <span class='op'>=</span> <span class='kw'>true</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="changed?-instance_method">
-  
-    - (<tt>Boolean</tt>) <strong>changed?</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-If component id changed
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-if component id changed
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-82
-83
-84</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 82</span>
-
-<span class='kw'>def</span> <span class='id changed?'>changed?</span>
-  <span class='ivar'>@_changed</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="reset!-instance_method">
-  
-    - (<tt>Object</tt>) <strong>reset!</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-resets component change state
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-87
-88
-89</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 87</span>
-
-<span class='kw'>def</span> <span class='id reset!'>reset!</span>
-  <span class='ivar'>@_changed</span> <span class='op'>=</span> <span class='kw'>false</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:55 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

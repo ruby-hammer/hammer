@@ -136,6 +136,17 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   
     <h2>
@@ -148,7 +159,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#content-instance_method" title="#content (instance method)">- (Object) <strong>content</strong> </a>
+      <a href="#field-instance_method" title="#field (instance method)">- (Object) <strong>field</strong> </a>
     
 
     
@@ -178,7 +189,7 @@
   
   
   <h3 class="inherited">Methods inherited from <a href="Abstract.html" title="Hammer::Widget::Form::Abstract (class)">Abstract</a></h3>
-  <p class="inherited"><a href="Abstract.html#render_label-instance_method" title="Hammer::Widget::Form::Abstract#render_label (method)">#render_label</a></p>
+  <p class="inherited"><a href="Abstract.html#content-instance_method" title="Hammer::Widget::Form::Abstract#content (method)">#content</a>, <a href="Abstract.html#render_label-instance_method" title="Hammer::Widget::Form::Abstract#render_label (method)">#render_label</a></p>
 
   
   
@@ -202,6 +213,31 @@
   
   
   
+  <h3 class="inherited">Methods included from <a href="../../Component.html" title="Hammer::Component (module)">Hammer::Component</a></h3>
+  <p class="inherited"><a href="../../Component.html#all-class_method" title="Hammer::Component.all (method)">all</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../State.html" title="Hammer::Widget::State (module)">Hammer::Widget::State</a></h3>
+  <p class="inherited"><a href="../State.html#_render-instance_method" title="Hammer::Widget::State#_render (method)">#_render</a>, <a href="../State.html#render-instance_method" title="Hammer::Widget::State#render (method)">#render</a>, <a href="../State.html#render_component-instance_method" title="Hammer::Widget::State#render_component (method)">#render_component</a>, <a href="../State.html#replacer-instance_method" title="Hammer::Widget::State#replacer (method)">#replacer</a>, <a href="../State.html#wrapper_classes-instance_method" title="Hammer::Widget::State#wrapper_classes (method)">#wrapper_classes</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Passing.html" title="Hammer::Widget::Passing (module)">Hammer::Widget::Passing</a></h3>
+  <p class="inherited"><a href="../Passing.html#call_content_method-instance_method" title="Hammer::Widget::Passing#call_content_method (method)">#call_content_method</a>, <a href="../Passing.html#wrapper_classes-instance_method" title="Hammer::Widget::Passing#wrapper_classes (method)">#wrapper_classes</a></p>
+
+  
+  
   
   
   
@@ -209,6 +245,16 @@
   
   <h3 class="inherited">Methods included from <a href="../../JQuery.html" title="Hammer::JQuery (module)">Hammer::JQuery</a></h3>
   <p class="inherited"><a href="../../JQuery.html#generate-class_method" title="Hammer::JQuery.generate (method)">generate</a></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../CSS.html" title="Hammer::Widget::CSS (module)">Hammer::Widget::CSS</a></h3>
+  <p class="inherited"><a href="../CSS.html#css-class_method" title="Hammer::Widget::CSS.css (method)">css</a>, <a href="../CSS.html#included-class_method" title="Hammer::Widget::CSS.included (method)">included</a></p>
 
   
   
@@ -256,7 +302,6 @@
   
   
   
-  
   <h3 class="inherited">Methods inherited from <a href="../../../Erector/AbstractWidget.html" title="Erector::AbstractWidget (class)">Erector::AbstractWidget</a></h3>
   <p class="inherited"><a href="../../../Erector/AbstractWidget.html#_render-instance_method" title="Erector::AbstractWidget#_render (method)">#_render</a>, <a href="../../../Erector/AbstractWidget.html#call_content_method-instance_method" title="Erector::AbstractWidget#call_content_method (method)">#call_content_method</a>, <a href="../../../Erector/AbstractWidget.html#render_options-instance_method" title="Erector::AbstractWidget#render_options (method)">#render_options</a></p>
 
@@ -266,9 +311,9 @@
     
     
       <div class="method_details first">
-  <p class="signature first" id="content-instance_method">
+  <p class="signature first" id="field-instance_method">
   
-    - (<tt>Object</tt>) <strong>content</strong> 
+    - (<tt>Object</tt>) <strong>field</strong> 
   
 
   
@@ -280,14 +325,12 @@
 
 3
 4
-5
-6</pre>
+5</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/widget/form/textarea.rb', line 3</span>
 
-<span class='kw'>def</span> <span class='id content'>content</span>
-  <span class='id render_label'>render_label</span>
+<span class='kw'>def</span> <span class='id field'>field</span>
   <span class='id textarea'>textarea</span><span class='lparen'>(</span><span class='id value'>value</span><span class='lparen'>(</span><span class='ivar'>@value</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='ivar'>@type</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='ivar'>@value</span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='ivar'>@label_id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -300,7 +343,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:58 2010 by 
+  Generated on Tue Aug 24 18:44:18 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

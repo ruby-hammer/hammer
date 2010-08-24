@@ -209,6 +209,27 @@ deletes observer from listening to event.
 </li>
 
       
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#notify_observer-instance_method" title="#notify_observer (instance method)">- (Object) <strong>notify_observer</strong>(observer, method, *args) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
         <li class="public ">
   <span class="summary_signature">
     
@@ -317,14 +338,14 @@ deletes observer from listening to event.
       <pre class="lines">
 
 
+51
+52
 53
 54
-55
-56
-57</pre>
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id _observers'>_observers</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span>
   <span class='id raise'>raise</span> <span class='const'>ArgumentError</span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id observable_events'>observable_events</span><span class='period'>.</span><span class='id include?'>include?</span> <span class='id event'>event</span>
@@ -477,12 +498,12 @@ observer
       <pre class="lines">
 
 
-47
-48
-49</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id count_observers'>count_observers</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span>
   <span class='id _observers'>_observers</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span><span class='period'>.</span><span class='id size'>size</span>
@@ -564,6 +585,42 @@ to observe
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="notify_observer-instance_method">
+  
+    - (<tt>Object</tt>) <strong>notify_observer</strong>(observer, method, *args)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id notify_observer'>notify_observer</span><span class='lparen'>(</span><span class='id observer'>observer</span><span class='comma'>,</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id method'>method</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span>
+    <span class='id observer'>observer</span><span class='period'>.</span><span class='id send'>send</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span>
+  <span class='kw'>else</span>
+    <span class='id method'>method</span><span class='period'>.</span><span class='id call'>call</span> <span class='op'>*</span><span class='id args'>args</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="notify_observers-instance_method">
   
     - (<tt>Object</tt>) <strong>notify_observers</strong>(event, *args) 
@@ -613,21 +670,17 @@ to observe
 40
 41
 42
-43
-44
-45</pre>
+43</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id notify_observers'>notify_observers</span><span class='lparen'>(</span><span class='id event'>event</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id _observers'>_observers</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id observer'>observer</span><span class='comma'>,</span> <span class='id method'>method</span><span class='op'>|</span>
-    <span class='id observer'>observer</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='kw'>do</span>
-      <span class='kw'>if</span> <span class='id method'>method</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span>
-        <span class='id observer'>observer</span><span class='period'>.</span><span class='id send'>send</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span>
-      <span class='kw'>else</span>
-        <span class='id method'>method</span><span class='period'>.</span><span class='id call'>call</span> <span class='op'>*</span><span class='id args'>args</span>
-      <span class='kw'>end</span>
+    <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id get_context'>get_context</span> <span class='op'>==</span> <span class='id observer'>observer</span><span class='period'>.</span><span class='id context'>context</span>
+      <span class='id notify_observer'>notify_observer</span><span class='lparen'>(</span><span class='id observer'>observer</span><span class='comma'>,</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id observer'>observer</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span> <span class='lbrace'>{</span> <span class='id notify_observer'>notify_observer</span><span class='lparen'>(</span><span class='id observer'>observer</span><span class='comma'>,</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -641,7 +694,7 @@ to observe
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:55 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

@@ -103,7 +103,6 @@
   
   
   
-  
 
   
     <h2>
@@ -113,17 +112,17 @@
 
     <ul class="summary">
       
-        <li class="public ">
+        <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#content-instance_method" title="#content (instance method)">- (Object) <strong>content</strong> </a>
+      <a href="#field-instance_method" title="#field (instance method)">- (Object) <strong>field</strong> </a>
     
 
     
   </span>
   
   
-  
+  <span class="note title protected">protected</span>
   
   
   
@@ -185,7 +184,6 @@
   
   
   
-  
   <h3 class="inherited">Methods inherited from <a href="../../../Erector/AbstractWidget.html" title="Erector::AbstractWidget (class)">Erector::AbstractWidget</a></h3>
   <p class="inherited"><a href="../../../Erector/AbstractWidget.html#_render-instance_method" title="Erector::AbstractWidget#_render (method)">#_render</a>, <a href="../../../Erector/AbstractWidget.html#call_content_method-instance_method" title="Erector::AbstractWidget#call_content_method (method)">#call_content_method</a>, <a href="../../../Erector/AbstractWidget.html#render_options-instance_method" title="Erector::AbstractWidget#render_options (method)">#render_options</a></p>
 
@@ -195,9 +193,9 @@
     
     
       <div class="method_details first">
-  <p class="signature first" id="content-instance_method">
+  <p class="signature first" id="field-instance_method">
   
-    - (<tt>Object</tt>) <strong>content</strong> 
+    - (<tt>Object</tt>) <strong>field</strong>  <span class="extras">(protected)</span>
   
 
   
@@ -207,18 +205,16 @@
       <pre class="lines">
 
 
-5
-6
 7
 8
 9
-10</pre>
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/form/select.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/form/select.rb', line 7</span>
 
-<span class='kw'>def</span> <span class='id content'>content</span>
-  <span class='id render_label'>render_label</span>
+<span class='kw'>def</span> <span class='id field'>field</span>
   <span class='id select'>select</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='id value'>value</span><span class='lparen'>(</span><span class='ivar'>@value</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='ivar'>@value</span><span class='comma'>,</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='ivar'>@label_id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='ivar'>@options</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id options_for_select'>options_for_select</span>
   <span class='kw'>end</span>
@@ -241,16 +237,16 @@
       <pre class="lines">
 
 
+13
 14
 15
 16
 17
 18
-19
-20</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/form/select.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/form/select.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id options_for_select'>options_for_select</span>
   <span class='ivar'>@select_options</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id opt'>opt</span><span class='op'>|</span>
@@ -269,7 +265,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:56 2010 by 
+  Generated on Tue Aug 24 18:44:18 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

@@ -106,6 +106,36 @@ Abstract layout for Hammer applications
 
   
     <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use_blueprint-class_method" title="use_blueprint (class method)">+ (Object) <strong>use_blueprint</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Instance Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
@@ -197,6 +227,58 @@ sets configuration.
 
   
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="use_blueprint-class_method">
+  
+    + (<tt>Object</tt>) <strong>use_blueprint</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id use_blueprint'>use_blueprint</span>
+  <span class='id class_eval'>class_eval</span> <span class='kw'>do</span>
+    <span class='kw'>def</span> <span class='id head_content'>head_content</span>
+      <span class='kw'>super</span>
+      <span class='id rawtext'>rawtext</span> <span class='heredoc_beg'>&lt;&lt;CSSHEADERS</span><span class='tstring_content'>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/screen.css&quot; type=&quot;text/css&quot; media=&quot;screen, projection&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/print.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;
+&lt;!--[if lt IE 8]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/ie.css&quot; type=&quot;text/css&quot; media=&quot;screen, projection&quot;&gt;&lt;![endif]--&gt;
+</span><span class='heredoc_end'>CSSHEADERS
+</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
@@ -214,17 +296,19 @@ sets configuration.
       <pre class="lines">
 
 
-21
-22
 23
-24</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id body_content'>body_content</span>
   <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='ivar'>@session_id</span><span class='rparen'>)</span>
   <span class='id loading'>loading</span>
+  <span class='id div'>div</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hammer-content</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -255,15 +339,15 @@ overwrite to change loading page
       <pre class="lines">
 
 
-27
-28
-29</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id loading'>loading</span>
-  <span class='id div'>div</span><span class='lparen'>(</span><span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>loading</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id img'>img</span> <span class='symbol'>:src</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>img/loading.gif</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:alt</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Loading...</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='id div'>div</span><span class='lparen'>(</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hammer-loading</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id text'>text</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Loading ...</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -294,17 +378,18 @@ sets configuration
       <pre class="lines">
 
 
-34
-35
-36
-37
-38
-39
-40
-41</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span>
   <span class='id javascript'>javascript</span><span class='lparen'>(</span><span class='id jquery'>jquery</span> <span class='kw'>do</span>
@@ -312,7 +397,8 @@ sets configuration
         <span class='symbol'>:server</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:server</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:sessionId</span> <span class='op'>=&gt;</span> <span class='id session_id'>session_id</span><span class='rparen'>)</span>
-    <span class='kw'>end</span><span class='rparen'>)</span>
+    <span class='kw'>end</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WEB_SOCKET_SWF_LOCATION = \&quot;WebSocketMain.swf\&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -324,7 +410,7 @@ sets configuration
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:54 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

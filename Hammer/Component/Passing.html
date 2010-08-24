@@ -109,6 +109,27 @@
 
     <ul class="summary">
       
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#children_update-instance_method" title="#children_update (instance method)">- (Object) <strong>children_update</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
         <li class="public ">
   <span class="summary_signature">
     
@@ -181,30 +202,6 @@ see <tt><a href="#pass_on-instance_method" title="Hammer::Component::Passing#pas
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#widget-instance_method" title="#widget (instance method)">- (Object) <strong>widget</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">Passing#passed?</a></tt>.
-</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -259,7 +256,35 @@ pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Pa
     
     
       <div class="method_details first">
-  <p class="signature first" id="pass_on-instance_method">
+  <p class="signature first" id="children_update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>children_update</strong>(options)  <span class="extras">(protected)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id children_update'>children_update</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id passed?'>passed?</span> <span class='op'>?</span> <span class='id passed_on'>passed_on</span><span class='period'>.</span><span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="pass_on-instance_method">
   
     - (<tt><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></tt>) <strong>pass_on</strong>(component) 
   
@@ -306,14 +331,16 @@ rendering is passed on to <tt>component</tt>. Usually used with ask.
       <pre class="lines">
 
 
-20
-21
-22</pre>
+15
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id pass_on'>pass_on</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
+  <span class='id change!'>change!</span>
   <span class='ivar'>@passed_on</span> <span class='op'>=</span> <span class='id component'>component</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -364,12 +391,12 @@ is component passing?
       <pre class="lines">
 
 
-30
-31
-32</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id passed?'>passed?</span>
   <span class='ivar'>@passed_on</span><span class='period'>.</span><span class='id present?'>present?</span>
@@ -403,54 +430,17 @@ see <tt><a href="#pass_on-instance_method" title="Hammer::Component::Passing#pas
       <pre class="lines">
 
 
-25
-26
-27</pre>
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id retake_control!'>retake_control!</span>
+  <span class='id change!'>change!</span>
   <span class='ivar'>@passed_on</span> <span class='op'>=</span> <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="widget-instance_method">
-  
-    - (<tt>Object</tt>) <strong>widget</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">#passed?</a></tt>
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-9
-10
-11</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/passing.rb', line 9</span>
-
-<span class='kw'>def</span> <span class='id widget'>widget</span>
-  <span class='ivar'>@passed_on</span> <span class='op'>?</span> <span class='ivar'>@passed_on</span><span class='period'>.</span><span class='id widget'>widget</span> <span class='op'>:</span> <span class='kw'>super</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -462,7 +452,7 @@ pass on if <tt><a href="#passed%3F-instance_method" title="Hammer::Component::Pa
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:56 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

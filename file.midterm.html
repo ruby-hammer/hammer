@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>File: midterm</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: midterm</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>RubySoC Midterm</h1>
+
+<h2>Week 1 - Beginning</h2>
+
+<p>I had some basic tests before RSoC started. But it was just scribbled code. So first week was
+about setting up proper development environment:</p>
+
+<ul>
+<li>Central logger</li>
+<li>Automatic loading of all files and reloading on file-change.
+<ul>
+<li>gem require_all</li>
+<li>rack/reloader</li>
+</ul></li>
+<li>environments: development, production etc...</li>
+<li>yard documentation</li>
+<li>prepare rspec</li>
+<li>make gem</li>
+<li>etc.</li>
+</ul>
+
+<h2>Week 2 - I love EventMachine</h2>
+
+<p>From start I did some minor improvements:</p>
+
+<ul>
+<li>central configuration, gem configliere</li>
+<li>auto wrapping of widgets with a element properly css-classed and identified</li>
+</ul>
+
+<p>This week was mainly about EventMachine, Fibers and WebSsocket. Core was almost completely rewritten.</p>
+
+<p>Originally a was planing to transport all requests with AJAX and later add some tool for server-side pushes.
+But as I dive in to it, I decided to go on even more unconventional path.</p>
+
+<p>All communication between client and server is moved to a bidirectional connection. Right now it's based on
+WebSocket and gem em-websocket therefore framework supports only Chrome and theoretically Safari for now.
+There is a fiberpool in core where scheduled blocks of code are running. Fibers can be paused during
+IO operations (like in em-symphony) so they are nonblocking. Additionally each context (tab in browser) can run
+only one scheduled block of code at the time (next blocks are added to queue) for state not to mess up.</p>
+
+<p>Scheduled blocks can be client's requests to run a action, some server-side initialized actualization etc.
+It's a block so whatever you need can be scheduled to execution and actualization of web page can be easily pushed
+to client.</p>
+
+<p>I wrote the log observer to test it. It's on #devel and it actualize clients web page as new log are coming.</p>
+
+<h2>Week 3 - Core improvements</h2>
+
+<p>I continued to work and improve core.</p>
+
+<ul>
+<li>Communication between server and client was simplified.</li>
+<li>Context releasing was corrected and observer with event channels was added.</li>
+<li>Errors became safely caught and a communication with user was added besides debug in JS console.</li>
+</ul>
+
+<p>And:</p>
+
+<p>To test how writing components and widgets feel I wrote Object inspectors. It also helped me to find leaks.
+But in the end I correct a few things to make it runnable on 1.8.7 and used gem memprof.</p>
+
+<h2>Week 4 - Forms, Rspec, Chat</h2>
+
+<ul>
+<li>Basic forms was added and sub-widgets for input, select, textarea.</li>
+<li>Rspec tests was added to ensure at least a little that it works as supposed to.</li>
+<li>I wrote simple implementation of Chat. It does not have any persistence. Chat rooms are dropped from memory
+after 4 hours of inactivity and messages are limited to 50 per room. But it nicely demonstrate where this framework
+will be good at.</li>
+</ul>
+
+<h2>Week 5 - New name, Chat hosting, Midterm, Refactoring</h2>
+
+<ul>
+<li>New final name was picked for framework - Hammer. I hope framework will fulfill its name.</li>
+<li>I started to preparing server to support hammer's chat. It was not as easy as I hoped.
+I had to remove gem require_all for unreliability and fix some other bugs to make it a little stable.</li>
+<li>I looked at performance and tweaked rendering by 10-20%.</li>
+<li><strong>Finally I bumped version to 0.0.1 !</strong></li>
+</ul>
+
+<p>In the rest of the week I refactored and restructured source to use module pattern - used by i18n 0.4 and erector 0.8.</p>
+
+<h2>Future</h2>
+
+<h3>Rendering</h3>
+
+<p>Is slow so what to do with it? Plan is to:</p>
+
+<ol>
+<li>implement layer to monitor changes and render and send to client just changes not entire page.</li>
+<li>look at speed again.</li>
+<li>try to move rendering to other processes ? Test it if it gives any improvement.</li>
+</ol>
+
+<h3>Other</h3>
+
+<ul>
+<li>WebSocket flash fallback for Firebox</li>
+<li>Nice urls</li>
+<li>CSS definitions on widget's class level</li>
+<li>Internationalization</li>
+<li>General improvements:
+<ul>
+<li>Richer objects for prototyping</li>
+<li>Js callbacks</li>
+<li>Smarter forms</li>
+<li>etc.</li>
+</ul></li>
+</ul></div></div>
+    
+    <div id="footer">
+  Generated on Tue Aug 24 18:44:15 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -99,27 +99,6 @@ signs instance methods that they are changing component&#8217;s state.
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#extend_widget-instance_method" title="#extend_widget (instance method)">- (Object) <strong>extend_widget</strong>(widget_class) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
         <li class="private ">
   <span class="summary_signature">
     
@@ -137,7 +116,7 @@ signs instance methods that they are changing component&#8217;s state.
 
   
     <span class="summary_desc"><div class='inline'><p>
-hooks <tt><a href="../State.html#change%21-instance_method" title="Hammer::Component::State#change! (method)">#change!</a></tt> after method with <tt>name</tt>.
+hooks <tt><a href="InstanceMethods.html#change%21-instance_method" title="Hammer::Component::State::InstanceMethods#change! (method)">InstanceMethods#change!</a></tt> after method with <tt>name</tt>.
 </p>
 </div></span>
   
@@ -235,8 +214,6 @@ block signs methods defined within the block
       <pre class="lines">
 
 
-29
-30
 31
 32
 33
@@ -246,10 +223,12 @@ block signs methods defined within the block
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id changing'>changing</span><span class='lparen'>(</span><span class='op'>*</span><span class='id names'>names</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>case</span>
@@ -269,36 +248,6 @@ block signs methods defined within the block
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="extend_widget-instance_method">
-  
-    - (<tt>Object</tt>) <strong>extend_widget</strong>(widget_class) 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-42
-43
-44
-45</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 42</span>
-
-<span class='kw'>def</span> <span class='id extend_widget'>extend_widget</span><span class='lparen'>(</span><span class='id widget_class'>widget_class</span><span class='rparen'>)</span>
-  <span class='kw'>super</span>
-  <span class='id widget_class'>widget_class</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Widget</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <p class="signature " id="hook_change_to_method-instance_method">
   
     - (<tt>Object</tt>) <strong>hook_change_to_method</strong>(name)  <span class="extras">(private)</span>
@@ -308,7 +257,7 @@ block signs methods defined within the block
 </p><div class="docstring">
   <div class="discussion">
     <p>
-hooks <tt><a href="../State.html#change%21-instance_method" title="Hammer::Component::State#change! (method)">Hammer::Component::State#change!</a></tt> after method with <tt>name</tt>
+hooks <tt><a href="InstanceMethods.html#change%21-instance_method" title="Hammer::Component::State::InstanceMethods#change! (method)">Hammer::Component::State::InstanceMethods#change!</a></tt> after method with <tt>name</tt>
 </p>
 
 
@@ -322,19 +271,19 @@ hooks <tt><a href="../State.html#change%21-instance_method" title="Hammer::Compo
       <pre class="lines">
 
 
+47
+48
+49
 50
 51
 52
 53
 54
 55
-56
-57
-58
-59</pre>
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id hook_change_to_method'>hook_change_to_method</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^([\w_]*)(|\?|!|=)$</span><span class='regexp_end'>/</span></span>
@@ -344,7 +293,7 @@ hooks <tt><a href="../State.html#change%21-instance_method" title="Hammer::Compo
     end
 </span><span class='heredoc_end'>  STR
 </span> <span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='comma'>,</span> <span class='kw'>__LINE__</span><span class='op'>+</span><span class='int'>1</span>
-  <span class='id alias_method_chain'>alias_method_chain</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:change</span><span class='rparen'>)</span>      
+  <span class='id alias_method_chain'>alias_method_chain</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:change</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -356,7 +305,7 @@ hooks <tt><a href="../State.html#change%21-instance_method" title="Hammer::Compo
 </div>
     
     <div id="footer">
-  Generated on Sat Aug  7 16:49:55 2010 by 
+  Generated on Tue Aug 24 18:44:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>
