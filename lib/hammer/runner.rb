@@ -22,12 +22,12 @@ module Hammer::Runner
     end
 
     def load_app_files
-      Hammer::Loader.new(Dir.glob('./**/*.rb')).load!
+      Hammer::Loader.new(Dir.glob('./app/**/*.rb')).load!
     end
 
     def generate_css
       Hammer.benchmark('css generated', false) do
-        File.open("./public/css/#{config[:app_name].underscore}.css", 'w') do |file|
+        File.open("./public/css/#{config[:app][:name].underscore}.css", 'w') do |file|
           file.write Hammer::Widget::CSS.css
         end
       end

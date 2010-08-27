@@ -16,7 +16,9 @@ require "hammer/widget/css.rb"
 require "hammer/widget/helper.rb"
 require "hammer/widget/helper/link_to.rb"
 require "hammer/widget/layout.rb"
+require "hammer/widget/blueprint.rb"
 require "hammer/widget/base.rb"
+
 
 require "hammer/component.rb"
 require "hammer/component/abstract.rb"

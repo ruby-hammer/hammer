@@ -17,7 +17,9 @@ module Hammer::Widget
     depends_on :js, 'js/jquery-no_conflict.js'
     depends_on :js, 'js/right.js'
     depends_on :js, 'js/hammer.js'
-    depends_on :css,"css/#{Hammer.config[:app_name].underscore}.css"
+    depends_on :css,"css/#{Hammer.config[:app][:name].underscore}.css"
+    depends_on :'shortcut icon',"hammer.png"
+    #
 
     def body_content
       set_variables(@session_id)
@@ -30,17 +32,13 @@ module Hammer::Widget
       div(:id => 'hammer-loading') { text 'Loading ...' }
     end
 
-    def self.use_blueprint
-      class_eval do
-        def head_content
-          super
-          rawtext <<CSSHEADERS
-<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
-<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-CSSHEADERS
-        end
-      end
+    def head_content
+      super
+      link :rel => "shortcut icon", :href => favicon
+    end
+
+    def favicon
+      "hammer.png"
     end
 
     private
