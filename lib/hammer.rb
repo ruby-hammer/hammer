@@ -23,7 +23,7 @@ unless defined? Hammer
     include Hammer::Config
 
     def self.logger
-      @logger ||= Hammer::Logger.new(config[:logger][:output])
+      @logger ||= Hammer::Logger.new(config[:logger][:output], config[:logger][:level])
     end
 
     def self.v19?

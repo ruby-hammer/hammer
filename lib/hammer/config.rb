@@ -17,8 +17,9 @@ module Hammer
             use :define, :config_file, :commandline, :config_block
 
             [
-
               # name                    type      default       description
+              [ 'app.name',             String,   nil,          "application name" ],
+
               [ 'web.host',             String,   '127.0.0.1',  "web-server's device to bind" ],
               [ 'web.port',             Integer,  3000,         "web-server's port" ],
 
@@ -30,7 +31,7 @@ module Hammer
               [ 'core.devel',           String,   'devel',      "hash address of devel tools" ],
               [ 'core.fibers',          Integer,  20,           "size of fiberpool" ],
 
-              [ 'logger.level',         Integer,  0,            "logger level" ],
+              [ 'logger.level',         Integer,  nil,          "logger level" ],
               [ 'logger.show_traffic',  :boolean, false,        "show server-client formated communication" ],
               [ 'logger.output',        nil,      $stdout,      "log's file name" ],
 
@@ -51,6 +52,7 @@ module Hammer
 
             finally do |c|
               c[:irb] = c[:environment] == :development
+              c[:logger][:level] = c[:environment] == :development ? 0 : 1
             end
 
             read './config.yml'

@@ -55,6 +55,10 @@ module Hammer::JQuery
       stack
     end
 
+    def call(method, *args)
+      method_missing(method, *args)
+    end
+
     def function(*args, &block)
       @stacks << function = Function.new(@assigns, *args, &block)
       function

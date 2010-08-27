@@ -30,7 +30,8 @@ describe Hammer::JQuery do
     'b(function(a, 1.2) {b!.c!})' => 'b(function(a,1.2) {b().c();});',
     'function(a, 1.2) {b!.c!}' => 'function(a,1.2) {b().c();};',
     'function {b!}.a.b!' => 'function() {b();}.a.b();',
-    'a :a => function(a) {b.c!}' => 'a({"a":function(a) {b.c();}});'
+    'a :a => function(a) {b.c!}' => 'a({"a":function(a) {b.c();}});',
+    'call(:Hammer).setOptions :a => 1' => 'Hammer.setOptions({"a":1});'
   }
 
   tests.each do |ruby, jquery|

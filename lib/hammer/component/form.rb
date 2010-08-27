@@ -1,10 +1,41 @@
 module Hammer::Component::Form
 
   def self.included(base)
+    base.extend ClassMethods
+    base.class_inheritable_accessor :_on_submit, :instance_reader => false, :instance_writer => false
     base.class_eval do
       needs :record
       attr_reader :record
       changing :set_value
+    end
+  end
+
+  module ClassMethods
+
+    def on_submit(&block)
+      self._on_submit = block
+    end
+
+    def on_submit?
+      !!self._on_submit
+    end
+
+    protected
+
+    def extend_widget(widget_class)
+      super
+      widget_class.send :include, Widget unless widget_class.include? Widget
+    end
+
+  end
+
+  module Widget
+    def wrapper(&block)
+      options = {:action => '#'}
+      options[:'data-action-id'] = register_action(&component.class._on_submit) if component.class.on_submit?
+      super do
+        form options, &block
+      end
     end
   end
 

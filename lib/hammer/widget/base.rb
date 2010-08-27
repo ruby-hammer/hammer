@@ -12,7 +12,6 @@ module Hammer::Widget
     include CSS
 
     include Helper::LinkTo
-    include Helper::Submit
   end
 
 end

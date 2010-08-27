@@ -1,16 +1,5 @@
 module Hammer::Widget::Helper::LinkTo
 
-  def self.included(base)
-    Hammer::Widget::Layout.class_eval do
-      depends_on :script, jquery {
-        jQuery("a[data-action-id]").live('click', function(event) {
-            event.preventDefault!
-            jQuery(event.target).hammer.action!.hammer.send!
-          })
-      }
-    end
-  end
-
   def link_to(*args, &block)
     LinkTo.new self, *args, &block
   end

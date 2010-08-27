@@ -91,7 +91,7 @@ module Hammer::Core
       options.merge!(:partial => true) {|_,old,_| old }
       clear_old_actions
       Hammer.benchmark('Actualization') do
-        message (options[:partial] ? :update : :html) => self.to_html(:update => options[:partial])
+        message((options[:partial] ? :update : :html) => self.to_html(:update => options[:partial]))
       end
       self
     end
