@@ -294,7 +294,7 @@ FIXME OLD
       <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id logger'>logger</span>
-  <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -355,7 +355,7 @@ FIXME OLD
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 24 18:44:15 2010 by 
+  Generated on Fri Aug 27 15:41:18 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

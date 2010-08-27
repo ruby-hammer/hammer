@@ -240,12 +240,12 @@ A new instance of MethodStack
       <pre class="lines">
 
 
-81
-82
-83</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span>
   <span class='ivar'>@methods</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -276,12 +276,12 @@ A new instance of MethodStack
       <pre class="lines">
 
 
-85
-86
-87</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id _method'>_method</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
@@ -311,19 +311,19 @@ A new instance of MethodStack
       <pre class="lines">
 
 
-100
-101
-102
-103
 104
 105
 106
 107
 108
-109</pre>
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id _method'>_method</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id method'>method</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([\w_$]+)(!|)</span><span class='regexp_end'>/</span></span>
@@ -353,12 +353,12 @@ A new instance of MethodStack
       <pre class="lines">
 
 
-89
-90
-91</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/jquery.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='ivar'>@methods</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -373,7 +373,7 @@ A new instance of MethodStack
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 24 18:44:16 2010 by 
+  Generated on Fri Aug 27 15:41:19 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

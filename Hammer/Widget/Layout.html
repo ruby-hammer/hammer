@@ -106,7 +106,7 @@ Abstract layout for Hammer applications
 
   
     <h2>
-      Class Method Summary
+      Instance Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
 
@@ -115,7 +115,7 @@ Abstract layout for Hammer applications
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#use_blueprint-class_method" title="use_blueprint (class method)">+ (Object) <strong>use_blueprint</strong> </a>
+      <a href="#body_content-instance_method" title="#body_content (instance method)">- (Object) <strong>body_content</strong> </a>
     
 
     
@@ -133,19 +133,31 @@ Abstract layout for Hammer applications
 </li>
 
       
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#favicon-instance_method" title="#favicon (instance method)">- (Object) <strong>favicon</strong> </a>
+    
 
-    <ul class="summary">
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#body_content-instance_method" title="#body_content (instance method)">- (Object) <strong>body_content</strong> </a>
+      <a href="#head_content-instance_method" title="#head_content (instance method)">- (Object) <strong>head_content</strong> </a>
     
 
     
@@ -227,58 +239,6 @@ sets configuration.
 
   
 
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="use_blueprint-class_method">
-  
-    + (<tt>Object</tt>) <strong>use_blueprint</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 34</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id use_blueprint'>use_blueprint</span>
-  <span class='id class_eval'>class_eval</span> <span class='kw'>do</span>
-    <span class='kw'>def</span> <span class='id head_content'>head_content</span>
-      <span class='kw'>super</span>
-      <span class='id rawtext'>rawtext</span> <span class='heredoc_beg'>&lt;&lt;CSSHEADERS</span><span class='tstring_content'>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/screen.css&quot; type=&quot;text/css&quot; media=&quot;screen, projection&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/print.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;
-&lt;!--[if lt IE 8]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;css/blueprint/ie.css&quot; type=&quot;text/css&quot; media=&quot;screen, projection&quot;&gt;&lt;![endif]--&gt;
-</span><span class='heredoc_end'>CSSHEADERS
-</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
@@ -296,19 +256,77 @@ sets configuration.
       <pre class="lines">
 
 
-23
 24
 25
 26
-27</pre>
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id body_content'>body_content</span>
   <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='ivar'>@session_id</span><span class='rparen'>)</span>
   <span class='id loading'>loading</span>
   <span class='id div'>div</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hammer-content</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="favicon-instance_method">
+  
+    - (<tt>Object</tt>) <strong>favicon</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id favicon'>favicon</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hammer.png</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="head_content-instance_method">
+  
+    - (<tt>Object</tt>) <strong>head_content</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id head_content'>head_content</span>
+  <span class='kw'>super</span>
+  <span class='id link'>link</span> <span class='symbol'>:rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>shortcut icon</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='id favicon'>favicon</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -339,12 +357,12 @@ overwrite to change loading page
       <pre class="lines">
 
 
-30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id loading'>loading</span>
   <span class='id div'>div</span><span class='lparen'>(</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hammer-loading</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id text'>text</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Loading ...</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
@@ -378,22 +396,22 @@ sets configuration
       <pre class="lines">
 
 
+47
+48
+49
 50
 51
 52
 53
 54
-55
-56
-57
-58</pre>
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span>
   <span class='id javascript'>javascript</span><span class='lparen'>(</span><span class='id jquery'>jquery</span> <span class='kw'>do</span>
-      <span class='id jQuery!'>jQuery!</span><span class='period'>.</span><span class='id hammer'>hammer</span><span class='period'>.</span><span class='id setSettings'>setSettings</span><span class='lparen'>(</span>
+      <span class='id call'>call</span><span class='lparen'>(</span><span class='symbol'>:Hammer</span><span class='rparen'>)</span><span class='period'>.</span><span class='id setOptions'>setOptions</span><span class='lparen'>(</span>
         <span class='symbol'>:server</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:server</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:sessionId</span> <span class='op'>=&gt;</span> <span class='id session_id'>session_id</span><span class='rparen'>)</span>
@@ -410,7 +428,7 @@ sets configuration
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 24 18:44:17 2010 by 
+  Generated on Fri Aug 27 15:41:20 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

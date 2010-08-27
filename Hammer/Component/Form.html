@@ -64,6 +64,16 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <a href="Form/ClassMethods.html" title="Hammer::Component::Form::ClassMethods (module)">ClassMethods</a>, <a href="Form/Widget.html" title="Hammer::Component::Form::Widget (module)">Widget</a>
+    
+   
+    
+  
+</p>
 
 
 
@@ -186,12 +196,16 @@ values from form&#8217;s tags are stored here.
 6
 7
 8
-9</pre>
+9
+10
+11</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id extend'>extend</span> <span class='const'>ClassMethods</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id class_inheritable_accessor'>class_inheritable_accessor</span> <span class='symbol'>:_on_submit</span><span class='comma'>,</span> <span class='symbol'>:instance_reader</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='symbol'>:instance_writer</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id class_eval'>class_eval</span> <span class='kw'>do</span>
     <span class='id needs'>needs</span> <span class='symbol'>:record</span>
     <span class='id attr_reader'>attr_reader</span> <span class='symbol'>:record</span>
@@ -320,16 +334,16 @@ describe value param
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31</pre>
+56
+57
+58
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id set_value'>set_value</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='id args'>args</span><span class='period'>.</span><span class='id pop'>pop</span> <span class='int'>2</span>
@@ -410,12 +424,12 @@ value for <tt>key</tt>
       <pre class="lines">
 
 
-14
-15
-16</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/form.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id value'>value</span><span class='lparen'>(</span><span class='id key'>key</span> <span class='op'>=</span> <span class='symbol'>:value</span><span class='rparen'>)</span>
   <span class='ivar'>@record</span><span class='period'>.</span><span class='id send'>send</span> <span class='id key'>key</span>
@@ -430,7 +444,7 @@ value for <tt>key</tt>
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 24 18:44:17 2010 by 
+  Generated on Fri Aug 27 15:41:20 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>
