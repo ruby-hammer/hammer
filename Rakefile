@@ -66,7 +66,7 @@ begin
     gem.add_development_dependency "jeweler", ">= 0"
     gem.add_development_dependency "rack-test", ">= 0"
 
-    gem.files = FileList['lib/**/*.*', 'examples/**/*.*'].to_a
+    gem.files = FileList['lib/**/*.*'].to_a
 
     gem.test_files = FileList["spec/**/*.*"].to_a
     gem.extra_rdoc_files = FileList["README.md", "README_FULL.md", "MIT-LICENSE", 'docs/**/*.*'].to_a
