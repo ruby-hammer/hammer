@@ -18,11 +18,13 @@ module Hammer::Core
       return uuid
     end
 
-    # evaluates action with +id+
+    # evaluates action with +id+, do nothing when no action
     # @param [String] id of a {Action}
+    # @param [String] arg if of a {Hammer::Component::Base}
     # @return self
-    def run_action(id)
-      (action = @actions[id]) && action.call
+    def run_action(id, arg)
+      return self unless action = @actions[id]
+      action.call(component_by_id(arg))
       self
     end
 
@@ -143,8 +145,7 @@ module Hammer::Core
       Hammer.benchmark "Updating form" do
         return self unless hash && hash.kind_of?(Hash)
         hash.each do |id, values|
-          form_part = begin ObjectSpace._id2ref(id.to_i) rescue RangeError end
-          # FIXME dangerous
+          form_part = component_by_id(id)
           if form_part
             values.each {|key, value| form_part.set_value(key, value) }
           else
@@ -156,6 +157,11 @@ module Hammer::Core
     end
 
     private
+
+    # FIXME dangerous, add own ids to components an store hash on context
+    def component_by_id(id)
+      begin ObjectSpace._id2ref(id.to_i) rescue RangeError end
+    end
 
     # processes safely block, restarts context when error occurred
     # @yield task to execute

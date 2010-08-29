@@ -10,13 +10,15 @@ module Hammer::Core
     # @param [Component::Base] component
     # @param [Proc] block which is evaluated on link click
     def initialize(uuid, component, block)
+      raise ArgumentError unless uuid && component && block
       @uuid, @component, @block = uuid, component, block
     end
 
     # executes action
-    def call
+    # @param [Hammer::Component::base] arg
+    def call(arg)
       Hammer.benchmark "Running action #{block}" do
-        component.send(:instance_eval, &block)
+        component.send(:instance_exec, arg, &block)
       end
     end
   end

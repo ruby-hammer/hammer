@@ -60,7 +60,7 @@ module Hammer::Core
         context.schedule { context.send_id(connection).update.send! }
       elsif action_id || form
         context = self.container(session_id).context(context_id)
-        context.schedule { context.update_form(form).run_action(action_id).update.send! }
+        context.schedule { context.update_form(form).run_action(action_id, message['arguments']).update.send! }
       elsif context_id
         context = self.container(session_id).restart_context(context_id, message['hash'], connection)
       else
