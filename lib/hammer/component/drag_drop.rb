@@ -1,89 +1,66 @@
 module Hammer::Component
 
+  # include to {Hammer::Component::Base} for enable draggable
   module Draggable
     def self.included(base)
       base.extend ClassMethods
-      base.class_inheritable_hash :draggable_options, :instance_writer => false
+      base.class_inheritable_hash :_draggable, :instance_writer => false, :instance_reader => false
     end
 
     module ClassMethods
+      # @param [Hash] options for RightJS
       def draggable(options)
-        self.draggable_options = options
+        self._draggable = options
       end
 
       protected
 
       def extend_widget(widget_class)
         super
-        widget_class.send :include, Widget
-      end
-    end
-
-    def draggable_js
-      @draggable_js ||= Hammer::JQuery.generate(:component => self) do
-        jQuery(this).draggable(@component.draggable_options)
+        widget_class.send :include, Widget unless widget_class.include? Widget
       end
     end
 
     module Widget
       def wrapper_options
-        super.merge :'data-js' => component.draggable_js
+        super.merge :rel => 'draggable', :'data-draggable-options' => component.class._draggable.to_json
       end
-    end
-  
+    end  
   end
 
+  # include to {Hammer::Component::Base} for enable droppable
   module Droppable
     def self.included(base)
       base.extend ClassMethods
-      base.class_inheritable_accessor :droppable_options, :instance_writer => false
+      base.class_inheritable_accessor :_droppable, :instance_writer => false, :instance_reader => false
     end
 
     module ClassMethods
+      # @param [Hash] options for RightJS
+      # @option options [Proc] :onDrop action which will be called on drop. Block gets dropped component as a parameter.
+      # @example
+      #  droppable :accept => '.person-widget', :onDrop => lambda {|person| @people << person; change! }
       def droppable(options)
-        self.droppable_options = options
+        self._droppable = options
       end
 
       protected
 
       def extend_widget(widget_class)
         super
-        widget_class.send :include, Widget
-      end
-    end
-
-    EVENTS = [:drop]
-
-    def droppable_js
-      options = prepare_options(droppable_options)      
-      Hammer::JQuery.generate do
-        jQuery(this).droppable(options)
+        widget_class.send :include, Widget unless widget_class.include? Widget
       end
     end
 
     private
 
-    def prepare_options(options)
-      options = options.clone
-      EVENTS.each do |event_name|
-        if options[event_name]
-          action_id = register_action &options[event_name]
-          options[event_name] = Hammer::JQuery.generate do
-            function(event, ui) do
-              console.debug(event);
-              console.debug(ui);
-              console.debug(jQuery(ui.helper).hammer.componentId!);
-              jQuery!.hammer.action(action_id, jQuery(ui.helper).hammer.componentId!).hammer.send!
-            end
-          end
-        end
-      end
-      options
-    end
-
     module Widget
       def wrapper_options
-        super.merge :'data-js' => component.droppable_js
+        options = component.class._droppable.clone
+        options[:onDrop] = Hammer::JSString.new("function(draggable) { new Hammer.Message()." +
+              "setAction(\"#{register_action &component.class._droppable[:onDrop]}\", " +
+              "draggable.element.component().id).send() }")
+        super.merge :'data-droppable-options' => options.to_json, :rel => 'droppable'
       end
     end
 
