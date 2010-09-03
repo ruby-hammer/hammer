@@ -14,7 +14,7 @@ class Hammer::Loader
     until @load.empty? do
       loaded_flag = false
       @load.each do |file|
-        loaded_flag = load_file(file)
+        loaded_flag |= load_file(file)
       end
       raise error_message if !loaded_flag && @load.present?
     end
