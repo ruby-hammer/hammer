@@ -14,7 +14,7 @@ class Hammer::Loader
     until @load.empty? do
       loaded_flag = false
       @load.each do |file|
-        loaded_flag = load_file(file)
+        loaded_flag |= load_file(file)
       end
       raise error_message if !loaded_flag && @load.present?
     end
@@ -38,7 +38,7 @@ class Hammer::Loader
   # print load errors for cyclic files
   def error_message
     @load.each {|f| loadable?(f, true) }
-    "Cyclic dependenci prevented loading \n#{@load.join("\n")}"
+    "Cyclic dependency prevented loading \n#{@load.join("\n")}"
   end
 
   # determines if is +file+ loadable. Creates fork to determine it safely.
