@@ -1,7 +1,6 @@
 module Hammer::Component::Passing
 
   def self.included(base)
-    base.children :passed_on
     base.send :attr_reader, :passed_on
   end
 
@@ -27,11 +26,4 @@ module Hammer::Component::Passing
   def passed?
     @passed_on.present?
   end
-
-  protected
-
-  def children_update(options)
-    passed? ? passed_on.to_html(options) : super
-  end
-
 end

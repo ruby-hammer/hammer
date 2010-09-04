@@ -4,11 +4,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Hammer::Component::State do
   include HammerMocks
+  setup_context
 
   let(:klass) { Class.new(Hammer::Component::Base) }
   let(:instance) do
-    instance = klass.new :context => context_mock
-    instance.reset!
+    instance = klass.new
+    instance.reset_change!
     instance
   end
 

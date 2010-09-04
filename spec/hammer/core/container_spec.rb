@@ -24,13 +24,13 @@ describe Hammer::Core::Container do
   describe '#restart_context' do
     before do
       @context1 = container.context(nil, "")
-      @context1.connection = mock(:connection)
+      @context1.set_connection mock(:connection)
       Hammer::Core::Context.
           should_receive(:new).
           with(@context1.id, container, @context1.hash).
           and_return(@context2 =
             mock(:restarted_content, :id => @context1.id, :container => container, :hash => @context1.hash))
-      @context2.should_receive(:connection=).with(@context1.connection)
+      @context2.should_receive(:set_connection).with(@context1.connection)
       @context2.stub(:connection).and_return(@context1.connection)
       @context2.should_receive(:schedule)
       container.restart_context(@context1.id, @context1.hash, @context1.connection)

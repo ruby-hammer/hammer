@@ -37,13 +37,36 @@ module Hammer::Widget::Component
     @root_widget
   end
 
+  # adds component's id for root widgets
   def wrapper_options
     return super unless root_widget?
     super.merge :id => component.object_id
   end
 
+  # adds component css class for root widgets
   def wrapper_classes
     return super unless root_widget?
     super << 'component'
+  end
+
+  # redirects components' rendering to #render_component
+  def render(obj)
+    if obj.kind_of?(Hammer::Component::Base)
+      render_component(obj)
+    else super
+    end
+  end
+
+  def to_html
+    component._children.clear
+    super
+  end
+
+  private
+
+  # renders replacer in place of component when rendering update
+  def render_component(component)
+    self.component._children << component
+    span :'data-component-replace' => component.object_id
   end
 end

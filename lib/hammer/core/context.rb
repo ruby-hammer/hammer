@@ -3,6 +3,10 @@
 module Hammer::Core
 
   module Actions
+    def self.included(base)
+      base.send :attr_reader, :actions
+    end
+
     def initialize(id, container, hash = '')
       super
       @actions = {}
@@ -27,16 +31,38 @@ module Hammer::Core
       action.call(component_by_id(arg))
       self
     end
+  end
 
-    private
+  class Message
+    attr_reader :context
+    def initialize(context)
+      @context, @message = context, {}
+    end
 
-    # clears actions for components which are no longer in component tree
-    def clear_old_actions
-      # TODO remove slow iteration
-      components = root_component.all_children
-      @actions.delete_if do |key, action|
-        not components.include? action.component
+    # collect updates for the user and stores it in {Message}
+    def collect_updates      
+      Hammer.benchmark('Actualization') do
+        @message[:update] = context.unsended_components.map {|c| c.send!; c.to_html }.join
       end
+      self
+    end
+
+    # adds context id to {Message}. It's used after loading layout.
+    def context_id
+      @message[:context_id] = context.id
+      self
+    end
+
+    # sends current message to user through Hammer::Base::Context#connection
+    def send!
+      context.connection.send @message if context.connection # FIXME unsended will be lost
+    end
+
+    # @param [String] warn which will be shown to user using alert();
+    # @return self
+    def warn(warn)
+      @message[:js] = "alert('#{warn}');" if warn
+      self
     end
   end
 
@@ -52,7 +78,7 @@ module Hammer::Core
     # @param [String] id unique identification
     def initialize(id, container, hash = '')
       @id, @container, @hash = id, container, hash
-      @queue, @message = [], {}
+      @queue = []
       self.class.no_connection_contexts << self
 
       schedule { @root_component = root_class.new }
@@ -60,10 +86,11 @@ module Hammer::Core
 
     # store connection to be able to send server-side actualizations
     # @param [WebSocket::Connection] connection
-    def connection=(connection)
+    def set_connection(connection)
       @connection = connection
       self.class.contexts_by_connection[connection] = self
       self.class.no_connection_contexts.delete self
+      self
     end
 
     # remove context form container
@@ -87,30 +114,6 @@ module Hammer::Core
       root_class == Hammer::Component::Developer::Tools ? config[:core][:devel] : ''
     end
 
-    # renders update for the user and stores it in {#message}
-    # @option options [Boolean] :partial
-    def update(options = {})
-      options.merge!(:partial => true) {|_,old,_| old }
-      clear_old_actions
-      Hammer.benchmark('Actualization') do
-        message((options[:partial] ? :update : :html) => self.to_html(:update => options[:partial]))
-      end
-      self
-    end
-
-    # adds context id to {#message}. It's used after loading layout.
-    def send_id(connection)
-      self.connection = connection
-      message :context_id => self.id
-      self
-    end
-
-    # sends current message to user through {#connection}
-    def send!
-      connection.send message if connection # FIXME unsended will be lost
-      @message.clear
-    end
-
     # @yield block scheduled into fiber_pool for delayed execution
     # @param [Boolean] restart try to restart when error?
     def schedule(restart = true, &block)
@@ -120,22 +123,14 @@ module Hammer::Core
     end
 
     # renders html, similar to Erector::Widget#to_html
-    # @param [Hash] options
-    def to_html(options = {})
-      @root_component.to_html(options)
+    def to_html
+      @root_component.to_html
     end
 
     # @param [WebSocket::Connection] connection to find out by
     # @return [Context] by +connection+
     def self.by_connection(connection)
       contexts_by_connection[connection]
-    end
-
-    # @param [String] warn which will be shown to user using alert();
-    # @return self
-    def warn(warn)
-      message :js => "alert('#{warn}');" if warn
-      self
     end
 
     # updates values in form parts
@@ -154,6 +149,16 @@ module Hammer::Core
         end
       end
       self
+    end
+
+    # @return [Message] new instance
+    def new_message
+      Message.new self
+    end
+
+    # @return [Array<Hammer::Bomponent::Base>] of unsended components
+    def unsended_components
+      root_component.all_children.select(&:unsended?)
     end
 
     private
@@ -182,12 +187,6 @@ module Hammer::Core
       Fiber.current.hammer_context = self
       block.call
       Fiber.current.hammer_context = nil
-    end
-
-    # @return [Hash] current message stored to {#send!}
-    # @param [Hash] hash to be merged into current message
-    def message(hash = {})
-      @message.merge! hash
     end
 
     # schedules next block from @queue to be processed in {Base.fibers_pool}

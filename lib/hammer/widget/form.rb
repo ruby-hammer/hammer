@@ -1,2 +1,2 @@
-module Hammer::Widget::Form # FIXME no longer used  
+module Hammer::Widget::Form
 end

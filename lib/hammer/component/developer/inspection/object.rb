@@ -3,7 +3,6 @@ module Hammer::Component::Developer::Inspection
 
     needs :packed => true
     attr_reader :components
-    children :components
 
     # @option assigns [String] :label optional description
     # @option assigns [Boolean] :packed inspector is initially packed?

@@ -4,6 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Hammer::Component::Form do
   include HammerMocks
+  setup_context
 
   class TestForm < Hammer::Component::Base
     include Hammer::Component::Form
@@ -13,10 +14,7 @@ describe Hammer::Component::Form do
   end
 
   let(:test_form) do
-    TestForm.new(
-      :context => context_mock,
-      :record => @struct = Struct.new(:record, :value, :name).new
-    )
+    TestForm.new :record => @struct = Struct.new(:record, :value, :name).new
   end
 
   describe '@record' do
@@ -40,7 +38,7 @@ describe Hammer::Component::Form do
   end
 
   describe '#to_html' do
-    subject { test_form.to_html }
+    subject { update test_form }
     it { should match(/id="#{test_form.object_id}"/) }
   end
 

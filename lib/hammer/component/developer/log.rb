@@ -21,7 +21,6 @@ module Hammer::Component::Developer
   class Log < Hammer::Component::Base
 
     attr_reader :messages
-    children :messages
 
     after_initialize do
       @messages = []

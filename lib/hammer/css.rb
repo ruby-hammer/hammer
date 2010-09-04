@@ -132,7 +132,7 @@ module Hammer::CSS
 
   Property = Struct.new :name, :values
 
-  class Properties < BasicObject
+  class Properties < ActiveSupport::BasicObject    
     def initialize(&block)
       @properties = []
       instance_eval &block

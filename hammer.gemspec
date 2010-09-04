@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-08-27}
+  s.date = %q{2010-09-03}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -40,12 +40,13 @@ Gem::Specification.new do |s|
      "lib/hammer/component/developer/inspection/simple.rb",
      "lib/hammer/component/developer/log.rb",
      "lib/hammer/component/developer/tools.rb",
+     "lib/hammer/component/drag_drop.rb",
      "lib/hammer/component/form.rb",
+     "lib/hammer/component/form_part.rb",
      "lib/hammer/component/inspection.rb",
      "lib/hammer/component/passing.rb",
      "lib/hammer/component/rendering.rb",
      "lib/hammer/component/state.rb",
-     "lib/hammer/component/traversing.rb",
      "lib/hammer/config.rb",
      "lib/hammer/core.rb",
      "lib/hammer/core/action.rb",
@@ -58,10 +59,13 @@ Gem::Specification.new do |s|
      "lib/hammer/core/observable.rb",
      "lib/hammer/core/web_socket/connection.rb",
      "lib/hammer/css.rb",
+     "lib/hammer/fiber.rb",
      "lib/hammer/jquery.rb",
+     "lib/hammer/js_string.rb",
      "lib/hammer/load.rb",
      "lib/hammer/loader.rb",
      "lib/hammer/logger.rb",
+     "lib/hammer/monkey/basic_object.rb",
      "lib/hammer/monkey/erector.rb",
      "lib/hammer/runner.rb",
      "lib/hammer/weak_array.rb",
@@ -85,7 +89,6 @@ Gem::Specification.new do |s|
      "lib/hammer/widget/layout.rb",
      "lib/hammer/widget/optionable_collection.rb",
      "lib/hammer/widget/passing.rb",
-     "lib/hammer/widget/state.rb",
      "lib/hammer/widget/wrapping.rb"
   ]
   s.rdoc_options = ["--charset=UTF-8"]

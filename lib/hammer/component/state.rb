@@ -1,8 +1,6 @@
 module Hammer::Component::State
 
   def self.included(base)
-    base.send :alias_method, :super_to_html, :to_html
-    base.send :include, InstanceMethods
     base.extend ClassMethods
     base.instance_eval do
       def method_added(name)
@@ -43,9 +41,9 @@ module Hammer::Component::State
 
     private
 
-    # hooks {InstanceMethods#change!} after method with +name+
+    # hooks {#change!} after method with +name+
     def hook_change_to_method(name)
-      name =~ /^([\w_]*)(|\?|!|=)$/
+      name.to_s =~ /^([\w_]*)(|\?|!|=)$/
       class_eval <<-STR , __FILE__, __LINE__+1
         def #{$1}_with_change#{$2}(*args, &block)
           __send__ "#{$1}_without_change#{$2}", *args, &block
@@ -56,38 +54,29 @@ module Hammer::Component::State
     end
   end
 
-  module InstanceMethods
+  # tells component that it's changed
+  def change!
+    @_changed = true
+    @_sended = false
+  end
 
-    # tells component that it's changed
-    def change!
-      @_changed = true
-    end
+  # @return [Boolean] if component id changed
+  def changed?
+    !!@_changed
+  end
 
-    # @return [Boolean] if component id changed
-    def changed?
-      @_changed
-    end
+  # resets component change state
+  def reset_change!
+    @_changed = false
+  end
 
-    # resets component change state
-    def reset!
-      @_changed = false
-    end
+  # is updated html sended to client?
+  def unsended?
+    !@_sended
+  end
 
-    # @return [String] rendered html
-    # @param [Hash] options
-    def to_html(options = {})
-      return super unless options[:update]
-      self_update(options) + children_update(options)
-    end
-
-    protected
-
-    def self_update(options)
-      changed? ? super_to_html(options) : ''
-    end
-
-    def children_update(options)
-      children.map {|child| child.to_html(options) }.join
-    end
+  # set to update to sended
+  def send!
+    @_sended = true
   end
 end

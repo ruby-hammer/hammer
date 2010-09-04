@@ -27,8 +27,8 @@ module Hammer::Core
     # @param [String] warn warning which will be shown to user
     def restart_context(id, hash, connection, warn = nil)
       context = @contexts[id] = Context.new(id, self, hash)
-      context.connection=(connection)
-      context.schedule(false) { context.update.warn(warn).send! }
+      context.set_connection(connection)
+      context.schedule(false) { context.new_message.collect_updates.warn(warn).send! }
       context
     end
 

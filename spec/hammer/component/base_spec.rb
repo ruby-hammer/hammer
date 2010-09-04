@@ -4,6 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Hammer::Component::Base do
   include HammerMocks
+  setup_context
 
   class FooComponent < Hammer::Component::Base
     define_widget :quickly do
@@ -12,18 +13,19 @@ describe Hammer::Component::Base do
   end
 
   describe '.new' do
-    it { lambda {FooComponent.new}.should raise_error }
+    it { lambda {FooComponent.new}.should_not raise_error }
+    it { FooComponent.new.context.should == context }
   end
 
   describe '#to_html' do
-    subject { FooComponent.new(:context => context_mock).to_html }
+    subject { c = FooComponent.new; update c }
     it { should match(/foo content/)}
 
     describe 'when passed' do
       subject do
-        component = Hammer::Component::Base.new(:context => context_mock)
-        component.instance_eval { pass_on FooComponent.new(:context => context) }
-        component.to_html
+        component = Hammer::Component::Base.new
+        component.instance_eval { pass_on FooComponent.new }
+        update component
       end
       it { should match(/foo content/)}
     end
@@ -31,9 +33,9 @@ describe Hammer::Component::Base do
 
   describe "#ask" do
     let :component do
-      component = Hammer::Component::Base.new(:context => context_mock)
+      component = Hammer::Component::Base.new
       @asked = component.instance_eval do
-        ask(Hammer::Component::Base.new(:context => context)) {|answer| @answer = answer }
+        ask(Hammer::Component::Base.new) {|answer| @answer = answer }
       end
       component
     end
@@ -52,8 +54,8 @@ describe Hammer::Component::Base do
   end
 
   describe '#widget', '#component' do
-    subject { @component = FooComponent.new(:context => context_mock).widget.component;  }
-    it { should == @component }
+    before { @component = FooComponent.new }
+    it { @component.widget.component.should == @component }
   end
 
 

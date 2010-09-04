@@ -5,7 +5,6 @@ module Hammer::Component::Developer
 
     attr_reader :tool
     changing { attr_writer :tool }
-    children :tool
 
     define_widget do
       css do

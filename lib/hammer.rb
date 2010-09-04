@@ -12,7 +12,7 @@ unless defined? Hammer
 
   # stdlib
   require 'pp'
-  require 'fiber'
+  require 'hammer/fiber'
   require 'benchmark'
 
   # hammer
@@ -45,6 +45,7 @@ unless defined? Hammer
 
   end
 
+  require 'hammer/monkey/basic_object'
   require 'hammer/load.rb'
 
   #  files = Dir.glob("#{File.expand_path(File.dirname(__FILE__))}/hammer/**/*.rb")

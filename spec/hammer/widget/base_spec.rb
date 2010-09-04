@@ -4,51 +4,67 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Hammer::Widget::Base do
   include HammerMocks
+  setup_context
 
-  module Foo
-    class FooWidget < Hammer::Component::Base::Widget
-      wrap_in :span
-    end
-    class DooWidget < Hammer::Widget::Base
-      wrap_in :span
-    end
-  end
+  describe '#render' do
+    let (:klass) { Class.new(Hammer::Component::Base) }
 
-  describe Foo::FooWidget do
-    
-    describe '#render' do
-      describe "(a_widget)" do
-        subject do
-          (@widget = Foo::FooWidget.new(:component => component_mock, :root_widget => true) do |w|
-            w.render @subwidget = Foo::DooWidget.new(:component => component_mock)
-          end).to_html
-        end
-        it { should == "<span class=\"#{Foo::FooWidget.css_class} component\" id=\"#{@widget.component.object_id}\">" +
-              "<span class=\"#{Foo::DooWidget.css_class}\"></span></span>"}
-      end
+    describe "(a_widget)" do
+      before do
+        klass.class_eval do
+          define_widget :A, :Widget do
+            wrap_in :span
+            def content
+              render component.class.widget_class(:B).new :component => component
+            end
 
-      describe "(a_object_responding_to_widget)" do
+            def self.css_class; 'a';end
+          end
 
-        class ObjectWithWidget
-          def widget
-            @number = 3
-            Erector.inline(:obj => @number) { text @obj }
+          define_widget :B, :Widget do
+            wrap_in :span
+            def self.css_class; 'b';end
           end
         end
+      end      
 
-        subject do
-          (@widget = Foo::FooWidget.new(:component => component_mock, :root_widget => true) do |w|
-            w.render @obj = ObjectWithWidget.new
-          end).to_html
+      subject do
+        @instance = klass.new(:widget_class => :A)
+        update @instance
+      end
+      
+      it { should == "<span class=\"#{klass.widget_class(:A).css_class} root component\" id=\"#{@instance.object_id}\">" +
+            "<span class=\"#{klass.widget_class(:B).css_class}\"></span></span>"}
+    end
+
+    describe "(a_object_responding_to_widget)" do
+
+      before do
+        klass.class_eval do
+          class ObjectWithWidget
+            def widget
+              @number = 3
+              Erector.inline(:obj => @number) { text @obj }
+            end
+          end
+
+          define_widget :A, :Widget do
+            wrap_in :span
+            def content
+              render ObjectWithWidget.new
+            end
+            def self.css_class; 'a';end
+          end
         end
-        it { should == "<span class=\"#{Foo::FooWidget.css_class} component\"" +
-              " id=\"#{@widget.component.object_id}\">3</span>" }
+      end
+      
+      subject do
+        @instance = klass.new(:widget_class => :A)
+        update @instance
       end
 
-      describe "(other)" do
-        subject { lambda { Foo::FooWidget.new(:component => component_mock) {|w| w.render Object.new }.to_html} }
-        it { should raise_error(ArgumentError) }
-      end
+      it { should == "<span class=\"#{klass.widget_class(:A).css_class} root component\"" +
+            " id=\"#{@instance.object_id}\">3</span>" }
     end
   end
 end

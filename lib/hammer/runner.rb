@@ -7,7 +7,6 @@ module Hammer::Runner
   class << self
 
     def run!
-      #          encoding
       load_app_files
       generate_css
       Hammer::Core::Base.run!

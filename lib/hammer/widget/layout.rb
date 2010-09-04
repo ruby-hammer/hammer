@@ -17,7 +17,7 @@ module Hammer::Widget
     depends_on :js, 'js/jquery-no_conflict.js'
     depends_on :js, 'js/right.js'
     depends_on :js, 'js/hammer.js'
-    depends_on :css,"css/#{Hammer.config[:app][:name].underscore}.css"
+    depends_on :css, "css/#{Hammer.config[:app][:name].underscore}.css" if Hammer.config[:app][:name]
     depends_on :'shortcut icon',"hammer.png"
     #
 

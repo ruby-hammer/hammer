@@ -61,13 +61,16 @@ module Hammer::Component::Rendering
     # @see #define_widget
     def parent_widget_class(name)
       return name if name.kind_of? Class
-      check_class widget_classes[name] || superclass.try(:parent_widget_class, name)
+      check_class widget_classes[name] || begin
+        superclass.parent_widget_class name if superclass.respond_to? :parent_widget_class
+      end
     end
 
     private
 
+    # raise error if klass is missing
     def check_class(klass)
-      return klass || raise(Hammer::Component::MissingWidgetClass, self)
+      return klass || raise(Hammer::Component::MissingWidgetClass, self.to_s)
     end
   end
 
@@ -77,9 +80,13 @@ module Hammer::Component::Rendering
   end
 
   # @return [String] rendered html
-  # @param [Hash] options
-  def to_html(options = {})
-    widget.to_html(options)
+  def to_html
+    if changed? || !@_html
+      delete_old_actions
+      @_html = widget.to_html
+      reset_change!
+    end
+    @_html
   end
 
   # @return [Class] which is used to insatiate widget
@@ -90,6 +97,23 @@ module Hammer::Component::Rendering
     when nil then self.class.widget_class
     else raise ArgumentError
     end
+  end
+
+  # @return [Array<Hammer::Component::Base>] of children components
+  def children
+    to_html if changed?
+    _children
+  end
+
+  # @private
+  # method used to actualize children during rendering from widget
+  def _children
+    @_children ||= []
+  end
+
+  # @return [Array<Hammer::Component::Base>] all children, self included
+  def all_children
+    children.inject([self]) {|arr, child| arr + child.all_children }
   end
 
   protected
@@ -104,5 +128,12 @@ module Hammer::Component::Rendering
   def widget_assigns
     { :component => self, :root_widget => true }
   end
+
+  private
+
+  def delete_old_actions
+    context.actions.delete_if {|id, action| action.component == self } # FIXME maybe slow
+  end
+  
 
 end

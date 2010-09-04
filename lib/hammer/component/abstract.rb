@@ -2,17 +2,21 @@
 
 module Hammer::Component
 
-  class SuperAbstract
-    include Erector::Needs
-    include Erector::AfterInitialize
-  end
+  module AbstractImpl
+    def self.included(base)
+      base.extend ClassMethods
+    end
 
-  # represents component of a page. The basic logic building blocks of a application.
-  class Abstract < SuperAbstract
+    module ClassMethods
+      # adds proper {Core::Context} automatically
+      # @param [Hash] assigns are passed to +klass+.new
+      def new(assigns = {})
+        assigns[:context] ||= Hammer.get_context || raise('trying to create outside Fiber')
+        super assigns
+      end
+    end
 
-    needs :context
-    attr_reader :context
-
+    # stores assigns into instance_variables
     def initialize(assigns = {})
       check_assigns(assigns)
       @_assigns = assigns
@@ -20,15 +24,6 @@ module Hammer::Component
       assigns.each do |name, value|
         instance_variable_set(name.to_s[0] == '@' ? name : "@#{name}", value)
       end
-
-      super
-    end
-
-    # adds proper {Core::Context} automatically
-    # @param [Hash] assigns are passed to +klass+.new
-    def self.new(assigns = {})
-      assigns[:context] ||= Hammer.get_context || raise('trying to create outside Fiber')
-      super assigns
     end
 
     # registers action to #component for later evaluation
@@ -36,6 +31,11 @@ module Hammer::Component
     # @return [String] uuid of the action
     def register_action(&block)
       context.register_action(self, &block)
+    end
+
+    # is component root of the context
+    def root?
+      context.root_component == self
     end
 
     private
@@ -46,5 +46,15 @@ module Hammer::Component
       end
     end
 
+  end
+
+  # represents component of a page. The basic logic building blocks of a application.
+  class Abstract
+    include AbstractImpl
+    include Erector::Needs
+    include Erector::AfterInitialize
+
+    needs :context
+    attr_reader :context
   end
 end

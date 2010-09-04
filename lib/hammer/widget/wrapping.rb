@@ -46,6 +46,6 @@ module Hammer::Widget::Wrapping
 
   # @return [Array<String,Symbol>] wrapper's css classes
   def wrapper_classes
-    [self.class.css_class]
+    [self.class.css_class] + (component.root? && root_widget? ? ['root'] : [])
   end
 end
