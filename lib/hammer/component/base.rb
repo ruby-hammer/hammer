@@ -6,6 +6,7 @@ module Hammer::Component
   class Base < Abstract
     include State
     include Rendering
+    include Sharing
 
     include Answering
     include Passing

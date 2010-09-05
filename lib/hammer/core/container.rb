@@ -1,14 +1,17 @@
 # encoding: UTF-8
 
 module Hammer::Core
+  class Shared
+    include Observable
+  end
 
   # Manages all context of one user.
   # This is the one object which is stored in session.
   class Container
 
-    attr_reader :id
+    attr_reader :id, :shared
     def initialize(id)
-      @id, @contexts = id, {}
+      @id, @contexts, @shared = id, {}, Hammer.config[:app][:shared].constantize.new
     end
 
     # @return [Base, nil] {Base} with +id+

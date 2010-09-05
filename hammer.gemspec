@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-03}
+  s.date = %q{2010-09-04}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -97,7 +97,6 @@ Gem::Specification.new do |s|
   s.summary = %q{ruby component based state-full web framework}
   s.test_files = [
     "spec/hammer/jquery_spec.rb",
-     "spec/hammer/widget/state_spec.rb",
      "spec/hammer/widget/wrapping_spec.rb",
      "spec/hammer/widget/passing_spec.rb",
      "spec/hammer/widget/base_spec.rb",
