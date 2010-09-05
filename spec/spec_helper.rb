@@ -11,6 +11,8 @@ module HammerMocks
     base.let(:widget_mock) { mock(:widget, :component => component_mock) }
 
     base.extend ClassMethods
+
+    base.before(:all) { Hammer.run_after_load! }
   end
 
   module ClassMethods

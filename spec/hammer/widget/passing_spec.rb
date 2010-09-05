@@ -9,9 +9,11 @@ describe Hammer::Widget::Passing do
     klass.class_eval do
       needs :sub => nil
       attr_reader :sub
-      define_widget :quickly do
-        text 'component'
-        render component.sub if component.sub
+      define_widget do
+        def content
+          text 'component'
+          render component.sub if component.sub
+        end
       end
       widget_class.stub(:css_class).and_return('AComponent')
     end

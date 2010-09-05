@@ -43,10 +43,21 @@ unless defined? Hammer
       Fiber.current.hammer_context || raise('unset context in fiber')
     end
 
+    def self.after_load(&block)
+      @after_load ||= []
+      @after_load << block
+    end
+
+    def self.run_after_load!
+      [*@after_load].each {|proc| proc.call }
+      @after_load = []
+    end
   end
 
   require 'hammer/monkey/basic_object'
   require 'hammer/load.rb'
+
+  Hammer.run_after_load!
 
   #  files = Dir.glob("#{File.expand_path(File.dirname(__FILE__))}/hammer/**/*.rb")
   #  Hammer::Loader.new(files).load!

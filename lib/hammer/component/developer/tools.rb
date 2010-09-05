@@ -6,7 +6,7 @@ module Hammer::Component::Developer
     attr_reader :tool
     changing { attr_writer :tool }
 
-    define_widget do
+    class Widget < widget_class :Widget
       css do
         li { list_style 'square' }
       end

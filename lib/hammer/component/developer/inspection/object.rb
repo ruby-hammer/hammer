@@ -38,7 +38,7 @@ module Hammer::Component::Developer::Inspection
       @components = []
     end
 
-    define_widget do
+    class Widget < widget_class :Widget
       def content
         packed
         ul { unpacked } unless packed?
