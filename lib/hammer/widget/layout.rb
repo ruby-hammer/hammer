@@ -11,7 +11,7 @@ module Hammer::Widget
     depends_on :js, 'js/swfobject.js'
     depends_on :js, 'js/FABridge.js'
     depends_on :js, 'js/web_socket.js'
-    
+
     depends_on :js, 'js/jquery-1.4.2.js'
     depends_on :js, 'js/jquery.ba-hashchange.js'
     depends_on :js, 'js/jquery-no_conflict.js'

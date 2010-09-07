@@ -40,7 +40,7 @@ module Hammer::Core
     end
 
     # collect updates for the user and stores it in {Message}
-    def collect_updates      
+    def collect_updates
       Hammer.benchmark('Actualization') do
         @message[:update] = context.unsended_components.map {|c| c.send!; c.to_html }.join
       end

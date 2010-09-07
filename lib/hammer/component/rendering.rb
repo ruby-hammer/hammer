@@ -156,6 +156,6 @@ module Hammer::Component::Rendering
   def delete_old_actions
     context.actions.delete_if {|id, action| action.component == self } # FIXME maybe slow
   end
-  
+
 
 end

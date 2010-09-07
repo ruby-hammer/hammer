@@ -7,7 +7,7 @@ module Hammer::Runner
   class << self
 
     def run!
-      load_app_files      
+      load_app_files
       generate_css
       Hammer::Core::Base.run!
       setup_application

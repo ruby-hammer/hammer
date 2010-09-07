@@ -24,7 +24,7 @@ module Hammer::Component
       def wrapper_options
         super.merge :rel => 'draggable', :'data-draggable-options' => component.class._draggable.to_json
       end
-    end  
+    end
   end
 
   # include to {Hammer::Component::Base} for enable droppable

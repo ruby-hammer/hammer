@@ -62,7 +62,7 @@ module Hammer::Finalizer
 
     # executes finalizers
     def finalizer
-      lambda do |object_id|        
+      lambda do |object_id|
         @finalizers[object_id].each do |_,finalizer|
           begin
             finalizer.call(object_id)
