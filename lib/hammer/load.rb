@@ -1,10 +1,11 @@
 require "hammer/monkey/erector.rb"
+require "hammer/monkey/proc.rb"
 
 require "hammer/jquery.rb"
 require "hammer/css.rb"
 require "hammer/weak_array.rb"
 require "hammer/js_string.rb"
-#require "hammer/finalize.rb"
+require "hammer/finalizer.rb"
 
 require "hammer/widget.rb"
 require "hammer/widget/abstract.rb"

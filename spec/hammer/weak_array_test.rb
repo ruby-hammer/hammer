@@ -5,6 +5,11 @@
 module Hammer; end
 require File.expand_path(File.dirname(__FILE__) + '/../../lib/hammer/weak_array.rb')
 
+def trigger_gc
+  ObjectSpace.define_finalizer(Object.new, proc {})
+  GC.start
+end
+
 class Foo < Object; end
 
 lambda do
@@ -21,12 +26,12 @@ lambda do
 
   puts '-- should 1'
   lambda { weak_array.each {|e| p e } }.call
-  GC.start; GC.start; sleep 0.1
+  trigger_gc
   puts '-- should 0'
   lambda { weak_array.each {|e| p e } }.call
 
 end.call
-GC.start; GC.start; sleep 0.1;
+trigger_gc;
 puts '----'
 
 
@@ -38,12 +43,12 @@ lambda do
 
   lambda { puts '-- should a weak array', (ObjectSpace._id2ref(weak_id) rescue nil) }
 
-  GC.start; GC.start; sleep 0.1
+  trigger_gc
 
   puts '-- should nil', (ObjectSpace._id2ref(weak_id) rescue nil)
 
 end.call
-GC.start; GC.start; sleep 0.1
+trigger_gc
 puts '----'
 
 
@@ -61,12 +66,12 @@ lambda do
 
   lambda { puts '-- should a weak array', (ObjectSpace._id2ref(weak_id) rescue nil) }.call
 
-  GC.start; GC.start; sleep 0.1
+  trigger_gc
 
   puts '-- should nil', (ObjectSpace._id2ref(weak_id) rescue nil)
 
 end.call
-GC.start; GC.start; sleep 0.1
+trigger_gc
 puts '----'
 
 #Memprof.dump_all 'file.json'
