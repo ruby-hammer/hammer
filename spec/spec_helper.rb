@@ -29,6 +29,20 @@ module HammerMocks
       end
     end
   end
+
+  def trigger_gc
+    disabled = GC.enable
+    ObjectSpace.define_finalizer(Object.new, proc {}) # hack for 1.9, i do not why
+    ObjectSpace.garbage_collect
+    GC.disable if disabled
+  end
+
+  def isolate
+    yield
+
+    nil
+  end
+
 end
 
 RSpec.configure do |config|

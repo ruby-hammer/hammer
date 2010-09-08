@@ -10,7 +10,7 @@ module Hammer::Component::Rendering
   module ClassMethods
     # @return [Hash{Symbol => Class}] defined widget classes
     def widget_classes(inherited = true)
-      self.constants(inherited).inject({}) do |hash, const|
+      widget_class_candidates(inherited).inject({}) do |hash, const|
         if (klass = const_get(const)) < Hammer::Widget::Base
           hash[const] = klass
         end
@@ -93,6 +93,18 @@ module Hammer::Component::Rendering
     # raise error if klass is missing
     def check_class(klass)
       return klass || raise(Hammer::Component::MissingWidgetClass, self.to_s)
+    end
+
+    def widget_class_candidates(inherited)
+      if Hammer.v19?
+        self.constants(inherited)
+      else
+        self.constants + if inherited && superclass.respond_to?(:widget_class_candidates, true)
+          superclass.send :widget_class_candidates, inherited
+        else
+          []
+        end
+      end.map(&:to_sym)
     end
   end
 

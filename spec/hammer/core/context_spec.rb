@@ -75,7 +75,7 @@ describe Hammer::Core::Context do
 #      it { context.instance_variable_get(:@message).should == {} }
 #    end
 #  end
-#  
+#
 #  describe '#send_id' do
 #    before { context.send_id(mock(:connection)) }
 #    it { context.instance_variable_get(:@message).should == {:context_id => 'id'} }

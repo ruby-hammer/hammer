@@ -26,13 +26,13 @@ describe Hammer::Widget::Base do
             def self.css_class; 'b';end
           end
         end
-      end      
+      end
 
       subject do
         @instance = klass.new(:widget_class => :A)
         update @instance
       end
-      
+
       it { should == "<span class=\"#{klass.widget_class(:A).css_class} root component\" id=\"#{@instance.object_id}\">" +
             "<span class=\"#{klass.widget_class(:B).css_class}\"></span></span>"}
     end
@@ -57,7 +57,7 @@ describe Hammer::Widget::Base do
           end
         end
       end
-      
+
       subject do
         @instance = klass.new(:widget_class => :A)
         update @instance

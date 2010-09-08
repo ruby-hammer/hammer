@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-07}
+  s.date = %q{2010-09-08}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
      "lib/hammer/component/developer/inspection/hash.rb",
      "lib/hammer/component/developer/inspection/module.rb",
      "lib/hammer/component/developer/inspection/object.rb",
+     "lib/hammer/component/developer/inspection/proc.rb",
      "lib/hammer/component/developer/inspection/simple.rb",
      "lib/hammer/component/developer/log.rb",
      "lib/hammer/component/developer/tools.rb",
@@ -60,6 +61,7 @@ Gem::Specification.new do |s|
      "lib/hammer/core/web_socket/connection.rb",
      "lib/hammer/css.rb",
      "lib/hammer/fiber.rb",
+     "lib/hammer/finalizer.rb",
      "lib/hammer/jquery.rb",
      "lib/hammer/js_string.rb",
      "lib/hammer/load.rb",
@@ -67,8 +69,9 @@ Gem::Specification.new do |s|
      "lib/hammer/logger.rb",
      "lib/hammer/monkey/basic_object.rb",
      "lib/hammer/monkey/erector.rb",
+     "lib/hammer/monkey/proc.rb",
      "lib/hammer/runner.rb",
-     "lib/hammer/weak_array.rb",
+     "lib/hammer/weak.rb",
      "lib/hammer/widget.rb",
      "lib/hammer/widget/abstract.rb",
      "lib/hammer/widget/base.rb",
@@ -102,12 +105,13 @@ Gem::Specification.new do |s|
      "spec/hammer/widget/base_spec.rb",
      "spec/hammer/widget/component_spec.rb",
      "spec/hammer/loader_spec.rb",
-     "spec/hammer/weak_array_spec.rb",
      "spec/hammer/component/state_spec.rb",
      "spec/hammer/component/form_spec.rb",
      "spec/hammer/component/developer/inspection/array_spec.rb",
      "spec/hammer/component/developer/inspection/object_spec.rb",
      "spec/hammer/component/base_spec.rb",
+     "spec/hammer/finalizer_spec.rb",
+     "spec/hammer/weak_spec.rb",
      "spec/hammer/core/container_spec.rb",
      "spec/hammer/core/context_spec.rb",
      "spec/hammer/core/observable_spec.rb",
