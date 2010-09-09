@@ -239,8 +239,82 @@ describe Hammer::Weak::Queue do
 
     Hammer::Finalizer.get.should_not have_key(@id1)
     Hammer::Finalizer.get.should_not have_key(@queue_id)
+  end
+end
 
+describe Hammer::Weak.Hash(:value) do
+  include HammerMocks
+  H = Hammer::Weak.Hash(:value)
+  before(:all) { GC.disable }
 
+  describe 'hash behaveior' do
+    before do
+      @hash = H.new
+      @hash[:a] = @str = 'a'
+      @hash['b'] = 'b'
+      @hash[:c] = @str
+      @hash2 = H.new
+      @hash2[:a] = @str
+    end
+    it 'should containt added elements' do
+      @hash.should have_key(:a)
+      @hash.should have_key('b')
+      @hash.should have_key(:c)
+      @hash2.should have_key(:a)
+      @hash['b'].should == 'b'
+      @hash[:a].object_id.should == @hash[:c].object_id
+      @hash2[:a].object_id.should == @hash[:c].object_id
+      @hash.size.should == 3
+      @hash2.size.should == 1
+    end
+
+    describe "after owerwriting and deleting" do
+      before do
+        @hash[:a] = 'c'
+        @hash['b'] = 12.3
+        @hash.delete :c
+      end
+      it 'should have changed elements' do
+        @hash.should have_key(:a)
+        @hash.should have_key('b')
+        @hash.should_not have_key(:c)
+        @hash[:a].should == 'c'
+        @hash['b'].should == 12.3
+        @hash.size.should == 2
+      end
+    end
+  end
+
+  it 'elements should have weak properties' do
+    isolate do
+      @h = H.new
+      @deleted_id = (@h['key'] = Object.new).object_id
+      @h[:a] = @o = Object.new
+      @h['key'].nil?.should == false
+    end
+
+    trigger_gc
+
+    @h['key'].should be_nil
+    @h[:a].should_not be_nil
+    Hammer::Finalizer.get(@deleted_id).should be_blank
+  end
+
+  it 'hash should have weak properties' do
+    isolate do
+      h = H.new
+      @hash_id = h.object_id
+      h[:a] = @o = Object.new
+      h[:b] = o = Object.new
+      @obj1_id = @o.object_id
+      @obj2_id = o.object_id
+    end
+
+    trigger_gc
+
+    Hammer::Finalizer.get(@hash_id).should be_blank
+    Hammer::Finalizer.get(@obj1_id, @hash_id).should be_blank
+    Hammer::Finalizer.get(@obj2_id, @hash_id).should be_blank
   end
 end
 

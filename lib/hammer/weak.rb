@@ -127,96 +127,241 @@ module Hammer::Weak
   #
   #  end
 
+  # abstract class for weak collections
   class Abstract
+
+    include Enumerable
+
+    # adds collection's finalizer
+    def initialize
+      Hammer::Finalizer.add self, :"#{self.class}", self.class.finalize_itself
+    end
+
+    # @return [Fixnum] collection's size
+    def size
+      storage.size
+    end
+
+    # @return [Boolean] if collection is empty
+    def empty?
+      size == 0
+    end
+
+    private
+
+    # @param [Fixnum, nil] object_id by which is object searched
+    # @return [Object, nil] by its object_id
     def get_object(id)
-      ObjectSpace._id2ref id
+      ObjectSpace._id2ref id if id
     rescue RangeError
     end
+
+    # @return collection's storage
+    def storage
+      self.class.storage(self.object_id)
+    end
+
+    # @param [Fixnum] id collection's object_id
+    # @return collection's storage by id
+    def self.storage(id)
+      @storages[id]
+    end
+
+    # @return [Hash{Fixnum=>Object}] all storages
+    def self.storages
+      @storages
+    end
+
+    @storages = {}
+    # initializes @storages in subclasses
+    def self.inherited(subclass)
+      super
+      subclass.instance_eval { @storages = {} }
+    end
+
   end
 
+  # Weak Queue
   class Queue < Abstract
 
     def initialize
-      Hammer::Finalizer.add self, :queue_finalizer, self.class.finalize_queue
+      super
+      self.class.storages[object_id] = []
     end
 
+    # like Array#push
     def push(*objects)
       add(:push, *objects)
     end
 
+    # like Array#delete but can delete multiple objects
     def delete(*objects)
-      object_ids = objects.map(&:object_id)
-      ids.delete_if {|id| object_ids.include? id }
       objects.each do |object|
-        Hammer::Finalizer.remove(object, object_id)
+        Hammer::Finalizer.remove(object, object_id).call(object.object_id)
       end
       objects
     end
 
+    # like Array#pop
     def pop(n = 1)
-      delete(*ids.last(n))
+      delete(*storage.last(n))
     end
 
+    # like Array#shift
     def shift(n = 1)
-      delete(*ids.first(n))
+      delete(*storage.first(n))
     end
 
+    # like Array#unshift
     def unshift(*objects)
       add(:unshift, objects)
     end
 
+    # iterates through queue
     def each(&block)
-      ids.each do |id|
+      storage.each do |id|
         if obj = get_object(id)
           block.call obj
         end
       end
     end
 
-    def size
-      ids.size
-    end
-
-    def empty?
-      size == 0
-    end
-
+    # @return [Array<Object>] with all objects stored in Queue
     def to_a
-      ids.map {|id| get_object(id)}.compact
+      storage.map {|id| get_object(id)}.compact
     end
-
-    include Enumerable
 
     private
 
     def add(method, *objects)
       objects.each do |object|
-        ids.send(method, object.object_id)
-        Hammer::Finalizer.add object, object_id, self.class.finalize_item(self.object_id)
+        storage.send(method, object.object_id)
+        Hammer::Finalizer.add object, object_id, self.class.finalize_item(object_id)
       end
       self
     end
 
-    def ids
-      self.class.ids(self.object_id)
-    end
-
     def self.finalize_item(queue_id)
-      lambda {|id| self.ids(queue_id).delete(id) }
+      lambda {|id| storage(queue_id).delete(id) }
     end
 
-    def self.finalize_queue
-      lambda {|queue_id| self.ids(queue_id).each {|item_id| Hammer::Finalizer.remove(item_id, queue_id) }}
+    def self.finalize_itself
+      lambda do |queue_id|
+        storage(queue_id).each {|item_id| Hammer::Finalizer.remove(item_id, queue_id) }
+        storages.delete queue_id
+      end
     end
 
-    def self.ids(queue_id)
-      @ids[queue_id] ||= []
+  end
+
+  def self.Hash(*options)
+    if options == [:value]
+      WeakValueHash
+    else
+      raise ArgumentError
+    end
+  end
+
+  class WeakValueHash < Abstract
+
+    class BidirectionalHash
+      def initialize
+        @hash, @reverse = {}, {}
+      end
+
+      def add(key, value)
+        @hash[key] = value
+        @reverse[value] ||= []
+        @reverse[value] << key
+      end
+
+      def get(key)
+        @hash[key]
+      end
+
+      def get_keys(value)
+        @reverse[value]
+      end
+
+      def remove(key)
+        if value = @hash[key]
+          @reverse[value].delete(key)
+          @reverse.delete value if @reverse[value].empty?
+          @hash.delete key
+        end
+      end
+
+      def remove_value(value)
+        keys = @reverse[value]
+        @reverse.delete value
+        keys.each {|key| @hash.delete(key) }
+      end
+
+      def each(&block)
+        @hash.each {|k,v| block.call k,v }
+      end
+
+      def size
+        @hash.size
+      end
     end
 
-    @ids = {}
-    def self.inherited(subclass)
+    def initialize
       super
-      subclass.instance_eval { @ids = {} }
+      self.class.storages[object_id] = BidirectionalHash.new
+    end
+
+    def [](key)
+      get_object storage.get(key)
+    end
+
+    def has_key?(key)
+      !!get_object(storage.get(key))
+    end
+
+    def []=(key, value)
+      delete(key)
+      add(key, value)
+      value
+    end
+
+    def each(&block)
+      storage.each {|k,v| block.call k,v }
+    end
+
+    def delete(key)
+      value = storage.get key
+      storage.remove key
+      Hammer::Finalizer.remove value, object_id if storage.get_keys(value).blank?
+      value
+    end
+
+    def to_hash
+      inject({}) do |hash, pair|
+        k,v = pair
+        hash[k] = v
+        hash
+      end
+    end
+
+    private
+
+    def add(key, value)
+      storage.add key, value.object_id
+      unless Hammer::Finalizer.get value, object_id
+        Hammer::Finalizer.add value, object_id, self.class.finalize_item(object_id)
+      end
+    end
+
+    def self.finalize_item(hash_id)
+      lambda {|id| storage(hash_id).remove_value(id) }
+    end
+
+    def self.finalize_itself
+      lambda do |hash_id|
+        storage(hash_id).each {|_,value_id| Hammer::Finalizer.remove(value_id, hash_id) }
+        storages.delete hash_id
+      end
     end
   end
 

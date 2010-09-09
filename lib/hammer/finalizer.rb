@@ -34,7 +34,7 @@ module Hammer::Finalizer
         @finalizers[id]
       when 2 then
         id = get_id options[0]
-        @finalizers[id][options[1]]
+        ( @finalizers[id] && @finalizers[id][options[1]] ) || nil
       end
     end
 
@@ -44,10 +44,10 @@ module Hammer::Finalizer
     def remove(obj, name)
       id = get_id(obj)
       if @finalizers[id]
-        @finalizers[id].delete name if @finalizers[id][name]
+        finalizer = @finalizers[id].delete name if @finalizers[id][name]
         @finalizers.delete id if @finalizers[id].empty?
+        finalizer
       end
-      nil
     end
 
     private
