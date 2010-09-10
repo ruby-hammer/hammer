@@ -1,132 +1,5 @@
 module Hammer::Weak
 
-  # holds objects weakly
-  #  class WeakArray
-  #
-  #    class ReferenceStore
-  #      def initialize
-  #        @reference_array_by_weakhash_id = {}
-  #        @reference_arrays_by_obj_id = {}
-  #      end
-  #
-  #      def add(weak_array_id, obj_id)
-  #        ref_arr = reference_array(weak_array_id) << obj_id
-  #        ref_arrs = reference_arrays(obj_id)
-  #        ref_arrs << ref_arr unless ref_arrs.include? ref_arr
-  #      end
-  #
-  #      def remove_weak_array(weak_array_id)
-  #        (ref_arr = @reference_array_by_weakhash_id.delete(weak_array_id)).each do |ref|
-  #          remove_referenece_array(ref, ref_arr)
-  #        end
-  #      end
-  #
-  #      def remove_object_id(obj_id)
-  #        reference_arrays(obj_id).each {|arr| arr.delete obj_id }
-  #        @reference_arrays_by_obj_id.delete obj_id
-  #      end
-  #
-  #      def remove(weak_array_id, obj_id)
-  #        (ref_arr = reference_array(weak_array_id)).delete(obj_id)
-  #        remove_referenece_array(obj_id, ref_arr)
-  #      end
-  #
-  #      # @param [Fixnum] weak_array_id
-  #      # @return [Array<Fixnum>] of references for +weak_array_id+
-  #      def reference_array(weak_array_id)
-  #        @reference_array_by_weakhash_id[weak_array_id] ||= ReferenceArray.new
-  #      end
-  #
-  #      # @param [Fixnum] obj_id
-  #      # @return [Set] of reference arrays containing +object_id+
-  #      def reference_arrays(obj_id)
-  #        @reference_arrays_by_obj_id[obj_id] ||= []
-  #      end
-  #
-  #      private
-  #
-  #      def remove_referenece_array(obj_id, reference_array)
-  #        (ref_arrs = reference_arrays(obj_id)).delete reference_array
-  #        @reference_arrays_by_obj_id.delete obj_id if ref_arrs.empty?
-  #      end
-  #    end
-  #
-  #    class ReferenceArray < Array
-  #      def ==(other)
-  #        object_id == other.object_id
-  #      end
-  #    end
-  #
-  #    STORE = ReferenceStore.new unless defined? STORE
-  #
-  #    include Enumerable
-  #
-  #    # @param [Object] objects which will be inserted into array
-  #    def initialize(*objects)
-  #      # drop reference array after this instance of WeakArray is GCed
-  #      ObjectSpace.define_finalizer(self, self.class.finalizer_for_reference_array)
-  #      push *objects
-  #    end
-  #
-  #    # @param [Object] objects which will be inserted into array
-  #    # @return self
-  #    def push(*objects)
-  #      objects.each do |obj|
-  #        # delete its id after obj is GCed
-  #        unless obj.instance_variable_get :@__weak_array_finalizer
-  #          ObjectSpace.define_finalizer(obj, self.class.finalizer_for_weakly_held_object)
-  #          obj.instance_variable_set :@__weak_array_finalizer, true
-  #        end
-  #        STORE.add(object_id, obj.object_id)
-  #      end
-  #      self
-  #    end
-  #
-  #    alias_method :<<, :push
-  #
-  #    # @yield block iterated through array
-  #    # @yieldparam [Object] object in current iteration
-  #    # @return self
-  #    def each(&block)
-  #      STORE.reference_array(object_id).each do |id|
-  #        if obj = get_object(id)
-  #          block.call obj
-  #        end
-  #      end
-  #      self
-  #    end
-  #
-  #    # @param [Object] obj to delete
-  #    # @return [Object, nil] deleted object or nil when +obj+ was not found
-  #    def delete(obj)
-  #      STORE.remove_object_id(obj.object_id)
-  #    end
-  #
-  #    # @return [Array<Objects>] of stored objects
-  #    def to_a
-  #      self.inject([]) {|arr, obj| arr << obj }
-  #    end
-  #
-  #    private
-  #
-  #    # @return [Object, nil] retrieved object or nil
-  #    def get_object(id)
-  #      ObjectSpace._id2ref id
-  #    rescue RangeError
-  #    end
-  #
-  #    # @return [Proc] finalizer which delete references from array
-  #    def self.finalizer_for_weakly_held_object
-  #      proc {|object_id| STORE.remove_object_id(object_id) }
-  #    end
-  #
-  #    # @return [Proc] finalizer which deletes reference array
-  #    def self.finalizer_for_reference_array
-  #      proc {|object_id| STORE.remove_weak_array(object_id) }
-  #    end
-  #
-  #  end
-
   # abstract class for weak collections
   class Abstract
 
@@ -254,88 +127,78 @@ module Hammer::Weak
 
   end
 
-  def self.Hash(*options)
-    if options == [:value]
-      WeakValueHash
-    else
-      raise ArgumentError
+  # Hash like structure which effectively handles operations in both directions from keys and values
+  class BidirectionalHash
+    def initialize
+      @hash, @reverse = {}, {}
+    end
+
+    # adds pair +key+, +value+
+    # @param [Object] key
+    # @param [Object] value
+    def add(key, value)
+      @hash[key] = value
+      @reverse[value] ||= []
+      @reverse[value] << key
+    end
+
+    # @param [Object] key
+    # @return [Object] value for +kye+
+    def get(key)
+      @hash[key]
+    end
+
+    # @param [Object] value
+    # @return [Array<object>] array of keys for +value+
+    def get_keys(value)
+      @reverse[value] || []
+    end
+
+    # deletes pair on +key+
+    # @param [Object] key
+    def delete(key)
+      if value = @hash[key]
+        @reverse[value].delete(key)
+        @reverse.delete value if @reverse[value].empty?
+        @hash.delete key
+      end
+    end
+
+    # deletes pairs with +value+
+    # @param [Object] value
+    def delete_value(value)
+      keys = @reverse[value]
+      @reverse.delete value
+      keys.each {|key| @hash.delete(key) }
+    end
+
+    def each(&block)
+      @hash.each {|k,v| block.call k,v }
+    end
+
+    def size
+      @hash.size
     end
   end
 
-  class WeakValueHash < Abstract
-
-    class BidirectionalHash
-      def initialize
-        @hash, @reverse = {}, {}
-      end
-
-      def add(key, value)
-        @hash[key] = value
-        @reverse[value] ||= []
-        @reverse[value] << key
-      end
-
-      def get(key)
-        @hash[key]
-      end
-
-      def get_keys(value)
-        @reverse[value]
-      end
-
-      def remove(key)
-        if value = @hash[key]
-          @reverse[value].delete(key)
-          @reverse.delete value if @reverse[value].empty?
-          @hash.delete key
-        end
-      end
-
-      def remove_value(value)
-        keys = @reverse[value]
-        @reverse.delete value
-        keys.each {|key| @hash.delete(key) }
-      end
-
-      def each(&block)
-        @hash.each {|k,v| block.call k,v }
-      end
-
-      def size
-        @hash.size
-      end
-    end
-
-    def initialize
-      super
-      self.class.storages[object_id] = BidirectionalHash.new
-    end
-
-    def [](key)
-      get_object storage.get(key)
-    end
-
-    def has_key?(key)
-      !!get_object(storage.get(key))
-    end
-
+  class AbstractHash < Abstract
+    # like Hash
     def []=(key, value)
       delete(key)
       add(key, value)
       value
     end
 
+    # like Hash
     def each(&block)
-      storage.each {|k,v| block.call k,v }
+      storage.each do |k,v|
+        if value = get_object(v)
+          block.call k, value
+        end
+      end
     end
 
-    def delete(key)
-      value = storage.get key
-      storage.remove key
-      Hammer::Finalizer.remove value, object_id if storage.get_keys(value).blank?
-      value
-    end
-
+    # @return [Hash]
     def to_hash
       inject({}) do |hash, pair|
         k,v = pair
@@ -344,8 +207,45 @@ module Hammer::Weak
       end
     end
 
+    # like Hash
+    def keys
+      to_hash.keys
+    end
+
+    # like Hash
+    def values
+      to_hash.values
+    end
+  end
+
+  # Hash with weakly held values
+  class WeakValueHash < AbstractHash
+    def initialize
+      super
+      self.class.storages[object_id] = BidirectionalHash.new
+    end
+
+    # like Hash
+    def [](key)
+      get_object storage.get(key)
+    end
+
+    # like Hash
+    def has_key?(key)
+      !!get_object(storage.get(key))
+    end
+
+    # like Hash
+    def delete(key)
+      value = storage.get key
+      storage.delete key
+      Hammer::Finalizer.remove value, object_id if storage.get_keys(value).blank?
+      value
+    end
+
     private
 
+    # used by #[]=
     def add(key, value)
       storage.add key, value.object_id
       unless Hammer::Finalizer.get value, object_id
@@ -354,7 +254,7 @@ module Hammer::Weak
     end
 
     def self.finalize_item(hash_id)
-      lambda {|id| storage(hash_id).remove_value(id) }
+      lambda {|id| storage(hash_id).delete_value(id) }
     end
 
     def self.finalize_itself
@@ -364,6 +264,102 @@ module Hammer::Weak
       end
     end
   end
+
+  # Hash like structure separating hash values from keys
+  class ByHashHash
+    def initialize
+      @hash, @key_hash = {}, BidirectionalHash.new
+    end
+
+    # adds +key+ with its +hash+ and +value+
+    def add(key, hash, value)
+      @hash[key] = value
+      @key_hash.add(key, hash)
+    end
+
+    # @return [Array<Array<>>] array of pair candidates
+    # multiple objects can have same hash
+    def get(hash)
+      return @key_hash.get_keys(hash).map {|key| [key, @hash[key]] }
+    end
+
+    # deletes pair by +key+
+    def delete(key)
+      @hash.delete key
+      @key_hash.delete key
+    end
+
+    # iterates through key,value pairs
+    def each(&block)
+      @hash.each {|k,v| block.call k,v }
+    end
+
+    def size
+      @hash.size
+    end
+  end
+
+  # Hash with weakly held keys
+  class WeakKeyHash < AbstractHash
+    def initialize
+      super
+      self.class.storages[object_id] = ByHashHash.new
+    end
+
+    # like Hash
+    def [](key)
+      get_key_value(key).try :last
+    end
+
+    # like Hash
+    def has_key?(key)
+      !!get_key_value(key)
+    end
+
+    # like Hash
+    def delete(key)
+      key_id, value = get_key_value(key)
+      Hammer::Finalizer.remove(key_id, object_id).call(key_id) if key_id
+      value
+    end
+
+    private
+
+    # find a right pair from candidates with same hash
+    # @return array of id and value or nil
+    def get_key_value(key)
+      storage.get(key.hash).find do |k,v|
+        candidate_key = get_object(k) or next
+        candidate_key.eql? key
+      end
+    end
+
+    def add(key, value)
+      storage.add key.object_id, key.hash, value
+      Hammer::Finalizer.add key, object_id, self.class.finalize_item(object_id)
+    end
+
+    def self.finalize_item(hash_id)
+      lambda {|id| storage(hash_id).delete(id) }
+    end
+
+    def self.finalize_itself
+      lambda do |hash_id|
+        storage(hash_id).each {|key_id, _| Hammer::Finalizer.remove(key_id, hash_id) }
+        storages.delete hash_id
+      end
+    end
+  end
+
+  # shortcut to find proper hash
+  # @example
+  #  Hammer::Weak::Hash[:value] # => WeakValueHash
+  #  Hammer::Weak::Hash[:key]   # => WeakKeyHash
+  Hash = {
+    :value => WeakValueHash,
+    :key => WeakKeyHash
+  }
+
 
   #  module ReferenceFinder
   #    class << self
