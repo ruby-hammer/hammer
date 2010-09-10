@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../../_index.html">Index (A)</a> &raquo; 
-    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Core.html" title="Hammer::Core (module)">Core</a></span>
+    <span class='title'><span class='object_link'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Core.html" title="Hammer::Core (module)">Core</a></span></span>
      &raquo; 
     <span class="title">Actions</span>
   
@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><a href="Context.html" title="Hammer::Core::Context (class)">Context</a></dd>
+    <dd class="r1"><span class='object_link'><a href="Context.html" title="Hammer::Core::Context (class)">Context</a></span></dd>
     
   
   
@@ -73,35 +73,41 @@
 
   
     <h2>
-      Instance Method Summary
+      Class Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
 
     <ul class="summary">
       
-        <li class="private ">
+        <li class="public ">
   <span class="summary_signature">
     
-      <a href="#clear_old_actions-instance_method" title="#clear_old_actions (instance method)">- (Object) <strong>clear_old_actions</strong> </a>
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(base) </a>
     
 
     
   </span>
   
   
-  <span class="note title private">private</span>
+  
   
   
   
 
   
-    <span class="summary_desc"><div class='inline'><p>
-clears actions for components which are no longer in component tree.
-</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
       
         <li class="public ">
   <span class="summary_signature">
@@ -154,7 +160,7 @@ creates and stores action for later evaluation.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#run_action-instance_method" title="#run_action (instance method)">- (Object) <strong>run_action</strong>(id) </a>
+      <a href="#run_action-instance_method" title="#run_action (instance method)">- (Object) <strong>run_action</strong>(id, arg) </a>
     
 
     
@@ -168,7 +174,7 @@ creates and stores action for later evaluation.
 
   
     <span class="summary_desc"><div class='inline'><p>
-evaluates action with <tt>id</tt>.
+evaluates action with <tt>id</tt>, do nothing when no action.
 </p>
 </div></span>
   
@@ -180,61 +186,48 @@ evaluates action with <tt>id</tt>.
 
 
 
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
     
     
       <div class="method_details first">
-  <p class="signature first" id="clear_old_actions-instance_method">
+  <p class="signature first" id="included-class_method">
   
-    - (<tt>Object</tt>) <strong>clear_old_actions</strong>  <span class="extras">(private)</span>
+    + (<tt>Object</tt>) <strong>included</strong>(base) 
   
 
   
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-clears actions for components which are no longer in component tree
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
+</p><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37
-38</pre>
+6
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 6</span>
 
-<span class='kw'>def</span> <span class='id clear_old_actions'>clear_old_actions</span>
-  <span class='comment'># TODO remove slow iteration
-</span>  <span class='id components'>components</span> <span class='op'>=</span> <span class='id root_component'>root_component</span><span class='period'>.</span><span class='id all_children'>all_children</span>
-  <span class='ivar'>@actions</span><span class='period'>.</span><span class='id delete_if'>delete_if</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id action'>action</span><span class='op'>|</span>
-    <span class='kw'>not</span> <span class='id components'>components</span><span class='period'>.</span><span class='id include?'>include?</span> <span class='id action'>action</span><span class='period'>.</span><span class='id component'>component</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:attr_reader</span><span class='comma'>,</span> <span class='symbol'>:actions</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
-      <div class="method_details ">
-  <p class="signature " id="initialize-instance_method">
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Hammer::Core::Actions (module)">Actions</a></tt>) <strong>initialize</strong>(id, container, hash = '') 
+    - (<tt><span class='object_link'><a href="" title="Hammer::Core::Actions (module)">Actions</a></span></tt>) <strong>initialize</strong>(id, container, hash = '') 
   
 
   
@@ -255,13 +248,13 @@ A new instance of Actions
       <pre class="lines">
 
 
-6
-7
-8
-9</pre>
+10
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -294,7 +287,7 @@ creates and stores action for later evaluation
   
     <li>
       
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Hammer::Component::Base (class)">Component::Base</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Component/Base.html" title="Hammer::Component::Base (class)">Component::Base</a></span></tt>)</span>
       
       
         <span class='name'>component</span>
@@ -355,14 +348,14 @@ uuid of the action
       <pre class="lines">
 
 
-15
-16
-17
-18
-19</pre>
+19
+20
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
@@ -377,14 +370,14 @@ uuid of the action
       <div class="method_details ">
   <p class="signature " id="run_action-instance_method">
   
-    - (<tt>Object</tt>) <strong>run_action</strong>(id) 
+    - (<tt>Object</tt>) <strong>run_action</strong>(id, arg) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-evaluates action with <tt>id</tt>
+evaluates action with <tt>id</tt>, do nothing when no action
 </p>
 
 
@@ -405,7 +398,24 @@ evaluates action with <tt>id</tt>
       
         &mdash;
         <div class='inline'><p>
-of a <tt><a href="Action.html" title="Hammer::Core::Action (class)">Hammer::Core::Action</a></tt>
+of a <span class='object_link'><a href="Action.html" title="Hammer::Core::Action (class)">Hammer::Core::Action</a></span>
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>arg</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if of a <span class='object_link'><a href="../Component/Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>
 </p>
 </div>
       
@@ -438,16 +448,18 @@ self
       <pre class="lines">
 
 
-24
-25
-26
-27</pre>
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 29</span>
 
-<span class='kw'>def</span> <span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
-  <span class='lparen'>(</span><span class='id action'>action</span> <span class='op'>=</span> <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id action'>action</span><span class='period'>.</span><span class='id call'>call</span>
+<span class='kw'>def</span> <span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id arg'>arg</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='id action'>action</span> <span class='op'>=</span> <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span>
+  <span class='id action'>action</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id component_by_id'>component_by_id</span><span class='lparen'>(</span><span class='id arg'>arg</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -460,9 +472,9 @@ self
 </div>
     
     <div id="footer">
-  Generated on Fri Aug 27 15:41:19 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:40 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>

@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../../_index.html">Index (R)</a> &raquo; 
-    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Component.html" title="Hammer::Component (module)">Component</a></span>
+    <span class='title'><span class='object_link'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Component.html" title="Hammer::Component (module)">Component</a></span></span>
      &raquo; 
     <span class="title">Rendering</span>
   
@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></dd>
+    <dd class="r1"><span class='object_link'><a href="Base.html" title="Hammer::Component::Base (class)">Base</a></span></dd>
     
   
   
@@ -72,7 +72,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Rendering/ClassMethods.html" title="Hammer::Component::Rendering::ClassMethods (module)">ClassMethods</a>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Rendering/ClassMethods.html" title="Hammer::Component::Rendering::ClassMethods (module)">ClassMethods</a></span>
     
    
     
@@ -119,6 +119,78 @@
 
     <ul class="summary">
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_children-instance_method" title="#_children (instance method)">- (Object) <strong>_children</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+method used to actualize children during rendering from widget.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#all_children-instance_method" title="#all_children (instance method)">- (Array&lt;Hammer::Component::Base&gt;) <strong>all_children</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All children, self included.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#children-instance_method" title="#children (instance method)">- (Array&lt;Hammer::Component::Base&gt;) <strong>children</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Of children components.
+</p>
+</div></span>
+  
+</li>
+
+      
         <li class="protected ">
   <span class="summary_signature">
     
@@ -143,10 +215,31 @@ default behavior, can by overwritten.
 </li>
 
       
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#delete_old_actions-instance_method" title="#delete_old_actions (instance method)">- (Object) <strong>delete_old_actions</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_html-instance_method" title="#to_html (instance method)">- (String) <strong>to_html</strong>(options = {}) </a>
+      <a href="#to_html-instance_method" title="#to_html (instance method)">- (String) <strong>to_html</strong> </a>
     
 
     
@@ -255,15 +348,7 @@ Which is used to insatiate widget.
   
 
   
-</p><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
+</p><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -297,9 +382,166 @@ Which is used to insatiate widget.
     
     
       <div class="method_details first">
-  <p class="signature first" id="create_widget-instance_method">
+  <p class="signature first" id="_children-instance_method">
   
-    - (<tt><a href="../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></tt>) <strong>create_widget</strong>  <span class="extras">(protected)</span>
+    - (<tt>Object</tt>) <strong>_children</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+method used to actualize children during rendering from widget
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id _children'>_children</span>
+  <span class='ivar'>@_children</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="all_children-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>&gt;</tt>) <strong>all_children</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All children, self included
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all children, self included
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id all_children'>all_children</span>
+  <span class='id children'>children</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id arr'>arr</span><span class='comma'>,</span> <span class='id child'>child</span><span class='op'>|</span> <span class='id arr'>arr</span> <span class='op'>+</span> <span class='id child'>child</span><span class='period'>.</span><span class='id all_children'>all_children</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="children-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>&gt;</tt>) <strong>children</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Of children components
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of children components
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id children'>children</span>
+  <span class='id to_html'>to_html</span> <span class='kw'>if</span> <span class='id changed?'>changed?</span>
+  <span class='id _children'>_children</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_widget-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></span></tt>) <strong>create_widget</strong>  <span class="extras">(protected)</span>
   
 
   
@@ -318,7 +560,7 @@ default behavior, can by overwritten
   
     <li>
       
-        <span class='type'>(<tt><a href="../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></span></tt>)</span>
       
       
       
@@ -333,12 +575,12 @@ default behavior, can by overwritten
       <pre class="lines">
 
 
-99
-100
-101</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id create_widget'>create_widget</span>
   <span class='id widget_class'>widget_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id widget_assigns'>widget_assigns</span><span class='rparen'>)</span>
@@ -349,9 +591,37 @@ default behavior, can by overwritten
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="delete_old_actions-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_old_actions</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id delete_old_actions'>delete_old_actions</span>
+  <span class='id context'>context</span><span class='period'>.</span><span class='id actions'>actions</span><span class='period'>.</span><span class='id delete_if'>delete_if</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id action'>action</span><span class='op'>|</span> <span class='id action'>action</span><span class='period'>.</span><span class='id component'>component</span> <span class='op'>==</span> <span class='kw'>self</span> <span class='rbrace'>}</span> <span class='comment'># FIXME maybe slow
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="to_html-instance_method">
   
-    - (<tt>String</tt>) <strong>to_html</strong>(options = {}) 
+    - (<tt>String</tt>) <strong>to_html</strong> 
   
 
   
@@ -365,24 +635,7 @@ Rendered html
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <span class='name'>options</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
+  <h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -408,15 +661,25 @@ rendered html
       <pre class="lines">
 
 
-81
-82
-83</pre>
+117
+118
+119
+120
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 117</span>
 
-<span class='kw'>def</span> <span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id to_html'>to_html</span>
+  <span class='kw'>if</span> <span class='id changed?'>changed?</span> <span class='op'>||</span> <span class='op'>!</span><span class='ivar'>@_html</span>
+    <span class='id delete_old_actions'>delete_old_actions</span>
+    <span class='ivar'>@_html</span> <span class='op'>=</span> <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span>
+    <span class='id reset_change!'>reset_change!</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@_html</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -426,7 +689,7 @@ rendered html
       <div class="method_details ">
   <p class="signature " id="widget-instance_method">
   
-    - (<tt><a href="../Widget/Component.html" title="Hammer::Widget::Component (module)">Widget::Component</a></tt>) <strong>widget</strong> 
+    - (<tt><span class='object_link'><a href="../Widget/Component.html" title="Hammer::Widget::Component (module)">Widget::Component</a></span></tt>) <strong>widget</strong> 
   
 
   
@@ -445,7 +708,7 @@ Return instantiated widget or creates one
   
     <li>
       
-        <span class='type'>(<tt><a href="../Widget/Component.html" title="Hammer::Widget::Component (module)">Widget::Component</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Widget/Component.html" title="Hammer::Widget::Component (module)">Widget::Component</a></span></tt>)</span>
       
       
       
@@ -466,12 +729,12 @@ return instantiated widget or creates one
       <pre class="lines">
 
 
-75
-76
-77</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id widget'>widget</span>
   <span class='ivar'>@widget</span> <span class='op'>||=</span> <span class='id create_widget'>create_widget</span>
@@ -505,12 +768,12 @@ always pass component to widget, can be extended by overwritten
       <pre class="lines">
 
 
-104
-105
-106</pre>
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 162</span>
 
 <span class='kw'>def</span> <span class='id widget_assigns'>widget_assigns</span>
   <span class='lbrace'>{</span> <span class='symbol'>:component</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:root_widget</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
@@ -563,17 +826,17 @@ which is used to insatiate widget
       <pre class="lines">
 
 
-86
-87
-88
-89
-90
-91
-92
-93</pre>
+127
+128
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id widget_class'>widget_class</span>
   <span class='kw'>case</span> <span class='ivar'>@widget_class</span>
@@ -593,9 +856,9 @@ which is used to insatiate widget
 </div>
     
     <div id="footer">
-  Generated on Fri Aug 27 15:41:21 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:42 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>

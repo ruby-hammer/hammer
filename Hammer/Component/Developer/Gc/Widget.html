@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../../../../_index.html">Index (W)</a> &raquo; 
-    <span class='title'><a href="../../../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../../../Component.html" title="Hammer::Component (module)">Component</a></span> &raquo; <span class='title'><a href="../../Developer.html" title="Hammer::Component::Developer (module)">Developer</a></span> &raquo; <span class='title'><a href="../Gc.html" title="Hammer::Component::Developer::Gc (class)">Gc</a></span>
+    <span class='title'><span class='object_link'><a href="../../../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Component.html" title="Hammer::Component (module)">Component</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Developer.html" title="Hammer::Component::Developer (module)">Developer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Gc.html" title="Hammer::Component::Developer::Gc (class)">Gc</a></span></span>
      &raquo; 
     <span class="title">Widget</span>
   
@@ -53,16 +53,10 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></span>
+      <span class="inheritName">Object</span>
       
         <ul class="fullTree">
           <li>Object</li>
-          
-            <li class="next">Erector::Widget</li>
-          
-            <li class="next"><a href="../../../Widget/Abstract.html" title="Hammer::Widget::Abstract (class)">Hammer::Widget::Abstract</a></li>
-          
-            <li class="next"><a href="../../../Widget/Base.html" title="Hammer::Widget::Base (class)">Hammer::Widget::Base</a></li>
           
             <li class="next">Hammer::Component::Developer::Gc::Widget</li>
           
@@ -87,27 +81,6 @@
 
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   
     <h2>
@@ -184,47 +157,6 @@
   
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <a href="../../../Widget/Wrapping.html" title="Hammer::Widget::Wrapping (module)">Hammer::Widget::Wrapping</a></h3>
-  <p class="inherited"><a href="../../../Widget/Wrapping.html#_render_via-instance_method" title="Hammer::Widget::Wrapping#_render_via (method)">#_render_via</a>, <a href="../../../Widget/Wrapping.html#content_with_wrapper-instance_method" title="Hammer::Widget::Wrapping#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="../../../Widget/Wrapping.html#included-class_method" title="Hammer::Widget::Wrapping.included (method)">included</a>, <a href="../../../Widget/Wrapping.html#to_html-instance_method" title="Hammer::Widget::Wrapping#to_html (method)">#to_html</a>, <a href="../../../Widget/Wrapping.html#wrapper_options-instance_method" title="Hammer::Widget::Wrapping#wrapper_options (method)">#wrapper_options</a></p>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <a href="../../../Widget/Callback.html" title="Hammer::Widget::Callback (module)">Hammer::Widget::Callback</a></h3>
-  <p class="inherited"><a href="../../../Widget/Callback.html#callback-instance_method" title="Hammer::Widget::Callback#callback (method)">#callback</a></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods inherited from <a href="../../../Widget/Abstract.html" title="Hammer::Widget::Abstract (class)">Hammer::Widget::Abstract</a></h3>
-  <p class="inherited"><a href="../../../Widget/Abstract.html#css_class-class_method" title="Hammer::Widget::Abstract.css_class (method)">css_class</a>, <a href="../../../Widget/Abstract.html#render-instance_method" title="Hammer::Widget::Abstract#render (method)">#render</a></p>
-
-  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -291,29 +223,31 @@
 43
 44
 45
-46</pre>
+46
+47</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/gc.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id gc'>gc</span>
-  <span class='id h1'>h1</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>GC</span><span class='tstring_end'>'</span></span>
+  <span class='id h2'>h2</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>GC</span><span class='tstring_end'>'</span></span>
   <span class='id ul'>ul</span> <span class='kw'>do</span>
     <span class='id li'>li</span> <span class='kw'>do</span>
-      <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC::Profiler.enable? =&gt; </span><span class='embexpr_beg'>#{</span><span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id enabled?'>enabled?</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span>
+      <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC::Profiler.enable? =&gt; </span><span class='embexpr_beg'>#{</span><span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id enabled?'>enabled?</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id action'>action</span> <span class='kw'>do</span>
         <span class='kw'>if</span> <span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id enabled?'>enabled?</span>
           <span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id disable'>disable</span>
           <span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id clear'>clear</span>
         <span class='kw'>else</span>
           <span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id enable'>enable</span>
         <span class='kw'>end</span>
-      <span class='rbrace'>}</span>
+        <span class='id change!'>change!</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span> <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id v19?'>v19?</span>
-    <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id cb'>cb</span><span class='period'>.</span><span class='id a'>a</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC.start</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id garbage_collect'>garbage_collect</span><span class='semicolon'>;</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id garbage_collect'>garbage_collect</span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
+    <span class='id li'>li</span> <span class='lbrace'>{</span> <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GC.start</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id action'>action</span> <span class='lbrace'>{</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id garbage_collect'>garbage_collect</span><span class='semicolon'>;</span> <span class='id change!'>change!</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
 
   <span class='id pre'>pre</span> <span class='lbrace'>{</span> <span class='id code'>code</span> <span class='const'>GC</span><span class='op'>::</span><span class='const'>Profiler</span><span class='period'>.</span><span class='id result'>result</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id v19?'>v19?</span>
-  <span class='id pre'>pre</span> <span class='lbrace'>{</span> <span class='id code'>code</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id count_objects'>count_objects</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id v19?'>v19?</span>
+  <span class='id p'>p</span> <span class='lbrace'>{</span> <span class='id code'>code</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id count_objects'>count_objects</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id v19?'>v19?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -353,9 +287,9 @@
       <pre class="code"><span class="info file"># File 'lib/hammer/component/developer/gc.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id stats'>stats</span>
-  <span class='id h1'>h1</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Stats</span><span class='tstring_end'>'</span></span>
+  <span class='id h2'>h2</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Stats</span><span class='tstring_end'>'</span></span>
   <span class='id ul'>ul</span> <span class='kw'>do</span>
-    <span class='id classes'>classes</span> <span class='op'>=</span> <span class='lbracket'>[</span> 
+    <span class='id classes'>classes</span> <span class='op'>=</span> <span class='lbracket'>[</span>
       <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Container</span><span class='comma'>,</span>
       <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Context</span><span class='comma'>,</span>
       <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Widget</span><span class='op'>::</span><span class='const'>Base</span><span class='comma'>,</span>
@@ -377,9 +311,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 27 09:50:48 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:44 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>

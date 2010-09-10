@@ -56,7 +56,7 @@
   
     
       <dt class="r1">Includes:</dt>
-      <dd class="r1"><a href="Hammer/Config.html" title="Hammer::Config (module)">Hammer::Config</a></dd>
+      <dd class="r1"><span class='object_link'><a href="Hammer/Config.html" title="Hammer::Config (module)">Hammer::Config</a></span></dd>
       
     
   
@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/hammer/logger.rb<span class="defines">,<br />
-  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
+  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/component/form_part.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
 </dd>
   
 </dl>
@@ -85,11 +85,11 @@ FIXME OLD
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Hammer/CSS.html" title="Hammer::CSS (module)">CSS</a>, <a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a>, <a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a>, <a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a>, <a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a>, <a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a>, <a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Hammer/CSS.html" title="Hammer::CSS (module)">CSS</a></span>, <span class='object_link'><a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a></span>, <span class='object_link'><a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a></span>, <span class='object_link'><a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a></span>, <span class='object_link'><a href="Hammer/Finalizer.html" title="Hammer::Finalizer (module)">Finalizer</a></span>, <span class='object_link'><a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a></span>, <span class='object_link'><a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a></span>, <span class='object_link'><a href="Hammer/Weak.html" title="Hammer::Weak (module)">Weak</a></span>, <span class='object_link'><a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a></span>
     
    
     
-      <strong class="classes">Classes:</strong> <a href="Hammer/Loader.html" title="Hammer::Loader (class)">Loader</a>, <a href="Hammer/Logger.html" title="Hammer::Logger (class)">Logger</a>, <a href="Hammer/WeakArray.html" title="Hammer::WeakArray (class)">WeakArray</a>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Hammer/JSString.html" title="Hammer::JSString (class)">JSString</a></span>, <span class='object_link'><a href="Hammer/Loader.html" title="Hammer::Loader (class)">Loader</a></span>, <span class='object_link'><a href="Hammer/Logger.html" title="Hammer::Logger (class)">Logger</a></span>
     
   
 </p>
@@ -107,6 +107,27 @@ FIXME OLD
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_load-class_method" title="after_load (class method)">+ (Object) <strong>after_load</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -174,6 +195,27 @@ FIXME OLD
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#run_after_load%21-class_method" title="run_after_load! (class method)">+ (Object) <strong>run_after_load!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#v19%3F-class_method" title="v19? (class method)">+ (Boolean) <strong>v19?</strong> </a>
     
 
@@ -203,8 +245,8 @@ FIXME OLD
   
   
   
-  <h3 class="inherited">Methods included from <a href="Hammer/Config.html" title="Hammer::Config (module)">Hammer::Config</a></h3>
-  <p class="inherited"><a href="Hammer/Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a>, <a href="Hammer/Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hammer/Config.html" title="Hammer::Config (module)">Hammer::Config</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hammer/Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a></span>, <span class='object_link'><a href="Hammer/Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
@@ -212,7 +254,37 @@ FIXME OLD
     
     
       <div class="method_details first">
-  <p class="signature first" id="benchmark-class_method">
+  <p class="signature first" id="after_load-class_method">
+  
+    + (<tt>Object</tt>) <strong>after_load</strong>(&amp;block) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 46</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id after_load'>after_load</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@after_load</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@after_load</span> <span class='op'>&lt;&lt;</span> <span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="benchmark-class_method">
   
     + (<tt>Object</tt>) <strong>benchmark</strong>(label, req = true, &amp;block) 
   
@@ -302,6 +374,36 @@ FIXME OLD
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="run_after_load!-class_method">
+  
+    + (<tt>Object</tt>) <strong>run_after_load!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run_after_load!'>run_after_load!</span>
+  <span class='lbracket'>[</span><span class='op'>*</span><span class='ivar'>@after_load</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id proc'>proc</span><span class='op'>|</span> <span class='id proc'>proc</span><span class='period'>.</span><span class='id call'>call</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@after_load</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="v19?-class_method">
   
     + (<tt>Boolean</tt>) <strong>v19?</strong> 
@@ -355,9 +457,9 @@ FIXME OLD
 </div>
     
     <div id="footer">
-  Generated on Fri Aug 27 15:41:18 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:37 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>

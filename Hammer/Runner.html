@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../_index.html">Index (R)</a> &raquo; 
-    <span class='title'><a href="../Hammer.html" title="Hammer (module)">Hammer</a></span>
+    <span class='title'><span class='object_link'><a href="../Hammer.html" title="Hammer (module)">Hammer</a></span></span>
      &raquo; 
     <span class="title">Runner</span>
   
@@ -56,7 +56,7 @@
   
     
       <dt class="r1">Includes:</dt>
-      <dd class="r1"><a href="Config.html" title="Hammer::Config (module)">Config</a></dd>
+      <dd class="r1"><span class='object_link'><a href="Config.html" title="Hammer::Config (module)">Config</a></span></dd>
       
     
   
@@ -189,8 +189,8 @@ encoding: UTF-8
   
   
   
-  <h3 class="inherited">Methods included from <a href="Config.html" title="Hammer::Config (module)">Config</a></h3>
-  <p class="inherited"><a href="Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a>, <a href="Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Config.html" title="Hammer::Config (module)">Config</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a></span>, <span class='object_link'><a href="Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
@@ -246,15 +246,17 @@ encoding: UTF-8
       <pre class="lines">
 
 
+23
 24
 25
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id load_app_files'>load_app_files</span>
   <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Loader</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>Dir</span><span class='period'>.</span><span class='id glob'>glob</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./app/**/*.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id load!'>load!</span>
+  <span class='const'>Hammer</span><span class='period'>.</span><span class='id run_after_load!'>run_after_load!</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -286,15 +288,13 @@ encoding: UTF-8
 18
 19
 20
-21
-22</pre>
+21</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/runner.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id run!'>run!</span>
-  <span class='comment'>#          encoding
-</span>  <span class='id load_app_files'>load_app_files</span>
+  <span class='id load_app_files'>load_app_files</span>
   <span class='id generate_css'>generate_css</span>
   <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id run!'>run!</span>
   <span class='id setup_application'>setup_application</span>
@@ -352,9 +352,9 @@ encoding: UTF-8
 </div>
     
     <div id="footer">
-  Generated on Fri Aug 27 15:41:19 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:39 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>

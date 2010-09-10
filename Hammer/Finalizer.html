@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hammer::Finalizer</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hammer.html" title="Hammer (module)">Hammer</a></span></span>
+     &raquo; 
+    <span class="title">Finalizer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hammer::Finalizer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hammer/finalizer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+finalizer abstraction
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add-class_method" title="add (class method)">+ (Object) <strong>add</strong>(obj, name, finalizer) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+adds <tt>finalizer</tt> to a <tt>obj</tt> under <tt>name</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#check_block-class_method" title="check_block (class method)">+ (Object) <strong>check_block</strong>(obj, finalizer) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+raises RuntimeError if finalizer blocks any instances.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#finalizer-class_method" title="finalizer (class method)">+ (Object) <strong>finalizer</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+executes finalizers.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-class_method" title="get (class method)">+ (Hash{Fixnum=&gt;Hash{Object=&gt;Proc}}, ...) <strong>get</strong>(*options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+returns attached finalizers.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#get_id-class_method" title="get_id (class method)">+ (Object) <strong>get_id</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#get_obj-class_method" title="get_obj (class method)">+ (Object) <strong>get_obj</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#install_finalizer-class_method" title="install_finalizer (class method)">+ (Object) <strong>install_finalizer</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+install finalizer hook only once.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove-class_method" title="remove (class method)">+ (Object) <strong>remove</strong>(obj, name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+removes finalizer attached to <tt>obj</tt> under <tt>name</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add-class_method">
+  
+    + (<tt>Object</tt>) <strong>add</strong>(obj, name, finalizer) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+adds <tt>finalizer</tt> to a <tt>obj</tt> under <tt>name</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>, <tt>Fixnum</tt>)</span>
+      
+      
+        <span class='name'>obj</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+where will be <tt>finalizer</tt> attached
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+key for later identification. Be careful what you use as key, keys will not
+be GCed.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Proc.html" title="Proc (class)">Proc</a></span></tt>)</span>
+      
+      
+        <span class='name'>finalizer</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id add'>add</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id finalizer'>finalizer</span><span class='rparen'>)</span>
+  <span class='id obj'>obj</span><span class='comma'>,</span> <span class='id id'>id</span> <span class='op'>=</span> <span class='id get_obj'>get_obj</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id get_id'>get_id</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='id check_block'>check_block</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id finalizer'>finalizer</span><span class='rparen'>)</span>
+  <span class='id install_finalizer'>install_finalizer</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='ivar'>@finalizers</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id finalizer'>finalizer</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="check_block-class_method">
+  
+    + (<tt>Object</tt>) <strong>check_block</strong>(obj, finalizer)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+raises RuntimeError if finalizer blocks any instances
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id check_block'>check_block</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id finalizer'>finalizer</span><span class='rparen'>)</span>
+  <span class='id bind'>bind</span> <span class='op'>=</span> <span class='id eval'>eval</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>self</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id finalizer'>finalizer</span><span class='period'>.</span><span class='id binding'>binding</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>finalizer blocks its own instance</span><span class='tstring_end'>'</span></span> <span class='kw'>if</span> <span class='id obj'>obj</span> <span class='op'>==</span> <span class='id bind'>bind</span>
+  <span class='id raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>finalizer blocks instance </span><span class='embexpr_beg'>#{</span><span class='id bind'>bind</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id bind'>bind</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Module</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id bind'>bind</span> <span class='op'>==</span> <span class='const'>MAIN_SCOPE</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="finalizer-class_method">
+  
+    + (<tt>Object</tt>) <strong>finalizer</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+executes finalizers
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id finalizer'>finalizer</span>
+  <span class='id lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id object_id'>object_id</span><span class='op'>|</span>
+    <span class='comment'># puts &quot;finalizing #{object_id}&quot;
+</span>    <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id object_id'>object_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id _'>_</span><span class='comma'>,</span><span class='id finalizer'>finalizer</span><span class='op'>|</span>
+      <span class='kw'>begin</span>
+        <span class='id finalizer'>finalizer</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id object_id'>object_id</span><span class='rparen'>)</span>
+      <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id e'>e</span>
+        <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id e'>e</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id e'>e</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='ivar'>@finalizers</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id object_id'>object_id</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get-class_method">
+  
+    + (<tt>Hash{Fixnum=&gt;Hash{Object=&gt;<span class='object_link'><a href="../Proc.html" title="Proc (class)">Proc</a></span>}}</tt>, ...) <strong>get</strong>(*options) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns attached finalizers
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='id get'>get</span><span class='lparen'>(</span><span class='id a_obj'>a_obj</span><span class='comma'>,</span> <span class='symbol'>:key</span><span class='rparen'>)</span> <span class='comment'># =&gt; Proc
+</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id a_obj'>a_obj</span><span class='rparen'>)</span> <span class='comment'># =&gt; {:key =&gt; Proc}
+</span><span class='id get'>get</span> <span class='comment'># =&gt; {8212000 =&gt; {:key =&gt; Proc}</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;Object&gt;</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if passed obj returns obj&#8217;s finalizers. if passed returns finalizer
+with that name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash{Fixnum=&gt;Hash{Object=&gt;<span class='object_link'><a href="../Proc.html" title="Proc (class)">Proc</a></span>}}</tt>, <tt>Hash{Object=&gt;<span class='object_link'><a href="../Proc.html" title="Proc (class)">Proc</a></span>}</tt>, <tt><span class='object_link'><a href="../Proc.html" title="Proc (class)">Proc</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+based on which arguments are passed
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id options'>options</span><span class='period'>.</span><span class='id size'>size</span>
+  <span class='kw'>when</span> <span class='int'>0</span> <span class='kw'>then</span>
+    <span class='ivar'>@finalizers</span>
+  <span class='kw'>when</span> <span class='int'>1</span> <span class='kw'>then</span>
+    <span class='id id'>id</span> <span class='op'>=</span> <span class='id get_id'>get_id</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='int'>2</span> <span class='kw'>then</span>
+    <span class='id id'>id</span> <span class='op'>=</span> <span class='id get_id'>get_id</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='lparen'>(</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='rparen'>)</span> <span class='op'>||</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_id-class_method">
+  
+    + (<tt>Object</tt>) <strong>get_id</strong>(obj)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id get_id'>get_id</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Fixnum</span><span class='rparen'>)</span>
+    <span class='id obj'>obj</span>
+  <span class='kw'>else</span>
+    <span class='id obj'>obj</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_obj-class_method">
+  
+    + (<tt>Object</tt>) <strong>get_obj</strong>(obj)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id get_obj'>get_obj</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Fixnum</span><span class='rparen'>)</span>
+    <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id _id2ref'>_id2ref</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
+  <span class='kw'>else</span>
+    <span class='id obj'>obj</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="install_finalizer-class_method">
+  
+    + (<tt>Object</tt>) <strong>install_finalizer</strong>(obj)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+install finalizer hook only once
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id install_finalizer'>install_finalizer</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variable_get'>instance_variable_get</span> <span class='symbol'>:@__finalizer_instaled</span>
+    <span class='id obj'>obj</span><span class='period'>.</span><span class='id instance_variable_set'>instance_variable_set</span> <span class='symbol'>:@__finalizer_instaled</span><span class='comma'>,</span> <span class='kw'>true</span>
+    <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id finalizer'>finalizer</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove-class_method">
+  
+    + (<tt>Object</tt>) <strong>remove</strong>(obj, name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+removes finalizer attached to <tt>obj</tt> under <tt>name</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>, <tt>Fixnum</tt>)</span>
+      
+      
+        <span class='name'>obj</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+where is finalizer attached
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+under which is finalizer <tt>attached</tt>
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/finalizer.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id remove'>remove</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id id'>id</span> <span class='op'>=</span> <span class='id get_id'>get_id</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span>
+    <span class='id finalizer'>finalizer</span> <span class='op'>=</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id name'>name</span> <span class='kw'>if</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span>
+    <span class='ivar'>@finalizers</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id id'>id</span> <span class='kw'>if</span> <span class='ivar'>@finalizers</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+    <span class='id finalizer'>finalizer</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Sep 10 17:30:39 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

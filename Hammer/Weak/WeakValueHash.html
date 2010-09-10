@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Hammer::Weak::WeakValueHash</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (W)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Weak.html" title="Hammer::Weak (module)">Weak</a></span></span>
+     &raquo; 
+    <span class="title">WeakValueHash</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Hammer::Weak::WeakValueHash
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="AbstractHash.html" title="Hammer::Weak::AbstractHash (class)">AbstractHash</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Abstract.html" title="Hammer::Weak::Abstract (class)">Abstract</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="AbstractHash.html" title="Hammer::Weak::AbstractHash (class)">AbstractHash</a></span></li>
+          
+            <li class="next">Hammer::Weak::WeakValueHash</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/hammer/weak.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Hash with weakly held values
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#finalize_item-class_method" title="finalize_item (class method)">+ (Object) <strong>finalize_item</strong>(hash_id) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#finalize_itself-class_method" title="finalize_itself (class method)">+ (Object) <strong>finalize_itself</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Object) <strong>[]</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+like Hash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add-instance_method" title="#add (instance method)">- (Object) <strong>add</strong>(key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used by #[]=.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete-instance_method" title="#delete (instance method)">- (Object) <strong>delete</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+like Hash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_key%3F-instance_method" title="#has_key? (instance method)">- (Boolean) <strong>has_key?</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+like Hash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (WeakValueHash) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of WeakValueHash.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractHash.html" title="Hammer::Weak::AbstractHash (class)">AbstractHash</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="AbstractHash.html#%5B%5D%3D-instance_method" title="Hammer::Weak::AbstractHash#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="AbstractHash.html#each-instance_method" title="Hammer::Weak::AbstractHash#each (method)">#each</a></span>, <span class='object_link'><a href="AbstractHash.html#keys-instance_method" title="Hammer::Weak::AbstractHash#keys (method)">#keys</a></span>, <span class='object_link'><a href="AbstractHash.html#to_hash-instance_method" title="Hammer::Weak::AbstractHash#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="AbstractHash.html#values-instance_method" title="Hammer::Weak::AbstractHash#values (method)">#values</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Abstract.html" title="Hammer::Weak::Abstract (class)">Abstract</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Abstract.html#empty%3F-instance_method" title="Hammer::Weak::Abstract#empty? (method)">#empty?</a></span>, <span class='object_link'><a href="Abstract.html#get_object-instance_method" title="Hammer::Weak::Abstract#get_object (method)">#get_object</a></span>, <span class='object_link'><a href="Abstract.html#inherited-class_method" title="Hammer::Weak::Abstract.inherited (method)">inherited</a></span>, <span class='object_link'><a href="Abstract.html#size-instance_method" title="Hammer::Weak::Abstract#size (method)">#size</a></span>, <span class='object_link'><a href="Abstract.html#storage-class_method" title="Hammer::Weak::Abstract.storage (method)">storage</a></span>, <span class='object_link'><a href="Abstract.html#storage-instance_method" title="Hammer::Weak::Abstract#storage (method)">#storage</a></span>, <span class='object_link'><a href="Abstract.html#storages-class_method" title="Hammer::Weak::Abstract.storages (method)">storages</a></span></p>
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Hammer::Weak::WeakValueHash (class)">WeakValueHash</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of WeakValueHash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 223</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span>
+  <span class='kw'>super</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id storages'>storages</span><span class='lbracket'>[</span><span class='id object_id'>object_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>BidirectionalHash</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="finalize_item-class_method">
+  
+    + (<tt>Object</tt>) <strong>finalize_item</strong>(hash_id)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+256
+257
+258</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 256</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id finalize_item'>finalize_item</span><span class='lparen'>(</span><span class='id hash_id'>hash_id</span><span class='rparen'>)</span>
+  <span class='id lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id id'>id</span><span class='op'>|</span> <span class='id storage'>storage</span><span class='lparen'>(</span><span class='id hash_id'>hash_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id delete_value'>delete_value</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="finalize_itself-class_method">
+  
+    + (<tt>Object</tt>) <strong>finalize_itself</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+260
+261
+262
+263
+264
+265</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 260</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id finalize_itself'>finalize_itself</span>
+  <span class='id lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id hash_id'>hash_id</span><span class='op'>|</span>
+    <span class='id storage'>storage</span><span class='lparen'>(</span><span class='id hash_id'>hash_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id _'>_</span><span class='comma'>,</span><span class='id value_id'>value_id</span><span class='op'>|</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Finalizer</span><span class='period'>.</span><span class='id remove'>remove</span><span class='lparen'>(</span><span class='id value_id'>value_id</span><span class='comma'>,</span> <span class='id hash_id'>hash_id</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='id storages'>storages</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id hash_id'>hash_id</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-instance_method">
+  
+    - (<tt>Object</tt>) <strong>[]</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+like Hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 229</span>
+
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='id get_object'>get_object</span> <span class='id storage'>storage</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add</strong>(key, value)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used by #[]=
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+249
+250
+251
+252
+253
+254</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 249</span>
+
+<span class='kw'>def</span> <span class='id add'>add</span><span class='lparen'>(</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='id storage'>storage</span><span class='period'>.</span><span class='id add'>add</span> <span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+  <span class='kw'>unless</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Finalizer</span><span class='period'>.</span><span class='id get'>get</span> <span class='id value'>value</span><span class='comma'>,</span> <span class='id object_id'>object_id</span>
+    <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Finalizer</span><span class='period'>.</span><span class='id add'>add</span> <span class='id value'>value</span><span class='comma'>,</span> <span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id finalize_item'>finalize_item</span><span class='lparen'>(</span><span class='id object_id'>object_id</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+like Hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241
+242
+243
+244</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 239</span>
+
+<span class='kw'>def</span> <span class='id delete'>delete</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='id value'>value</span> <span class='op'>=</span> <span class='id storage'>storage</span><span class='period'>.</span><span class='id get'>get</span> <span class='id key'>key</span>
+  <span class='id storage'>storage</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id key'>key</span>
+  <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Finalizer</span><span class='period'>.</span><span class='id remove'>remove</span> <span class='id value'>value</span><span class='comma'>,</span> <span class='id object_id'>object_id</span> <span class='kw'>if</span> <span class='id storage'>storage</span><span class='period'>.</span><span class='id get_keys'>get_keys</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span><span class='period'>.</span><span class='id blank?'>blank?</span>
+  <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_key?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>has_key?</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+like Hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+234
+235
+236</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 234</span>
+
+<span class='kw'>def</span> <span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id get_object'>get_object</span><span class='lparen'>(</span><span class='id storage'>storage</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Sep 10 17:30:38 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

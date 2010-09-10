@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hammer::Component::Droppable::Widget</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (W)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Component.html" title="Hammer::Component (module)">Component</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Droppable.html" title="Hammer::Component::Droppable (module)">Droppable</a></span></span>
+     &raquo; 
+    <span class="title">Widget</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hammer::Component::Droppable::Widget
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hammer/component/drag_drop.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrapper_options-instance_method" title="#wrapper_options (instance method)">- (Object) <strong>wrapper_options</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="wrapper_options-instance_method">
+  
+    - (<tt>Object</tt>) <strong>wrapper_options</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/drag_drop.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id wrapper_options'>wrapper_options</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id component'>component</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id _droppable'>_droppable</span><span class='period'>.</span><span class='id clone'>clone</span>
+  <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:onDrop</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>JSString</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>function(draggable) { new Hammer.Message().</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>setAction(\&quot;</span><span class='embexpr_beg'>#{</span><span class='id register_action'>register_action</span> <span class='op'>&amp;</span><span class='id component'>component</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id _droppable'>_droppable</span><span class='lbracket'>[</span><span class='symbol'>:onDrop</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\&quot;, </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>draggable.element.component().id).send() }</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-droppable-options</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id options'>options</span><span class='period'>.</span><span class='id to_json'>to_json</span><span class='comma'>,</span> <span class='symbol'>:rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>droppable</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Sep 10 17:30:43 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

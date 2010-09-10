@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../../_index.html">Index (A)</a> &raquo; 
-    <span class='title'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span> &raquo; <span class='title'><a href="../Core.html" title="Hammer::Core (module)">Core</a></span>
+    <span class='title'><span class='object_link'><a href="../../Hammer.html" title="Hammer (module)">Hammer</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Core.html" title="Hammer::Core (module)">Core</a></span></span>
      &raquo; 
     <span class="title">Action</span>
   
@@ -191,7 +191,7 @@ Returns the value of attribute id.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#call-instance_method" title="#call (instance method)">- (Object) <strong>call</strong> </a>
+      <a href="#call-instance_method" title="#call (instance method)">- (Object) <strong>call</strong>(arg) </a>
     
 
     
@@ -247,7 +247,7 @@ A new instance of Action.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Hammer::Core::Action (class)">Action</a></tt>) <strong>initialize</strong>(uuid, component, block) 
+    - (<tt><span class='object_link'><a href="" title="Hammer::Core::Action (class)">Action</a></span></tt>) <strong>initialize</strong>(uuid, component, block) 
   
 
   
@@ -283,7 +283,7 @@ unique identification
   
     <li>
       
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Hammer::Component::Base (class)">Component::Base</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Component/Base.html" title="Hammer::Component::Base (class)">Component::Base</a></span></tt>)</span>
       
       
         <span class='name'>component</span>
@@ -294,7 +294,7 @@ unique identification
   
     <li>
       
-        <span class='type'>(<tt>Proc</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../../Proc.html" title="Proc (class)">Proc</a></span></tt>)</span>
       
       
         <span class='name'>block</span>
@@ -310,6 +310,19 @@ which is evaluated on link click
     </li>
   
 </ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -319,12 +332,14 @@ which is evaluated on link click
 
 12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/core/action.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id uuid'>uuid</span><span class='comma'>,</span> <span class='id component'>component</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span> <span class='const'>ArgumentError</span> <span class='kw'>unless</span> <span class='id uuid'>uuid</span> <span class='op'>&amp;&amp;</span> <span class='id component'>component</span> <span class='op'>&amp;&amp;</span> <span class='id block'>block</span>
   <span class='ivar'>@uuid</span><span class='comma'>,</span> <span class='ivar'>@component</span><span class='comma'>,</span> <span class='ivar'>@block</span> <span class='op'>=</span> <span class='id uuid'>uuid</span><span class='comma'>,</span> <span class='id component'>component</span><span class='comma'>,</span> <span class='id block'>block</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -473,7 +488,7 @@ Returns the value of attribute id
       <div class="method_details first">
   <p class="signature first" id="call-instance_method">
   
-    - (<tt>Object</tt>) <strong>call</strong> 
+    - (<tt>Object</tt>) <strong>call</strong>(arg) 
   
 
   
@@ -487,25 +502,40 @@ executes action
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='type'>(<tt>Hammer::Component::base</tt>)</span>
+      
+      
+        <span class='name'>arg</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
 19
 20
-21</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/action.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/action.rb', line 19</span>
 
-<span class='kw'>def</span> <span class='id call'>call</span>
+<span class='kw'>def</span> <span class='id call'>call</span><span class='lparen'>(</span><span class='id arg'>arg</span><span class='rparen'>)</span>
   <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Running action </span><span class='embexpr_beg'>#{</span><span class='id block'>block</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
-    <span class='id component'>component</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:instance_eval</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='id component'>component</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:instance_exec</span><span class='comma'>,</span> <span class='id arg'>arg</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -518,9 +548,9 @@ executes action
 </div>
     
     <div id="footer">
-  Generated on Fri Aug 27 15:41:19 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.2).
+  Generated on Fri Sep 10 17:30:40 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
 </div>
 
   </body>
