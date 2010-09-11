@@ -8,10 +8,10 @@
 require 'rubygems'
 require 'hammer'
 
-def trigger_gc
-  ObjectSpace.define_finalizer(Object.new, proc {})
-  GC.start
-end
+#def trigger_gc
+#  ObjectSpace.define_finalizer(Object.new, proc {})
+#  GC.start
+#end
 
 #class Foo < Object; end
 #
@@ -79,12 +79,14 @@ end
 
 #Memprof.dump_all 'file.json'
 
-q = Hammer::Weak::Queue.new.push(Object.new)
+#q = Hammer::Weak::Queue.new.push(Object.new)
+#
+#p q.to_a
+#p Hammer::Finalizer.get
+#
+#trigger_gc
+#
+#p q.to_a
+#p Hammer::Finalizer.get
 
-p q.to_a
-p Hammer::Finalizer.get
-
-trigger_gc
-
-p q.to_a
-p Hammer::Finalizer.get
+Hammer::Weak::ReferenceFinder.find(self, nil)

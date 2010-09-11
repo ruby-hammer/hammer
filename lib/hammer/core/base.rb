@@ -102,7 +102,7 @@ module Hammer::Core
 
         Hammer.logger.info '== Hammer WebSocket running.'
 
-        EventMachine::add_periodic_timer(60) do # TODO probably useless
+        EventMachine::add_periodic_timer(60) do # TODO now useless
           safely do
             # drops contexts without connections
             contexts = Context.send(:no_connection_contexts)

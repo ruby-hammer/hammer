@@ -46,12 +46,16 @@ module Hammer::Core::Observable
     _observers(event).size
   end
 
+  def get_observers(event)
+    _observers(event).keys
+  end
+
   private
 
   def _observers(event)
-    raise ArgumentError unless self.class.observable_events.include? event
+    raise ArgumentError, "unrecognized event #{event}" unless self.class.observable_events.include? event
     @_observers ||= {}
-    @_observers[event] ||= {}
+    @_observers[event] ||= Hammer::Weak::Hash[:key].new
   end
 
   def notify_observer(observer, method, *args)

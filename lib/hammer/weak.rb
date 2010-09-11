@@ -189,15 +189,6 @@ module Hammer::Weak
       value
     end
 
-    # like Hash
-    def each(&block)
-      storage.each do |k,v|
-        if value = get_object(v)
-          block.call k, value
-        end
-      end
-    end
-
     # @return [Hash]
     def to_hash
       inject({}) do |hash, pair|
@@ -223,6 +214,15 @@ module Hammer::Weak
     def initialize
       super
       self.class.storages[object_id] = BidirectionalHash.new
+    end
+
+    # like Hash
+    def each(&block)
+      storage.each do |k,v|
+        if value = get_object(v)
+          block.call k, value
+        end
+      end
     end
 
     # like Hash
@@ -323,6 +323,15 @@ module Hammer::Weak
       value
     end
 
+    # like Hash
+    def each(&block)
+      storage.each do |k,v|
+        if key = get_object(k)
+          block.call key, v
+        end
+      end
+    end
+
     private
 
     # find a right pair from candidates with same hash
@@ -369,8 +378,9 @@ module Hammer::Weak
   #        puts "object_space: #{ObjectSpace.each_object {}}"
   #
   #        arr = [
-  #          scope,
-  #          Object,
+  #          Hammer
+  ##          scope,
+  ##          Object,
   ##          *(global_variables - [:$=]).map {|gv| eval(gv.to_s) }
   #        ]
   #
@@ -400,32 +410,48 @@ module Hammer::Weak
   #          { :type => :scope,
   #            :condition => lambda {|i| i.kind_of? Proc },
   #            :names => lambda {|i| [:scope] },
-  #            :retrieve => lambda {|i, name| eval('self', i.binding) }
+  #            :retrieve => lambda {|i, name| i.scope }
+  #          },
+  #          { :type => :array,
+  #            :condition => lambda {|i| i.kind_of? Array },
+  #            :names => lambda {|i| Array.new(i.size) {|n| n } },
+  #            :retrieve => lambda {|i, name| i[name] }
+  #          },
+  #          { :type => :hash_key,
+  #            :condition => lambda {|i| i.kind_of? Hash },
+  #            :names => lambda {|i| Array.new(i.size) {|n| n } },
+  #            :retrieve => lambda {|i, name| i.keys[name] }
+  #          },
+  #          { :type => :hash_value,
+  #            :condition => lambda {|i| i.kind_of? Hash },
+  #            :names => lambda {|i| i.keys },
+  #            :retrieve => lambda {|i, name| i[name] }
   #          }
   #        ]
   #
   #        while inspecte = arr.shift
-  #          p '----', inspecte
+  ##          p '----', inspecte
   #          inspections.each do |inspection|
   #            begin
   #            if inspection[:condition].call(inspecte)
-  #              p inspection[:type]
-  #              p inspection[:names].call(inspecte)
+  ##              p inspection[:type]
+  ##              p inspection[:names].call(inspecte)
   #              inspection[:names].call(inspecte).each do |name|
-  #                p obj = inspection[:retrieve].call(inspecte, name)
+  #                obj = inspection[:retrieve].call(inspecte, name)
   #                references[obj.object_id] ||= []
   #                references[obj.object_id] << {:type => inspection[:type], :name => name, :obj => inspecte.object_id }
   #                arr.push obj
   #              end
   #            end
   #            rescue Exception => e
-  #              p e, inspecte
-  #              puts e.backtrace[0..5].join("\n")
+  #              p inspecte, e
+  #              puts e.backtrace.join("\n")
   #            end
   #          end
   #        end
   #
   #        puts "finded objects #{references.size}"
+  ##        pp references
   #        pp references[id]
   #
   #        GC.enable

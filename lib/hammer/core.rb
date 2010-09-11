@@ -6,4 +6,9 @@ module Hammer::Core
     (@last_id+=1).to_s(36)
   end
 
+  # FIXME dangerous, add own ids to components an store hash on context
+  def self.component_by_id(id)
+    begin ObjectSpace._id2ref(id.to_i) rescue RangeError end
+  end
+
 end

@@ -24,7 +24,7 @@ module Hammer::Component::Rendering
       check_class widget_classes[name] || parent_widget_class(name)
     end
 
-    # defines widget and executes {#extend_widget} for hooks
+    # @deprecated widgets can be now normally defined with class
     # @param [Symbol] name of a new widget class. If :quicly is passed defines widget quickly which means that
     # block is used to define #content not class
     # @param [Symbol, Class] parent class of new widget class. Symbol is used to find widget class with same name
@@ -166,7 +166,7 @@ module Hammer::Component::Rendering
   private
 
   def delete_old_actions
-    context.actions.delete_if {|id, action| action.component == self } # FIXME maybe slow
+    @actions = {}
   end
 
 

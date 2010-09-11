@@ -28,10 +28,6 @@ module Hammer::Component::Developer
 
       # observe log :message event
       Hammer.logger.add_observer(:message, self, :new_message)
-
-      # listen context for :drop event then delete observer to collect by GC
-      # TODO add weak reference to allow collect sooner
-      context.add_observer(:drop, self) { Hammer.logger.delete_observer :message, self }
     end
 
     def new_message(message)

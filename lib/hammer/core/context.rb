@@ -9,17 +9,16 @@ module Hammer::Core
 
     def initialize(id, container, hash = '')
       super
-      @actions = {}
+      @actions = Hammer::Weak::Hash[:value].new
     end
 
-    # creates and stores action for later evaluation
-    # @param [Component::Base] component where action will be evaluated
-    # @yield the action
-    # @return [String] uuid of the action
-    def register_action(component, &block)
-      uuid = Hammer::Core.generate_id
-      @actions[uuid] = Action.new(uuid, component, block)
-      return uuid
+    # registers action in context's hash
+    # @param [Component::Base] component where action is stored and evaluated
+    # @param [String] uuid of the action
+    # @return self
+    def register_action(uuid, component)
+      @actions[uuid] = component
+      self
     end
 
     # evaluates action with +id+, do nothing when no action
@@ -27,8 +26,8 @@ module Hammer::Core
     # @param [String] arg if of a {Hammer::Component::Base}
     # @return self
     def run_action(id, arg)
-      return self unless action = @actions[id]
-      action.call(component_by_id(arg))
+      return self unless component = @actions[id]
+      component.run_action(id, arg)
       self
     end
   end
@@ -68,10 +67,7 @@ module Hammer::Core
 
   # represents context of user, each tab of browser has one of its own
   class AbstractContext
-    include Observable
     include Hammer::Config
-
-    observable_events :drop
 
     attr_reader :id, :connection, :container, :hash, :root_component
 
@@ -98,7 +94,6 @@ module Hammer::Core
       self.class.contexts_by_connection.delete(connection)
       self.class.no_connection_contexts.delete(self)
       container.drop_context(self)
-      notify_observers(:drop, self)
     end
 
     # @return [Class] class of a root component
@@ -118,7 +113,7 @@ module Hammer::Core
     # @param [Boolean] restart try to restart when error?
     def schedule(restart = true, &block)
       @queue << block
-      schedule_next(restart) unless @running
+      schedule_next(restart) unless @running # TODO dont schedule if no connection
       self
     end
 
@@ -140,7 +135,7 @@ module Hammer::Core
       Hammer.benchmark "Updating form" do
         return self unless hash && hash.kind_of?(Hash)
         hash.each do |id, values|
-          form_part = component_by_id(id)
+          form_part = Hammer::Core.component_by_id(id)
           if form_part
             values.each {|key, value| form_part.set_value(key, value) }
           else
@@ -162,11 +157,6 @@ module Hammer::Core
     end
 
     private
-
-    # FIXME dangerous, add own ids to components an store hash on context
-    def component_by_id(id)
-      begin ObjectSpace._id2ref(id.to_i) rescue RangeError end
-    end
 
     # processes safely block, restarts context when error occurred
     # @yield task to execute
