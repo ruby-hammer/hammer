@@ -9,8 +9,13 @@ module Hammer::Component::Rendering
 
   module ClassMethods
     # @return [Hash{Symbol => Class}] defined widget classes
-    def widget_classes
-      @widget_classes ||= {}
+    def widget_classes(inherited = true)
+      widget_class_candidates(inherited).inject({}) do |hash, const|
+        if (klass = const_get(const)) < Hammer::Widget::Base
+          hash[const] = klass
+        end
+        hash
+      end
     end
 
     # @param [Symbol] name of a widget class
@@ -19,7 +24,7 @@ module Hammer::Component::Rendering
       check_class widget_classes[name] || parent_widget_class(name)
     end
 
-    # defines widget and executes {#extend_widget} for hooks
+    # @deprecated widgets can be now normally defined with class
     # @param [Symbol] name of a new widget class. If :quicly is passed defines widget quickly which means that
     # block is used to define #content not class
     # @param [Symbol, Class] parent class of new widget class. Symbol is used to find widget class with same name
@@ -38,22 +43,39 @@ module Hammer::Component::Rendering
     #       h1 "A header"
     #     end
     #   end
-    def define_widget(name = :Widget, parent = nil, &block)
+    def define_widget(name = :Widget, parent = nil, &block) # TODO remove method
+      Hammer.logger.warn 'define_widget is deprecated'
       if name == :quickly
         define_widget { define_method :content, &block }
       else
         parent = parent_widget_class(parent || name)
-        widget_classes[name] = widget_class = const_set(name, Class.new(parent))
-        extend_widget(widget_class)
+        widget_class = const_set(name, Class.new(parent))
+        # extend_widget(widget_class)
         widget_class.class_eval(&block)
       end
     end
 
+    def extend_widgets
+      widget_classes(false).values.each do |widget_class|
+        extend_widget_by.each do |a_module|
+          unless widget_class.include? a_module
+            widget_class.send :include, a_module
+          end
+        end
+      end
+    end
+
+    def inherited(klass)
+      super
+      Hammer.after_load { klass.extend_widgets }
+    end
+
     protected
 
-    # hook for modules included into component, for example Draggable, Droppable
-    # @param [Class] widget_class
-    def extend_widget(widget_class)
+    # hook for modules included into component, for example Draggable, Droppable. Do not use super.
+    # @return [Array<Module>] array of modules used to include to widget classes
+    def extend_widget_by
+      []
     end
 
     # @return [Class] widget class for given +name+
@@ -71,6 +93,18 @@ module Hammer::Component::Rendering
     # raise error if klass is missing
     def check_class(klass)
       return klass || raise(Hammer::Component::MissingWidgetClass, self.to_s)
+    end
+
+    def widget_class_candidates(inherited)
+      if Hammer.v19?
+        self.constants(inherited)
+      else
+        self.constants + if inherited && superclass.respond_to?(:widget_class_candidates, true)
+          superclass.send :widget_class_candidates, inherited
+        else
+          []
+        end
+      end.map(&:to_sym)
     end
   end
 
@@ -132,8 +166,8 @@ module Hammer::Component::Rendering
   private
 
   def delete_old_actions
-    context.actions.delete_if {|id, action| action.component == self } # FIXME maybe slow
+    @actions = {}
   end
-  
+
 
 end

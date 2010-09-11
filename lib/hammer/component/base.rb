@@ -12,10 +12,10 @@ module Hammer::Component
     include Passing
     include Inspection
 
-    define_widget :Widget, Hammer::Widget::Base do
+    class Widget < Hammer::Widget::Base
     end
 
-    define_widget :Collection, widget_class do
+    class Collection < widget_class :Widget
       needs :collection => nil
 
       # @return [Array<Erector::Widget, Component::Base>, nil] obtained collection of widgets/components

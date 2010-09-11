@@ -6,7 +6,7 @@ module Hammer::Component::Developer
     attr_reader :message
     needs :message
 
-    define_widget do
+    class Widget < widget_class :Widget
       wrap_in :code
       css do
         this! { display :block }
@@ -28,16 +28,12 @@ module Hammer::Component::Developer
 
       # observe log :message event
       Hammer.logger.add_observer(:message, self, :new_message)
-
-      # listen context for :drop event then delete observer to collect by GC
-      # TODO add weak reference to allow collect sooner
-      context.add_observer(:drop, self) { Hammer.logger.delete_observer :message, self }
     end
 
     def new_message(message)
       Hammer.logger.silence(5) do
         add_message(message)
-        context.update.send!
+        context.new_message.collect_updates.send!
       end
     end
 
@@ -50,11 +46,13 @@ module Hammer::Component::Developer
       end
     end
 
-    define_widget :quickly do
-      h3 'Log'
-      p "objects observing: #{Hammer.logger.count_observers(:message)}"
-      component.messages.each do |message|
-        render message
+    class Widget < widget_class :Widget
+      def content
+        h3 'Log'
+        p "objects observing: #{Hammer.logger.count_observers(:message)}"
+        component.messages.each do |message|
+          render message
+        end
       end
     end
   end

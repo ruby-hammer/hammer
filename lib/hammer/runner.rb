@@ -22,6 +22,7 @@ module Hammer::Runner
 
     def load_app_files
       Hammer::Loader.new(Dir.glob('./app/**/*.rb')).load!
+      Hammer.run_after_load!
     end
 
     def generate_css

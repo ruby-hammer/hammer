@@ -1,9 +1,11 @@
 require "hammer/monkey/erector.rb"
+require "hammer/monkey/proc.rb"
 
 require "hammer/jquery.rb"
 require "hammer/css.rb"
-require "hammer/weak_array.rb"
+require "hammer/weak.rb"
 require "hammer/js_string.rb"
+require "hammer/finalizer.rb"
 
 require "hammer/widget.rb"
 require "hammer/widget/abstract.rb"
@@ -69,3 +71,4 @@ require "hammer/component/developer/inspection/module.rb"
 require "hammer/component/developer/inspection/class.rb"
 require "hammer/component/developer/inspection/hash.rb"
 require "hammer/component/developer/inspection/array.rb"
+require "hammer/component/developer/inspection/proc.rb"

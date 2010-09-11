@@ -8,7 +8,7 @@ module Hammer::Component::Developer::Inspection
           inspector(obj.included_modules, :label => 'Included Modules')
     end
 
-    define_widget do
+    class Widget < widget_class :Widget
       def name
         obj.to_s
       end

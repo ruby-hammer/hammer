@@ -7,8 +7,10 @@ describe Hammer::Component::Base do
   setup_context
 
   class FooComponent < Hammer::Component::Base
-    define_widget :quickly do
-      text 'foo content'
+    class Widget < widget_class :Widget
+      def content
+        text 'foo content'
+      end
     end
   end
 

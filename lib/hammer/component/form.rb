@@ -22,9 +22,8 @@ module Hammer::Component::Form
 
     protected
 
-    def extend_widget(widget_class)
-      super
-      widget_class.send :include, Widget unless widget_class.include? Widget
+    def extend_widget_by
+      [Widget]
     end
 
   end
