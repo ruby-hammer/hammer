@@ -277,9 +277,14 @@ module Hammer::Weak
       @key_hash.add(key, hash)
     end
 
+    # @return value
+    def get(key)
+      @hash[key]
+    end
+
     # @return [Array<Array<>>] array of pair candidates
     # multiple objects can have same hash
-    def get(hash)
+    def get_candidates(hash)
       return @key_hash.get_keys(hash).map {|key| [key, @hash[key]] }
     end
 
@@ -337,7 +342,10 @@ module Hammer::Weak
     # find a right pair from candidates with same hash
     # @return array of id and value or nil
     def get_key_value(key)
-      storage.get(key.hash).find do |k,v|
+      if v = storage.get(key.object_id)
+        return key.object_id, v
+      end
+      storage.get_candidates(key.hash).find do |k,v|
         candidate_key = get_object(k) or next
         candidate_key.eql? key
       end

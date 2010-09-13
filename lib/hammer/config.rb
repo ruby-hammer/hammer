@@ -19,6 +19,7 @@ module Hammer
             [
               # name                    type      default       description
               [ 'app.name',             String,   nil,          "application name" ],
+              [ 'app.shared',           String,   "Hammer::Core::Shared", "class for shared data" ],
 
               [ 'web.host',             String,   '127.0.0.1',  "web-server's device to bind" ],
               [ 'web.port',             Integer,  3000,         "web-server's port" ],

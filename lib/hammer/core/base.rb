@@ -59,18 +59,12 @@ module Hammer::Core
       # initial request for content
       elsif !(context_id)
         context = self.container(session_id).context(nil, message['hash'])
-        context.schedule do
-          context.set_connection(connection).
-              new_message.context_id.collect_updates.send!
-        end
+        context.set_connection(connection)
 
       # request to do something
       elsif action_id || form
         context = self.container(session_id).context(context_id)
-        context.schedule do
-          context.update_form(form).run_action(action_id, message['arguments']).
-              new_message.collect_updates.send!
-        end
+        context.schedule { context.update_form(form).run_action(action_id, message['arguments']) }
 
       # restart context
       elsif context_id

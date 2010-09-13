@@ -33,7 +33,6 @@ module Hammer::Component::Developer
     def new_message(message)
       Hammer.logger.silence(5) do
         add_message(message)
-        context.new_message.collect_updates.send!
       end
     end
 

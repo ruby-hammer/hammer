@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-08}
+  s.date = %q{2010-09-11}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
      "lib/hammer/component/inspection.rb",
      "lib/hammer/component/passing.rb",
      "lib/hammer/component/rendering.rb",
+     "lib/hammer/component/sharing.rb",
      "lib/hammer/component/state.rb",
      "lib/hammer/config.rb",
      "lib/hammer/core.rb",
@@ -130,8 +131,8 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<tzinfo>, [">= 0"])
-      s.add_runtime_dependency(%q<i18n>, [">= 0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0.beta"])
+      s.add_runtime_dependency(%q<i18n>, [">= 0.4"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
       s.add_runtime_dependency(%q<erector>, [">= 0.8.1"])
       s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
       s.add_runtime_dependency(%q<thin>, [">= 0"])
@@ -145,8 +146,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rack-test>, [">= 0"])
     else
       s.add_dependency(%q<tzinfo>, [">= 0"])
-      s.add_dependency(%q<i18n>, [">= 0"])
-      s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
+      s.add_dependency(%q<i18n>, [">= 0.4"])
+      s.add_dependency(%q<activesupport>, [">= 3.0.0"])
       s.add_dependency(%q<erector>, [">= 0.8.1"])
       s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<thin>, [">= 0"])
@@ -161,8 +162,8 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<tzinfo>, [">= 0"])
-    s.add_dependency(%q<i18n>, [">= 0"])
-    s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
+    s.add_dependency(%q<i18n>, [">= 0.4"])
+    s.add_dependency(%q<activesupport>, [">= 3.0.0"])
     s.add_dependency(%q<erector>, [">= 0.8.1"])
     s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<thin>, [">= 0"])
