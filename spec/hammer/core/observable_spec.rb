@@ -19,7 +19,7 @@ describe Hammer::Core::Observable do
 
   let(:observer) do
     observer = mock(:observer)
-    observer.stub(:on_event).and_return { raise 'event called'}
+    observer.stub(:on_event).and_return { raise 'event called' }
     observer.stub(:context).and_return(context_mock)
     context_mock.stub(:schedule).and_return {|block| block.call }
     observer
@@ -29,7 +29,7 @@ describe Hammer::Core::Observable do
     describe '(:a_event, a_observer, a_method)' do
       before { a_observable.add_observer(:a_event, observer, :on_event) }
       it('should add observer') do
-        a_observable.send(:_observers, :a_event).should include(observer)
+        a_observable.get_observers(:a_event).should include(observer)
       end
 
       describe 'when notified' do
@@ -37,8 +37,8 @@ describe Hammer::Core::Observable do
       end
 
       describe 'when deleted' do
-        before { a_observable.delete_observer(:a_event, observer) }
-        it { a_observable.send(:_observers, :a_event).should be_blank }
+        before { pp a_observable.get_observers(:a_event); a_observable.delete_observer(:a_event, observer) }
+        it { pp a_observable.get_observers(:a_event); a_observable.get_observers(:a_event).should be_blank }
       end
     end
 

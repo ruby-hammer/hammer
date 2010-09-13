@@ -150,6 +150,7 @@ describe Hammer::Weak::Hash[:key] do
     before do
       @hash = HK.new
       @hash[@obj = Object.new] = 'a'
+      @hash[@obj1 = Object.new] = 'd'
       @hash['b'] = 'b'
       @hash['c'] = @obj
       @hash2 = HK.new
@@ -164,7 +165,7 @@ describe Hammer::Weak::Hash[:key] do
       @hash['b'].should == 'b'
       @hash['c'].should == @obj
       @hash['c'].object_id.should == @hash2['d'].object_id
-      @hash.size.should == 3
+      @hash.size.should == 4
       @hash2.size.should == 1
     end
 
@@ -173,13 +174,17 @@ describe Hammer::Weak::Hash[:key] do
         @hash[@obj] = 'c'
         @hash['b'] = 12.3
         @hash.delete 'c'
+        @hash.delete @obj1
       end
       it 'should have changed elements' do
         @hash.should have_key(@obj)
         @hash.should have_key('b')
         @hash.should_not have_key('c')
+        @hash.should_not have_key(@obj1)
         @hash[@obj].should == 'c'
+        @hash[@obj1].should == nil
         @hash['b'].should == 12.3
+        @hash['c'].should == nil
         @hash.size.should == 2
       end
     end

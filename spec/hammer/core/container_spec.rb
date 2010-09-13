@@ -23,8 +23,8 @@ describe Hammer::Core::Container do
 
   describe '#restart_context' do
     before do
-      @context1 = container.context(nil, "")
-      @context1.set_connection mock(:connection)
+      @context1 = container.context(nil, "devel")
+      @context1.set_connection mock(:connection, :send => nil)
       Hammer::Core::Context.
           should_receive(:new).
           with(@context1.id, container, @context1.hash).

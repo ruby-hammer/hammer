@@ -6,7 +6,7 @@ describe Hammer::Core::Context do
   include HammerMocks
 
   let(:allocated_context) { Hammer::Core::Context.allocate }
-  let(:context) { allocated_context.send :initialize, @id = 'id', container_mock, ''; allocated_context }
+  let(:context) { allocated_context.send :initialize, @id = 'id', container_mock, 'devel'; allocated_context }
   #  let(:context) { Hammer::Core::Context.new @id = 'id', container_mock, '' }
 
   describe '.new' do
@@ -19,7 +19,7 @@ describe Hammer::Core::Context do
     end
 
     describe '#hash' do
-      it { context.hash.should == '' }
+      it { context.hash.should == 'devel' }
     end
 
   end
@@ -28,14 +28,15 @@ describe Hammer::Core::Context do
     it { context.class.no_connection_contexts.should include(context) }
 
     describe 'when dropped' do
-      before { context.should_receive(:notify_observers).with(:drop, context) }
-      before { context.drop }
+      before do
+        context.drop
+      end
       it { context.class.no_connection_contexts.should_not include(context) }
     end
   end
 
   describe 'when connection is set' do
-    before { context.set_connection mock(:connection) }
+    before { context.set_connection mock(:connection, :send => nil) }
 
     describe '.no_connection_contexts' do
       it { context.class.no_connection_contexts.should_not include(context) }
@@ -45,7 +46,6 @@ describe Hammer::Core::Context do
       it { context.class.by_connection(context.connection).should == context }
 
       describe 'when dropped' do
-        before { context.should_receive(:notify_observers).with(:drop, context) }
         before { context.drop }
         it { context.class.by_connection(context.connection).should be_nil }
       end
@@ -81,12 +81,11 @@ describe Hammer::Core::Context do
 #    it { context.instance_variable_get(:@message).should == {:context_id => 'id'} }
 #  end
 
-  describe Hammer::Core::Message do
-    pending
-  end
-
   describe '#schedule' do
-    before { $blocks = [] }
+    before do
+      $blocks = []
+      context.set_connection(mock(:connection, :send => nil))
+    end
     describe 'when one block' do
       before do
         context.schedule { $blocks << :first }

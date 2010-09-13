@@ -25,5 +25,8 @@ module Erector
       send render_options[:content_method_name] || :content
     end
 
+    def to_s
+      super
+    end
   end
 end

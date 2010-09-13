@@ -31,7 +31,7 @@ module Hammer::Core
     def restart_context(id, hash, connection, warn = nil)
       context = @contexts[id] = Context.new(id, self, hash)
       context.set_connection(connection)
-      context.schedule(false) { context.new_message.collect_updates.warn(warn).send! }
+      context.schedule(false) { context.warn(warn) }
       context
     end
 
