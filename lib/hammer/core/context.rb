@@ -55,9 +55,9 @@ module Hammer::Core
       self
     end
 
-    # @return [Array<Hammer::Bomponent::Base>] of unsended components
+    # @return [Array<Hammer::Bomponent::Base>] of unsended visible components
     def unsended_components
-      root_component.all_children.select(&:unsended?) # TODO can be slow prestore unsended components in a array
+      root_component.all_children.select(&:unsended?)
     end
 
   end
@@ -215,7 +215,7 @@ module Hammer::Core
         message[:context_id] = id
 
         Hammer.benchmark('Actualization') do
-          message[:update] = unsended_components.map {|c| c.send!; c.to_html }.join
+          message[:update] = unsended_components.map {|c| c.send!.to_html }.join
         end
 
         # FIXME don't send blank updates

@@ -58,6 +58,7 @@ module Hammer::Component::State
   def change!
     @_changed = true
     @_sended = false
+    self
   end
 
   # @return [Boolean] if component id changed
@@ -68,6 +69,7 @@ module Hammer::Component::State
   # resets component change state
   def reset_change!
     @_changed = false
+    self
   end
 
   # is updated html sended to client?
@@ -78,5 +80,6 @@ module Hammer::Component::State
   # set to update to sended
   def send!
     @_sended = true
+    self
   end
 end
