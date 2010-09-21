@@ -8,7 +8,7 @@ module Hammer::CSS
   end
 
   # can be used to delay css generating, see {#to_s}
-  class Builder
+  class Builder < ActiveSupport::BasicObject
     attr_reader :selectors
     def initialize(&block)
       @selectors = []

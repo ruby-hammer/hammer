@@ -57,7 +57,7 @@ module Hammer::Component::State
   # tells component that it's changed
   def change!
     @_changed = true
-    @_sended = false
+    unsend!
     self
   end
 
@@ -73,11 +73,16 @@ module Hammer::Component::State
   end
 
   # is updated html sended to client?
-  def unsended?
+  def unsent?
     !@_sended
   end
 
-  # set to update to sended
+  # set update to unsent?
+  def unsend!
+    @_sended = false
+  end
+
+  # set update to sent
   def send!
     @_sended = true
     self

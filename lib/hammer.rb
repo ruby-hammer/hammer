@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 unless defined? Hammer
-  # gems
   require 'active_support/core_ext'
   require 'active_support/basic_object'
   require 'active_support/json'
@@ -9,13 +8,13 @@ unless defined? Hammer
   require 'sinatra/base'
   require 'em-websocket'
   require 'configliere'
-
-  # stdlib
-  require 'pp'
   require 'hammer/fiber'
+  require 'data_objects'
+  require 'hammer/monkey/data_objects_em_fiber'
+  require 'datamapper'  
+  require 'pp'
   require 'benchmark'
 
-  # hammer
   require 'hammer/config.rb'
 
   module Hammer
@@ -27,7 +26,7 @@ unless defined? Hammer
     end
 
     def self.v19?
-      RUBY_VERSION =~ /1.9/
+      defined? @v19 ? @v19 : RUBY_VERSION =~ /1.9/
     end
 
     def self.benchmark(label, req = true, &block)
@@ -53,6 +52,8 @@ unless defined? Hammer
       @after_load = []
     end
   end
+
+  DataMapper::Logger.new(Hammer.config[:logger][:output]) # TODO
 
   require 'hammer/monkey/basic_object'
   require 'hammer/load.rb'

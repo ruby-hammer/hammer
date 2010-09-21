@@ -14,7 +14,7 @@ module Hammer
     include Severity
 
     include Hammer::Core::Observable
-    observable_events :message
+    instance_observable_events :message
 
     ##
     # :singleton-method:

@@ -5,7 +5,7 @@ module Hammer::Component::Sharing
 
   module ClassMethods
     def shared(*names)
-      delegate(*(names + {:to => :shared}))
+      delegate(*(names + [{:to => :shared}]))
     end
   end
 

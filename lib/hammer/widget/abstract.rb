@@ -14,7 +14,7 @@ module Hammer::Widget
 
     # try to obtain widget and render it with Erector::Widget#widget
     # @param [Erector::Widget, #widget] obj to render
-    def render(obj)
+    def render!(obj)
       widget begin
         if obj.kind_of?(Abstract)
           obj
@@ -24,6 +24,10 @@ module Hammer::Widget
           raise ArgumentError, obj.inspect
         end
       end
+    end
+
+    def render(obj)
+      render! obj unless obj.nil?
     end
 
   end

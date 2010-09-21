@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-11}
+  s.date = %q{2010-09-18}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -69,6 +69,7 @@ Gem::Specification.new do |s|
      "lib/hammer/loader.rb",
      "lib/hammer/logger.rb",
      "lib/hammer/monkey/basic_object.rb",
+     "lib/hammer/monkey/data_objects_em_fiber.rb",
      "lib/hammer/monkey/erector.rb",
      "lib/hammer/monkey/proc.rb",
      "lib/hammer/runner.rb",
@@ -139,6 +140,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<em-websocket>, [">= 0"])
       s.add_runtime_dependency(%q<configliere>, [">= 0"])
       s.add_runtime_dependency(%q<bundler>, [">= 0"])
+      s.add_runtime_dependency(%q<data_objects>, [">= 0.10"])
+      s.add_runtime_dependency(%q<datamapper>, [">= 1.0"])
       s.add_development_dependency(%q<rspec>, [">= 2.0.0.beta"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<BlueCloth>, [">= 0"])
@@ -154,6 +157,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<em-websocket>, [">= 0"])
       s.add_dependency(%q<configliere>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<data_objects>, [">= 0.10"])
+      s.add_dependency(%q<datamapper>, [">= 1.0"])
       s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<BlueCloth>, [">= 0"])
@@ -170,6 +175,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<em-websocket>, [">= 0"])
     s.add_dependency(%q<configliere>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<data_objects>, [">= 0.10"])
+    s.add_dependency(%q<datamapper>, [">= 1.0"])
     s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<BlueCloth>, [">= 0"])

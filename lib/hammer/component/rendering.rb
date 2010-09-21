@@ -117,8 +117,12 @@ module Hammer::Component::Rendering
   def to_html
     if changed? || !@_html
       delete_old_actions
+      old_children = _children.clone
+      _children.clear
       @_html = widget.to_html
       reset_change!
+      # mark unchanged rendered components to send
+      (children - old_children).each {|component| component.all_children.map(&:unsend!) }
     end
     @_html
   end

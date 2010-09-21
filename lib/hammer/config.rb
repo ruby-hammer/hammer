@@ -39,7 +39,7 @@ module Hammer
               [ :root,                  String,   nil,          "name of a root component's class" ],
               [ :layout,                String,   "Hammer::Widget::Layout", "name of a layout's class" ],
               [ :environment,           Symbol,   :development, "environment", 'RACK_ENV' ],
-              [ :irb,                   :boolean, false,        "run console" ]
+              #              [ :irb,                   :boolean, false,        "run console" ]
 
 
             ].each do |key, type, default, description, env_var|
@@ -52,7 +52,7 @@ module Hammer
             end
 
             finally do |c|
-              c[:irb] = c[:environment] == :development
+              #              c[:irb] = c[:environment] == :development
               c[:logger][:level] = c[:environment] == :development ? 0 : 1
             end
 

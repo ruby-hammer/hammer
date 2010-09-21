@@ -6,6 +6,8 @@ require "hammer/css.rb"
 require "hammer/weak.rb"
 require "hammer/js_string.rb"
 require "hammer/finalizer.rb"
+#require "hammer/data_mapper.rb"
+require 'hammer/monkey/weak_identity_map'
 
 require "hammer/widget.rb"
 require "hammer/widget/abstract.rb"

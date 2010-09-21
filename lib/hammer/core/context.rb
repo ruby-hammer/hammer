@@ -6,11 +6,11 @@ module Hammer::Core
   class AbstractContext
     include Hammer::Config
 
-    attr_reader :id, :connection, :container, :hash, :root_component
+    attr_reader :id, :connection, :container, :hash, :root_component, :repository
 
     # @param [String] id unique identification
     def initialize(id, container, hash = '')
-      @id, @container, @hash = id, container, hash
+      @id, @container, @hash, @repository = id, container, hash, DataMapper.repository(:default)
       schedule { @root_component = root_class.new }
     end
 
@@ -55,9 +55,9 @@ module Hammer::Core
       self
     end
 
-    # @return [Array<Hammer::Bomponent::Base>] of unsended visible components
-    def unsended_components
-      root_component.all_children.select(&:unsended?)
+    # @return [Array<Hammer::Bomponent::Base>] of unsent? visible components
+    def unsent_components
+      root_component.all_children.select(&:unsent?)
     end
 
   end
@@ -104,7 +104,7 @@ module Hammer::Core
       # @param [Boolean] restart try to restart when error?
       # @yield block to schedule
       def schedule(restart = true, &new_block)
-        # FIXME when bug in hammer not in app sometimes cycling
+        restart = false # FIXME when bug in hammer not in app sometimes cycling
         @queue << new_block if new_block
 
         return self if @scheduled || !connection # block until connection is obtained
@@ -112,24 +112,28 @@ module Hammer::Core
         if block = @queue.shift
           @scheduled = block
           @need_update = true
-          Base.fibers_pool.spawn { with_context { safely(restart) do
-                block.call
-                @scheduled = nil
-                schedule restart
-              end }}
+          schedule_block restart do
+            block.call
+            @scheduled = nil
+            schedule restart
+          end
         elsif @need_update
           @scheduled = :update!
-          Base.fibers_pool.spawn { with_context { safely(restart) do
-                update!
-                @scheduled = nil
-                @need_update = false
-                schedule restart
-              end }}
+          schedule_block restart do
+            update!
+            @scheduled = nil
+            @need_update = false
+            schedule restart
+          end
         end
         self
       end
 
       private
+
+      def schedule_block(restart, &block)
+        Base.fibers_pool.spawn { with_context { safely(restart) { @repository.scope &block }}}
+      end
 
       # sets context to fiber
       def with_context(&block)
@@ -215,11 +219,11 @@ module Hammer::Core
         message[:context_id] = id
 
         Hammer.benchmark('Actualization') do
-          message[:update] = unsended_components.map {|c| c.send!.to_html }.join
+          message[:update] = unsent_components.map {|c| c.send!.to_html }.join
         end
 
         # FIXME don't send blank updates
-        connection.send message if connection # FIXME unsended will be lost
+        connection.send message if connection # FIXME unsent will be lost
         self
       end
     end

@@ -7,17 +7,18 @@ module Hammer::Runner
   class << self
 
     def run!
-      load_app_files
-      generate_css
+      load_app
       Hammer::Core::Base.run!
       setup_application
       Hammer.logger.info "== Settings\n" + config.pretty_inspect
       Hammer.logger.level = config[:logger][:level]
-      #        if config[:irb]
-      #          require 'irb'
-      #          Thread.new { IRB.start }
-      #        end
       Hammer::Core::Application.run!
+    end
+
+    def load_app
+      load_app_files
+      generate_css
+      setup_db
     end
 
     def load_app_files
@@ -26,10 +27,18 @@ module Hammer::Runner
     end
 
     def generate_css
-      Hammer.benchmark('css generated', false) do
+      Hammer.benchmark('== CSS generated', false) do
         File.open("./public/css/#{config[:app][:name].underscore}.css", 'w') do |file|
           file.write Hammer::Widget::CSS.css
         end
+      end
+    end
+
+    def setup_db
+      if config[:app][:db] && config[:app][:db][config[:environment]]
+        DataMapper.finalize
+        DataMapper.setup :default, config[:app][:db][config[:environment]]
+        Hammer.logger.info "== DB: #{config[:app][:db][config[:environment]]}"
       end
     end
 

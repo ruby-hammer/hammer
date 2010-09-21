@@ -57,11 +57,6 @@ module Hammer::Widget::Component
     end
   end
 
-  def to_html
-    component._children.clear
-    super
-  end
-
   private
 
   # renders replacer in place of component when rendering update

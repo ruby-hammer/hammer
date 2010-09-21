@@ -58,6 +58,8 @@ begin
     gem.add_dependency 'em-websocket', ">= 0"
     gem.add_dependency 'configliere', ">= 0"
     gem.add_dependency 'bundler', ">= 0"
+    gem.add_dependency 'data_objects', ">= 0.10"
+    gem.add_dependency 'datamapper', ">= 1.0"
 
     gem.add_development_dependency "rspec", ">= 2.0.0.beta"
     gem.add_development_dependency "yard", ">= 0"

@@ -17,14 +17,16 @@ module Hammer::Widget
     depends_on :js, 'js/jquery-no_conflict.js'
     depends_on :js, 'js/right.js'
     depends_on :js, 'js/hammer.js'
-    depends_on :css, "css/#{Hammer.config[:app][:name].underscore}.css" if Hammer.config['app.name']
     depends_on :'shortcut icon',"hammer.png"
-    #
 
     def body_content
       set_variables(@session_id)
       loading
-      div :id => 'hammer-content'
+      container { div :id => 'hammer-content' }
+    end
+
+    def container(&content)
+      content.call
     end
 
     # overwrite to change loading page
@@ -39,6 +41,12 @@ module Hammer::Widget
 
     def favicon
       "hammer.png"
+    end
+
+    protected
+
+    def self.generated_css
+      depends_on :css, "css/#{Hammer.config[:app][:name].underscore}.css" if Hammer.config['app.name']
     end
 
     private
