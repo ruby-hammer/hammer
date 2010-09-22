@@ -78,7 +78,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#observable_events-instance_method" title="#observable_events (instance method)">- (Array&lt;Symbol&gt;) <strong>observable_events</strong>(*events) </a>
+      <a href="#class_observable_events-instance_method" title="#class_observable_events (instance method)">- (Array&lt;Symbol&gt;) <strong>class_observable_events</strong>(*events) </a>
     
 
     
@@ -99,6 +99,51 @@ Allowed events.
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#instance_observable_events-instance_method" title="#instance_observable_events (instance method)">- (Array&lt;Symbol&gt;) <strong>instance_observable_events</strong>(*events) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Allowed events.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#observable_events-instance_method" title="#observable_events (instance method)">- (Object) <strong>observable_events</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -109,9 +154,9 @@ Allowed events.
     
     
       <div class="method_details first">
-  <p class="signature first" id="observable_events-instance_method">
+  <p class="signature first" id="class_observable_events-instance_method">
   
-    - (<tt>Array&lt;Symbol&gt;</tt>) <strong>observable_events</strong>(*events) 
+    - (<tt>Array&lt;Symbol&gt;</tt>) <strong>class_observable_events</strong>(*events) 
   
 
   
@@ -151,17 +196,101 @@ allowed events
       <pre class="lines">
 
 
-9
-10
-11
-12</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id observable_events'>observable_events</span><span class='lparen'>(</span><span class='op'>*</span><span class='id events'>events</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id _observable_events'>_observable_events</span> <span class='op'>=</span> <span class='id events'>events</span> <span class='kw'>unless</span> <span class='id events'>events</span><span class='period'>.</span><span class='id blank?'>blank?</span>
-  <span class='kw'>return</span> <span class='id _observable_events'>_observable_events</span>
+<span class='kw'>def</span> <span class='id class_observable_events'>class_observable_events</span><span class='lparen'>(</span><span class='op'>*</span><span class='id events'>events</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id _class_observable_events'>_class_observable_events</span> <span class='op'>=</span> <span class='id events'>events</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="instance_observable_events-instance_method">
+  
+    - (<tt>Array&lt;Symbol&gt;</tt>) <strong>instance_observable_events</strong>(*events) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Allowed events
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+allowed events
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id instance_observable_events'>instance_observable_events</span><span class='lparen'>(</span><span class='op'>*</span><span class='id events'>events</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id _instance_observable_events'>_instance_observable_events</span> <span class='op'>=</span> <span class='id events'>events</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="observable_events-instance_method">
+  
+    - (<tt>Object</tt>) <strong>observable_events</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/observable.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id observable_events'>observable_events</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id _class_observable_events'>_class_observable_events</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -173,7 +302,7 @@ allowed events
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:41 2010 by 
+  Generated on Wed Sep 22 11:01:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

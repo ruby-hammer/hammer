@@ -81,11 +81,11 @@ encoding: UTF-8
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Core/Actions.html" title="Hammer::Core::Actions (module)">Actions</a></span>, <span class='object_link'><a href="Core/Observable.html" title="Hammer::Core::Observable (module)">Observable</a></span>, <span class='object_link'><a href="Core/WebSocket.html" title="Hammer::Core::WebSocket (module)">WebSocket</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Core/Observable.html" title="Hammer::Core::Observable (module)">Observable</a></span>, <span class='object_link'><a href="Core/WebSocket.html" title="Hammer::Core::WebSocket (module)">WebSocket</a></span>
     
    
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Core/AbstractContext.html" title="Hammer::Core::AbstractContext (class)">AbstractContext</a></span>, <span class='object_link'><a href="Core/Action.html" title="Hammer::Core::Action (class)">Action</a></span>, <span class='object_link'><a href="Core/Application.html" title="Hammer::Core::Application (class)">Application</a></span>, <span class='object_link'><a href="Core/Base.html" title="Hammer::Core::Base (class)">Base</a></span>, <span class='object_link'><a href="Core/CommonLogger.html" title="Hammer::Core::CommonLogger (class)">CommonLogger</a></span>, <span class='object_link'><a href="Core/Container.html" title="Hammer::Core::Container (class)">Container</a></span>, <span class='object_link'><a href="Core/Context.html" title="Hammer::Core::Context (class)">Context</a></span>, <span class='object_link'><a href="Core/Fiber.html" title="Hammer::Core::Fiber (class)">Fiber</a></span>, <span class='object_link'><a href="Core/FiberPool.html" title="Hammer::Core::FiberPool (class)">FiberPool</a></span>, <span class='object_link'><a href="Core/Message.html" title="Hammer::Core::Message (class)">Message</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Core/AbstractContext.html" title="Hammer::Core::AbstractContext (class)">AbstractContext</a></span>, <span class='object_link'><a href="Core/Action.html" title="Hammer::Core::Action (class)">Action</a></span>, <span class='object_link'><a href="Core/Application.html" title="Hammer::Core::Application (class)">Application</a></span>, <span class='object_link'><a href="Core/Base.html" title="Hammer::Core::Base (class)">Base</a></span>, <span class='object_link'><a href="Core/CommonLogger.html" title="Hammer::Core::CommonLogger (class)">CommonLogger</a></span>, <span class='object_link'><a href="Core/Container.html" title="Hammer::Core::Container (class)">Container</a></span>, <span class='object_link'><a href="Core/Context.html" title="Hammer::Core::Context (class)">Context</a></span>, <span class='object_link'><a href="Core/Fiber.html" title="Hammer::Core::Fiber (class)">Fiber</a></span>, <span class='object_link'><a href="Core/FiberPool.html" title="Hammer::Core::FiberPool (class)">FiberPool</a></span>, <span class='object_link'><a href="Core/Shared.html" title="Hammer::Core::Shared (class)">Shared</a></span>
     
   
 </p>
@@ -99,6 +99,30 @@ encoding: UTF-8
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#component_by_id-class_method" title="component_by_id (class method)">+ (Object) <strong>component_by_id</strong>(id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+FIXME dangerous, add own ids to components an store hash on context.
+</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -131,7 +155,46 @@ encoding: UTF-8
     
     
       <div class="method_details first">
-  <p class="signature first" id="generate_id-class_method">
+  <p class="signature first" id="component_by_id-class_method">
+  
+    + (<tt>Object</tt>) <strong>component_by_id</strong>(id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+FIXME dangerous, add own ids to components an store hash on context
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id component_by_id'>component_by_id</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id _id2ref'>_id2ref</span><span class='lparen'>(</span><span class='id id'>id</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='const'>RangeError</span> <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate_id-class_method">
   
     + (<tt>Object</tt>) <strong>generate_id</strong> 
   
@@ -165,7 +228,7 @@ encoding: UTF-8
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:38 2010 by 
+  Generated on Wed Sep 22 11:01:21 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

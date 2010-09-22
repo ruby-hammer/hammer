@@ -71,7 +71,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2"><span class='object_link'><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></span>, <span class='object_link'><a href="Observable.html" title="Hammer::Core::Observable (module)">Observable</a></span></dd>
+      <dd class="r2"><span class='object_link'><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></span></dd>
       
     
   
@@ -100,10 +100,6 @@ represents context of user, each tab of browser has one of its own
 </div>
 
 
-  
-  
-  
-  
   
   
   
@@ -222,6 +218,33 @@ Returns the value of attribute id.
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#repository-instance_method" title="#repository (instance method)">- (Object) <strong>repository</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute repository.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#root_component-instance_method" title="#root_component (instance method)">- (Object) <strong>root_component</strong> </a>
     
 
@@ -251,110 +274,11 @@ Returns the value of attribute root_component.
 
   
     <h2>
-      Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#by_connection-class_method" title="by_connection (class method)">+ (Context) <strong>by_connection</strong>(connection) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-By <tt>connection</tt>.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#contexts_by_connection-class_method" title="contexts_by_connection (class method)">+ (Object) <strong>contexts_by_connection</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#no_connection_contexts-class_method" title="no_connection_contexts (class method)">+ (Object) <strong>no_connection_contexts</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
       Instance Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
 
     <ul class="summary">
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#component_by_id-instance_method" title="#component_by_id (instance method)">- (Object) <strong>component_by_id</strong>(id) </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-FIXME dangerous, add own ids to components an store hash on context.
-</p>
-</div></span>
-  
-</li>
-
       
         <li class="public ">
   <span class="summary_signature">
@@ -430,30 +354,6 @@ A new instance of AbstractContext.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new_message-instance_method" title="#new_message (instance method)">- (Message) <strong>new_message</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-New instance.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#root_class-instance_method" title="#root_class (instance method)">- (Class) <strong>root_class</strong> </a>
     
 
@@ -469,99 +369,6 @@ New instance.
   
     <span class="summary_desc"><div class='inline'><p>
 Class of a root component.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#safely-instance_method" title="#safely (instance method)">- (Object) <strong>safely</strong>(restart = true) { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-processes safely block, restarts context when error occurred.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#schedule-instance_method" title="#schedule (instance method)">- (Object) <strong>schedule</strong>(restart = true) { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#schedule_next-instance_method" title="#schedule_next (instance method)">- (Object) <strong>schedule_next</strong>(restart = true) </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-schedules next block from @queue to be processed in <span class='object_link'><a href="Base.html#fibers_pool-class_method" title="Hammer::Core::Base.fibers_pool (method)">Base.fibers_pool</a></span>.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#set_connection-instance_method" title="#set_connection (instance method)">- (Object) <strong>set_connection</strong>(connection) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-store connection to be able to send server-side actualizations.
 </p>
 </div></span>
   
@@ -595,7 +402,7 @@ renders html, similar to Erector::Widget#to_html.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#unsended_components-instance_method" title="#unsended_components (instance method)">- (Array&lt;Hammer::Bomponent::Base&gt;) <strong>unsended_components</strong> </a>
+      <a href="#unsent_components-instance_method" title="#unsent_components (instance method)">- (Array&lt;Hammer::Bomponent::Base&gt;) <strong>unsent_components</strong> </a>
     
 
     
@@ -609,7 +416,7 @@ renders html, similar to Erector::Widget#to_html.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Of unsended components.
+Of unsent? visible components.
 </p>
 </div></span>
   
@@ -640,30 +447,6 @@ updates values in form parts.
 </li>
 
       
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#with_context-instance_method" title="#with_context (instance method)">- (Object) <strong>with_context</strong>(&amp;block) </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-sets context to fiber.
-</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -677,16 +460,6 @@ sets context to fiber.
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a></span>, <span class='object_link'><a href="../Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Observable.html" title="Hammer::Core::Observable (module)">Observable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Observable.html#_observers-instance_method" title="Hammer::Core::Observable#_observers (method)">#_observers</a></span>, <span class='object_link'><a href="Observable.html#add_observer-instance_method" title="Hammer::Core::Observable#add_observer (method)">#add_observer</a></span>, <span class='object_link'><a href="Observable.html#count_observers-instance_method" title="Hammer::Core::Observable#count_observers (method)">#count_observers</a></span>, <span class='object_link'><a href="Observable.html#delete_observer-instance_method" title="Hammer::Core::Observable#delete_observer (method)">#delete_observer</a></span>, <span class='object_link'><a href="Observable.html#included-class_method" title="Hammer::Core::Observable.included (method)">included</a></span>, <span class='object_link'><a href="Observable.html#notify_observer-instance_method" title="Hammer::Core::Observable#notify_observer (method)">#notify_observer</a></span>, <span class='object_link'><a href="Observable.html#notify_observers-instance_method" title="Hammer::Core::Observable#notify_observers (method)">#notify_observers</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -735,22 +508,16 @@ unique identification
       <pre class="lines">
 
 
-79
-80
-81
-82
-83
-84
-85</pre>
+12
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@container</span><span class='comma'>,</span> <span class='ivar'>@hash</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span>
-  <span class='ivar'>@queue</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id no_connection_contexts'>no_connection_contexts</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span>
-
+  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@container</span><span class='comma'>,</span> <span class='ivar'>@hash</span><span class='comma'>,</span> <span class='ivar'>@repository</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='symbol'>:default</span><span class='rparen'>)</span>
   <span class='id schedule'>schedule</span> <span class='lbrace'>{</span> <span class='ivar'>@root_component</span> <span class='op'>=</span> <span class='id root_class'>root_class</span><span class='period'>.</span><span class='id new'>new</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -790,12 +557,12 @@ Returns the value of attribute connection
       <pre class="lines">
 
 
-76
-77
-78</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id connection'>connection</span>
   <span class='ivar'>@connection</span>
@@ -832,12 +599,12 @@ Returns the value of attribute container
       <pre class="lines">
 
 
-76
-77
-78</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id container'>container</span>
   <span class='ivar'>@container</span>
@@ -874,12 +641,12 @@ Returns the value of attribute hash
       <pre class="lines">
 
 
-76
-77
-78</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id hash'>hash</span>
   <span class='ivar'>@hash</span>
@@ -916,15 +683,57 @@ Returns the value of attribute id
       <pre class="lines">
 
 
-76
-77
-78</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id id'>id</span>
   <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="repository-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="repository-instance_method">
+  
+    - (<tt>Object</tt>) <strong>repository</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute repository
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id repository'>repository</span>
+  <span class='ivar'>@repository</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -958,12 +767,12 @@ Returns the value of attribute root_component
       <pre class="lines">
 
 
-76
-77
-78</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id root_component'>root_component</span>
   <span class='ivar'>@root_component</span>
@@ -976,192 +785,12 @@ Returns the value of attribute root_component
   </div>
 
 
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="by_connection-class_method">
-  
-    + (<tt><span class='object_link'><a href="Context.html" title="Hammer::Core::Context (class)">Context</a></span></tt>) <strong>by_connection</strong>(connection) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-By <tt>connection</tt>
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="WebSocket/Connection.html" title="Hammer::Core::WebSocket::Connection (class)">WebSocket::Connection</a></span></tt>)</span>
-      
-      
-        <span class='name'>connection</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-to find out by
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Context.html" title="Hammer::Core::Context (class)">Context</a></span></tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-by <tt>connection</tt>
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-132
-133
-134</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 132</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id by_connection'>by_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
-  <span class='id contexts_by_connection'>contexts_by_connection</span><span class='lbracket'>[</span><span class='id connection'>connection</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="contexts_by_connection-class_method">
-  
-    + (<tt>Object</tt>) <strong>contexts_by_connection</strong>  <span class="extras">(private)</span>
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-205
-206
-207</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 205</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id contexts_by_connection'>contexts_by_connection</span>
-  <span class='ivar'>@contexts_by_connection</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="no_connection_contexts-class_method">
-  
-    + (<tt>Object</tt>) <strong>no_connection_contexts</strong>  <span class="extras">(private)</span>
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-209
-210
-211</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 209</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id no_connection_contexts'>no_connection_contexts</span>
-  <span class='ivar'>@no_connection_contexts</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
     
       <div class="method_details first">
-  <p class="signature first" id="component_by_id-instance_method">
-  
-    - (<tt>Object</tt>) <strong>component_by_id</strong>(id)  <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-FIXME dangerous, add own ids to components an store hash on context
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-167
-168
-169</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 167</span>
-
-<span class='kw'>def</span> <span class='id component_by_id'>component_by_id</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
-  <span class='kw'>begin</span> <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id _id2ref'>_id2ref</span><span class='lparen'>(</span><span class='id id'>id</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='const'>RangeError</span> <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="drop-instance_method">
+  <p class="signature first" id="drop-instance_method">
   
     - (<tt>Object</tt>) <strong>drop</strong> 
   
@@ -1184,21 +813,15 @@ remove context form container
       <pre class="lines">
 
 
-97
-98
-99
-100
-101
-102</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id contexts_by_connection'>contexts_by_connection</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id no_connection_contexts'>no_connection_contexts</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
   <span class='id container'>container</span><span class='period'>.</span><span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
-  <span class='id notify_observers'>notify_observers</span><span class='lparen'>(</span><span class='symbol'>:drop</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1218,73 +841,15 @@ remove context form container
       <pre class="lines">
 
 
-113
-114
-115</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id location_hash'>location_hash</span>
   <span class='id root_class'>root_class</span> <span class='op'>==</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Tools</span> <span class='op'>?</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:core</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:devel</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="new_message-instance_method">
-  
-    - (<tt><span class='object_link'><a href="Message.html" title="Hammer::Core::Message (class)">Message</a></span></tt>) <strong>new_message</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-New instance
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Message.html" title="Hammer::Core::Message (class)">Message</a></span></tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-new instance
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-155
-156
-157</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 155</span>
-
-<span class='kw'>def</span> <span class='id new_message'>new_message</span>
-  <span class='const'>Message</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1334,16 +899,16 @@ class of a root component
       <pre class="lines">
 
 
-105
-106
-107
-108
-109
-110
-111</pre>
+23
+24
+25
+26
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id root_class'>root_class</span>
   <span class='ivar'>@root_class</span> <span class='op'>||=</span> <span class='kw'>unless</span> <span class='ivar'>@hash</span> <span class='op'>==</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:core</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:devel</span><span class='rbracket'>]</span>
@@ -1351,319 +916,6 @@ class of a root component
   <span class='kw'>else</span>
     <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Tools</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="safely-instance_method">
-  
-    - (<tt>Object</tt>) <strong>safely</strong>(restart = true) { ... } <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-processes safely block, restarts context when error occurred
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <span class='name'>restart</span>
-      
-      
-        <em class="default">(defaults to: <tt>true</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-try to restart when error?
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-task to execute
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 174</span>
-
-<span class='kw'>def</span> <span class='id safely'>safely</span><span class='lparen'>(</span><span class='id restart'>restart</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='const'>Base</span><span class='period'>.</span><span class='id safely'>safely</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-    <span class='kw'>if</span> <span class='id restart'>restart</span>
-      <span class='id container'>container</span><span class='period'>.</span><span class='id restart_context'>restart_context</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='comma'>,</span>
-          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>We are sorry but there was a error. Application is reloaded</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>else</span>
-      <span class='id warn'>warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Fatal error</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id send!'>send!</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="schedule-instance_method">
-  
-    - (<tt>Object</tt>) <strong>schedule</strong>(restart = true) { ... }
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <span class='name'>restart</span>
-      
-      
-        <em class="default">(defaults to: <tt>true</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-try to restart when error?
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-block scheduled into fiber_pool for delayed execution
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-119
-120
-121
-122
-123</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 119</span>
-
-<span class='kw'>def</span> <span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='id restart'>restart</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@queue</span> <span class='op'>&lt;&lt;</span> <span class='id block'>block</span>
-  <span class='id schedule_next'>schedule_next</span><span class='lparen'>(</span><span class='id restart'>restart</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@running</span>
-  <span class='kw'>self</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="schedule_next-instance_method">
-  
-    - (<tt>Object</tt>) <strong>schedule_next</strong>(restart = true)  <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-schedules next block from @queue to be processed in <span class='object_link'><a href="Base.html#fibers_pool-class_method" title="Hammer::Core::Base.fibers_pool (method)">Hammer::Core::Base.fibers_pool</a></span>
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-        <span class='name'>restart</span>
-      
-      
-        <em class="default">(defaults to: <tt>true</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-try to restart when error?
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 194</span>
-
-<span class='kw'>def</span> <span class='id schedule_next'>schedule_next</span><span class='lparen'>(</span><span class='id restart'>restart</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id block'>block</span> <span class='op'>=</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id shift'>shift</span>
-    <span class='ivar'>@running</span> <span class='op'>=</span> <span class='id block'>block</span>
-    <span class='const'>Base</span><span class='period'>.</span><span class='id fibers_pool'>fibers_pool</span><span class='period'>.</span><span class='id spawn'>spawn</span> <span class='kw'>do</span>
-      <span class='id with_context'>with_context</span> <span class='lbrace'>{</span> <span class='id safely'>safely</span><span class='lparen'>(</span><span class='id restart'>restart</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='semicolon'>;</span> <span class='id schedule_next'>schedule_next</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='ivar'>@running</span> <span class='op'>=</span> <span class='kw'>nil</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="set_connection-instance_method">
-  
-    - (<tt>Object</tt>) <strong>set_connection</strong>(connection) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-store connection to be able to send server-side actualizations
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="WebSocket/Connection.html" title="Hammer::Core::WebSocket::Connection (class)">WebSocket::Connection</a></span></tt>)</span>
-      
-      
-        <span class='name'>connection</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-89
-90
-91
-92
-93
-94</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 89</span>
-
-<span class='kw'>def</span> <span class='id set_connection'>set_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
-  <span class='ivar'>@connection</span> <span class='op'>=</span> <span class='id connection'>connection</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id contexts_by_connection'>contexts_by_connection</span><span class='lbracket'>[</span><span class='id connection'>connection</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>self</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id no_connection_contexts'>no_connection_contexts</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='kw'>self</span>
-  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1694,12 +946,12 @@ renders html, similar to Erector::Widget#to_html
       <pre class="lines">
 
 
-126
-127
-128</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id to_html'>to_html</span>
   <span class='ivar'>@root_component</span><span class='period'>.</span><span class='id to_html'>to_html</span>
@@ -1710,16 +962,16 @@ renders html, similar to Erector::Widget#to_html
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unsended_components-instance_method">
+  <p class="signature " id="unsent_components-instance_method">
   
-    - (<tt>Array&lt;Hammer::Bomponent::Base&gt;</tt>) <strong>unsended_components</strong> 
+    - (<tt>Array&lt;Hammer::Bomponent::Base&gt;</tt>) <strong>unsent_components</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Of unsended components
+Of unsent? visible components
 </p>
 
 
@@ -1738,7 +990,7 @@ Of unsended components
       
         &mdash;
         <div class='inline'><p>
-of unsended components
+of unsent? visible components
 </p>
 </div>
       
@@ -1752,15 +1004,15 @@ of unsended components
       <pre class="lines">
 
 
-160
-161
-162</pre>
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 59</span>
 
-<span class='kw'>def</span> <span class='id unsended_components'>unsended_components</span>
-  <span class='id root_component'>root_component</span><span class='period'>.</span><span class='id all_children'>all_children</span><span class='period'>.</span><span class='id select'>select</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:unsended?</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id unsent_components'>unsent_components</span>
+  <span class='id root_component'>root_component</span><span class='period'>.</span><span class='id all_children'>all_children</span><span class='period'>.</span><span class='id select'>select</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:unsent?</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1834,29 +1086,29 @@ self
       <pre class="lines">
 
 
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152</pre>
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id update_form'>update_form</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='rparen'>)</span>
   <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Updating form</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
     <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='id hash'>hash</span> <span class='op'>&amp;&amp;</span> <span class='id hash'>hash</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
     <span class='id hash'>hash</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id values'>values</span><span class='op'>|</span>
-      <span class='id form_part'>form_part</span> <span class='op'>=</span> <span class='id component_by_id'>component_by_id</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
+      <span class='id form_part'>form_part</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Core</span><span class='period'>.</span><span class='id component_by_id'>component_by_id</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
       <span class='kw'>if</span> <span class='id form_part'>form_part</span>
         <span class='id values'>values</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='op'>|</span> <span class='id form_part'>form_part</span><span class='period'>.</span><span class='id set_value'>set_value</span><span class='lparen'>(</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
       <span class='kw'>else</span>
@@ -1871,55 +1123,12 @@ self
 </table>
 </div>
     
-      <div class="method_details ">
-  <p class="signature " id="with_context-instance_method">
-  
-    - (<tt>Object</tt>) <strong>with_context</strong>(&amp;block)  <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-sets context to fiber
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-186
-187
-188
-189
-190</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 186</span>
-
-<span class='kw'>def</span> <span class='id with_context'>with_context</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id hammer_context'>hammer_context</span> <span class='op'>=</span> <span class='kw'>self</span>
-  <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span>
-  <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id hammer_context'>hammer_context</span> <span class='op'>=</span> <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:40 2010 by 
+  Generated on Wed Sep 22 11:01:23 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

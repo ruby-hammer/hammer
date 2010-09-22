@@ -126,6 +126,27 @@
   
 
   
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render%21-instance_method" title="#render! (instance method)">- (Object) <strong>render!</strong>(obj) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
     <span class="summary_desc"><div class='inline'><p>
 try to obtain widget and render it with Erector::Widget#widget.
 </p>
@@ -155,7 +176,7 @@ try to obtain widget and render it with Erector::Widget#widget.
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../../Erector/AbstractWidget.html" title="Erector::AbstractWidget (class)">Erector::AbstractWidget</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../../Erector/AbstractWidget.html#_render-instance_method" title="Erector::AbstractWidget#_render (method)">#_render</a></span>, <span class='object_link'><a href="../../Erector/AbstractWidget.html#call_content_method-instance_method" title="Erector::AbstractWidget#call_content_method (method)">#call_content_method</a></span>, <span class='object_link'><a href="../../Erector/AbstractWidget.html#render_options-instance_method" title="Erector::AbstractWidget#render_options (method)">#render_options</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../../Erector/AbstractWidget.html#_render-instance_method" title="Erector::AbstractWidget#_render (method)">#_render</a></span>, <span class='object_link'><a href="../../Erector/AbstractWidget.html#call_content_method-instance_method" title="Erector::AbstractWidget#call_content_method (method)">#call_content_method</a></span>, <span class='object_link'><a href="../../Erector/AbstractWidget.html#render_options-instance_method" title="Erector::AbstractWidget#render_options (method)">#render_options</a></span>, <span class='object_link'><a href="../../Erector/AbstractWidget.html#to_s-instance_method" title="Erector::AbstractWidget#to_s (method)">#to_s</a></span></p>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -166,6 +187,34 @@ try to obtain widget and render it with Erector::Widget#widget.
   <p class="signature first" id="render-instance_method">
   
     - (<tt>Object</tt>) <strong>render</strong>(obj) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/abstract.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='id render!'>render!</span> <span class='id obj'>obj</span> <span class='kw'>unless</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render!</strong>(obj) 
   
 
   
@@ -222,7 +271,7 @@ to render
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/widget/abstract.rb', line 17</span>
 
-<span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id render!'>render!</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
   <span class='id widget'>widget</span> <span class='kw'>begin</span>
     <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Abstract</span><span class='rparen'>)</span>
       <span class='id obj'>obj</span>
@@ -243,7 +292,7 @@ to render
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:41 2010 by 
+  Generated on Wed Sep 22 11:01:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/hammer/logger.rb<span class="defines">,<br />
-  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/component/form_part.rb,<br /> lib/hammer/widget/optionable_collection.rb</span>
+  lib/hammer.rb,<br /> lib/hammer/config.rb,<br /> lib/hammer/data_mapper.rb,<br /> lib/hammer/component/form_part.rb,<br /> lib/hammer/widget/optionable_collection.rb,<br /> lib/hammer/monkey/data_objects_em_fiber.rb</span>
 </dd>
   
 </dl>
@@ -85,7 +85,7 @@ FIXME OLD
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Hammer/CSS.html" title="Hammer::CSS (module)">CSS</a></span>, <span class='object_link'><a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a></span>, <span class='object_link'><a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a></span>, <span class='object_link'><a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a></span>, <span class='object_link'><a href="Hammer/Finalizer.html" title="Hammer::Finalizer (module)">Finalizer</a></span>, <span class='object_link'><a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a></span>, <span class='object_link'><a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a></span>, <span class='object_link'><a href="Hammer/Weak.html" title="Hammer::Weak (module)">Weak</a></span>, <span class='object_link'><a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Hammer/CSS.html" title="Hammer::CSS (module)">CSS</a></span>, <span class='object_link'><a href="Hammer/Component.html" title="Hammer::Component (module)">Component</a></span>, <span class='object_link'><a href="Hammer/Config.html" title="Hammer::Config (module)">Config</a></span>, <span class='object_link'><a href="Hammer/Core.html" title="Hammer::Core (module)">Core</a></span>, <span class='object_link'><a href="Hammer/DataMapper.html" title="Hammer::DataMapper (module)">DataMapper</a></span>, <span class='object_link'><a href="Hammer/DataObjectsEMFiber.html" title="Hammer::DataObjectsEMFiber (module)">DataObjectsEMFiber</a></span>, <span class='object_link'><a href="Hammer/Finalizer.html" title="Hammer::Finalizer (module)">Finalizer</a></span>, <span class='object_link'><a href="Hammer/JQuery.html" title="Hammer::JQuery (module)">JQuery</a></span>, <span class='object_link'><a href="Hammer/Runner.html" title="Hammer::Runner (module)">Runner</a></span>, <span class='object_link'><a href="Hammer/Weak.html" title="Hammer::Weak (module)">Weak</a></span>, <span class='object_link'><a href="Hammer/Widget.html" title="Hammer::Widget (module)">Widget</a></span>
     
    
     
@@ -266,13 +266,13 @@ FIXME OLD
       <pre class="lines">
 
 
+45
 46
 47
-48
-49</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id after_load'>after_load</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@after_load</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -296,14 +296,14 @@ FIXME OLD
       <pre class="lines">
 
 
+32
 33
 34
 35
-36
-37</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='id req'>req</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id time'>time</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id realtime'>realtime</span> <span class='lbrace'>{</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span> <span class='rbrace'>}</span>
@@ -328,13 +328,13 @@ FIXME OLD
       <pre class="lines">
 
 
+40
 41
 42
-43
-44</pre>
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id get_context'>get_context</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='const'>Fiber</span><span class='period'>.</span><span class='id current'>current</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span> <span class='symbol'>:hammer_context</span>
@@ -358,12 +358,12 @@ FIXME OLD
       <pre class="lines">
 
 
+24
 25
-26
-27</pre>
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id logger'>logger</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -386,13 +386,13 @@ FIXME OLD
       <pre class="lines">
 
 
+50
 51
 52
-53
-54</pre>
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run_after_load!'>run_after_load!</span>
   <span class='lbracket'>[</span><span class='op'>*</span><span class='ivar'>@after_load</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id proc'>proc</span><span class='op'>|</span> <span class='id proc'>proc</span><span class='period'>.</span><span class='id call'>call</span> <span class='rbrace'>}</span>
@@ -437,15 +437,15 @@ FIXME OLD
       <pre class="lines">
 
 
+28
 29
-30
-31</pre>
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id v19?'>v19?</span>
-  <span class='const'>RUBY_VERSION</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>1.9</span><span class='regexp_end'>/</span></span>
+  <span class='kw'>defined?</span> <span class='ivar'>@v19</span> <span class='op'>?</span> <span class='ivar'>@v19</span> <span class='op'>:</span> <span class='const'>RUBY_VERSION</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>1.9</span><span class='regexp_end'>/</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -457,7 +457,7 @@ FIXME OLD
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:37 2010 by 
+  Generated on Wed Sep 22 11:01:21 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

@@ -234,6 +234,30 @@ like Hash.
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+like Hash.
+</p>
+</div></span>
+  
+</li>
+
+      
         <li class="private ">
   <span class="summary_signature">
     
@@ -320,7 +344,7 @@ A new instance of WeakKeyHash.
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractHash.html" title="Hammer::Weak::AbstractHash (class)">AbstractHash</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AbstractHash.html#%5B%5D%3D-instance_method" title="Hammer::Weak::AbstractHash#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="AbstractHash.html#each-instance_method" title="Hammer::Weak::AbstractHash#each (method)">#each</a></span>, <span class='object_link'><a href="AbstractHash.html#keys-instance_method" title="Hammer::Weak::AbstractHash#keys (method)">#keys</a></span>, <span class='object_link'><a href="AbstractHash.html#to_hash-instance_method" title="Hammer::Weak::AbstractHash#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="AbstractHash.html#values-instance_method" title="Hammer::Weak::AbstractHash#values (method)">#values</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="AbstractHash.html#%5B%5D%3D-instance_method" title="Hammer::Weak::AbstractHash#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="AbstractHash.html#keys-instance_method" title="Hammer::Weak::AbstractHash#keys (method)">#keys</a></span>, <span class='object_link'><a href="AbstractHash.html#to_hash-instance_method" title="Hammer::Weak::AbstractHash#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="AbstractHash.html#values-instance_method" title="Hammer::Weak::AbstractHash#values (method)">#values</a></span></p>
 
   
   
@@ -359,13 +383,13 @@ A new instance of WeakKeyHash
       <pre class="lines">
 
 
-304
-305
-306
-307</pre>
+309
+310
+311
+312</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 309</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span>
   <span class='kw'>super</span>
@@ -396,12 +420,12 @@ A new instance of WeakKeyHash
       <pre class="lines">
 
 
-342
-343
-344</pre>
+359
+360
+361</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 342</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 359</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id finalize_item'>finalize_item</span><span class='lparen'>(</span><span class='id hash_id'>hash_id</span><span class='rparen'>)</span>
   <span class='id lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id id'>id</span><span class='op'>|</span> <span class='id storage'>storage</span><span class='lparen'>(</span><span class='id hash_id'>hash_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -424,15 +448,15 @@ A new instance of WeakKeyHash
       <pre class="lines">
 
 
-346
-347
-348
-349
-350
-351</pre>
+363
+364
+365
+366
+367
+368</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 346</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 363</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id finalize_itself'>finalize_itself</span>
   <span class='id lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id hash_id'>hash_id</span><span class='op'>|</span>
@@ -475,12 +499,12 @@ like Hash
       <pre class="lines">
 
 
-310
-311
-312</pre>
+315
+316
+317</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 310</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 315</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
   <span class='id get_key_value'>get_key_value</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span><span class='period'>.</span><span class='id try'>try</span> <span class='symbol'>:last</span>
@@ -503,13 +527,13 @@ like Hash
       <pre class="lines">
 
 
-337
-338
-339
-340</pre>
+354
+355
+356
+357</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 337</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 354</span>
 
 <span class='kw'>def</span> <span class='id add'>add</span><span class='lparen'>(</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rparen'>)</span>
   <span class='id storage'>storage</span><span class='period'>.</span><span class='id add'>add</span> <span class='id key'>key</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='id key'>key</span><span class='period'>.</span><span class='id hash'>hash</span><span class='comma'>,</span> <span class='id value'>value</span>
@@ -544,19 +568,66 @@ like Hash
       <pre class="lines">
 
 
-320
-321
-322
-323
-324</pre>
+325
+326
+327
+328
+329</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 325</span>
 
 <span class='kw'>def</span> <span class='id delete'>delete</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
   <span class='id key_id'>key_id</span><span class='comma'>,</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='id get_key_value'>get_key_value</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
   <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Finalizer</span><span class='period'>.</span><span class='id remove'>remove</span><span class='lparen'>(</span><span class='id key_id'>key_id</span><span class='comma'>,</span> <span class='id object_id'>object_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id key_id'>key_id</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id key_id'>key_id</span>
   <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+like Hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+332
+333
+334
+335
+336
+337
+338</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 332</span>
+
+<span class='kw'>def</span> <span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id storage'>storage</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id k'>k</span><span class='comma'>,</span><span class='id v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id key'>key</span> <span class='op'>=</span> <span class='id get_object'>get_object</span><span class='lparen'>(</span><span class='id k'>k</span><span class='rparen'>)</span>
+      <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span> <span class='id key'>key</span><span class='comma'>,</span> <span class='id v'>v</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -606,18 +677,24 @@ array of id and value or nil
       <pre class="lines">
 
 
-330
-331
-332
-333
-334
-335</pre>
+344
+345
+346
+347
+348
+349
+350
+351
+352</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 330</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='id get_key_value'>get_key_value</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
-  <span class='id storage'>storage</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id key'>key</span><span class='period'>.</span><span class='id hash'>hash</span><span class='rparen'>)</span><span class='period'>.</span><span class='id find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id k'>k</span><span class='comma'>,</span><span class='id v'>v</span><span class='op'>|</span>
+  <span class='kw'>if</span> <span class='id v'>v</span> <span class='op'>=</span> <span class='id storage'>storage</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='id key'>key</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id key'>key</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='id v'>v</span>
+  <span class='kw'>end</span>
+  <span class='id storage'>storage</span><span class='period'>.</span><span class='id get_candidates'>get_candidates</span><span class='lparen'>(</span><span class='id key'>key</span><span class='period'>.</span><span class='id hash'>hash</span><span class='rparen'>)</span><span class='period'>.</span><span class='id find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id k'>k</span><span class='comma'>,</span><span class='id v'>v</span><span class='op'>|</span>
     <span class='id candidate_key'>candidate_key</span> <span class='op'>=</span> <span class='id get_object'>get_object</span><span class='lparen'>(</span><span class='id k'>k</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='kw'>next</span>
     <span class='id candidate_key'>candidate_key</span><span class='period'>.</span><span class='id eql?'>eql?</span> <span class='id key'>key</span>
   <span class='kw'>end</span>
@@ -664,12 +741,12 @@ like Hash
       <pre class="lines">
 
 
-315
-316
-317</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 315</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
   <span class='op'>!</span><span class='op'>!</span><span class='id get_key_value'>get_key_value</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
@@ -684,7 +761,7 @@ like Hash
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:39 2010 by 
+  Generated on Wed Sep 22 11:01:22 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

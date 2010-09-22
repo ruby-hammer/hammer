@@ -208,7 +208,7 @@ resets component change state.
 
   
     <span class="summary_desc"><div class='inline'><p>
-set to update to sended.
+set update to sent.
 </p>
 </div></span>
   
@@ -218,7 +218,31 @@ set to update to sended.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#unsended%3F-instance_method" title="#unsended? (instance method)">- (Boolean) <strong>unsended?</strong> </a>
+      <a href="#unsend%21-instance_method" title="#unsend! (instance method)">- (Object) <strong>unsend!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+set update to unsent?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unsent%3F-instance_method" title="#unsent? (instance method)">- (Boolean) <strong>unsent?</strong> </a>
     
 
     
@@ -327,14 +351,16 @@ tells component that it&#8217;s changed
 58
 59
 60
-61</pre>
+61
+62</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id change!'>change!</span>
   <span class='ivar'>@_changed</span> <span class='op'>=</span> <span class='kw'>true</span>
-  <span class='ivar'>@_sended</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id unsend!'>unsend!</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -384,12 +410,12 @@ if component id changed
       <pre class="lines">
 
 
-64
 65
-66</pre>
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id changed?'>changed?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@_changed</span>
@@ -423,15 +449,17 @@ resets component change state
       <pre class="lines">
 
 
-69
 70
-71</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id reset_change!'>reset_change!</span>
   <span class='ivar'>@_changed</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -448,7 +476,7 @@ resets component change state
 </p><div class="docstring">
   <div class="discussion">
     <p>
-set to update to sended
+set update to sent
 </p>
 
 
@@ -462,15 +490,17 @@ set to update to sended
       <pre class="lines">
 
 
-79
-80
-81</pre>
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id send!'>send!</span>
   <span class='ivar'>@_sended</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -478,9 +508,48 @@ set to update to sended
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unsended?-instance_method">
+  <p class="signature " id="unsend!-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>unsended?</strong> 
+    - (<tt>Object</tt>) <strong>unsend!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+set update to unsent?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id unsend!'>unsend!</span>
+  <span class='ivar'>@_sended</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unsent?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>unsent?</strong> 
   
 
   
@@ -514,14 +583,14 @@ is updated html sended to client?
       <pre class="lines">
 
 
-74
-75
-76</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/state.rb', line 76</span>
 
-<span class='kw'>def</span> <span class='id unsended?'>unsended?</span>
+<span class='kw'>def</span> <span class='id unsent?'>unsent?</span>
   <span class='op'>!</span><span class='ivar'>@_sended</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -534,7 +603,7 @@ is updated html sended to client?
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:41 2010 by 
+  Generated on Wed Sep 22 11:01:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

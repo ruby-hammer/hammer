@@ -123,6 +123,33 @@ Returns the value of attribute id.
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shared-instance_method" title="#shared (instance method)">- (Object) <strong>shared</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute shared.
+</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -307,15 +334,15 @@ A new instance of Container
       <pre class="lines">
 
 
-10
-11
-12</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
-  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@contexts</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@contexts</span><span class='comma'>,</span> <span class='ivar'>@shared</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:app</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shared</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id constantize'>constantize</span><span class='period'>.</span><span class='id new'>new</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -354,15 +381,57 @@ Returns the value of attribute id
       <pre class="lines">
 
 
-9
-10
-11</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id id'>id</span>
   <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="shared-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="shared-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shared</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute shared
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id shared'>shared</span>
+  <span class='ivar'>@shared</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -442,15 +511,15 @@ of a <span class='object_link'><a href="Base.html" title="Hammer::Core::Base (cl
       <pre class="lines">
 
 
-16
-17
-18
 19
 20
-21</pre>
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id context'>context</span><span class='lparen'>(</span><span class='id id'>id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>begin</span>
@@ -487,12 +556,12 @@ drops container when is not needed
       <pre class="lines">
 
 
-42
-43
-44</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='const'>Base</span><span class='period'>.</span><span class='id drop_container'>drop_container</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -544,13 +613,13 @@ to drop when is not needed
       <pre class="lines">
 
 
-36
-37
-38
-39</pre>
+39
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id context'>context</span><span class='period'>.</span><span class='id id'>id</span><span class='rparen'>)</span>
@@ -659,20 +728,20 @@ warning which will be shown to user
       <pre class="lines">
 
 
-28
-29
-30
 31
 32
-33</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='comma'>,</span> <span class='id warn'>warn</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id context'>context</span> <span class='op'>=</span> <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
   <span class='id context'>context</span><span class='period'>.</span><span class='id set_connection'>set_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
-  <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id new_message'>new_message</span><span class='period'>.</span><span class='id collect_updates'>collect_updates</span><span class='period'>.</span><span class='id warn'>warn</span><span class='lparen'>(</span><span class='id warn'>warn</span><span class='rparen'>)</span><span class='period'>.</span><span class='id send!'>send!</span> <span class='rbrace'>}</span>
+  <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id warn'>warn</span><span class='lparen'>(</span><span class='id warn'>warn</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='id context'>context</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -704,12 +773,12 @@ context&#8217;s count
       <pre class="lines">
 
 
-47
-48
-49</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id size'>size</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id size'>size</span>
@@ -724,7 +793,7 @@ context&#8217;s count
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:41 2010 by 
+  Generated on Wed Sep 22 11:01:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

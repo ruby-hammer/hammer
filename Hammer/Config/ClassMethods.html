@@ -166,7 +166,8 @@
 60
 61
 62
-63</pre>
+63
+64</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/config.rb', line 15</span>
@@ -178,6 +179,7 @@
       <span class='lbracket'>[</span>
         <span class='comment'># name                    type      default       description
 </span>        <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app.name</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>             <span class='const'>String</span><span class='comma'>,</span>   <span class='kw'>nil</span><span class='comma'>,</span>          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>application name</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
+        <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app.shared</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>           <span class='const'>String</span><span class='comma'>,</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hammer::Core::Shared</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>class for shared data</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
 
         <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>web.host</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>             <span class='const'>String</span><span class='comma'>,</span>   <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>web-server's device to bind</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>web.port</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>             <span class='const'>Integer</span><span class='comma'>,</span>  <span class='int'>3000</span><span class='comma'>,</span>         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>web-server's port</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
@@ -197,8 +199,8 @@
         <span class='lbracket'>[</span> <span class='symbol'>:root</span><span class='comma'>,</span>                  <span class='const'>String</span><span class='comma'>,</span>   <span class='kw'>nil</span><span class='comma'>,</span>          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name of a root component's class</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='lbracket'>[</span> <span class='symbol'>:layout</span><span class='comma'>,</span>                <span class='const'>String</span><span class='comma'>,</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hammer::Widget::Layout</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name of a layout's class</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='lbracket'>[</span> <span class='symbol'>:environment</span><span class='comma'>,</span>           <span class='const'>Symbol</span><span class='comma'>,</span>   <span class='symbol'>:development</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>environment</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>RACK_ENV</span><span class='tstring_end'>'</span></span> <span class='rbracket'>]</span><span class='comma'>,</span>
-        <span class='lbracket'>[</span> <span class='symbol'>:irb</span><span class='comma'>,</span>                   <span class='symbol'>:boolean</span><span class='comma'>,</span> <span class='kw'>false</span><span class='comma'>,</span>        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>run console</span><span class='tstring_end'>&quot;</span></span> <span class='rbracket'>]</span>
-
+        <span class='comment'>#              [ :irb,                   :boolean, false,        &quot;run console&quot; ]
+</span>
 
       <span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id type'>type</span><span class='comma'>,</span> <span class='id default'>default</span><span class='comma'>,</span> <span class='id description'>description</span><span class='comma'>,</span> <span class='id env_var'>env_var</span><span class='op'>|</span>
         <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:description</span> <span class='op'>=&gt;</span> <span class='id description'>description</span> <span class='rbrace'>}</span>
@@ -210,8 +212,8 @@
       <span class='kw'>end</span>
 
       <span class='id finally'>finally</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span>
-        <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:irb</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:environment</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:development</span>
-        <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:environment</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:development</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span>
+        <span class='comment'>#              c[:irb] = c[:environment] == :development
+</span>        <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id c'>c</span><span class='lbracket'>[</span><span class='symbol'>:environment</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:development</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span>
       <span class='kw'>end</span>
 
       <span class='id read'>read</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./config.yml</span><span class='tstring_end'>'</span></span>
@@ -230,7 +232,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:39 2010 by 
+  Generated on Wed Sep 22 11:01:22 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

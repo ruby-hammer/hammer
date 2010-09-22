@@ -240,6 +240,30 @@ like Hash.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+like Hash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#has_key%3F-instance_method" title="#has_key? (instance method)">- (Boolean) <strong>has_key?</strong>(key) </a>
     
 
@@ -299,7 +323,7 @@ A new instance of WeakValueHash.
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractHash.html" title="Hammer::Weak::AbstractHash (class)">AbstractHash</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AbstractHash.html#%5B%5D%3D-instance_method" title="Hammer::Weak::AbstractHash#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="AbstractHash.html#each-instance_method" title="Hammer::Weak::AbstractHash#each (method)">#each</a></span>, <span class='object_link'><a href="AbstractHash.html#keys-instance_method" title="Hammer::Weak::AbstractHash#keys (method)">#keys</a></span>, <span class='object_link'><a href="AbstractHash.html#to_hash-instance_method" title="Hammer::Weak::AbstractHash#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="AbstractHash.html#values-instance_method" title="Hammer::Weak::AbstractHash#values (method)">#values</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="AbstractHash.html#%5B%5D%3D-instance_method" title="Hammer::Weak::AbstractHash#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="AbstractHash.html#keys-instance_method" title="Hammer::Weak::AbstractHash#keys (method)">#keys</a></span>, <span class='object_link'><a href="AbstractHash.html#to_hash-instance_method" title="Hammer::Weak::AbstractHash#to_hash (method)">#to_hash</a></span>, <span class='object_link'><a href="AbstractHash.html#values-instance_method" title="Hammer::Weak::AbstractHash#values (method)">#values</a></span></p>
 
   
   
@@ -338,13 +362,13 @@ A new instance of WeakValueHash
       <pre class="lines">
 
 
-223
-224
-225
-226</pre>
+214
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span>
   <span class='kw'>super</span>
@@ -560,6 +584,53 @@ like Hash
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+like Hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/weak.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id storage'>storage</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id k'>k</span><span class='comma'>,</span><span class='id v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id value'>value</span> <span class='op'>=</span> <span class='id get_object'>get_object</span><span class='lparen'>(</span><span class='id v'>v</span><span class='rparen'>)</span>
+      <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span> <span class='id k'>k</span><span class='comma'>,</span> <span class='id value'>value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="has_key?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>has_key?</strong>(key) 
@@ -616,7 +687,7 @@ like Hash
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:38 2010 by 
+  Generated on Wed Sep 22 11:01:22 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

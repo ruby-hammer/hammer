@@ -405,12 +405,12 @@ method used to actualize children during rendering from widget
       <pre class="lines">
 
 
-144
-145
-146</pre>
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 148</span>
 
 <span class='kw'>def</span> <span class='id _children'>_children</span>
   <span class='ivar'>@_children</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -463,12 +463,12 @@ all children, self included
       <pre class="lines">
 
 
-149
-150
-151</pre>
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id all_children'>all_children</span>
   <span class='id children'>children</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id arr'>arr</span><span class='comma'>,</span> <span class='id child'>child</span><span class='op'>|</span> <span class='id arr'>arr</span> <span class='op'>+</span> <span class='id child'>child</span><span class='period'>.</span><span class='id all_children'>all_children</span> <span class='rbrace'>}</span>
@@ -521,13 +521,13 @@ of children components
       <pre class="lines">
 
 
-137
-138
-139
-140</pre>
+141
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id children'>children</span>
   <span class='id to_html'>to_html</span> <span class='kw'>if</span> <span class='id changed?'>changed?</span>
@@ -575,12 +575,12 @@ default behavior, can by overwritten
       <pre class="lines">
 
 
-157
-158
-159</pre>
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id create_widget'>create_widget</span>
   <span class='id widget_class'>widget_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id widget_assigns'>widget_assigns</span><span class='rparen'>)</span>
@@ -603,16 +603,16 @@ default behavior, can by overwritten
       <pre class="lines">
 
 
-168
-169
-170</pre>
+172
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 168</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='id delete_old_actions'>delete_old_actions</span>
-  <span class='id context'>context</span><span class='period'>.</span><span class='id actions'>actions</span><span class='period'>.</span><span class='id delete_if'>delete_if</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id action'>action</span><span class='op'>|</span> <span class='id action'>action</span><span class='period'>.</span><span class='id component'>component</span> <span class='op'>==</span> <span class='kw'>self</span> <span class='rbrace'>}</span> <span class='comment'># FIXME maybe slow
-</span><span class='kw'>end</span></pre>
+  <span class='ivar'>@actions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -668,7 +668,11 @@ rendered html
 121
 122
 123
-124</pre>
+124
+125
+126
+127
+128</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 117</span>
@@ -676,8 +680,12 @@ rendered html
 <span class='kw'>def</span> <span class='id to_html'>to_html</span>
   <span class='kw'>if</span> <span class='id changed?'>changed?</span> <span class='op'>||</span> <span class='op'>!</span><span class='ivar'>@_html</span>
     <span class='id delete_old_actions'>delete_old_actions</span>
+    <span class='id old_children'>old_children</span> <span class='op'>=</span> <span class='id _children'>_children</span><span class='period'>.</span><span class='id clone'>clone</span>
+    <span class='id _children'>_children</span><span class='period'>.</span><span class='id clear'>clear</span>
     <span class='ivar'>@_html</span> <span class='op'>=</span> <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_html'>to_html</span>
     <span class='id reset_change!'>reset_change!</span>
+    <span class='comment'># mark unchanged rendered components to send
+</span>    <span class='lparen'>(</span><span class='id children'>children</span> <span class='op'>-</span> <span class='id old_children'>old_children</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id component'>component</span><span class='op'>|</span> <span class='id component'>component</span><span class='period'>.</span><span class='id all_children'>all_children</span><span class='period'>.</span><span class='id map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:unsend!</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
   <span class='ivar'>@_html</span>
 <span class='kw'>end</span></pre>
@@ -768,12 +776,12 @@ always pass component to widget, can be extended by overwritten
       <pre class="lines">
 
 
-162
-163
-164</pre>
+166
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id widget_assigns'>widget_assigns</span>
   <span class='lbrace'>{</span> <span class='symbol'>:component</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:root_widget</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
@@ -826,17 +834,17 @@ which is used to insatiate widget
       <pre class="lines">
 
 
-127
-128
-129
-130
 131
 132
 133
-134</pre>
+134
+135
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/component/rendering.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id widget_class'>widget_class</span>
   <span class='kw'>case</span> <span class='ivar'>@widget_class</span>
@@ -856,7 +864,7 @@ which is used to insatiate widget
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:42 2010 by 
+  Generated on Wed Sep 22 11:01:25 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

@@ -254,27 +254,6 @@ renders replacer in place of component when rendering update.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_html-instance_method" title="#to_html (instance method)">- (Object) <strong>to_html</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#widget-instance_method" title="#widget (instance method)">- (Object) <strong>widget</strong>(target, assigns = {}, options = {}, &amp;block) </a>
     
 
@@ -547,13 +526,13 @@ renders replacer in place of component when rendering update
       <pre class="lines">
 
 
-68
-69
-70
-71</pre>
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id render_component'>render_component</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id component'>component</span><span class='period'>.</span><span class='id _children'>_children</span> <span class='op'>&lt;&lt;</span> <span class='id component'>component</span>
@@ -656,36 +635,6 @@ renders replacer in place of component when rendering update
 
 <span class='kw'>def</span> <span class='id root_widget?'>root_widget?</span>
   <span class='ivar'>@root_widget</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="to_html-instance_method">
-  
-    - (<tt>Object</tt>) <strong>to_html</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-60
-61
-62
-63</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/component.rb', line 60</span>
-
-<span class='kw'>def</span> <span class='id to_html'>to_html</span>
-  <span class='id component'>component</span><span class='period'>.</span><span class='id _children'>_children</span><span class='period'>.</span><span class='id clear'>clear</span>
-  <span class='kw'>super</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -820,7 +769,7 @@ adds component&#8217;s id for root widgets
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:42 2010 by 
+  Generated on Wed Sep 22 11:01:24 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>

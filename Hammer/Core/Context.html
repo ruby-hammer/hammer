@@ -73,7 +73,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2"><span class='object_link'><a href="Actions.html" title="Hammer::Core::Actions (module)">Actions</a></span></dd>
+      <dd class="r2"><span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Context::Actions</a></span>, <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Context::Communication</a></span>, <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Context::Connection</a></span>, <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Context::Scheduling</a></span></dd>
       
     
   
@@ -85,8 +85,26 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Actions</a></span>, <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Communication</a></span>, <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Connection</a></span>, <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Scheduling</a></span>
+    
+   
+    
+  
+</p>
 
 
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -112,8 +130,38 @@
   
   <h2>Method Summary</h2>
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Actions.html" title="Hammer::Core::Actions (module)">Actions</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Actions.html#included-class_method" title="Hammer::Core::Actions.included (method)">included</a></span>, <span class='object_link'><a href="Actions.html#initialize-instance_method" title="Hammer::Core::Actions#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Actions.html#register_action-instance_method" title="Hammer::Core::Actions#register_action (method)">#register_action</a></span>, <span class='object_link'><a href="Actions.html#run_action-instance_method" title="Hammer::Core::Actions#run_action (method)">#run_action</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Context::Communication</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Context/Communication.html#update%21-instance_method" title="Hammer::Core::Context::Communication#update! (method)">#update!</a></span>, <span class='object_link'><a href="Context/Communication.html#warn-instance_method" title="Hammer::Core::Context::Communication#warn (method)">#warn</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Context::Connection</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Context/Connection.html#drop-instance_method" title="Hammer::Core::Context::Connection#drop (method)">#drop</a></span>, <span class='object_link'><a href="Context/Connection.html#included-class_method" title="Hammer::Core::Context::Connection.included (method)">included</a></span>, <span class='object_link'><a href="Context/Connection.html#initialize-instance_method" title="Hammer::Core::Context::Connection#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Connection.html#set_connection-instance_method" title="Hammer::Core::Context::Connection#set_connection (method)">#set_connection</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Context::Scheduling</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Context/Scheduling.html#initialize-instance_method" title="Hammer::Core::Context::Scheduling#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Scheduling.html#safely-instance_method" title="Hammer::Core::Context::Scheduling#safely (method)">#safely</a></span>, <span class='object_link'><a href="Context/Scheduling.html#schedule-instance_method" title="Hammer::Core::Context::Scheduling#schedule (method)">#schedule</a></span>, <span class='object_link'><a href="Context/Scheduling.html#schedule_block-instance_method" title="Hammer::Core::Context::Scheduling#schedule_block (method)">#schedule_block</a></span>, <span class='object_link'><a href="Context/Scheduling.html#with_context-instance_method" title="Hammer::Core::Context::Scheduling#with_context (method)">#with_context</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Context::Actions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Context/Actions.html#included-class_method" title="Hammer::Core::Context::Actions.included (method)">included</a></span>, <span class='object_link'><a href="Context/Actions.html#initialize-instance_method" title="Hammer::Core::Context::Actions#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Actions.html#register_action-instance_method" title="Hammer::Core::Context::Actions#register_action (method)">#register_action</a></span>, <span class='object_link'><a href="Context/Actions.html#run_action-instance_method" title="Hammer::Core::Context::Actions#run_action (method)">#run_action</a></span></p>
 
   
   
@@ -123,7 +171,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractContext.html" title="Hammer::Core::AbstractContext (class)">AbstractContext</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AbstractContext.html#by_connection-class_method" title="Hammer::Core::AbstractContext.by_connection (method)">by_connection</a></span>, <span class='object_link'><a href="AbstractContext.html#component_by_id-instance_method" title="Hammer::Core::AbstractContext#component_by_id (method)">#component_by_id</a></span>, <span class='object_link'><a href="AbstractContext.html#contexts_by_connection-class_method" title="Hammer::Core::AbstractContext.contexts_by_connection (method)">contexts_by_connection</a></span>, <span class='object_link'><a href="AbstractContext.html#drop-instance_method" title="Hammer::Core::AbstractContext#drop (method)">#drop</a></span>, <span class='object_link'><a href="AbstractContext.html#initialize-instance_method" title="Hammer::Core::AbstractContext#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="AbstractContext.html#location_hash-instance_method" title="Hammer::Core::AbstractContext#location_hash (method)">#location_hash</a></span>, <span class='object_link'><a href="AbstractContext.html#new_message-instance_method" title="Hammer::Core::AbstractContext#new_message (method)">#new_message</a></span>, <span class='object_link'><a href="AbstractContext.html#no_connection_contexts-class_method" title="Hammer::Core::AbstractContext.no_connection_contexts (method)">no_connection_contexts</a></span>, <span class='object_link'><a href="AbstractContext.html#root_class-instance_method" title="Hammer::Core::AbstractContext#root_class (method)">#root_class</a></span>, <span class='object_link'><a href="AbstractContext.html#safely-instance_method" title="Hammer::Core::AbstractContext#safely (method)">#safely</a></span>, <span class='object_link'><a href="AbstractContext.html#schedule-instance_method" title="Hammer::Core::AbstractContext#schedule (method)">#schedule</a></span>, <span class='object_link'><a href="AbstractContext.html#schedule_next-instance_method" title="Hammer::Core::AbstractContext#schedule_next (method)">#schedule_next</a></span>, <span class='object_link'><a href="AbstractContext.html#set_connection-instance_method" title="Hammer::Core::AbstractContext#set_connection (method)">#set_connection</a></span>, <span class='object_link'><a href="AbstractContext.html#to_html-instance_method" title="Hammer::Core::AbstractContext#to_html (method)">#to_html</a></span>, <span class='object_link'><a href="AbstractContext.html#unsended_components-instance_method" title="Hammer::Core::AbstractContext#unsended_components (method)">#unsended_components</a></span>, <span class='object_link'><a href="AbstractContext.html#update_form-instance_method" title="Hammer::Core::AbstractContext#update_form (method)">#update_form</a></span>, <span class='object_link'><a href="AbstractContext.html#with_context-instance_method" title="Hammer::Core::AbstractContext#with_context (method)">#with_context</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="AbstractContext.html#drop-instance_method" title="Hammer::Core::AbstractContext#drop (method)">#drop</a></span>, <span class='object_link'><a href="AbstractContext.html#initialize-instance_method" title="Hammer::Core::AbstractContext#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="AbstractContext.html#location_hash-instance_method" title="Hammer::Core::AbstractContext#location_hash (method)">#location_hash</a></span>, <span class='object_link'><a href="AbstractContext.html#root_class-instance_method" title="Hammer::Core::AbstractContext#root_class (method)">#root_class</a></span>, <span class='object_link'><a href="AbstractContext.html#to_html-instance_method" title="Hammer::Core::AbstractContext#to_html (method)">#to_html</a></span>, <span class='object_link'><a href="AbstractContext.html#unsent_components-instance_method" title="Hammer::Core::AbstractContext#unsent_components (method)">#unsent_components</a></span>, <span class='object_link'><a href="AbstractContext.html#update_form-instance_method" title="Hammer::Core::AbstractContext#update_form (method)">#update_form</a></span></p>
 
   
   
@@ -134,20 +182,10 @@
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../Config.html" title="Hammer::Config (module)">Hammer::Config</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../Config.html#config-instance_method" title="Hammer::Config#config (method)">#config</a></span>, <span class='object_link'><a href="../Config.html#included-class_method" title="Hammer::Config.included (method)">included</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Observable.html" title="Hammer::Core::Observable (module)">Observable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Observable.html#_observers-instance_method" title="Hammer::Core::Observable#_observers (method)">#_observers</a></span>, <span class='object_link'><a href="Observable.html#add_observer-instance_method" title="Hammer::Core::Observable#add_observer (method)">#add_observer</a></span>, <span class='object_link'><a href="Observable.html#count_observers-instance_method" title="Hammer::Core::Observable#count_observers (method)">#count_observers</a></span>, <span class='object_link'><a href="Observable.html#delete_observer-instance_method" title="Hammer::Core::Observable#delete_observer (method)">#delete_observer</a></span>, <span class='object_link'><a href="Observable.html#included-class_method" title="Hammer::Core::Observable.included (method)">included</a></span>, <span class='object_link'><a href="Observable.html#notify_observer-instance_method" title="Hammer::Core::Observable#notify_observer (method)">#notify_observer</a></span>, <span class='object_link'><a href="Observable.html#notify_observers-instance_method" title="Hammer::Core::Observable#notify_observers (method)">#notify_observers</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Actions.html#initialize-instance_method" title="Hammer::Core::Actions#initialize (method)">Hammer::Core::Actions</a></span></p>
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Context/Connection.html#initialize-instance_method" title="Hammer::Core::Context::Connection#initialize (method)">Hammer::Core::Context::Connection</a></span></p>
   
 </div>
 
@@ -155,7 +193,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 17:30:40 2010 by 
+  Generated on Wed Sep 22 11:01:23 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.0 (ruby-1.9.2).
 </div>
