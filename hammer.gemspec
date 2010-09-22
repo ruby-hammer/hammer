@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-18}
+  s.date = %q{2010-09-22}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
   s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
@@ -61,6 +61,7 @@ Gem::Specification.new do |s|
      "lib/hammer/core/observable.rb",
      "lib/hammer/core/web_socket/connection.rb",
      "lib/hammer/css.rb",
+     "lib/hammer/data_mapper.rb",
      "lib/hammer/fiber.rb",
      "lib/hammer/finalizer.rb",
      "lib/hammer/jquery.rb",
@@ -72,6 +73,7 @@ Gem::Specification.new do |s|
      "lib/hammer/monkey/data_objects_em_fiber.rb",
      "lib/hammer/monkey/erector.rb",
      "lib/hammer/monkey/proc.rb",
+     "lib/hammer/monkey/weak_identity_map.rb",
      "lib/hammer/runner.rb",
      "lib/hammer/weak.rb",
      "lib/hammer/widget.rb",

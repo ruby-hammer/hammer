@@ -39,7 +39,7 @@ module Hammer::Component
     end
 
     # evaluates action with +id+, do nothing when no action
-    # @param [String] id of a {Action}
+    # @param [String] id of a {Hammer::Core::Action}
     # @param [String] arg if of a {Hammer::Component::Base}
     # @return self
     def run_action(id, arg)

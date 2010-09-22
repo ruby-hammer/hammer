@@ -12,6 +12,7 @@ Goals:
 - Concurrent request handling.
 - Clean design - avoid unnecessary magic.
 - Integrated server-side push actualizations.
+- Automated partial updating of client web page.
 
 ## How to install hammer gem
 
