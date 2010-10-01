@@ -11,7 +11,7 @@ unless defined? Hammer
   require 'hammer/fiber'
   require 'data_objects'
   require 'hammer/monkey/data_objects_em_fiber'
-  require 'datamapper'  
+  require 'datamapper'
   require 'pp'
   require 'benchmark'
 
@@ -58,13 +58,10 @@ unless defined? Hammer
   require 'hammer/monkey/basic_object'
   require 'hammer/load.rb'
 
+  require "hammer/monkey/proc.rb" if Hammer.config[:environment] == :development
+
   Hammer.run_after_load!
 
   #  files = Dir.glob("#{File.expand_path(File.dirname(__FILE__))}/hammer/**/*.rb")
   #  Hammer::Loader.new(files).load!
-
-  # require 'datamapper'
-  # require "#{Hammer.root}/lib/setup_db.rb"
-  # DataMapper.setup(:default, 'sqlite3://memory')
-  # DataMapper.auto_migrate!
 end

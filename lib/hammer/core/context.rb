@@ -11,7 +11,11 @@ module Hammer::Core
     # @param [String] id unique identification
     def initialize(id, container, hash = '')
       @id, @container, @hash, @repository = id, container, hash, DataMapper.repository(:default)
-      schedule { @root_component = root_class.new }
+      restart
+    end
+
+    def restart
+      schedule(false) { @root_component = root_class.new }
     end
 
     # remove context form container
@@ -104,26 +108,32 @@ module Hammer::Core
       # @param [Boolean] restart try to restart when error?
       # @yield block to schedule
       def schedule(restart = true, &new_block)
-        restart = false # FIXME when bug in hammer not in app sometimes cycling
-        @queue << new_block if new_block
+        @queue << [new_block, restart] if new_block
 
         return self if @scheduled || !connection # block until connection is obtained
 
-        if block = @queue.shift
+        if pair = @queue.shift
+          block, restart = pair
           @scheduled = block
-          @need_update = true
+          @need_update = restart
           schedule_block restart do
-            block.call
-            @scheduled = nil
-            schedule restart
+            begin
+              block.call
+            ensure
+              @scheduled = nil
+              schedule
+            end
           end
-        elsif @need_update
+        elsif not @need_update.nil?
           @scheduled = :update!
-          schedule_block restart do
-            update!
-            @scheduled = nil
-            @need_update = false
-            schedule restart
+          schedule_block @need_update do
+            begin
+              update!
+            ensure
+              @scheduled = nil
+              @need_update = nil
+              schedule
+            end
           end
         end
         self
@@ -148,10 +158,13 @@ module Hammer::Core
       def safely(restart = true, &block)
         unless Base.safely(&block)
           if restart
-            container.restart_context id, hash, connection,
-                "We are sorry but there was a error. Application is reloaded"
+            Hammer.logger.error("context restarted")
+            warn "We are sorry but there was a error. Application is reloaded"
+            self.restart
           else
-            warn("Fatal error")
+            Hammer.logger.error("fatal error")
+            warn "Fatal error"
+            send_message add_warn
           end
         end
       end
@@ -213,17 +226,38 @@ module Hammer::Core
       protected
 
       # collect updates for the user, builds and send message
-      def update!(message = {})
+      def update!(message = setup_message)
+        add_warn message
+        add_updates message
+        send_message message
+      end
+
+      private
+
+      # @return [Hash] message
+      def setup_message
+        { :context_id => id }
+      end
+
+      # @return [Hash] message
+      def add_warn(message = setup_message)
         message[:js] = "alert('#{@warnings.join("\n")}');" unless @warnings.blank?
         @warnings = []
-        message[:context_id] = id
+        message
+      end
 
+      # @return [Hash] message
+      def add_updates(message = setup_message)
         Hammer.benchmark('Actualization') do
           message[:update] = unsent_components.map {|c| c.send!.to_html }.join
         end
+        message
+      end
 
+      # @return self
+      def send_message(message)
         # FIXME don't send blank updates
-        connection.send message if connection # FIXME unsent will be lost
+        connection.send message if connection # FIXME when no connection message will be lost
         self
       end
     end

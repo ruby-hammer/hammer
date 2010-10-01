@@ -56,19 +56,19 @@ module Hammer::Core
       if !(session_id)
         Hammer.logger.warn "missing session_id"
 
-      # initial request for content
+        # initial request for content
       elsif !(context_id)
         context = self.container(session_id).context(nil, message['hash'])
         context.set_connection(connection)
 
-      # request to do something
+        # request to do something
       elsif action_id || form
         context = self.container(session_id).context(context_id)
         context.schedule { context.update_form(form).run_action(action_id, message['arguments']) }
 
-      # restart context
-      elsif context_id
-        context = self.container(session_id).restart_context(context_id, message['hash'], connection)
+        # restart context
+        #      elsif context_id
+        #        context = self.container(session_id).restart_context(context_id, message['hash'], connection)
       else
         Hammer.logger.warn "Non valid message: #{message}"
       end

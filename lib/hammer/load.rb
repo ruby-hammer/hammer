@@ -1,5 +1,4 @@
 require "hammer/monkey/erector.rb"
-require "hammer/monkey/proc.rb"
 
 require "hammer/jquery.rb"
 require "hammer/css.rb"
