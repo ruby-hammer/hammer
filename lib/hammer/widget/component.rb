@@ -62,6 +62,6 @@ module Hammer::Widget::Component
   # renders replacer in place of component when rendering update
   def render_component(component)
     self.component._children << component
-    span :'data-component-replace' => component.object_id
+    ins component.object_id, :class => 'insert_component'
   end
 end

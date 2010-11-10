@@ -22,7 +22,7 @@ module Hammer::Component
 
     module Widget
       def wrapper_options
-        super.merge :rel => 'draggable', :'data-draggable-options' => component.class._draggable.to_json
+        super.merge :rel => 'draggable', :'data-draggable' => component.class._draggable.to_json
       end
     end
   end
@@ -57,8 +57,8 @@ module Hammer::Component
         options = component.class._droppable.clone
         options[:onDrop] = Hammer::JSString.new("function(draggable) { new Hammer.Message()." +
               "setAction(\"#{register_action &component.class._droppable[:onDrop]}\", " +
-              "draggable.element.component().id).send() }")
-        super.merge :'data-droppable-options' => options.to_json, :rel => 'droppable'
+              "draggable.element.id()).send() }") # FIXME move to hammer.js
+        super.merge :'data-droppable' => options.to_json, :rel => 'droppable'
       end
     end
 

@@ -49,24 +49,24 @@ begin
     #    gem.homepage = "http://isy-pitr.github.com/isy-playground"
     gem.authors = ["Petr Chalupa"]
 
-    gem.add_dependency 'tzinfo', '>= 0'
-    gem.add_dependency 'i18n', '>= 0.4'
-    gem.add_dependency 'activesupport', '>= 3.0.0'
-    gem.add_dependency 'erector', ">= 0.8.1"
-    gem.add_dependency 'sinatra', ">= 1.0"
-    gem.add_dependency 'thin', ">= 0"
-    gem.add_dependency 'em-websocket', ">= 0"
-    gem.add_dependency 'configliere', ">= 0"
-    gem.add_dependency 'bundler', ">= 0"
-    gem.add_dependency 'data_objects', ">= 0.10"
-    gem.add_dependency 'datamapper', ">= 1.0"
+    gem.add_dependency 'tzinfo', '~> 0.3'
+    gem.add_dependency 'i18n', '~> 0.4'
+    gem.add_dependency 'activesupport', '~> 3.0.0'
+    gem.add_dependency 'erector', "~> 0.8.1"
+    gem.add_dependency 'sinatra', "~> 1.1"
+    gem.add_dependency 'thin', "~> 1.2"
+    gem.add_dependency 'em-websocket', "~> 0.1"
+    gem.add_dependency 'configliere', "~> 0.1"
+    gem.add_dependency 'bundler', "~> 1.0"
+    gem.add_dependency 'data_objects', "~> 0.10"
+    gem.add_dependency 'datamapper', "~> 1.0"
 
-    gem.add_development_dependency "rspec", ">= 2.0.0.beta"
-    gem.add_development_dependency "yard", ">= 0"
-    #    gem.add_development_dependency "yard-rspec", ">= 0"
-    gem.add_development_dependency "BlueCloth", ">= 0"
-    gem.add_development_dependency "jeweler", ">= 0"
-    gem.add_development_dependency "rack-test", ">= 0"
+    gem.add_development_dependency "rspec", "~> 2.0.0"
+    gem.add_development_dependency "yard", "~> 0.6"
+    #    gem.add_development_dependency "yard-rspec", "~> 0"
+    gem.add_development_dependency "BlueCloth", "~> 1.0"
+    gem.add_development_dependency "jeweler", "~> 1.4"
+    gem.add_development_dependency "rack-test", "~> 0.5"
 
     gem.files = FileList['lib/**/*.*'].to_a
 

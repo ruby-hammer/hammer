@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-09-22}
+  s.date = %q{2010-11-10}
   s.description = %q{ruby component based state-full web framework}
   s.email = %q{hammer.framework@gmail.com}
-  s.executables = ["hammer-memprof", "hammer-prof", "hammer"]
+  s.executables = ["hammer-memprof", "hammer", "hammer-prof"]
   s.extra_rdoc_files = [
     "MIT-LICENSE",
      "README.md",
@@ -103,29 +103,29 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{ruby component based state-full web framework}
   s.test_files = [
-    "spec/hammer/jquery_spec.rb",
-     "spec/hammer/widget/wrapping_spec.rb",
-     "spec/hammer/widget/passing_spec.rb",
+    "spec/hammer/widget/component_spec.rb",
      "spec/hammer/widget/base_spec.rb",
-     "spec/hammer/widget/component_spec.rb",
-     "spec/hammer/loader_spec.rb",
+     "spec/hammer/widget/passing_spec.rb",
+     "spec/hammer/widget/wrapping_spec.rb",
+     "spec/hammer/weak_array_test.rb",
+     "spec/hammer/jquery_spec.rb",
      "spec/hammer/component/state_spec.rb",
-     "spec/hammer/component/form_spec.rb",
+     "spec/hammer/component/base_spec.rb",
      "spec/hammer/component/developer/inspection/array_spec.rb",
      "spec/hammer/component/developer/inspection/object_spec.rb",
-     "spec/hammer/component/base_spec.rb",
-     "spec/hammer/finalizer_spec.rb",
-     "spec/hammer/weak_spec.rb",
+     "spec/hammer/component/form_spec.rb",
+     "spec/hammer/core/application_spec.rb",
+     "spec/hammer/core/base_spec.rb",
      "spec/hammer/core/container_spec.rb",
      "spec/hammer/core/context_spec.rb",
      "spec/hammer/core/observable_spec.rb",
-     "spec/hammer/core/application_spec.rb",
-     "spec/hammer/core/base_spec.rb",
+     "spec/hammer/weak_spec.rb",
+     "spec/hammer/finalizer_spec.rb",
      "spec/hammer/css_spec.rb",
-     "spec/hammer/weak_array_test.rb",
+     "spec/hammer/loader_spec.rb",
+     "spec/spec_helper.rb",
      "spec/benchmark/rendering_spec.rb",
-     "spec/benchmark/hash_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/benchmark/hash_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -133,57 +133,57 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<tzinfo>, [">= 0"])
-      s.add_runtime_dependency(%q<i18n>, [">= 0.4"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<erector>, [">= 0.8.1"])
-      s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
-      s.add_runtime_dependency(%q<thin>, [">= 0"])
-      s.add_runtime_dependency(%q<em-websocket>, [">= 0"])
-      s.add_runtime_dependency(%q<configliere>, [">= 0"])
-      s.add_runtime_dependency(%q<bundler>, [">= 0"])
-      s.add_runtime_dependency(%q<data_objects>, [">= 0.10"])
-      s.add_runtime_dependency(%q<datamapper>, [">= 1.0"])
-      s.add_development_dependency(%q<rspec>, [">= 2.0.0.beta"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<BlueCloth>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_development_dependency(%q<rack-test>, [">= 0"])
+      s.add_runtime_dependency(%q<tzinfo>, ["~> 0.3"])
+      s.add_runtime_dependency(%q<i18n>, ["~> 0.4"])
+      s.add_runtime_dependency(%q<activesupport>, ["~> 3.0.0"])
+      s.add_runtime_dependency(%q<erector>, ["~> 0.8.1"])
+      s.add_runtime_dependency(%q<sinatra>, ["~> 1.1"])
+      s.add_runtime_dependency(%q<thin>, ["~> 1.2"])
+      s.add_runtime_dependency(%q<em-websocket>, ["~> 0.1"])
+      s.add_runtime_dependency(%q<configliere>, ["~> 0.1"])
+      s.add_runtime_dependency(%q<bundler>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<data_objects>, ["~> 0.10"])
+      s.add_runtime_dependency(%q<datamapper>, ["~> 1.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.0.0"])
+      s.add_development_dependency(%q<yard>, ["~> 0.6"])
+      s.add_development_dependency(%q<BlueCloth>, ["~> 1.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.4"])
+      s.add_development_dependency(%q<rack-test>, ["~> 0.5"])
     else
-      s.add_dependency(%q<tzinfo>, [">= 0"])
-      s.add_dependency(%q<i18n>, [">= 0.4"])
-      s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_dependency(%q<erector>, [">= 0.8.1"])
-      s.add_dependency(%q<sinatra>, [">= 1.0"])
-      s.add_dependency(%q<thin>, [">= 0"])
-      s.add_dependency(%q<em-websocket>, [">= 0"])
-      s.add_dependency(%q<configliere>, [">= 0"])
-      s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<data_objects>, [">= 0.10"])
-      s.add_dependency(%q<datamapper>, [">= 1.0"])
-      s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<BlueCloth>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<rack-test>, [">= 0"])
+      s.add_dependency(%q<tzinfo>, ["~> 0.3"])
+      s.add_dependency(%q<i18n>, ["~> 0.4"])
+      s.add_dependency(%q<activesupport>, ["~> 3.0.0"])
+      s.add_dependency(%q<erector>, ["~> 0.8.1"])
+      s.add_dependency(%q<sinatra>, ["~> 1.1"])
+      s.add_dependency(%q<thin>, ["~> 1.2"])
+      s.add_dependency(%q<em-websocket>, ["~> 0.1"])
+      s.add_dependency(%q<configliere>, ["~> 0.1"])
+      s.add_dependency(%q<bundler>, ["~> 1.0"])
+      s.add_dependency(%q<data_objects>, ["~> 0.10"])
+      s.add_dependency(%q<datamapper>, ["~> 1.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.0.0"])
+      s.add_dependency(%q<yard>, ["~> 0.6"])
+      s.add_dependency(%q<BlueCloth>, ["~> 1.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.4"])
+      s.add_dependency(%q<rack-test>, ["~> 0.5"])
     end
   else
-    s.add_dependency(%q<tzinfo>, [">= 0"])
-    s.add_dependency(%q<i18n>, [">= 0.4"])
-    s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-    s.add_dependency(%q<erector>, [">= 0.8.1"])
-    s.add_dependency(%q<sinatra>, [">= 1.0"])
-    s.add_dependency(%q<thin>, [">= 0"])
-    s.add_dependency(%q<em-websocket>, [">= 0"])
-    s.add_dependency(%q<configliere>, [">= 0"])
-    s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<data_objects>, [">= 0.10"])
-    s.add_dependency(%q<datamapper>, [">= 1.0"])
-    s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<BlueCloth>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<rack-test>, [">= 0"])
+    s.add_dependency(%q<tzinfo>, ["~> 0.3"])
+    s.add_dependency(%q<i18n>, ["~> 0.4"])
+    s.add_dependency(%q<activesupport>, ["~> 3.0.0"])
+    s.add_dependency(%q<erector>, ["~> 0.8.1"])
+    s.add_dependency(%q<sinatra>, ["~> 1.1"])
+    s.add_dependency(%q<thin>, ["~> 1.2"])
+    s.add_dependency(%q<em-websocket>, ["~> 0.1"])
+    s.add_dependency(%q<configliere>, ["~> 0.1"])
+    s.add_dependency(%q<bundler>, ["~> 1.0"])
+    s.add_dependency(%q<data_objects>, ["~> 0.10"])
+    s.add_dependency(%q<datamapper>, ["~> 1.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.0.0"])
+    s.add_dependency(%q<yard>, ["~> 0.6"])
+    s.add_dependency(%q<BlueCloth>, ["~> 1.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.4"])
+    s.add_dependency(%q<rack-test>, ["~> 0.5"])
   end
 end
 
