@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Core::Context::Actions</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)"></a></span></dd>
+    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)">Hammer::Core::Context</a></span></dd>
     
   
   
@@ -203,12 +203,12 @@ evaluates action with <tt>id</tt>, do nothing when no action.
       <pre class="lines">
 
 
-67
-68
-69</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:attr_reader</span><span class='comma'>,</span> <span class='symbol'>:actions</span>
@@ -248,13 +248,13 @@ A new instance of Actions
       <pre class="lines">
 
 
-71
-72
-73
-74</pre>
+76
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='ivar'>@actions</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Weak</span><span class='op'>::</span><span class='const'>Hash</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id new'>new</span>
@@ -346,13 +346,13 @@ self
       <pre class="lines">
 
 
-80
-81
-82
-83</pre>
+85
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id uuid'>uuid</span><span class='comma'>,</span> <span class='id component'>component</span><span class='rparen'>)</span>
   <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id uuid'>uuid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id component'>component</span>
@@ -394,7 +394,7 @@ evaluates action with <tt>id</tt>, do nothing when no action
       
         &mdash;
         <div class='inline'><p>
-of a <span class='object_link'><a href="../Action.html" title="Hammer::Core::Action (class)">Hammer::Core::Action</a></span>
+of a <span class='object_link'><a href="../Action.html" title="Hammer::Core::Action (class)">Action</a></span>
 </p>
 </div>
       
@@ -444,14 +444,14 @@ self
       <pre class="lines">
 
 
-89
-90
-91
-92
-93</pre>
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id arg'>arg</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>unless</span> <span class='id component'>component</span> <span class='op'>=</span> <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span>
@@ -468,9 +468,9 @@ self
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

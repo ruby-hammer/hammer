@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Core::Context::Connection::ClassMethods</title>
 <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -214,12 +214,12 @@ by <tt>connection</tt>
       <pre class="lines">
 
 
-168
-169
-170</pre>
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 168</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id by_connection'>by_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='id contexts_by_connection'>contexts_by_connection</span><span class='lbracket'>[</span><span class='id connection'>connection</span><span class='rbracket'>]</span>
@@ -242,12 +242,12 @@ by <tt>connection</tt>
       <pre class="lines">
 
 
-172
-173
-174</pre>
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 172</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id contexts_by_connection'>contexts_by_connection</span>
   <span class='ivar'>@contexts_by_connection</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -270,12 +270,12 @@ by <tt>connection</tt>
       <pre class="lines">
 
 
-176
-177
-178</pre>
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='id no_connection_contexts'>no_connection_contexts</span>
   <span class='ivar'>@no_connection_contexts</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -290,9 +290,9 @@ by <tt>connection</tt>
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

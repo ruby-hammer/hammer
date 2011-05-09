@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Widget::Component</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -64,18 +64,7 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    <p>
-encoding: UTF-8
-</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-</div>
 
 
   
@@ -536,7 +525,7 @@ renders replacer in place of component when rendering update
 
 <span class='kw'>def</span> <span class='id render_component'>render_component</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id component'>component</span><span class='period'>.</span><span class='id _children'>_children</span> <span class='op'>&lt;&lt;</span> <span class='id component'>component</span>
-  <span class='id span'>span</span> <span class='symbol'>:data-component-replace</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id component'>component</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+  <span class='id ins'>ins</span> <span class='id component'>component</span><span class='period'>.</span><span class='id object_id'>object_id</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>insert_component</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -769,9 +758,9 @@ adds component&#8217;s id for root widgets
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:24 2010 by 
+  Generated on Mon May  9 16:46:32 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

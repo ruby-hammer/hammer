@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Core::AbstractContext</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -354,6 +354,27 @@ A new instance of AbstractContext.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#restart-instance_method" title="#restart (instance method)">- (Object) <strong>restart</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#root_class-instance_method" title="#root_class (instance method)">- (Class) <strong>root_class</strong> </a>
     
 
@@ -440,7 +461,8 @@ Of unsent? visible components.
 
   
     <span class="summary_desc"><div class='inline'><p>
-updates values in form parts.
+TODO API to update values, on top of it build forms updates values in form
+parts.
 </p>
 </div></span>
   
@@ -518,7 +540,7 @@ unique identification
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@container</span><span class='comma'>,</span> <span class='ivar'>@hash</span><span class='comma'>,</span> <span class='ivar'>@repository</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='symbol'>:default</span><span class='rparen'>)</span>
-  <span class='id schedule'>schedule</span> <span class='lbrace'>{</span> <span class='ivar'>@root_component</span> <span class='op'>=</span> <span class='id root_class'>root_class</span><span class='period'>.</span><span class='id new'>new</span> <span class='rbrace'>}</span>
+  <span class='id restart'>restart</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -813,12 +835,12 @@ remove context form container
       <pre class="lines">
 
 
-18
-19
-20</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='id container'>container</span><span class='period'>.</span><span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -841,15 +863,43 @@ remove context form container
       <pre class="lines">
 
 
-31
-32
-33</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id location_hash'>location_hash</span>
   <span class='id root_class'>root_class</span> <span class='op'>==</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Tools</span> <span class='op'>?</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:core</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:devel</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="restart-instance_method">
+  
+    - (<tt>Object</tt>) <strong>restart</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id restart'>restart</span>
+  <span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='ivar'>@root_component</span> <span class='op'>=</span> <span class='id root_class'>root_class</span><span class='period'>.</span><span class='id new'>new</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -899,16 +949,16 @@ class of a root component
       <pre class="lines">
 
 
-23
-24
-25
-26
 27
 28
-29</pre>
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id root_class'>root_class</span>
   <span class='ivar'>@root_class</span> <span class='op'>||=</span> <span class='kw'>unless</span> <span class='ivar'>@hash</span> <span class='op'>==</span> <span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:core</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:devel</span><span class='rbracket'>]</span>
@@ -946,12 +996,12 @@ renders html, similar to Erector::Widget#to_html
       <pre class="lines">
 
 
-36
-37
-38</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id to_html'>to_html</span>
   <span class='ivar'>@root_component</span><span class='period'>.</span><span class='id to_html'>to_html</span>
@@ -1004,12 +1054,12 @@ of unsent? visible components
       <pre class="lines">
 
 
-59
-60
-61</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id unsent_components'>unsent_components</span>
   <span class='id root_component'>root_component</span><span class='period'>.</span><span class='id all_children'>all_children</span><span class='period'>.</span><span class='id select'>select</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:unsent?</span><span class='rparen'>)</span>
@@ -1029,7 +1079,8 @@ of unsent? visible components
 </p><div class="docstring">
   <div class="discussion">
     <p>
-updates values in form parts
+TODO API to update values, on top of it build forms updates values in form
+parts
 </p>
 
 
@@ -1086,11 +1137,6 @@ self
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
 48
 49
 50
@@ -1099,10 +1145,15 @@ self
 53
 54
 55
-56</pre>
+56
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id update_form'>update_form</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='rparen'>)</span>
   <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Updating form</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
@@ -1128,9 +1179,9 @@ self
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

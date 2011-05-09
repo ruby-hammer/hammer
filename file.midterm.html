@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>File: midterm</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -51,10 +51,12 @@ about setting up proper development environment:</p>
 <ul>
 <li>Central logger</li>
 <li>Automatic loading of all files and reloading on file-change.
+
 <ul>
 <li>gem require_all</li>
 <li>rack/reloader</li>
-</ul></li>
+</ul>
+</li>
 <li>environments: development, production etc...</li>
 <li>yard documentation</li>
 <li>prepare rspec</li>
@@ -62,14 +64,12 @@ about setting up proper development environment:</p>
 <li>etc.</li>
 </ul>
 
+
 <h2>Week 2 - I love EventMachine</h2>
 
-<p>From start I did some minor improvements:</p>
-
-<ul>
-<li>central configuration, gem configliere</li>
-<li>auto wrapping of widgets with a element properly css-classed and identified</li>
-</ul>
+<p>From start I did some minor improvements:
+- central configuration, gem configliere
+- auto wrapping of widgets with a element properly css-classed and identified</p>
 
 <p>This week was mainly about EventMachine, Fibers and WebSsocket. Core was almost completely rewritten.</p>
 
@@ -98,6 +98,7 @@ to client.</p>
 <li>Errors became safely caught and a communication with user was added besides debug in JS console.</li>
 </ul>
 
+
 <p>And:</p>
 
 <p>To test how writing components and widgets feel I wrote Object inspectors. It also helped me to find leaks.
@@ -113,6 +114,7 @@ after 4 hours of inactivity and messages are limited to 50 per room. But it nice
 will be good at.</li>
 </ul>
 
+
 <h2>Week 5 - New name, Chat hosting, Midterm, Refactoring</h2>
 
 <ul>
@@ -123,19 +125,17 @@ I had to remove gem require_all for unreliability and fix some other bugs to mak
 <li><strong>Finally I bumped version to 0.0.1 !</strong></li>
 </ul>
 
+
 <p>In the rest of the week I refactored and restructured source to use module pattern - used by i18n 0.4 and erector 0.8.</p>
 
 <h2>Future</h2>
 
 <h3>Rendering</h3>
 
-<p>Is slow so what to do with it? Plan is to:</p>
-
-<ol>
-<li>implement layer to monitor changes and render and send to client just changes not entire page.</li>
-<li>look at speed again.</li>
-<li>try to move rendering to other processes ? Test it if it gives any improvement.</li>
-</ol>
+<p>Is slow so what to do with it? Plan is to:
+1. implement layer to monitor changes and render and send to client just changes not entire page.
+2. look at speed again.
+3. try to move rendering to other processes ? Test it if it gives any improvement.</p>
 
 <h3>Other</h3>
 
@@ -145,18 +145,21 @@ I had to remove gem require_all for unreliability and fix some other bugs to mak
 <li>CSS definitions on widget's class level</li>
 <li>Internationalization</li>
 <li>General improvements:
+
 <ul>
 <li>Richer objects for prototyping</li>
 <li>Js callbacks</li>
 <li>Smarter forms</li>
 <li>etc.</li>
-</ul></li>
-</ul></div></div>
+</ul>
+</li>
+</ul>
+</div></div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:21 2010 by 
+  Generated on Mon May  9 16:46:29 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

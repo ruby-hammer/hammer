@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Core::Context</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -73,7 +73,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2"><span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Context::Actions</a></span>, <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Context::Communication</a></span>, <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Context::Connection</a></span>, <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Context::Scheduling</a></span></dd>
+      <dd class="r2"><span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Actions</a></span>, <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Communication</a></span>, <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Connection</a></span>, <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Scheduling</a></span></dd>
       
     
   
@@ -130,8 +130,8 @@
   
   <h2>Method Summary</h2>
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Context::Communication</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Context/Communication.html#update%21-instance_method" title="Hammer::Core::Context::Communication#update! (method)">#update!</a></span>, <span class='object_link'><a href="Context/Communication.html#warn-instance_method" title="Hammer::Core::Context::Communication#warn (method)">#warn</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Communication.html" title="Hammer::Core::Context::Communication (module)">Communication</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Context/Communication.html#add_updates-instance_method" title="Hammer::Core::Context::Communication#add_updates (method)">#add_updates</a></span>, <span class='object_link'><a href="Context/Communication.html#add_warn-instance_method" title="Hammer::Core::Context::Communication#add_warn (method)">#add_warn</a></span>, <span class='object_link'><a href="Context/Communication.html#send_message-instance_method" title="Hammer::Core::Context::Communication#send_message (method)">#send_message</a></span>, <span class='object_link'><a href="Context/Communication.html#setup_message-instance_method" title="Hammer::Core::Context::Communication#setup_message (method)">#setup_message</a></span>, <span class='object_link'><a href="Context/Communication.html#update%21-instance_method" title="Hammer::Core::Context::Communication#update! (method)">#update!</a></span>, <span class='object_link'><a href="Context/Communication.html#warn-instance_method" title="Hammer::Core::Context::Communication#warn (method)">#warn</a></span></p>
 
   
   
@@ -140,7 +140,7 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Context::Connection</a></span></h3>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Connection.html" title="Hammer::Core::Context::Connection (module)">Connection</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Context/Connection.html#drop-instance_method" title="Hammer::Core::Context::Connection#drop (method)">#drop</a></span>, <span class='object_link'><a href="Context/Connection.html#included-class_method" title="Hammer::Core::Context::Connection.included (method)">included</a></span>, <span class='object_link'><a href="Context/Connection.html#initialize-instance_method" title="Hammer::Core::Context::Connection#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Connection.html#set_connection-instance_method" title="Hammer::Core::Context::Connection#set_connection (method)">#set_connection</a></span></p>
 
   
@@ -150,7 +150,7 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Context::Scheduling</a></span></h3>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Scheduling.html" title="Hammer::Core::Context::Scheduling (module)">Scheduling</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Context/Scheduling.html#initialize-instance_method" title="Hammer::Core::Context::Scheduling#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Scheduling.html#safely-instance_method" title="Hammer::Core::Context::Scheduling#safely (method)">#safely</a></span>, <span class='object_link'><a href="Context/Scheduling.html#schedule-instance_method" title="Hammer::Core::Context::Scheduling#schedule (method)">#schedule</a></span>, <span class='object_link'><a href="Context/Scheduling.html#schedule_block-instance_method" title="Hammer::Core::Context::Scheduling#schedule_block (method)">#schedule_block</a></span>, <span class='object_link'><a href="Context/Scheduling.html#with_context-instance_method" title="Hammer::Core::Context::Scheduling#with_context (method)">#with_context</a></span></p>
 
   
@@ -160,7 +160,7 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Context::Actions</a></span></h3>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Context/Actions.html" title="Hammer::Core::Context::Actions (module)">Actions</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Context/Actions.html#included-class_method" title="Hammer::Core::Context::Actions.included (method)">included</a></span>, <span class='object_link'><a href="Context/Actions.html#initialize-instance_method" title="Hammer::Core::Context::Actions#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Context/Actions.html#register_action-instance_method" title="Hammer::Core::Context::Actions#register_action (method)">#register_action</a></span>, <span class='object_link'><a href="Context/Actions.html#run_action-instance_method" title="Hammer::Core::Context::Actions#run_action (method)">#run_action</a></span></p>
 
   
@@ -171,7 +171,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AbstractContext.html" title="Hammer::Core::AbstractContext (class)">AbstractContext</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AbstractContext.html#drop-instance_method" title="Hammer::Core::AbstractContext#drop (method)">#drop</a></span>, <span class='object_link'><a href="AbstractContext.html#initialize-instance_method" title="Hammer::Core::AbstractContext#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="AbstractContext.html#location_hash-instance_method" title="Hammer::Core::AbstractContext#location_hash (method)">#location_hash</a></span>, <span class='object_link'><a href="AbstractContext.html#root_class-instance_method" title="Hammer::Core::AbstractContext#root_class (method)">#root_class</a></span>, <span class='object_link'><a href="AbstractContext.html#to_html-instance_method" title="Hammer::Core::AbstractContext#to_html (method)">#to_html</a></span>, <span class='object_link'><a href="AbstractContext.html#unsent_components-instance_method" title="Hammer::Core::AbstractContext#unsent_components (method)">#unsent_components</a></span>, <span class='object_link'><a href="AbstractContext.html#update_form-instance_method" title="Hammer::Core::AbstractContext#update_form (method)">#update_form</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="AbstractContext.html#drop-instance_method" title="Hammer::Core::AbstractContext#drop (method)">#drop</a></span>, <span class='object_link'><a href="AbstractContext.html#initialize-instance_method" title="Hammer::Core::AbstractContext#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="AbstractContext.html#location_hash-instance_method" title="Hammer::Core::AbstractContext#location_hash (method)">#location_hash</a></span>, <span class='object_link'><a href="AbstractContext.html#restart-instance_method" title="Hammer::Core::AbstractContext#restart (method)">#restart</a></span>, <span class='object_link'><a href="AbstractContext.html#root_class-instance_method" title="Hammer::Core::AbstractContext#root_class (method)">#root_class</a></span>, <span class='object_link'><a href="AbstractContext.html#to_html-instance_method" title="Hammer::Core::AbstractContext#to_html (method)">#to_html</a></span>, <span class='object_link'><a href="AbstractContext.html#unsent_components-instance_method" title="Hammer::Core::AbstractContext#unsent_components (method)">#unsent_components</a></span>, <span class='object_link'><a href="AbstractContext.html#update_form-instance_method" title="Hammer::Core::AbstractContext#update_form (method)">#update_form</a></span></p>
 
   
   
@@ -193,9 +193,9 @@
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Component::Droppable::Widget</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -133,8 +133,8 @@
   <span class='id options'>options</span> <span class='op'>=</span> <span class='id component'>component</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id _droppable'>_droppable</span><span class='period'>.</span><span class='id clone'>clone</span>
   <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:onDrop</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Hammer</span><span class='op'>::</span><span class='const'>JSString</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>function(draggable) { new Hammer.Message().</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>setAction(\&quot;</span><span class='embexpr_beg'>#{</span><span class='id register_action'>register_action</span> <span class='op'>&amp;</span><span class='id component'>component</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id _droppable'>_droppable</span><span class='lbracket'>[</span><span class='symbol'>:onDrop</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\&quot;, </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>draggable.element.component().id).send() }</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-droppable-options</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id options'>options</span><span class='period'>.</span><span class='id to_json'>to_json</span><span class='comma'>,</span> <span class='symbol'>:rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>droppable</span><span class='tstring_end'>'</span></span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>draggable.element.id()).send() }</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># FIXME move to hammer.js
+</span>  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-droppable</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id options'>options</span><span class='period'>.</span><span class='id to_json'>to_json</span><span class='comma'>,</span> <span class='symbol'>:rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>droppable</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -146,9 +146,9 @@
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:25 2010 by 
+  Generated on Mon May  9 16:46:33 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

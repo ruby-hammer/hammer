@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Component::State::ClassMethods</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -288,12 +288,12 @@ hooks <span class='object_link'><a href="../State.html#change%21-instance_method
 <span class='kw'>def</span> <span class='id hook_change_to_method'>hook_change_to_method</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^([\w_]*)(|\?|!|=)$</span><span class='regexp_end'>/</span></span>
   <span class='id class_eval'>class_eval</span> <span class='heredoc_beg'>&lt;&lt;-STR</span><span class='tstring_content'>    def </span><span class='embexpr_beg'>#{</span><span class='backref'>$1</span><span class='rbrace'>}</span><span class='tstring_content'>_with_change</span><span class='embexpr_beg'>#{</span><span class='backref'>$2</span><span class='rbrace'>}</span><span class='tstring_content'>(*args, &amp;block)
-</span><span class='tstring_content'>      __send__ &quot;</span><span class='embexpr_beg'>#{</span><span class='backref'>$1</span><span class='rbrace'>}</span><span class='tstring_content'>_without_change</span><span class='embexpr_beg'>#{</span><span class='backref'>$2</span><span class='rbrace'>}</span><span class='tstring_content'>&quot;, *args, &amp;block
+</span><span class='tstring_content'>      __send__ &quot;</span><span class='embexpr_beg'>#{</span><span class='backref'>$1</span><span class='rbrace'>}</span><span class='tstring_content'>_without_change</span><span class='embexpr_beg'>#{</span><span class='backref'>$2</span><span class='rbrace'>}</span> <span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='comma'>,</span> <span class='kw'>__LINE__</span><span class='op'>+</span><span class='int'>1</span>
+<span class='tstring_content'>&quot;, *args, &amp;block
       change!
     end
 </span><span class='heredoc_end'>  STR
-</span> <span class='comma'>,</span> <span class='kw'>__FILE__</span><span class='comma'>,</span> <span class='kw'>__LINE__</span><span class='op'>+</span><span class='int'>1</span>
-  <span class='id alias_method_chain'>alias_method_chain</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:change</span><span class='rparen'>)</span>
+</span>  <span class='id alias_method_chain'>alias_method_chain</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:change</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -305,9 +305,9 @@ hooks <span class='object_link'><a href="../State.html#change%21-instance_method
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:24 2010 by 
+  Generated on Mon May  9 16:46:32 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

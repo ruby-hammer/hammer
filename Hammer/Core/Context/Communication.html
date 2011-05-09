@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Core::Context::Communication</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)"></a></span></dd>
+    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)">Hammer::Core::Context</a></span></dd>
     
   
   
@@ -79,10 +79,106 @@
 
     <ul class="summary">
       
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add_updates-instance_method" title="#add_updates (instance method)">- (Hash) <strong>add_updates</strong>(message = setup_message) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Message.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add_warn-instance_method" title="#add_warn (instance method)">- (Hash) <strong>add_warn</strong>(message = setup_message) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Message.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#send_message-instance_method" title="#send_message (instance method)">- (Object) <strong>send_message</strong>(message) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Self.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#setup_message-instance_method" title="#setup_message (instance method)">- (Hash) <strong>setup_message</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Message.
+</p>
+</div></span>
+  
+</li>
+
+      
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#update%21-instance_method" title="#update! (instance method)">- (Object) <strong>update!</strong>(message = {}) </a>
+      <a href="#update%21-instance_method" title="#update! (instance method)">- (Object) <strong>update!</strong>(message = setup_message) </a>
     
 
     
@@ -137,9 +233,255 @@ Self.
     
     
       <div class="method_details first">
-  <p class="signature first" id="update!-instance_method">
+  <p class="signature first" id="add_updates-instance_method">
   
-    - (<tt>Object</tt>) <strong>update!</strong>(message = {})  <span class="extras">(protected)</span>
+    - (<tt>Hash</tt>) <strong>add_updates</strong>(message = setup_message)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Message
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+message
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254
+255
+256</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id add_updates'>add_updates</span><span class='lparen'>(</span><span class='id message'>message</span> <span class='op'>=</span> <span class='id setup_message'>setup_message</span><span class='rparen'>)</span>
+  <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Actualization</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id message'>message</span><span class='lbracket'>[</span><span class='symbol'>:update</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id unsent_components'>unsent_components</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span> <span class='id c'>c</span><span class='period'>.</span><span class='id send!'>send!</span><span class='period'>.</span><span class='id to_html'>to_html</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span>
+  <span class='kw'>end</span>
+  <span class='id message'>message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add_warn-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>add_warn</strong>(message = setup_message)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Message
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+message
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246
+247
+248</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id add_warn'>add_warn</span><span class='lparen'>(</span><span class='id message'>message</span> <span class='op'>=</span> <span class='id setup_message'>setup_message</span><span class='rparen'>)</span>
+  <span class='id message'>message</span><span class='lbracket'>[</span><span class='symbol'>:js</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alert('</span><span class='embexpr_beg'>#{</span><span class='ivar'>@warnings</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>');</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@warnings</span><span class='period'>.</span><span class='id blank?'>blank?</span>
+  <span class='ivar'>@warnings</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id message'>message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send_message-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send_message</strong>(message)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Self
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+self
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+259
+260
+261
+262
+263</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 259</span>
+
+<span class='kw'>def</span> <span class='id send_message'>send_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='comment'># FIXME don't send blank updates
+</span>  <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='id message'>message</span> <span class='kw'>if</span> <span class='id connection'>connection</span> <span class='comment'># FIXME when no connection message will be lost
+</span>  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup_message-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>setup_message</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Message
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+message
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 239</span>
+
+<span class='kw'>def</span> <span class='id setup_message'>setup_message</span>
+  <span class='lbrace'>{</span> <span class='symbol'>:context_id</span> <span class='op'>=&gt;</span> <span class='id id'>id</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update!</strong>(message = setup_message)  <span class="extras">(protected)</span>
   
 
   
@@ -160,35 +502,19 @@ collect updates for the user, builds and send message
       <pre class="lines">
 
 
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228</pre>
+230
+231
+232
+233
+234</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 230</span>
 
-<span class='kw'>def</span> <span class='id update!'>update!</span><span class='lparen'>(</span><span class='id message'>message</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id message'>message</span><span class='lbracket'>[</span><span class='symbol'>:js</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alert('</span><span class='embexpr_beg'>#{</span><span class='ivar'>@warnings</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>');</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@warnings</span><span class='period'>.</span><span class='id blank?'>blank?</span>
-  <span class='ivar'>@warnings</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='id message'>message</span><span class='lbracket'>[</span><span class='symbol'>:context_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id id'>id</span>
-
-  <span class='const'>Hammer</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Actualization</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id message'>message</span><span class='lbracket'>[</span><span class='symbol'>:update</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id unsent_components'>unsent_components</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span> <span class='id c'>c</span><span class='period'>.</span><span class='id send!'>send!</span><span class='period'>.</span><span class='id to_html'>to_html</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># FIXME don't send blank updates
-</span>  <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='id message'>message</span> <span class='kw'>if</span> <span class='id connection'>connection</span> <span class='comment'># FIXME unsent will be lost
-</span>  <span class='kw'>self</span>
+<span class='kw'>def</span> <span class='id update!'>update!</span><span class='lparen'>(</span><span class='id message'>message</span> <span class='op'>=</span> <span class='id setup_message'>setup_message</span><span class='rparen'>)</span>
+  <span class='id add_warn'>add_warn</span> <span class='id message'>message</span>
+  <span class='id add_updates'>add_updates</span> <span class='id message'>message</span>
+  <span class='id send_message'>send_message</span> <span class='id message'>message</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -259,14 +585,14 @@ self
       <pre class="lines">
 
 
-207
-208
-209
-210
-211</pre>
+221
+222
+223
+224
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 207</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id warn'>warn</span><span class='lparen'>(</span><span class='id warn'>warn</span><span class='rparen'>)</span>
   <span class='ivar'>@warnings</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -283,9 +609,9 @@ self
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

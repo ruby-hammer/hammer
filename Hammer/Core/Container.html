@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Core::Container</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -259,30 +259,6 @@ A new instance of Container.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#restart_context-instance_method" title="#restart_context (instance method)">- (Object) <strong>restart_context</strong>(id, hash, connection, warn = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-restarts context when hash has changed or error occurred.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
     
 
@@ -455,7 +431,7 @@ Returns the value of attribute shared
 </p><div class="docstring">
   <div class="discussion">
     <p>
-<span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Hammer::Core::Base</a></span> with <tt>id</tt>
+<span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Base</a></span> with <tt>id</tt>
 </p>
 
 
@@ -478,7 +454,7 @@ Returns the value of attribute shared
       
         &mdash;
         <div class='inline'><p>
-of a <span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Hammer::Core::Base</a></span>
+of a <span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Base</a></span>
 </p>
 </div>
       
@@ -497,7 +473,7 @@ of a <span class='object_link'><a href="Base.html" title="Hammer::Core::Base (cl
       
         &mdash;
         <div class='inline'><p>
-<span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Hammer::Core::Base</a></span> with <tt>id</tt>
+<span class='object_link'><a href="Base.html" title="Hammer::Core::Base (class)">Base</a></span> with <tt>id</tt>
 </p>
 </div>
       
@@ -556,12 +532,12 @@ drops container when is not needed
       <pre class="lines">
 
 
-45
-46
-47</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='const'>Base</span><span class='period'>.</span><span class='id drop_container'>drop_container</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -613,136 +589,17 @@ to drop when is not needed
       <pre class="lines">
 
 
-39
-40
-41
-42</pre>
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id context'>context</span><span class='period'>.</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='id drop'>drop</span> <span class='kw'>if</span> <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id empty?'>empty?</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="restart_context-instance_method">
-  
-    - (<tt>Object</tt>) <strong>restart_context</strong>(id, hash, connection, warn = nil) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-restarts context when hash has changed or error occurred
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <span class='name'>id</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-of a context
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <span class='name'>hash</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-new or current
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt><span class='object_link'><a href="WebSocket/Connection.html" title="Hammer::Core::WebSocket::Connection (class)">WebSocket::Connection</a></span></tt>)</span>
-      
-      
-        <span class='name'>connection</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-to the client
-</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <span class='name'>warn</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>
-warning which will be shown to user
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-31
-32
-33
-34
-35
-36</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 31</span>
-
-<span class='kw'>def</span> <span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='comma'>,</span> <span class='id warn'>warn</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id context'>context</span> <span class='op'>=</span> <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
-  <span class='id context'>context</span><span class='period'>.</span><span class='id set_connection'>set_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
-  <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id warn'>warn</span><span class='lparen'>(</span><span class='id warn'>warn</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='id context'>context</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -773,12 +630,12 @@ context&#8217;s count
       <pre class="lines">
 
 
-50
-51
-52</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/container.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id size'>size</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id size'>size</span>
@@ -793,9 +650,9 @@ context&#8217;s count
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:24 2010 by 
+  Generated on Mon May  9 16:46:32 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

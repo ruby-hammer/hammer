@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Hammer::Core::Context::Connection</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -58,7 +58,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)"></a></span></dd>
+    <dd class="r1"><span class='object_link'><a href="../Context.html" title="Hammer::Core::Context (class)">Hammer::Core::Context</a></span></dd>
     
   
   
@@ -213,12 +213,12 @@ store connection to be able to send server-side actualizations.
       <pre class="lines">
 
 
-161
-162
-163</pre>
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id extend'>extend</span> <span class='const'>ClassMethods</span>
@@ -258,14 +258,14 @@ remove context form container
       <pre class="lines">
 
 
-197
-198
-199
-200
-201</pre>
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 211</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id contexts_by_connection'>contexts_by_connection</span><span class='period'>.</span><span class='id delete'>delete</span> <span class='id connection'>connection</span>
@@ -301,13 +301,13 @@ A new instance of Connection
       <pre class="lines">
 
 
-181
-182
-183
-184</pre>
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='kw'>super</span>
@@ -357,16 +357,16 @@ store connection to be able to send server-side actualizations
       <pre class="lines">
 
 
-188
-189
-190
-191
-192
-193
-194</pre>
+202
+203
+204
+205
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/core/context.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='id set_connection'>set_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='ivar'>@connection</span> <span class='op'>=</span> <span class='id connection'>connection</span> <span class='op'>||</span> <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>missing connection</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -385,9 +385,9 @@ store connection to be able to send server-side actualizations
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

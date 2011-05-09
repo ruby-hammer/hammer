@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Component::Developer::Inspection::Object</title>
 <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -53,12 +53,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><span class='object_link'><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Abstract</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></span></li>
+            <li class="next"><span class='object_link'><a href="../../Abstract.html" title="Hammer::Component::Abstract (class)">Abstract</a></span></li>
           
             <li class="next">Hammer::Component::Developer::Inspection::Object</li>
           
@@ -239,7 +239,7 @@ Is inspector packed?.
 
   
     <span class="summary_desc"><div class='inline'><p>
-switches packed state and calls <span class='object_link'><a href="#pack-instance_method" title="Hammer::Component::Developer::Inspection::Object#pack (method)">Object#pack</a></span> or <span class='object_link'><a href="#unpack-instance_method" title="Hammer::Component::Developer::Inspection::Object#unpack (method)">Object#unpack</a></span> to change the state.
+switches packed state and calls <span class='object_link'><a href="#pack-instance_method" title="Hammer::Component::Developer::Inspection::Object#pack (method)">#pack</a></span> or <span class='object_link'><a href="#unpack-instance_method" title="Hammer::Component::Developer::Inspection::Object#unpack (method)">#unpack</a></span> to change the state.
 </p>
 </div></span>
   
@@ -289,7 +289,7 @@ etc.
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../AbstractImpl.html" title="Hammer::Component::AbstractImpl (module)">Hammer::Component::AbstractImpl</a></span></h3>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../AbstractImpl.html" title="Hammer::Component::AbstractImpl (module)">AbstractImpl</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../../AbstractImpl.html#check_assigns-instance_method" title="Hammer::Component::AbstractImpl#check_assigns (method)">#check_assigns</a></span>, <span class='object_link'><a href="../../AbstractImpl.html#included-class_method" title="Hammer::Component::AbstractImpl.included (method)">included</a></span>, <span class='object_link'><a href="../../AbstractImpl.html#register_action-instance_method" title="Hammer::Component::AbstractImpl#register_action (method)">#register_action</a></span>, <span class='object_link'><a href="../../AbstractImpl.html#root%3F-instance_method" title="Hammer::Component::AbstractImpl#root? (method)">#root?</a></span>, <span class='object_link'><a href="../../AbstractImpl.html#run_action-instance_method" title="Hammer::Component::AbstractImpl#run_action (method)">#run_action</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -346,10 +346,8 @@ a customizable set of options
           <span class="name">:label</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;<div class='inline'><p>
+          &mdash; <div class='inline'><p>
 optional description
 </p>
 </div>
@@ -360,10 +358,8 @@ optional description
           <span class="name">:packed</span>
           <span class="default">
             
-              <span class="na">N/A</span>
-            
           </span>
-          &mdash;<div class='inline'><p>
+          &mdash; <div class='inline'><p>
 inspector is initially packed?
 </p>
 </div>
@@ -632,9 +628,9 @@ etc.
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:27 2010 by 
+  Generated on Mon May  9 16:46:35 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::CSS::Property</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -106,7 +106,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute name.
+</p>
+</div></span>
   
 </li>
 
@@ -130,7 +133,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute values.
+</p>
+</div></span>
   
 </li>
 
@@ -153,18 +159,52 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the current value of name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-133</pre>
+133
+134
+135</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/css.rb', line 133</span>
 
-<span class='const'>Property</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='period'>.</span><span class='id new'>new</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:values</span></pre>
+<span class='kw'>def</span> <span class='id name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -180,18 +220,52 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute values
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the current value of values
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-133</pre>
+133
+134
+135</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hammer/css.rb', line 133</span>
 
-<span class='const'>Property</span> <span class='op'>=</span> <span class='const'>Struct</span><span class='period'>.</span><span class='id new'>new</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:values</span></pre>
+<span class='kw'>def</span> <span class='id values'>values</span>
+  <span class='ivar'>@values</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -203,9 +277,9 @@
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:21 2010 by 
+  Generated on Mon May  9 16:46:29 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Widget::Layout</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -187,7 +187,7 @@ Abstract layout for Hammer applications
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#favicon-instance_method" title="#favicon (instance method)">- (Object) <strong>favicon</strong> </a>
+      <a href="#favicon-instance_method" title="#favicon (instance method)">- (String) <strong>favicon</strong> </a>
     
 
     
@@ -200,7 +200,10 @@ Abstract layout for Hammer applications
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+overwrite to change favicon.
+</p>
+</div></span>
   
 </li>
 
@@ -307,12 +310,12 @@ sets configuration.
       <pre class="lines">
 
 
-48
-49
-50</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id generated_css'>generated_css</span>
   <span class='id depends_on'>depends_on</span> <span class='symbol'>:css</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>css/</span><span class='embexpr_beg'>#{</span><span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:app</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='rbrace'>}</span><span class='tstring_content'>.css</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>app.name</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
@@ -341,14 +344,14 @@ sets configuration.
       <pre class="lines">
 
 
-22
-23
-24
 25
-26</pre>
+26
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id body_content'>body_content</span>
   <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='ivar'>@session_id</span><span class='rparen'>)</span>
@@ -373,12 +376,12 @@ sets configuration.
       <pre class="lines">
 
 
-28
-29
-30</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id container'>container</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id content'>content</span><span class='rparen'>)</span>
   <span class='id content'>content</span><span class='period'>.</span><span class='id call'>call</span>
@@ -391,25 +394,55 @@ sets configuration.
       <div class="method_details ">
   <p class="signature " id="favicon-instance_method">
   
-    - (<tt>Object</tt>) <strong>favicon</strong> 
+    - (<tt>String</tt>) <strong>favicon</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+overwrite to change favicon
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+favicon path
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-42
-43
-44</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id favicon'>favicon</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hammer.png</span><span class='tstring_end'>&quot;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hammer/hammer.png</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -429,13 +462,13 @@ sets configuration.
       <pre class="lines">
 
 
-37
-38
-39
-40</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id head_content'>head_content</span>
   <span class='kw'>super</span>
@@ -470,12 +503,12 @@ overwrite to change loading page
       <pre class="lines">
 
 
-33
-34
-35</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id loading'>loading</span>
   <span class='id div'>div</span><span class='lparen'>(</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hammer-loading</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id text'>text</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Loading ...</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
@@ -509,18 +542,18 @@ sets configuration
       <pre class="lines">
 
 
-55
-56
-57
-58
-59
 60
 61
 62
-63</pre>
+63
+64
+65
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/hammer/widget/layout.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id set_variables'>set_variables</span><span class='lparen'>(</span><span class='id session_id'>session_id</span><span class='rparen'>)</span>
   <span class='id javascript'>javascript</span><span class='lparen'>(</span><span class='id jquery'>jquery</span> <span class='kw'>do</span>
@@ -528,7 +561,7 @@ sets configuration
         <span class='symbol'>:server</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:server</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='const'>Hammer</span><span class='period'>.</span><span class='id config'>config</span><span class='lbracket'>[</span><span class='symbol'>:websocket</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span><span class='comma'>,</span>
         <span class='symbol'>:sessionId</span> <span class='op'>=&gt;</span> <span class='id session_id'>session_id</span><span class='rparen'>)</span>
-    <span class='kw'>end</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WEB_SOCKET_SWF_LOCATION = \&quot;WebSocketMain.swf\&quot;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WEB_SOCKET_SWF_LOCATION = \&quot;websocket/WebSocketMain.swf\&quot;</span><span class='tstring_end'>&quot;</span></span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -541,9 +574,9 @@ sets configuration
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:23 2010 by 
+  Generated on Mon May  9 16:46:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>

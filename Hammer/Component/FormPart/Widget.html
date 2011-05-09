@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Hammer::Component::FormPart::Widget</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -53,14 +53,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><span class='object_link'><a href="../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span></span>
+      <span class="inheritName">Widget::Base</span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="../Abstract.html" title="Hammer::Component::Abstract (class)">Hammer::Component::Abstract</a></span></li>
-          
-            <li class="next"><span class='object_link'><a href="../Base.html" title="Hammer::Component::Base (class)">Hammer::Component::Base</a></span></li>
+            <li class="next">Widget::Base</li>
           
             <li class="next">Hammer::Component::FormPart::Widget</li>
           
@@ -85,43 +83,6 @@
 
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
 
   
@@ -158,93 +119,6 @@
 
 
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Inspection.html" title="Hammer::Component::Inspection (module)">Hammer::Component::Inspection</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Inspection.html#inspector-instance_method" title="Hammer::Component::Inspection#inspector (method)">#inspector</a></span>, <span class='object_link'><a href="../Inspection.html#inspector_class-instance_method" title="Hammer::Component::Inspection#inspector_class (method)">#inspector_class</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Passing.html" title="Hammer::Component::Passing (module)">Hammer::Component::Passing</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Passing.html#included-class_method" title="Hammer::Component::Passing.included (method)">included</a></span>, <span class='object_link'><a href="../Passing.html#pass_on-instance_method" title="Hammer::Component::Passing#pass_on (method)">#pass_on</a></span>, <span class='object_link'><a href="../Passing.html#passed%3F-instance_method" title="Hammer::Component::Passing#passed? (method)">#passed?</a></span>, <span class='object_link'><a href="../Passing.html#retake_control%21-instance_method" title="Hammer::Component::Passing#retake_control! (method)">#retake_control!</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Answering.html" title="Hammer::Component::Answering (module)">Hammer::Component::Answering</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Answering.html#answer%21-instance_method" title="Hammer::Component::Answering#answer! (method)">#answer!</a></span>, <span class='object_link'><a href="../Answering.html#answering%21-instance_method" title="Hammer::Component::Answering#answering! (method)">#answering!</a></span>, <span class='object_link'><a href="../Answering.html#answering%3F-instance_method" title="Hammer::Component::Answering#answering? (method)">#answering?</a></span>, <span class='object_link'><a href="../Answering.html#ask-instance_method" title="Hammer::Component::Answering#ask (method)">#ask</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Sharing.html" title="Hammer::Component::Sharing (module)">Hammer::Component::Sharing</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Sharing.html#included-class_method" title="Hammer::Component::Sharing.included (method)">included</a></span>, <span class='object_link'><a href="../Sharing.html#shared-instance_method" title="Hammer::Component::Sharing#shared (method)">#shared</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Rendering.html" title="Hammer::Component::Rendering (module)">Hammer::Component::Rendering</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Rendering.html#_children-instance_method" title="Hammer::Component::Rendering#_children (method)">#_children</a></span>, <span class='object_link'><a href="../Rendering.html#all_children-instance_method" title="Hammer::Component::Rendering#all_children (method)">#all_children</a></span>, <span class='object_link'><a href="../Rendering.html#children-instance_method" title="Hammer::Component::Rendering#children (method)">#children</a></span>, <span class='object_link'><a href="../Rendering.html#create_widget-instance_method" title="Hammer::Component::Rendering#create_widget (method)">#create_widget</a></span>, <span class='object_link'><a href="../Rendering.html#delete_old_actions-instance_method" title="Hammer::Component::Rendering#delete_old_actions (method)">#delete_old_actions</a></span>, <span class='object_link'><a href="../Rendering.html#included-class_method" title="Hammer::Component::Rendering.included (method)">included</a></span>, <span class='object_link'><a href="../Rendering.html#to_html-instance_method" title="Hammer::Component::Rendering#to_html (method)">#to_html</a></span>, <span class='object_link'><a href="../Rendering.html#widget-instance_method" title="Hammer::Component::Rendering#widget (method)">#widget</a></span>, <span class='object_link'><a href="../Rendering.html#widget_assigns-instance_method" title="Hammer::Component::Rendering#widget_assigns (method)">#widget_assigns</a></span>, <span class='object_link'><a href="../Rendering.html#widget_class-instance_method" title="Hammer::Component::Rendering#widget_class (method)">#widget_class</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../State.html" title="Hammer::Component::State (module)">Hammer::Component::State</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../State.html#change%21-instance_method" title="Hammer::Component::State#change! (method)">#change!</a></span>, <span class='object_link'><a href="../State.html#changed%3F-instance_method" title="Hammer::Component::State#changed? (method)">#changed?</a></span>, <span class='object_link'><a href="../State.html#included-class_method" title="Hammer::Component::State.included (method)">included</a></span>, <span class='object_link'><a href="../State.html#reset_change%21-instance_method" title="Hammer::Component::State#reset_change! (method)">#reset_change!</a></span>, <span class='object_link'><a href="../State.html#send%21-instance_method" title="Hammer::Component::State#send! (method)">#send!</a></span>, <span class='object_link'><a href="../State.html#unsend%21-instance_method" title="Hammer::Component::State#unsend! (method)">#unsend!</a></span>, <span class='object_link'><a href="../State.html#unsent%3F-instance_method" title="Hammer::Component::State#unsent? (method)">#unsent?</a></span></p>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../AbstractImpl.html" title="Hammer::Component::AbstractImpl (module)">Hammer::Component::AbstractImpl</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../AbstractImpl.html#check_assigns-instance_method" title="Hammer::Component::AbstractImpl#check_assigns (method)">#check_assigns</a></span>, <span class='object_link'><a href="../AbstractImpl.html#included-class_method" title="Hammer::Component::AbstractImpl.included (method)">included</a></span>, <span class='object_link'><a href="../AbstractImpl.html#initialize-instance_method" title="Hammer::Component::AbstractImpl#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../AbstractImpl.html#register_action-instance_method" title="Hammer::Component::AbstractImpl#register_action (method)">#register_action</a></span>, <span class='object_link'><a href="../AbstractImpl.html#root%3F-instance_method" title="Hammer::Component::AbstractImpl#root? (method)">#root?</a></span>, <span class='object_link'><a href="../AbstractImpl.html#run_action-instance_method" title="Hammer::Component::AbstractImpl#run_action (method)">#run_action</a></span></p>
-<div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
-  
-    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../AbstractImpl.html#initialize-instance_method" title="Hammer::Component::AbstractImpl#initialize (method)">Hammer::Component::AbstractImpl</a></span></p>
-  
-</div>
-
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -283,9 +157,9 @@
 </div>
     
     <div id="footer">
-  Generated on Wed Sep 22 11:01:25 2010 by 
+  Generated on Mon May  9 16:46:33 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.0 (ruby-1.9.2).
+  0.6.8 (ruby-1.9.2).
 </div>
 
   </body>
