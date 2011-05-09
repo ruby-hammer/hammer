@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 module Hammer::Core
+  # TODO remove Sinatra dependenci
   class Application < Sinatra::Base
     include Hammer::Config
 

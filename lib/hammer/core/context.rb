@@ -41,6 +41,7 @@ module Hammer::Core
       @root_component.to_html
     end
 
+    # TODO API to update values, on top of it build forms
     # updates values in form parts
     # @param [Hash] hash ['form'] part of message form client
     # @return self

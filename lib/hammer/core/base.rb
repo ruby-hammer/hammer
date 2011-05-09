@@ -2,6 +2,7 @@
 
 require 'singleton'
 
+# TODO remove contexts to other class
 module Hammer::Core
   class Base
     include Hammer::Config

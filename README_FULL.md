@@ -39,20 +39,12 @@ to see available options. Options can be set on commandline or in `./confg.yml`.
 
 ## {file:docs/contribute How to Contribute}
 
-## Discussions
-
-are embedded with help of Google's wave. Anyone can read but to get write access you must be a member of
-[http://groups.google.com/group/isy-framework](http://groups.google.com/group/isy-framework) and have account
-on wave.google.com. Wave uses avatar as identification so please select one.
-
-{file:docs/wave More to get you started with wave.}
-
 ## Links
 
 - Github: [http://github.com/ruby-hammer/hammer](http://github.com/ruby-hammer/hammer)
 - Doc: [http://ruby-hammer.github.com/hammer/](http://ruby-hammer.github.com/hammer/)
-- Pivotal Tracker: [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
-- Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/)
+- Pivotal Tracker: [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639) (issues will be moved to github soon)
+- Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/) (will be moved soon)
 - License {file:MIT-LICENSE}
 
 ## Author
