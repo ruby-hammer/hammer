@@ -27,8 +27,3 @@ Or you can clone one of the test applications [Examples](http://github.com/ruby-
 - Old Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/) 
 - License {file:MIT-LICENSE}
 
-<div>
-<a href='http://www.pledgie.com/campaigns/15276'>
-<img alt='Click here to lend your support to: Hammer and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/15276.png?skin_name=chrome' border='0' />
-</a>
-</div>
