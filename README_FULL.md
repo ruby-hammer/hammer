@@ -44,7 +44,8 @@ to see available options. Options can be set on commandline or in `./confg.yml`.
 - Github: [http://github.com/ruby-hammer](http://github.com/ruby-hammer)
 - Blog: [http://hammer.pitr.ch](http://hammer.pitr.ch)
 - Doc: [http://ruby-hammer.github.com/hammer/](http://ruby-hammer.github.com/hammer/)
-- Pivotal Tracker: [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639) (will be moved to github)
+- Pivotal Tracker (development tracking): [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
+- Github issues (bugs): [https://github.com/ruby-hammer/hammer/issues](https://github.com/ruby-hammer/hammer/issues)
 - Old Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/)
 - License {file:MIT-LICENSE}
 

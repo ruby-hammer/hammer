@@ -12,15 +12,14 @@ begin
   YARD::Rake::YardocTask.new(:yard) do |yardoc|
     yardoc.options.push(*options) << output << title
     yardoc.files.push(*input)
-    yardoc.options << '--incremental' if File.exist? './.yardoc'
   end
 
   namespace :yard do
 
-    YARD::Rake::YardocTask.new(:regenerate) do |yardoc|
-      yardoc.options.push(*options) << output << title
-      yardoc.files.push(*input)
-    end
+    #    YARD::Rake::YardocTask.new(:regenerate) do |yardoc|
+    #      yardoc.options.push(*options) << output << title
+    #      yardoc.files.push(*input)
+    #    end
 
     YARD::Rake::YardocTask.new(:'gh-pages') do |yardoc|
       commit = `git log -n 1`

@@ -22,8 +22,10 @@ Or you can clone one of the test applications [Examples](http://github.com/ruby-
 
 - Github: [http://github.com/ruby-hammer](http://github.com/ruby-hammer)
 - Blog: [http://hammer.pitr.ch](http://hammer.pitr.ch)
-- Doc: [http://ruby-hammer.github.com/hammer/](http://ruby-hammer.github.com/hammer/)
-- Pivotal Tracker: [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639) (will be moved to github)
-- Old Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/) 
-- License {file:MIT-LICENSE}
+- Doc: [http://hammer.pitr.ch/hammer/](http://hammer.pitr.ch/hammer/)
+- Pivotal Tracker (development tracking): [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
+- Github issues (bugs): [https://github.com/ruby-hammer/hammer/issues](https://github.com/ruby-hammer/hammer/issues)
+- Old Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/)
+- License: [MIT](http://hammer.pitr.ch/hammer/file.MIT-LICENSE.html)
+
 
