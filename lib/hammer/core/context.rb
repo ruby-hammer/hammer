@@ -102,6 +102,7 @@ module Hammer::Core
     end
 
     module Scheduling
+      Task = Struct.new(:block, :restart)
 
       def initialize(id, container, hash = '')
         @queue = []
@@ -112,17 +113,16 @@ module Hammer::Core
       # @param [Boolean] restart try to restart when error?
       # @yield block to schedule
       def schedule(restart = true, &new_block)
-        @queue << [new_block, restart] if new_block
+        @queue << Task.new(new_block, restart) if new_block
 
         return self if @scheduled || !connection # block until connection is obtained
 
-        if pair = @queue.shift
-          block, restart = pair
-          @scheduled = block
-          @need_update = restart
-          schedule_block restart do
+        if task = @queue.shift
+          @scheduled = task.block
+          @need_update = task.restart
+          schedule_block task.restart do
             begin
-              block.call
+              task.block.call
             ensure
               @scheduled = nil
               schedule
