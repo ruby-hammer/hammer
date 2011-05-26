@@ -92,8 +92,11 @@ module Hammer::Core
       # @param [String] arg if of a {Hammer::Component::Base}
       # @return self
       def run_action(id, arg)
-        return self unless component = @actions[id]
-        component.run_action(id, arg)
+        unless component = @actions[id]
+          Hammer.logger.warn "no message with id #{id.inspect}"
+        else
+          component.run_action(id, arg)
+        end
         self
       end
     end
@@ -157,7 +160,7 @@ module Hammer::Core
       # @yield task to execute
       # @param [Boolean] restart try to restart when error?
       def safely(restart = true, &block)
-        unless Base.safely(&block)
+        unless Hammer.safely(&block)
           if restart
             Hammer.logger.error("context restarted")
             warn "We are sorry but there was a error. Application is reloaded"

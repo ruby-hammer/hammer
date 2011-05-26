@@ -51,6 +51,18 @@ unless defined? Hammer
       [*@after_load].each {|proc| proc.call }
       @after_load = []
     end
+
+    # tries to execute block safely, errors are logged
+    # @yield block to safe execution
+    # @return [Boolean] if block was successfully processed
+    def self.safely(&block)
+      block.call
+    rescue => e
+      Hammer.logger.exception e
+      false
+    else
+      true
+    end
   end
 
   DataMapper::Logger.new(Hammer.config[:logger][:output]) # TODO

@@ -8,11 +8,11 @@ module Hammer::Runner
 
     def run!
       load_app
-      Hammer::Core::Base.run!
+      Hammer::Core::WebSocketServer.run!
       setup_application
       Hammer.logger.info "== Settings\n" + config.pretty_inspect
       Hammer.logger.level = config[:logger][:level]
-      Hammer::Core::Application.run!
+      Hammer::Core::WebServer.run!
     end
 
     def load_app
@@ -45,7 +45,7 @@ module Hammer::Runner
     private
 
     def setup_application
-      Hammer::Core::Application.set \
+      Hammer::Core::WebServer.set \
           :root => Dir.pwd,
           :host => config[:web][:host],
           :port => config[:web][:port],
