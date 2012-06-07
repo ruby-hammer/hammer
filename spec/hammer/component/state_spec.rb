@@ -1,62 +1,47 @@
-# encoding: UTF-8
-
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-
 describe Hammer::Component::State do
-  include HammerMocks
-  setup_context
+  State = Hammer::Component::State
 
-  let(:klass) { Class.new(Hammer::Component::Base) }
-  let(:instance) do
-    instance = klass.new
-    instance.reset_change!
-    instance
+  let :states do
+    [[true, true], [true, false], [false, false], [false, true]].map do |a, b|
+      State.new.instance_eval { @changed = a; @sent = b; self }
+    end
   end
 
-  describe 'method a' do
-    before do
-      klass.class_eval do
-        def a; end
-      end
-    end
-
-    it do
-      instance.a
-      instance.should_not be_changed
-    end
-
-    describe 'when .changing :a' do
-      before do
-        klass.class_eval { changing :a }
-      end
-      it do
-        instance.a
-        instance.should be_changed
+  describe 'when change!' do
+    4.times do |i|
+      describe "state #{i}" do
+        before { states.each &:change! }
+        it { states[i].should be_changed }
+        it { states[i].should_not be_sent }
       end
     end
   end
 
-  describe 'changing with block' do
-    before do
-      klass.class_eval do
-        def a;end
-        changing { def b; end }
-        def c;end
+  describe 'when unchange!' do
+    4.times do |i|
+      describe "state #{i}" do
+        before { states.each &:unchange! }
+        it { states[i].should_not be_changed }
       end
     end
-
-    it { instance.a; instance.should_not be_changed }
-    it { instance.b; instance.should be_changed }
-    it { instance.c; instance.should_not be_changed }
-    it { klass.changing_methods.should == [:b] }
   end
 
-  describe 'attr_accessor' do
-    before do
-      klass.class_eval do
-        changing { attr_accessor :a }
+  describe 'when send!' do
+    4.times do |i|
+      describe "state #{i}" do
+        before { states.each &:send! }
+        it { states[i].should be_sent }
       end
     end
-    it { klass.changing_methods.should == [:a, :a=] }
   end
+
+  describe 'when new!' do
+    4.times do |i|
+      describe "state #{i}" do
+        before { states.each &:new! }
+        it { states[i].should_not be_sent }
+      end
+    end
+  end
+
 end

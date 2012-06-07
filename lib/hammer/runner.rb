@@ -1,55 +1,65 @@
-# encoding: UTF-8
+module Hammer
+  class Runner
+    require 'hammer/runner/node'
 
-module Hammer::Runner
+    attr_reader :config, :logger, :core, :node
 
-  include Hammer::Config
+    def initialize
+      #load_app
 
-  class << self
+      @config = Hammer::Config.new
+      @core   = Hammer::Core.new config
+      @logger = core.logging['runner']
 
-    def run!
-      load_app
-      Hammer::Core::WebSocketServer.run!
-      setup_application
-      Hammer.logger.info "== Settings\n" + config.pretty_inspect
-      Hammer.logger.level = config[:logger][:level]
-      Hammer::Core::WebServer.run!
+      logger.info "Configuration:\n" + config.config_values.pretty_inspect.chop!
+      #DataMapper::Logger.new(Hammer.config[:logger][:output]) # TODO
+
+      @node = Node.new(core).run if core.config.node.run
+
+      run_event_machine
     end
 
-    def load_app
-      load_app_files
-      generate_css
-      setup_db
-    end
-
-    def load_app_files
-      Hammer::Loader.new(Dir.glob('./app/**/*.rb')).load!
-      Hammer.run_after_load!
-    end
-
-    def generate_css
-      Hammer.benchmark('== CSS generated', false) do
-        File.open("./public/css/#{config[:app][:name].underscore}.css", 'w') do |file|
-          file.write Hammer::Widget::CSS.css
-        end
-      end
-    end
-
-    def setup_db
-      if config[:app][:db] && config[:app][:db][config[:environment]]
-        DataMapper.finalize
-        DataMapper.setup :default, config[:app][:db][config[:environment]]
-        Hammer.logger.info "== DB: #{config[:app][:db][config[:environment]]}"
+    def run_event_machine
+      EventMachine.run do
+        logger.info "event machine running"
+        Signal.trap("INT") { stop_event_machine }
+        Signal.trap("TERM") { stop_event_machine }
       end
     end
 
     private
 
-    def setup_application
-      Hammer::Core::WebServer.set \
-          :root => Dir.pwd,
-          :host => config[:web][:host],
-          :port => config[:web][:port],
-          :environment => config[:web][:environment]
+    def stop_event_machine
+      logger.info 'event machine stopping'
+      EventMachine.stop
+      logger.info 'event machine stopped'
     end
+
+    def load_app
+      load_app_files
+      # generate_css
+      # setup_db
+    end
+
+    def load_app_files
+      Hammer::Loader.new(Dir.glob('./app/**/*.rb')).load! # TODO configurable path, default detection
+    end
+
+    #def generate_css
+    #  Hammer.benchmark('== CSS generated', false) do
+    #    File.open("./public/css/#{Hammer.config.app.project.underscore}.css", 'w') do |file|
+    #      file.write Hammer::Widget::CSS.css
+    #    end
+    #  end
+    #end
+
+    #def setup_db
+    #  if Hammer.config.app[:db] && Hammer.config.app.db[Hammer.config.environment]
+    #    DataMapper.finalize
+    #    DataMapper.setup :default, Hammer.config.app.db[Hammer.config.environment]
+    #    Hammer.logger.info "== DB: #{Hammer.config.app.db[Hammer.config.environment]}"
+    #  end
+    #end
+
   end
 end

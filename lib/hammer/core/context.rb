@@ -1,21 +1,27 @@
-# encoding: UTF-8
+module Hammer
+  # represents context of user, each tab of a browser has one
+  class Core::Context
 
-module Hammer::Core
-
-  # represents context of user, each tab of browser has one of its own
-  class AbstractContext
-    include Hammer::Config
-
-    attr_reader :id, :connection, :container, :hash, :root_component, :repository
+    attr_reader :id, :container, :apps, :logger, :connection_id
 
     # @param [String] id unique identification
-    def initialize(id, container, hash = '')
-      @id, @container, @hash, @repository = id, container, hash, DataMapper.repository(:default)
-      restart
+    def initialize(id, container, url, options = { })
+      @id        = id
+      @container = container
+      @apps      = { }
+      @logger    = core.logging['context']
+      #@repository   = DataMapper.repository(:default)
+
+      logger.debug "new #{id}"
+      from_url url
     end
 
-    def restart
-      schedule(false) { @root_component = root_class.new }
+    def core
+      container.core
+    end
+
+    def app(id)
+      apps[id]
     end
 
     # remove context form container
@@ -23,252 +29,36 @@ module Hammer::Core
       container.drop_context(self)
     end
 
-    # @return [Class] class of a root component
-    def root_class
-      @root_class ||= unless @hash == config[:core][:devel]
-        config[:root].to_s.constantize
+    def to_url
+      app(core.config.app.main).to_url
+    end
+
+    def from_url(url)
+      apps['title'] = @title = App.new(self, 'title', nil) { |app| AppComponents::Title.send :new, app }
+      core.config.app.apps.each do |id, klass_name|
+        main      = (core.config.app.main == id.to_s)
+        id, klass = id.to_s, klass_name.constantize
+        apps[id]  = App.new(self, id, main ? url : nil) do |app, url|
+          AppComponents::Simple.send :new, app, klass.send(:new, app, :url => url)
+        end
+      end
+    end
+
+    def receive_message(message)
+      unless app = app(message.app_id)
+        logger.warn "no app with id: '#{message.app_id}'"
       else
-        Hammer::Component::Developer::Tools
+        message.context_id ||= id # if new connection, message does not have one
+        @connection_id     = message.connection_id
+        app.receive_message(message)
       end
     end
 
-    def location_hash
-      root_class == Hammer::Component::Developer::Tools ? config[:core][:devel] : ''
+    def send_message(message)
+      message.connection_id ||= @connection_id
+      message.url           = to_url
+      container.send_message(message)
     end
-
-    # renders html, similar to Erector::Widget#to_html
-    def to_html
-      @root_component.to_html
-    end
-
-    # TODO API to update values, on top of it build forms
-    # updates values in form parts
-    # @param [Hash] hash ['form'] part of message form client
-    # @return self
-    def update_form(hash)
-      Hammer.benchmark "Updating form" do
-        return self unless hash && hash.kind_of?(Hash)
-        hash.each do |id, values|
-          form_part = Hammer::Core.component_by_id(id)
-          if form_part
-            values.each {|key, value| form_part.set_value(key, value) }
-          else
-            Hammer.logger.debug "missing form with id: #{id.to_i} for values: #{values.inspect}"
-          end
-        end
-      end
-      self
-    end
-
-    # @return [Array<Hammer::Bomponent::Base>] of unsent? visible components
-    def unsent_components
-      root_component.all_children.select(&:unsent?)
-    end
-
-  end
-
-  class Context < AbstractContext
-    module Actions
-      def self.included(base)
-        base.send :attr_reader, :actions
-      end
-
-      def initialize(id, container, hash = '')
-        @actions = Hammer::Weak::Hash[:value].new
-        super
-      end
-
-      # registers action in context's hash
-      # @param [Component::Base] component where action is stored and evaluated
-      # @param [String] uuid of the action
-      # @return self
-      def register_action(uuid, component)
-        @actions[uuid] = component
-        self
-      end
-
-      # evaluates action with +id+, do nothing when no action
-      # @param [String] id of a {Action}
-      # @param [String] arg if of a {Hammer::Component::Base}
-      # @return self
-      def run_action(id, arg)
-        unless component = @actions[id]
-          Hammer.logger.warn "no message with id #{id.inspect}"
-        else
-          component.run_action(id, arg)
-        end
-        self
-      end
-    end
-
-    module Scheduling
-      Task = Struct.new(:block, :restart)
-
-      def initialize(id, container, hash = '')
-        @queue = []
-        super
-      end
-
-      # schedules blocks to be processed one by one for the context
-      # @param [Boolean] restart try to restart when error?
-      # @yield block to schedule
-      def schedule(restart = true, &new_block)
-        @queue << Task.new(new_block, restart) if new_block
-
-        return self if @scheduled || !connection # block until connection is obtained
-
-        if task = @queue.shift
-          @scheduled = task.block
-          @need_update = task.restart
-          schedule_block task.restart do
-            begin
-              task.block.call
-            ensure
-              @scheduled = nil
-              schedule
-            end
-          end
-        elsif not @need_update.nil?
-          @scheduled = :update!
-          schedule_block @need_update do
-            begin
-              update!
-            ensure
-              @scheduled = nil
-              @need_update = nil
-              schedule
-            end
-          end
-        end
-        self
-      end
-
-      private
-
-      def schedule_block(restart, &block)
-        Base.fibers_pool.spawn { with_context { safely(restart) { @repository.scope &block }}}
-      end
-
-      # sets context to fiber
-      def with_context(&block)
-        Fiber.current.hammer_context = self
-        block.call
-        Fiber.current.hammer_context = nil
-      end
-
-      # processes safely block, restarts context when error occurred
-      # @yield task to execute
-      # @param [Boolean] restart try to restart when error?
-      def safely(restart = true, &block)
-        unless Hammer.safely(&block)
-          if restart
-            Hammer.logger.error("context restarted")
-            warn "We are sorry but there was a error. Application is reloaded"
-            self.restart
-          else
-            Hammer.logger.error("fatal error")
-            warn "Fatal error"
-            send_message add_warn
-          end
-        end
-      end
-    end
-
-    module Connection
-      def self.included(base)
-        base.extend ClassMethods
-      end
-
-      module ClassMethods
-        # @param [WebSocket::Connection] connection to find out by
-        # @return [Context] by +connection+
-        def by_connection(connection)
-          contexts_by_connection[connection]
-        end
-
-        def contexts_by_connection
-          @contexts_by_connection ||= {}
-        end
-
-        def no_connection_contexts
-          @no_connection_contexts ||= []
-        end
-      end
-
-      def initialize(id, container, hash = '')
-        super
-        self.class.no_connection_contexts << self
-      end
-
-      # store connection to be able to send server-side actualizations
-      # @param [WebSocket::Connection] connection
-      def set_connection(connection)
-        @connection = connection || raise(ArgumentError, 'missing connection')
-        self.class.contexts_by_connection[connection] = self
-        self.class.no_connection_contexts.delete self
-        schedule
-        self
-      end
-
-      # remove context form container
-      def drop
-        self.class.contexts_by_connection.delete connection
-        self.class.no_connection_contexts.delete self
-        super
-      end
-    end
-
-    module Communication
-      # @param [String] warn which will be shown to user using alert();
-      # @return self
-      def warn(warn)
-        @warnings ||= []
-        @warnings << warn.to_s
-        self
-      end
-
-      protected
-
-      # collect updates for the user, builds and send message
-      def update!(message = setup_message)
-        add_warn message
-        add_updates message
-        send_message message
-      end
-
-      private
-
-      # @return [Hash] message
-      def setup_message
-        { :context_id => id }
-      end
-
-      # @return [Hash] message
-      def add_warn(message = setup_message)
-        message[:js] = "alert('#{@warnings.join("\n")}');" unless @warnings.blank?
-        @warnings = []
-        message
-      end
-
-      # @return [Hash] message
-      def add_updates(message = setup_message)
-        Hammer.benchmark('Actualization') do
-          message[:update] = unsent_components.map {|c| c.send!.to_html }.join
-        end
-        message
-      end
-
-      # @return self
-      def send_message(message)
-        # FIXME don't send blank updates
-        connection.send message if connection # FIXME when no connection message will be lost
-        self
-      end
-    end
-
-    include Actions
-    include Scheduling
-    include Connection
-    include Communication
   end
 end
+

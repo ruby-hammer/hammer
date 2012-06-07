@@ -4,9 +4,15 @@
 .rspec
 .rake_tasks~
 yardoc
+node_modules
 gh-pages
 nbproject
 pkg
 *.log
 profile.html
 profile.txt
+.idea
+.project
+Gemfile
+rspec.rb
+.DS_Store

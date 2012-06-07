@@ -1,8 +1,8 @@
 class Proc
-  def inspect
-    super[0..-2] + " self=#{scope.inspect}" +
-        " local_variables=#{local_variables.inspect}>"
-  end
+  #def inspect
+  #  super[0..-2] + " self=#{scope.inspect}" +
+  #      " local_variables=#{local_variables.inspect}>"
+  #end
 
   def scope
     eval('self', binding)

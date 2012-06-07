@@ -1,9 +1,12 @@
-module Hammer::Core
+require 'hammer/fiber'
+
+class Hammer::Core
   class Fiber < ::Fiber
-    attr_accessor :hammer_context
+    attr_accessor :hammer_app, :id
   end
 
   class FiberPool
+    Runnable = Struct.new(:app, :block)
 
     # gives access to the currently free fibers
     attr_reader :fibers
@@ -12,18 +15,20 @@ module Hammer::Core
     # every time. Once a fiber is done with its block, it attempts to fetch
     # another one from the queue
     def initialize(count = 50)
-      @busy_fibers, @queue = {}, []
+      @busy_fibers = {}
+      @queue = []
 
-      @fibers = Array.new(count) do
-        Fiber.new do |block|
+      @fibers = Array.new(count) do |i|
+        Fiber.new do |runnable|
+          Fiber.current.id = i
           loop do
-            block.call
+            run_with_app runnable
             unless @queue.empty?
-              block = @queue.shift
+              runnable = @queue.shift
             else
               @busy_fibers.delete(Fiber.current.object_id)
               @fibers << Fiber.current
-              block = Fiber.yield
+              runnable = Fiber.yield
             end
           end
         end
@@ -31,14 +36,32 @@ module Hammer::Core
     end
 
     # If there is an available fiber use it, otherwise, leave it to linger in a queue
-    def spawn(&block)
+    def spawn(app, &block)
       if fiber = @fibers.shift
         @busy_fibers[fiber.object_id] = fiber
-        fiber.resume(block)
+        fiber.resume(Runnable.new(app, block))
       else
-        @queue << block
+        @queue << Runnable.new(app, block)
       end
       self # we are keen on hiding our queue
+    end
+
+    def current_app
+      return nil unless Fiber.current.respond_to? :hammer_app
+      Fiber.current.hammer_app || raise('unset app in fiber')
+    end
+
+    private
+
+    def current_app=(app)
+      Fiber.current.hammer_app = app
+    end
+
+    def run_with_app(runnable)
+      self.current_app = runnable.app
+      runnable.block.call
+    ensure
+      self.current_app = nil
     end
 
   end # FiberPool

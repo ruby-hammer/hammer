@@ -38,7 +38,7 @@ class Hammer::Loader
   # print load errors for cyclic files
   def error_message
     @load.each {|f| loadable?(f, true) }
-    "Cyclic dependency prevented loading \n#{@load.join("\n")}"
+    "These files raise errors: \n#{@load.join("\n")}"
   end
 
   # determines if is +file+ loadable. Creates fork to determine it safely.

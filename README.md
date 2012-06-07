@@ -1,31 +1,30 @@
 # Hammer
 
 Ruby component based state-full web framework.
-It runs on Ruby 1.9 and supports Chrome, Firefox, Opera or Safari browser.
+It's in an experimental state after massive rewrite with SOLID in mind.
 
-## How to install hammer gem
+Documentation and demo comming soon.
 
-Clone repository
+## Running example
+
+Requirements:
+
+-   ruby 1.9.3
+-   nodejs with connect, express, optimist, socket.io, zmq
+
+then
 
     git clone git://github.com/ruby-hammer/hammer.git
+    cd hammer
+    bin/hammer --node.run true
 
-Install jeweler and install hammer gem
-
-    gem install jeweler
-    rake install
-
-For new project continue to [Hammer Application Base](http://github.com/ruby-hammer/hammer-app-base).
-Or you can clone one of the test applications [Examples](http://github.com/ruby-hammer/hammer-examples),
-[Chat](http://github.com/ruby-hammer/hammer-chat).
+open [http://localhost:3000/](http://localhost:3000/)
 
 ## Links
 
-- Github: [http://github.com/ruby-hammer](http://github.com/ruby-hammer)
-- Blog: [http://hammer.pitr.ch](http://hammer.pitr.ch)
-- Doc: [http://hammer.pitr.ch/hammer/](http://hammer.pitr.ch/hammer/)
-- Pivotal Tracker (development tracking): [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
-- Github issues (bugs): [https://github.com/ruby-hammer/hammer/issues](https://github.com/ruby-hammer/hammer/issues)
-- Old Blog: [http://isyruby.wordpress.com/](http://isyruby.wordpress.com/)
-- License: [MIT](http://hammer.pitr.ch/hammer/file.MIT-LICENSE.html)
+-   Github: [http://github.com/ruby-hammer](http://github.com/ruby-hammer)
+-   Pivotal Tracker (development tracking):
+    [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
+-   License: [MIT](http://hammer.pitr.ch/hammer/file.MIT-LICENSE.html)
 
 

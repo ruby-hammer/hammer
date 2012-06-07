@@ -2,90 +2,41 @@ require 'rubygems'
 require 'rake'
 
 begin
-  require 'yard'
-
-  options = %w[--protected --private --verbose --main=README_FULL.md]
-  output = "--output-dir=./yardoc/"
-  input = %w[./lib/**/*.rb - MIT-LICENSE README.md] + Dir.glob('docs/**/*')
-  title = "--title=Ruby Hammer Framework"
-  
-  YARD::Rake::YardocTask.new(:yard) do |yardoc|
-    yardoc.options.push(*options) << output << title
-    yardoc.files.push(*input)
-  end
-
-  namespace :yard do
-
-    #    YARD::Rake::YardocTask.new(:regenerate) do |yardoc|
-    #      yardoc.options.push(*options) << output << title
-    #      yardoc.files.push(*input)
-    #    end
-
-    YARD::Rake::YardocTask.new(:'gh-pages') do |yardoc|
-      commit = `git log -n 1`
-      hash = /^commit +(\w+)$/.match(commit)[1]
-      yardoc.options.push(*options) <<
-          "--output-dir=./gh-pages/" <<
-          "--title=Ruby Hammer Framework | #{hash}"
-          
-      yardoc.files.push(*input)
-    end
-  end
-
-rescue LoadError
-  task :yardoc do
-    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
-  end
-end
-
-begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "hammer"
-    gem.summary = %Q{ruby component based state-full web framework}
+    gem.name        = "hammer"
+    gem.summary     = %Q{ruby component based state-full web framework}
     gem.description = %Q{ruby component based state-full web framework}
-    #    gem.email = "hammer.framework@gmail.com"
-    #    gem.homepage = "http://isy-pitr.github.com/isy-playground"
-    gem.authors = ["Petr Chalupa"]
+    gem.email       = "email@pitr.ch"
+    gem.homepage    = "https://github.com/ruby-hammer/hammer"
+    gem.authors     = ["Petr Chalupa"]
 
-    gem.add_dependency 'tzinfo', '~> 0.3'
-    gem.add_dependency 'i18n', '~> 0.4'
-    gem.add_dependency 'activesupport', '~> 3.0.0'
-    gem.add_dependency 'erector', "~> 0.8.1"
-    gem.add_dependency 'sinatra', "~> 1.1"
-    gem.add_dependency 'thin', "~> 1.2"
-    gem.add_dependency 'em-websocket', "~> 0.1"
-    gem.add_dependency 'configliere', "~> 0.1"
-    gem.add_dependency 'bundler', "~> 1.0"
-    gem.add_dependency 'data_objects', "~> 0.10"
-    gem.add_dependency 'datamapper', "~> 1.0"
+    gem.add_dependency 'yajl-ruby'
+    gem.add_dependency 'i18n'
+    gem.add_dependency 'activesupport'
+    gem.add_dependency 'eventmachine'
+    gem.add_dependency 'zmq'
+    gem.add_dependency 'hammer_builder'
+    gem.add_dependency 'configliere'
+    gem.add_dependency 'radix62'
+    gem.add_dependency 'log4r'
+    gem.add_dependency 'bundler'
+    #gem.add_dependency 'data_objects'
+    #gem.add_dependency 'datamapper'
 
-    gem.add_development_dependency "rspec", "~> 2.0.0"
-    gem.add_development_dependency "yard", "~> 0.6"
-    #    gem.add_development_dependency "yard-rspec", "~> 0"
-    gem.add_development_dependency "BlueCloth", "~> 1.0"
-    gem.add_development_dependency "jeweler", "~> 1.4"
-    gem.add_development_dependency "rack-test", "~> 0.5"
+    gem.add_development_dependency "rspec"
+    gem.add_development_dependency "yard"
+    gem.add_development_dependency "bluecloth"
+    gem.add_development_dependency "jeweler"
 
     gem.files = FileList['lib/**/*.*'].to_a
 
-    gem.test_files = FileList["spec/**/*.*"].to_a
+    gem.test_files       = FileList["spec/**/*.*"].to_a
     gem.extra_rdoc_files = FileList["README.md", "README_FULL.md", "MIT-LICENSE", 'docs/**/*.*'].to_a
-    
+
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
-begin
-  require 'rspec/core/rake_task'
-  RSpec::Core::RakeTask.new 
-
-  RSpec::Core::RakeTask.new(:rcov) do |spec|
-    spec.rcov = true
-  end
-rescue LoadError
-  puts "misiing rspec/core/rake_task"
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end

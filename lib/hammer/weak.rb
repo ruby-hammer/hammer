@@ -1,3 +1,5 @@
+require "hammer/finalizer.rb"
+
 module Hammer::Weak
 
   # abstract class for weak collections
