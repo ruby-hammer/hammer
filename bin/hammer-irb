@@ -1,11 +1,8 @@
 #!/usr/bin/env ruby
 
-require "rubygems"
-require "bundler"
-Bundler.setup
-
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'hammer'))
-
+hammer_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH << hammer_path unless $LOAD_PATH.include? hammer_path
+require 'hammer'
 require 'irb'
 
 IRB.start

@@ -16,7 +16,7 @@ begin
     gem.add_dependency 'activesupport'
     gem.add_dependency 'eventmachine'
     gem.add_dependency 'zmq'
-    gem.add_dependency 'hammer_builder'
+    gem.add_dependency 'hammer_builder', '>= 0.3.1'
     gem.add_dependency 'configliere'
     gem.add_dependency 'radix62'
     gem.add_dependency 'log4r'

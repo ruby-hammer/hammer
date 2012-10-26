@@ -7,7 +7,7 @@ module Hammer
     SYMBOLS_TO_STRINGS = dictionary.merge ALLOWED_KEYS.inject({ }) { |hash, key| hash[key] = key.to_s.camelize(:lower); hash }
     STRINGS_TO_SYMBOLS = dictionary.merge SYMBOLS_TO_STRINGS.invert
 
-    def initialize(hash)
+    def initialize(hash = {})
       @data = translate! hash, STRINGS_TO_SYMBOLS
       clean_url!
     end
@@ -47,6 +47,10 @@ module Hammer
       if @data[:url] && @data[:url][0] == '#'
         @data[:url] = @data[:url][1..-1]
       end
+    end
+
+    def to_s
+      @data.to_s
     end
   end
 end

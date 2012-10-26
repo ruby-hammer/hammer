@@ -10,6 +10,7 @@ end
 class Hammer::Core::Logging
 
   # TODO observe loggers, implement by new outputter that will generate fire events
+  # TODO indent messages with log header length
 
   attr_reader :core, :outputter, :formatter
 

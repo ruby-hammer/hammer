@@ -53,7 +53,7 @@ module Hammer
 
       #config.define 'app.project',
       #              :default     => nil,
-                                                          #              :description => "application name"
+      #              :description => "application name"
       config.define 'app.shared',
                     :required    => true,
                     :default     => "Hammer::Core::Shared",
@@ -62,14 +62,9 @@ module Hammer
                     :required    => true,
                     :default     => 'Hammer::Core::HtmlClient',
                     :description => "name of a html client class"
-      config.define 'app.main',
-                    :required => true,
-                    :default  => 'counters'
       config.define 'app.apps',
                     :required    => true,
-                    :default     => { 'blank'      => 'Hammer::Components::Blank',
-                                      'calculator' => 'Hammer::Components::Calculator',
-                                      'counters'   => 'Hammer::Components::Counters' },
+                    :default     => { 'examples' => { :class => 'Hammer::Components::Examples', :main => true } },
                     :description => "apps configuration"
       config.define 'app.context',
                     :required    => true,

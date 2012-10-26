@@ -47,11 +47,11 @@ module Hammer::Weak
       @storages
     end
 
-    @storages = {}
+    @storages = { }
     # initializes @storages in subclasses
     def self.inherited(subclass)
       super
-      subclass.instance_eval { @storages = {} }
+      subclass.instance_eval { @storages = { } }
     end
 
   end
@@ -103,7 +103,7 @@ module Hammer::Weak
 
     # @return [Array<Object>] with all objects stored in Queue
     def to_a
-      storage.map {|id| get_object(id)}.compact
+      storage.map { |id| get_object(id) }.compact
     end
 
     private
@@ -117,12 +117,12 @@ module Hammer::Weak
     end
 
     def self.finalize_item(queue_id)
-      lambda {|id| storage(queue_id).delete(id) }
+      lambda { |id| storage(queue_id).delete(id) }
     end
 
     def self.finalize_itself
       lambda do |queue_id|
-        storage(queue_id).each {|item_id| Hammer::Finalizer.remove(item_id, queue_id) }
+        storage(queue_id).each { |item_id| Hammer::Finalizer.remove(item_id, queue_id) }
         storages.delete queue_id
       end
     end
@@ -132,14 +132,14 @@ module Hammer::Weak
   # Hash like structure which effectively handles operations in both directions from keys and values
   class BidirectionalHash
     def initialize
-      @hash, @reverse = {}, {}
+      @hash, @reverse = { }, { }
     end
 
     # adds pair +key+, +value+
     # @param [Object] key
     # @param [Object] value
     def add(key, value)
-      @hash[key] = value
+      @hash[key]      = value
       @reverse[value] ||= []
       @reverse[value] << key
     end
@@ -171,11 +171,11 @@ module Hammer::Weak
     def delete_value(value)
       keys = @reverse[value]
       @reverse.delete value
-      keys.each {|key| @hash.delete(key) }
+      keys.each { |key| @hash.delete(key) }
     end
 
     def each(&block)
-      @hash.each {|k,v| block.call k,v }
+      @hash.each { |k, v| block.call k, v }
     end
 
     def size
@@ -193,8 +193,8 @@ module Hammer::Weak
 
     # @return [Hash]
     def to_hash
-      inject({}) do |hash, pair|
-        k,v = pair
+      inject({ }) do |hash, pair|
+        k, v    = pair
         hash[k] = v
         hash
       end
@@ -220,7 +220,7 @@ module Hammer::Weak
 
     # like Hash
     def each(&block)
-      storage.each do |k,v|
+      storage.each do |k, v|
         if value = get_object(v)
           block.call k, value
         end
@@ -256,12 +256,12 @@ module Hammer::Weak
     end
 
     def self.finalize_item(hash_id)
-      lambda {|id| storage(hash_id).delete_value(id) }
+      lambda { |id| storage(hash_id).delete_value(id) }
     end
 
     def self.finalize_itself
       lambda do |hash_id|
-        storage(hash_id).each {|_,value_id| Hammer::Finalizer.remove(value_id, hash_id) }
+        storage(hash_id).each { |_, value_id| Hammer::Finalizer.remove(value_id, hash_id) }
         storages.delete hash_id
       end
     end
@@ -270,7 +270,7 @@ module Hammer::Weak
   # Hash like structure separating hash values from keys
   class ByHashHash
     def initialize
-      @hash, @key_hash = {}, BidirectionalHash.new
+      @hash, @key_hash = { }, BidirectionalHash.new
     end
 
     # adds +key+ with its +hash+ and +value+
@@ -287,7 +287,7 @@ module Hammer::Weak
     # @return [Array<Array<>>] array of pair candidates
     # multiple objects can have same hash
     def get_candidates(hash)
-      return @key_hash.get_keys(hash).map {|key| [key, @hash[key]] }
+      return @key_hash.get_keys(hash).map { |key| [key, @hash[key]] }
     end
 
     # deletes pair by +key+
@@ -298,7 +298,7 @@ module Hammer::Weak
 
     # iterates through key,value pairs
     def each(&block)
-      @hash.each {|k,v| block.call k,v }
+      @hash.each { |k, v| block.call k, v }
     end
 
     def size
@@ -332,7 +332,7 @@ module Hammer::Weak
 
     # like Hash
     def each(&block)
-      storage.each do |k,v|
+      storage.each do |k, v|
         if key = get_object(k)
           block.call key, v
         end
@@ -347,7 +347,7 @@ module Hammer::Weak
       if v = storage.get(key.object_id)
         return key.object_id, v
       end
-      storage.get_candidates(key.hash).find do |k,v|
+      storage.get_candidates(key.hash).find do |k, v|
         candidate_key = get_object(k) or next
         candidate_key.eql? key
       end
@@ -359,12 +359,12 @@ module Hammer::Weak
     end
 
     def self.finalize_item(hash_id)
-      lambda {|id| storage(hash_id).delete(id) }
+      lambda { |id| storage(hash_id).delete(id) }
     end
 
     def self.finalize_itself
       lambda do |hash_id|
-        storage(hash_id).each {|key_id, _| Hammer::Finalizer.remove(key_id, hash_id) }
+        storage(hash_id).each { |key_id, _| Hammer::Finalizer.remove(key_id, hash_id) }
         storages.delete hash_id
       end
     end
@@ -375,8 +375,8 @@ module Hammer::Weak
   #  Hammer::Weak::Hash[:value] # => WeakValueHash
   #  Hammer::Weak::Hash[:key]   # => WeakKeyHash
   Hash = {
-    :value => WeakValueHash,
-    :key => WeakKeyHash
+      :value => WeakValueHash,
+      :key   => WeakKeyHash
   }
 
 

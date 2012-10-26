@@ -7,15 +7,16 @@ module Hammer
     # Manages all context of one user.
     # This is the one object which is stored in session.
     class Container
-      attr_reader :id, :core, :context_class, :logger #:shared
+      attr_reader :id, :core, :context_class, :logger, :connection_ids #:shared
 
       def initialize(id, core, options = { })
-        @id            = id
-        @contexts      = { }
+        @id             = id
+        @contexts       = { }
         #@shared        = options[:shared] || core.config.app.shared.constantize.new
-        @core          = core
-        @context_class = options[:context_class] || core.config.app.context.constantize
-        @logger        = core.logging['container']
+        @core           = core
+        @context_class  = options[:context_class] || core.config.app.context.constantize
+        @logger         = core.logging['container']
+        @connection_ids = { }
 
         logger.debug "new #{id}"
       end
@@ -26,17 +27,19 @@ module Hammer
 
       def create_context(url = nil)
         id            = core.generate.secure_id
-        @contexts[id] = context_class.new(id, self, url)
+        @contexts[id] = context_class.send :new, id, self, url
       end
 
       # @param [Context] context to drop when is not needed
       def drop_context(context)
-        @contexts.delete(context.id)
+        @contexts.delete context.id
+        @connection_ids.delete context.connection_id
         drop if @contexts.empty?
       end
 
       # drops container when is not needed
       def drop
+        logger.debug "drop #{id}"
         core.drop_container(self)
       end
 
@@ -51,6 +54,10 @@ module Hammer
             context            = create_context(message.url)
             message.context_id = context.id
             send_message message
+          when 'drop'
+            if (context = connection_ids[message.connection_id])
+              drop_context context
+            end
           else
             if (context = context(message.context_id))
               context.receive_message(message)

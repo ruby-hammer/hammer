@@ -2,7 +2,7 @@ module Hammer
   # represents context of user, each tab of a browser has one
   class Core::Context
 
-    attr_reader :id, :container, :apps, :logger, :connection_id
+    attr_reader :id, :container, :apps, :logger, :connection_id, :main_app, :title
 
     # @param [String] id unique identification
     def initialize(id, container, url, options = { })
@@ -13,8 +13,18 @@ module Hammer
       #@repository   = DataMapper.repository(:default)
 
       logger.debug "new #{id}"
+      apps['title'] = @title = Apps::Title.new(self, 'title')
       from_url url
     end
+
+    private_class_method :new
+
+    #def clone()
+    #  copy = super
+    #  copy.instance_eval do
+    #
+    #  end
+    #end
 
     def core
       container.core
@@ -26,38 +36,48 @@ module Hammer
 
     # remove context form container
     def drop
+      logger.debug "drop #{id}"
       container.drop_context(self)
     end
 
     def to_url
-      app(core.config.app.main).to_url
+      main_app.to_url
     end
 
     def from_url(url)
-      apps['title'] = @title = App.new(self, 'title', nil) { |app| AppComponents::Title.send :new, app }
-      core.config.app.apps.each do |id, klass_name|
-        main      = (core.config.app.main == id.to_s)
-        id, klass = id.to_s, klass_name.constantize
-        apps[id]  = App.new(self, id, main ? url : nil) do |app, url|
-          AppComponents::Simple.send :new, app, klass.send(:new, app, :url => url)
-        end
+      unless core.config.app.apps.select { |id, options| options[:main] }.size == 1
+        raise 'only one main app is allowed'
+      end
+
+      core.config.app.apps.each do |id, options|
+        id, klass_name, main = id.to_s, *options.values_at(:class, :main)
+        klass                = klass_name.constantize
+        apps[id]             = Apps::App.new(self, id, :url => (main ? url : nil), :root_class => klass)
+        @main_app = apps[id] if main
       end
     end
 
     def receive_message(message)
-      unless app = app(message.app_id)
+      unless (app = app(message.app_id))
         logger.warn "no app with id: '#{message.app_id}'"
       else
         message.context_id ||= id # if new connection, message does not have one
-        @connection_id     = message.connection_id
+        self.connection_id = message.connection_id
         app.receive_message(message)
       end
     end
 
     def send_message(message)
-      message.connection_id ||= @connection_id
+      message.connection_id ||= connection_id
       message.url           = to_url
       container.send_message(message)
+    end
+
+    private
+
+    def connection_id=(id)
+      @connection_id                          = id
+      container.connection_ids[connection_id] = self
     end
   end
 end

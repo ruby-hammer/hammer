@@ -1,4 +1,6 @@
 class Hammer::Observer
+  include Hammer::CurrentApp
+
   module Helper
     def self.included(base)
       aliases base
@@ -11,51 +13,62 @@ class Hammer::Observer
     end
 
     def observer
-      @observer ||= Hammer::Observer.new(self, *events)
+      @observer ||= Hammer::Observer.new(self)
     end
 
     private
 
     def self.aliases(base)
       base.send :alias_method, :observe, :observer
+      base.send :alias_method, :on, :observer
     end
   end
 
   attr_reader :obj
 
   def initialize(obj)
-    raise ArgumentError, 'obj has to respond to #app' unless obj.respond_to? :app
     @obj         = obj
     @observables = Hammer::Weak::Hash[:key].new
   end
 
-  def fire!(name, observable, *args)
-    raise unless obj.respond_to? :context
-    if obj.core.current_app == obj.app
+  def run(name, observable, *args)
+    print "event #{name} in #{observable.obj} for #{obj}"
+    if !obj.respond_to?(:app) || current_app == obj.app
+      puts " run in #{current_app}"
       @observables[observable][name].call *args
     else
-      obj.context.scheduler.run { @observables[observable][name].call *args }
+      puts " scheduled in #{obj.app}"
+      obj.app.schedule.action { @observables[observable][name].call *args }
     end
   end
 
-  def method_missing(name, obj_or_observable, &block)
-    observable = if obj_or_observable.is_a? Hammer::Observable
-                   obj_or_observable
-                 else
-                   obj.observable
-                 end
-    if observable.respond_to? name
-      listen name, observable, &block
+  def method_missing(method, *args, &block)
+    return super unless args.size == 1
+
+    obj_or_observable = args.first
+    if obj_or_observable.is_a? Hammer::Observable
+      observable = obj_or_observable
+    elsif obj_or_observable.respond_to?(:observable) && obj_or_observable.observable.is_a?(Hammer::Observable)
+      observable = obj_or_observable.observable
     else
-      super
+      return super
+    end
+
+    if observable.has_event? method
+      listen method, observable, &block
+    else
+      raise "no event '#{method}' on #{observable.obj}"
     end
   end
-
-  private
 
   def listen(name, observable, &block)
-    observable.public_send(name, self)
+    observable.add_observer(name, self)
     @observables[observable]       ||= { }
     @observables[observable][name] = block
+  end
+
+  def no_more(name, observable)
+    observable.remove_observer(name, self)
+    @observables[observable].delete name if @observables[observable]
   end
 end

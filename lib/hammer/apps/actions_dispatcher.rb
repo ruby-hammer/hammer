@@ -1,4 +1,4 @@
-class Hammer::App::ActionsDispatcher
+class Hammer::Apps::ActionsDispatcher
 
   attr_reader :app
 

@@ -2,9 +2,8 @@
 
 require `gem which memprof/signal`.chomp
 
-require "rubygems"
-require "bundler"
-Bundler.setup
-require "hammer"
+hammer_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH << hammer_path unless $LOAD_PATH.include? hammer_path
+require 'hammer'
 
 Hammer::Runner.run!

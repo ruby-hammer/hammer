@@ -1,7 +1,5 @@
 module Hammer::Core::Adapters
   class NodeZMQ < Abstract
-    # TODO correct end, fails on ctrl-c
-
     module Watcher
       attr_accessor :adapter
 
@@ -16,10 +14,12 @@ module Hammer::Core::Adapters
       EventMachine.next_tick do
         @context   = ZMQ::Context.new(1)
         @push_sock = @context.socket(ZMQ::PUSH)
-        @push_sock.bind(core.config.node.to_node)      # TODO handle failing
+        @push_sock.bind(core.config.node.to_node)
+        logger.info "zmq bound #{core.config.node.to_node}"
 
         @pull_sock = @context.socket(ZMQ::PULL)
-        @pull_sock.connect(core.config.node.to_hammer) # TODO check if it blocks until successful connection
+        @pull_sock.connect(core.config.node.to_hammer)
+        logger.info "zmq connected #{core.config.node.to_hammer}"
 
         file_descriptor          = @pull_sock.getsockopt ZMQ::FD
         @watcher                 = EventMachine.watch file_descriptor, Watcher
@@ -43,6 +43,14 @@ module Hammer::Core::Adapters
         message = @pull_sock.recv(ZMQ::NOBLOCK)
         receive_message message if message
       end
+    end
+
+    def stop
+      logger.info 'zmq closing'
+      @push_sock.close
+      @pull_sock.close
+      @context.close
+      logger.info 'zmq closed'
     end
 
   end

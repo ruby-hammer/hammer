@@ -16,23 +16,7 @@ module Hammer
 
       @node = Node.new(core).run if core.config.node.run
 
-      run_event_machine
-    end
-
-    def run_event_machine
-      EventMachine.run do
-        logger.info "event machine running"
-        Signal.trap("INT") { stop_event_machine }
-        Signal.trap("TERM") { stop_event_machine }
-      end
-    end
-
-    private
-
-    def stop_event_machine
-      logger.info 'event machine stopping'
-      EventMachine.stop
-      logger.info 'event machine stopped'
+      core.run
     end
 
     def load_app

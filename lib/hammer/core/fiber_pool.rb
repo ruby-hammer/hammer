@@ -46,11 +46,6 @@ class Hammer::Core
       self # we are keen on hiding our queue
     end
 
-    def current_app
-      return nil unless Fiber.current.respond_to? :hammer_app
-      Fiber.current.hammer_app || raise('unset app in fiber')
-    end
-
     private
 
     def current_app=(app)

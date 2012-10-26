@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 
-require "rubygems"
-require "bundler"
+hammer_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH << hammer_path unless $LOAD_PATH.include? hammer_path
 require 'ruby-prof'
-Bundler.setup
-require "hammer"
+require 'hammer'
 
 Hammer::Runner.run!
 

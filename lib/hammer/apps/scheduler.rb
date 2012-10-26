@@ -1,5 +1,5 @@
 module Hammer
-  class App::Scheduler
+  class Apps::Scheduler
 
     #class Task
     #  attr_reader :block, :name
@@ -30,6 +30,7 @@ module Hammer
       @app       = app
       @queue     = []
       @scheduled = nil
+      @update    = false
 
       #update_block = lambda { context.communicator.update! }
       #@update = Task.new(true, false, 'update', &update_block)
@@ -59,6 +60,12 @@ module Hammer
 
     def action(&block)
       @queue << block
+      @update = true
+      run
+    end
+
+    def update
+      @update = true
       run
     end
 
@@ -80,12 +87,19 @@ module Hammer
 
     def run
       return if scheduled?
-      return unless task = @queue.shift
+
+      if (task = @queue.shift)
+      elsif @update
+        task = lambda do
+          @update = false
+          app.send_updates
+        end
+      else
+        return
+      end
 
       @scheduled = task
       core.fiber_pool.spawn app, &method(:running)
-    ensure
-      @scheduled = nil
     end
 
     #def restart!
@@ -130,6 +144,8 @@ module Hammer
         #scheduled.call
         #context.update! if @queue.empty?
       end
+
+      @scheduled = nil
 
       if success
         run

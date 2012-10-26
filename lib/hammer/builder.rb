@@ -9,11 +9,11 @@ module Hammer
       end
 
       extend_class :A do
-        HammerBuilder::Strings.add :hash, '#'
+        strings_injector.add :hash, '#'
 
         def action(name = 'action', &block)
           super(name, &block)
-          href HammerBuilder::Strings::HASH
+          href @_str_hash
         end
       end
     end

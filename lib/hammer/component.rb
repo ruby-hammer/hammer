@@ -9,6 +9,8 @@ module Hammer
 
     extend StateHelper
     extend HammerBuilder::Helper
+    include Hammer::Observable::Helper
+    include Hammer::Observer::Helper
 
     attr_reader :actions, :state, :updater, :app
 
@@ -32,6 +34,10 @@ module Hammer
 
     def core
       app.context.container.core
+    end
+
+    def context
+      app.context
     end
 
     #def root
