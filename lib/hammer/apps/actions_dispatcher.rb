@@ -4,7 +4,7 @@ class Hammer::Apps::ActionsDispatcher
 
   def initialize(app)
     @app     = app
-    @actions = Hammer::Weak::Hash[:value].new
+    @actions = Hammer::Weak::WeakHash.new
   end
 
   # registers action in context's hash

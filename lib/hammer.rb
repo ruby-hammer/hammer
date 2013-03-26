@@ -1,10 +1,8 @@
-
 # FIXME dropping of contexts
 
 # TODO use dependency injection pattern
 # TODO define container modules in one file
 # TODO auto loading with loader
-# TODO check out the socket lib which is used by vert.x
 
 # Weak collections -> loosers
 # hammer-builder -> showoff
@@ -16,19 +14,25 @@ module Hammer
 end
 
 # required gems
-require 'yajl/json_gem'
+require 'multi_json'
 require 'active_support/basic_object'
 require 'active_support/core_ext/module/aliasing'
 require 'active_support/core_ext/object/blank'
 require 'pp'
 require 'benchmark'
 require 'eventmachine'
-require 'zmq'
 require 'hammer_builder'
+require 'hammer-weak'
+require 'hammer-actor'
 require 'configliere'
 require 'securerandom'
 require 'radix62'
 require 'log4r'
+begin
+  require 'pry'
+rescue LoadError
+  # ignored
+end
 
 #require 'data_objects'
 #require 'datamapper'
@@ -36,7 +40,6 @@ require 'log4r'
 require 'hammer/current_app'
 require 'hammer/builder'
 require 'hammer/config'
-require 'hammer/weak'
 require 'hammer/utils'
 require 'hammer/observable'
 require 'hammer/observer'

@@ -17,4 +17,22 @@ module Hammer::Utils
   else
     [true, r]
   end
+
+  module AbstractClasses
+    def abstract!
+      @abstract = true
+    end
+
+    def abstract?
+      !!@abstract
+    end
+  end
+
+  module FindAdapter
+    def [](name)
+      abstract = self.const_get :Abstract
+      abstract.subclasses.find { |c| c.name == name } || raise("unknown adapter #{name}")
+    end
+  end
+
 end

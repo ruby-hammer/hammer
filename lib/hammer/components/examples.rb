@@ -3,9 +3,10 @@ module Hammer::Components
 
     attr_reader :kind, :example
 
-    EXAMPLES = { 'blank'      => Blank,
-                 'counters'   => CountersComponent,
-                 'calculator' => Calculator }
+    EXAMPLES = { 'blank'       => Blank,
+                 'counters'    => CountersComponent,
+                 'calculator'  => Calculator,
+                 'inspections' => Inspections::Example }
 
     changing do
       def update_kind(kind, url = nil)

@@ -3,6 +3,7 @@
 .yardoc
 .rspec
 .rake_tasks~
+.bin
 yardoc
 node_modules
 gh-pages

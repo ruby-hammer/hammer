@@ -15,7 +15,7 @@ module Hammer
   end
 
   class Config
-    def initialize(options = { })
+    def initialize(options = {})
       @config = new_configuration(options)
     end
 
@@ -51,17 +51,11 @@ module Hammer
 
       argv_help_hack { config.resolve! }
 
-      #config.define 'app.project',
-      #              :default     => nil,
-      #              :description => "application name"
+
       config.define 'app.shared',
                     :required    => true,
                     :default     => "Hammer::Core::Shared",
                     :description => "class for shared data"
-      config.define 'app.html_client_class',
-                    :required    => true,
-                    :default     => 'Hammer::Core::HtmlClient',
-                    :description => "name of a html client class"
       config.define 'app.apps',
                     :required    => true,
                     :default     => { 'examples' => { :class => 'Hammer::Components::Examples', :main => true } },
@@ -76,11 +70,13 @@ module Hammer
                     :description => 'path to the application'
 
 
-      config.define 'node.web.host',
+      # TODO move node settings under adapter key(zmq_node)
+
+      config.define 'node.web.host', # TODO move to app settings
                     :required    => true,
                     :default     => '127.0.0.1',
                     :description => "web-server's device to bind"
-      config.define 'node.web.port',
+      config.define 'node.web.port', # TODO move to app settings
                     :type        => Integer,
                     :required    => true,
                     :default     => 3000,
@@ -91,7 +87,7 @@ module Hammer
       config.define 'node.run',
                     :type     => :boolean,
                     :required => true,
-                    :default  => false
+                    :default  => true
       config.define 'node.to_hammer',
                     :required    => true,
                     :default     => 'tcp://127.0.0.1:4211',
@@ -105,11 +101,28 @@ module Hammer
                     :default     => false,
                     :description => "log node traffic"
 
+
       config.define 'core.fibers',
                     :type        => Integer,
                     :required    => true,
                     :default     => 100,
                     :description => "size of fiberpool"
+      config.define 'core.message_adapter',
+                    :required    => true,
+                    :default     => 'em-websocket',
+                    #:default     => 'node_zmq',
+                    :description => 'name of the messaging adapter'
+      config.define 'core.html_client',
+                    :required    => true,
+                    :default     => 'normal',
+                    :description => "name of a html client adapter"
+      config.define 'core.websocket_url', # TODO move to app settings
+                    :required    => true,
+                    #:default     => 'http://localhost:3000',
+                    :default     => 'ws://localhost:3001',
+                    :description => 'url to a WebSocket server'
+
+
 
       config.define 'logger.level.fallback',
                     :default     => config[:environment] == :development ? 0 : 1,

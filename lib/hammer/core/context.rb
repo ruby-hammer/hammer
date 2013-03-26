@@ -2,13 +2,13 @@ module Hammer
   # represents context of user, each tab of a browser has one
   class Core::Context
 
-    attr_reader :id, :container, :apps, :logger, :connection_id, :main_app, :title
+    attr_reader :id, :container, :apps, :logger, :main_app, :title
 
     # @param [String] id unique identification
-    def initialize(id, container, url, options = { })
+    def initialize(id, container, url, options = {})
       @id        = id
       @container = container
-      @apps      = { }
+      @apps      = {}
       @logger    = core.logging['context']
       #@repository   = DataMapper.repository(:default)
 
@@ -58,26 +58,26 @@ module Hammer
     end
 
     def receive_message(message)
+      unless message.context_id == id
+        raise ArgumentError, 'wrong context_id'
+      end
+
+      if message.type == 'drop'
+        drop
+        return
+      end
+
       unless (app = app(message.app_id))
         logger.warn "no app with id: '#{message.app_id}'"
       else
-        message.context_id ||= id # if new connection, message does not have one
-        self.connection_id = message.connection_id
         app.receive_message(message)
       end
     end
 
     def send_message(message)
-      message.connection_id ||= connection_id
-      message.url           = to_url
+      message.context_id ||= id
+      message.url        = to_url
       container.send_message(message)
-    end
-
-    private
-
-    def connection_id=(id)
-      @connection_id                          = id
-      container.connection_ids[connection_id] = self
     end
   end
 end

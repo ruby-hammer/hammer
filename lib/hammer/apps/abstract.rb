@@ -9,7 +9,7 @@ module Hammer::Apps
       builder.render app_component, :wrapper
     end
 
-    def initialize(context, id, options = { })
+    def initialize(context, id, options = {})
       @context           = context
       @schedule          = options[:scheduler] || Scheduler.new(self)
       @id                = id
@@ -27,17 +27,21 @@ module Hammer::Apps
     end
 
     def receive_message(message)
+      unless message.app_id == id
+        raise ArgumentError, 'wrong app_id'
+      end
+
       case message.type
-        when 'initContent'
-          schedule.update
-        when 'action'
-          schedule.action do
-            action_dispatcher.run message.action_id, *(message.args || [])
-          end
-        when 'value'
-          raise NotImplementedError
-        else
-          logger.warn "wrong message: #{message.pretty_inspect.chop!}"
+      when 'initContent'
+        schedule.update
+      when 'action'
+        schedule.action do
+          action_dispatcher.run message.action_id, *(message.args || [])
+        end
+      when 'value'
+        raise NotImplementedError
+      else
+        logger.warn "wrong message: #{message.pretty_inspect.chop!}"
       end
     end
 
@@ -46,7 +50,7 @@ module Hammer::Apps
       context.send_message(message)
     end
 
-    def send_updates(message = Hammer::Message.new)
+    def send_updates(message = Hammer::Message.new_from_hash)
       message.updates = updates
       message.type    = 'update'
       send_message message

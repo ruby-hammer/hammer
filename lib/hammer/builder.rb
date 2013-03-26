@@ -1,5 +1,5 @@
 module Hammer
-  class Builder < HammerBuilder::Standard
+  class Builder < HammerBuilder::Formatted
 
     dynamic_classes do
       extend_class :AbstractTag do

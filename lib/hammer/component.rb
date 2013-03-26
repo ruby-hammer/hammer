@@ -2,6 +2,9 @@ module Hammer
   # represents component of a page. The basic logic building blocks of a application.
   class Component
 
+    # TODO improve change monitoring, monitor instance variables instead of methods,
+    # monitor other objects for #changed? method on, propagate state reset to monitored variables
+
     require "hammer/component/state.rb"
     require "hammer/component/updater.rb"
     require "hammer/component/actions.rb"

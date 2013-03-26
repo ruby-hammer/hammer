@@ -2,6 +2,7 @@ require 'benchmark'
 require 'ostruct'
 
 count = 20000
+#count = 20
 
 A_DATA  = { }
 alfabet = ('a'..'z').to_a
@@ -13,11 +14,13 @@ class B
   A_DATA.each do |k, v|
     const_set(:"#{k.capitalize}", v)
     class_variable_set(:"@@#{k}", v)
+    attr_reader :"__#{k}"
   end
 
   def initialize
     A_DATA.each do |k, v|
       instance_variable_set(:"@#{k}", v)
+      instance_variable_set(:"@__#{k}", v)
     end
   end
 
@@ -52,6 +55,16 @@ Benchmark.bmbm(10) do |b|
         #{keys.map { |k| "sum += @#{k}" }.join("\n") }
       end
     RUBY
+  end
+  b.report('attr_reader') do
+    bi = B.new
+    str = <<-RUBY
+      sum = 0
+      #{count}.times do
+        #{keys.map { |k| "sum += __#{k}" }.join("\n") }
+      end
+    RUBY
+    bi.instance_eval str
   end
   b.report('cvar') do
     bi = B.new

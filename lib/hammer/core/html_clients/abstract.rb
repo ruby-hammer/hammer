@@ -1,4 +1,6 @@
-class Hammer::Core::HtmlClient
+class Hammer::Core::HtmlClients::Abstract < Hammer::Core::AbstractAdapter
+
+  abstract!
 
   attr_reader :core
 
@@ -17,13 +19,18 @@ class Hammer::Core::HtmlClient
   end
 
   def scripts
-    %w( /socket.io/socket.io.js
-        /right/right-src.js
+    # TODO remove lib/right-src.js dependency
+    %w( /lib/jquery-1.9.1.js
+        /lib/jquery-no_conflict.js
+
+        /lib/right-src.js
         /hammer/hammer.js
-        /hammer/jquery-1.6.1.js
-        /hammer/jquery-no_conflict.js
-        /hammer/jquery.ba-hashchange.js
-        /hammer/callbacks.js)
+        /hammer/callbacks.js) + message_adapter_scripts
+    # /lib/jquery.ba-hashchange.js
+  end
+
+  def message_adapter_scripts
+    core.message_adapter.js_scripts
   end
 
   def favicon
@@ -54,16 +61,23 @@ class Hammer::Core::HtmlClient
       end
 
       b.body do
+        render_config b
         render_body b
       end
     end
   end
 
-  def render_body b
+  def render_body(b)
     apps.each do |id, app|
       next if id == 'title'
       b.render app, :wrapper
     end
   end
 
+  def render_config(b)
+    b.js "hammer.websocketUrl = '#{core.config.core.websocket_url}';"
+  end
+
+
 end
+

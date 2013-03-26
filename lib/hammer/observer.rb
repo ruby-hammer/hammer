@@ -28,7 +28,7 @@ class Hammer::Observer
 
   def initialize(obj)
     @obj         = obj
-    @observables = Hammer::Weak::Hash[:key].new
+    @observables = Hammer::Weak::WeakKeyHash.new
   end
 
   def run(name, observable, *args)

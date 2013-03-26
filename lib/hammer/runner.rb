@@ -14,7 +14,7 @@ module Hammer
       logger.info "Configuration:\n" + config.config_values.pretty_inspect.chop!
       #DataMapper::Logger.new(Hammer.config[:logger][:output]) # TODO
 
-      @node = Node.new(core).run if core.config.node.run
+      @node = Node.new(core).run if core.config.node.run && core.config.core.message_adapter == 'node_zmq'
 
       core.run
     end

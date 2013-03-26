@@ -7,16 +7,15 @@ module Hammer
     # Manages all context of one user.
     # This is the one object which is stored in session.
     class Container
-      attr_reader :id, :core, :context_class, :logger, :connection_ids #:shared
+      attr_reader :id, :core, :context_class, :logger #:shared
 
-      def initialize(id, core, options = { })
-        @id             = id
-        @contexts       = { }
+      def initialize(id, core, options = {})
+        @id            = id
+        @contexts      = {}
         #@shared        = options[:shared] || core.config.app.shared.constantize.new
-        @core           = core
-        @context_class  = options[:context_class] || core.config.app.context.constantize
-        @logger         = core.logging['container']
-        @connection_ids = { }
+        @core          = core
+        @context_class = options[:context_class] || core.config.app.context.constantize
+        @logger        = core.logging['container']
 
         logger.debug "new #{id}"
       end
@@ -33,7 +32,6 @@ module Hammer
       # @param [Context] context to drop when is not needed
       def drop_context(context)
         @contexts.delete context.id
-        @connection_ids.delete context.connection_id
         drop if @contexts.empty?
       end
 
@@ -49,25 +47,25 @@ module Hammer
       end
 
       def receive_message(message)
-        case message.type
-          when 'initContext'
-            context            = create_context(message.url)
-            message.context_id = context.id
-            send_message message
-          when 'drop'
-            if (context = connection_ids[message.connection_id])
-              drop_context context
-            end
-          else
-            if (context = context(message.context_id))
-              context.receive_message(message)
-            else
-              logger.warn "no context with id: #{message.context_id}"
-            end
+        unless message.container_id == id
+          raise ArgumentError, 'wrong container_id'
+        end
+
+        if message.type == 'initContext'
+          context            = create_context(message.url)
+          message.context_id = context.id
+          send_message message
+        end
+
+        if (context = context(message.context_id))
+          context.receive_message(message)
+        else
+          logger.warn "no context with id: #{message.context_id}"
         end
       end
 
       def send_message(message)
+        message.container_id ||= id
         core.send_message(message)
       end
 
